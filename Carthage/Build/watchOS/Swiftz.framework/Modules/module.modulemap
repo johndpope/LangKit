@@ -1,0 +1,10 @@
+framework module Swiftz {
+  umbrella header "Swiftz.h"
+
+  export *
+  module * { export * }
+}
+
+module Swiftz.Swift {
+    header "Swiftz-Swift.h"
+}
