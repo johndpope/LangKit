@@ -9,17 +9,16 @@
 /* Begin PBXBuildFile section */
 		293AEAB21C9FB41600A05A5E /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293AEAB11C9FB41600A05A5E /* Tokenizer.swift */; };
 		296D7E0C1C9FFDEA00A6BF51 /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; };
-		296D7E0D1C9FFDEE00A6BF51 /* Dollar.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		299207201CA09B5C009BFCC8 /* IBMModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2992071F1CA09B5C009BFCC8 /* IBMModel1.swift */; };
+		299207221CA09B63009BFCC8 /* IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299207211CA09B63009BFCC8 /* IBMModel2.swift */; };
 		29A345A11C9F3D4F00D8A465 /* LangKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 29A345A01C9F3D4F00D8A465 /* LangKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29A345A81C9F3D4F00D8A465 /* LangKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29A3459D1C9F3D4F00D8A465 /* LangKit.framework */; };
 		29A345AD1C9F3D4F00D8A465 /* LangKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345AC1C9F3D4F00D8A465 /* LangKitTests.swift */; };
 		29A345BB1C9F3E9E00D8A465 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345B71C9F3E9E00D8A465 /* Model.swift */; };
 		29A345BC1C9F3E9E00D8A465 /* Ngrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345B81C9F3E9E00D8A465 /* Ngrams.swift */; };
 		29A345BD1C9F3E9E00D8A465 /* NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345B91C9F3E9E00D8A465 /* NgramModel.swift */; };
-		29A345BE1C9F3E9E00D8A465 /* Probable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345BA1C9F3E9E00D8A465 /* Probable.swift */; };
 		29B106C41C9F6626005EABC1 /* HiddenMarkovModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */; };
 		29E3148F1C9FEA630054425D /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; };
-		29E314911C9FEA690054425D /* Dollar.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +38,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				296D7E0D1C9FFDEE00A6BF51 /* Dollar.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +47,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				29E314911C9FEA690054425D /* Dollar.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -61,6 +58,8 @@
 		293AEAB11C9FB41600A05A5E /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		296D7E091C9FFCAC00A6BF51 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		296D7E0A1C9FFCAC00A6BF51 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2992071F1CA09B5C009BFCC8 /* IBMModel1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBMModel1.swift; sourceTree = "<group>"; };
+		299207211CA09B63009BFCC8 /* IBMModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBMModel2.swift; sourceTree = "<group>"; };
 		29A3459D1C9F3D4F00D8A465 /* LangKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LangKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A345A01C9F3D4F00D8A465 /* LangKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LangKit.h; sourceTree = "<group>"; };
 		29A345A21C9F3D4F00D8A465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		29A345B71C9F3E9E00D8A465 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		29A345B81C9F3E9E00D8A465 /* Ngrams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ngrams.swift; sourceTree = "<group>"; };
 		29A345B91C9F3E9E00D8A465 /* NgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NgramModel.swift; sourceTree = "<group>"; };
-		29A345BA1C9F3E9E00D8A465 /* Probable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Probable.swift; sourceTree = "<group>"; };
 		29B106A41C9F5147005EABC1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenMarkovModel.swift; sourceTree = "<group>"; };
 		29E314891C9FDE1C0054425D /* Packages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packages; sourceTree = "<group>"; };
@@ -98,6 +96,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		299207231CA09B68009BFCC8 /* IBM Models */ = {
+			isa = PBXGroup;
+			children = (
+				2992071F1CA09B5C009BFCC8 /* IBMModel1.swift */,
+				299207211CA09B63009BFCC8 /* IBMModel2.swift */,
+			);
+			name = "IBM Models";
+			sourceTree = "<group>";
+		};
+		299207241CA09B71009BFCC8 /* Langauge Models */ = {
+			isa = PBXGroup;
+			children = (
+				29A345B91C9F3E9E00D8A465 /* NgramModel.swift */,
+				29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */,
+			);
+			name = "Langauge Models";
+			sourceTree = "<group>";
+		};
 		29A345931C9F3D4E00D8A465 = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +144,8 @@
 				29A345B71C9F3E9E00D8A465 /* Model.swift */,
 				293AEAB11C9FB41600A05A5E /* Tokenizer.swift */,
 				29A345B81C9F3E9E00D8A465 /* Ngrams.swift */,
-				29A345B91C9F3E9E00D8A465 /* NgramModel.swift */,
-				29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */,
-				29A345BA1C9F3E9E00D8A465 /* Probable.swift */,
+				299207241CA09B71009BFCC8 /* Langauge Models */,
+				299207231CA09B68009BFCC8 /* IBM Models */,
 				29A345A01C9F3D4F00D8A465 /* LangKit.h */,
 				29A345A21C9F3D4F00D8A465 /* Info.plist */,
 			);
@@ -264,7 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29A345BE1C9F3E9E00D8A465 /* Probable.swift in Sources */,
+				299207221CA09B63009BFCC8 /* IBMModel2.swift in Sources */,
+				299207201CA09B5C009BFCC8 /* IBMModel1.swift in Sources */,
 				293AEAB21C9FB41600A05A5E /* Tokenizer.swift in Sources */,
 				29B106C41C9F6626005EABC1 /* HiddenMarkovModel.swift in Sources */,
 				29A345BD1C9F3E9E00D8A465 /* NgramModel.swift in Sources */,

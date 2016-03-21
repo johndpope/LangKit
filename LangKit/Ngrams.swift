@@ -3,8 +3,6 @@
  *
  */
 
-import Dollar
-
 public enum NgramForm {
     case Letter
     case Word

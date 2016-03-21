@@ -7,6 +7,6 @@ protocol Model {
 
     func train()
 
-    func probability<T: Probable>(item: T) -> Float
+    func probability<T>(item: T) -> Float
 
 }
