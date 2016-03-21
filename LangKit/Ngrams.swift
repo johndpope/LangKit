@@ -3,6 +3,8 @@
  *
  */
 
+import Dollar
+
 public enum NgramForm {
     case Letter
     case Word
@@ -13,7 +15,7 @@ public extension Array where Element : Equatable {
     public func ngrams(n: Int) -> Ngrams<Element> {
         return Ngrams<Element>(n, source: self)
     }
-    
+
 }
 
 public extension String {

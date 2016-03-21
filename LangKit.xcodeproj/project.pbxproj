@@ -16,6 +16,9 @@
 		29A345BD1C9F3E9E00D8A465 /* NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345B91C9F3E9E00D8A465 /* NgramModel.swift */; };
 		29A345BE1C9F3E9E00D8A465 /* Probable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A345BA1C9F3E9E00D8A465 /* Probable.swift */; };
 		29B106C41C9F6626005EABC1 /* HiddenMarkovModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */; };
+		29E3148F1C9FEA630054425D /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; };
+		29E314901C9FEA630054425D /* Dollar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; };
+		29E314911C9FEA690054425D /* Dollar.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 29E3148B1C9FEA100054425D /* Dollar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				29E314911C9FEA690054425D /* Dollar.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,8 +48,6 @@
 /* Begin PBXFileReference section */
 		293AEAB01C9FB34B00A05A5E /* DemoPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = DemoPlayground.playground; sourceTree = "<group>"; };
 		293AEAB11C9FB41600A05A5E /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
-		295800131C9F508A00B2670C /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		295800141C9F508A00B2670C /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		29A3459D1C9F3D4F00D8A465 /* LangKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LangKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A345A01C9F3D4F00D8A465 /* LangKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LangKit.h; sourceTree = "<group>"; };
 		29A345A21C9F3D4F00D8A465 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,9 +59,9 @@
 		29A345B91C9F3E9E00D8A465 /* NgramModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NgramModel.swift; sourceTree = "<group>"; };
 		29A345BA1C9F3E9E00D8A465 /* Probable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Probable.swift; sourceTree = "<group>"; };
 		29B106A41C9F5147005EABC1 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		29B106BF1C9F5168005EABC1 /* Carthage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Carthage; sourceTree = "<group>"; };
 		29B106C31C9F6626005EABC1 /* HiddenMarkovModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HiddenMarkovModel.swift; sourceTree = "<group>"; };
-		29BABFE01C9FCF260075EDAB /* Packages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packages; sourceTree = "<group>"; };
+		29E314891C9FDE1C0054425D /* Packages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packages; sourceTree = "<group>"; };
+		29E3148B1C9FEA100054425D /* Dollar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Dollar.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E3148F1C9FEA630054425D /* Dollar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E314901C9FEA630054425D /* Dollar.framework in Frameworks */,
 				29A345A81C9F3D4F00D8A465 /* LangKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,14 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				29B106A41C9F5147005EABC1 /* Package.swift */,
-				295800131C9F508A00B2670C /* Cartfile */,
-				295800141C9F508A00B2670C /* Cartfile.resolved */,
-				29BABFE01C9FCF260075EDAB /* Packages */,
-				29B106BF1C9F5168005EABC1 /* Carthage */,
 				293AEAB01C9FB34B00A05A5E /* DemoPlayground.playground */,
+				29E314891C9FDE1C0054425D /* Packages */,
 				29A3459F1C9F3D4F00D8A465 /* LangKit */,
 				29A345AB1C9F3D4F00D8A465 /* LangKitTests */,
-				29B106C21C9F517D005EABC1 /* Frameworks */,
+				29E3148A1C9FEA100054425D /* Frameworks */,
 				29A3459E1C9F3D4F00D8A465 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,11 +131,12 @@
 			path = LangKitTests;
 			sourceTree = "<group>";
 		};
-		29B106C21C9F517D005EABC1 /* Frameworks */ = {
+		29E3148A1C9FEA100054425D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29E3148B1C9FEA100054425D /* Dollar.framework */,
 			);
-			name = Frameworks;
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,7 +377,7 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = LangKit/Info.plist;
@@ -401,7 +403,7 @@
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = LangKit/Info.plist;
@@ -417,6 +419,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = LangKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rxwei.LangKitTests;
@@ -428,6 +435,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = LangKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rxwei.LangKitTests;
