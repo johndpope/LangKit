@@ -4,7 +4,7 @@
 
 Computational Linguistics in Swift
 
-**In construction, not up to date**
+**In construction**
 
 Author: Richard Wei
 
