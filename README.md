@@ -10,32 +10,33 @@ Author: Richard Wei
 
 License: The University of Illinois/NCSA Open Source License (NCSA)
 
-## Build
+## Instructions
 
-### OS X 10.11
+You can use Xcode 7.3 with Swift 3 dev toolchain **or** only the Swift 3 dev toolchain. Xcode is recommended if you need a Playground.
 
-You can use Xcode 7.2 **or** the Swift 3 development snapshot. Xcode is recommended if you need a Playground.
+### Swift 3 on OS X 10.11, Ubuntu 14.04 or Ubuntu 15.10
 
-#### Xcode 7.2
-
-It should work without any additional configurations.
-
-#### Swift 3 development snapshot
 
 Make sure you have added Swift 3's `bin` to `PATH`.
 
+Build:
 ```
-$ swift build
-```
-
-You may want to run the above command again if LangKitTests fail to build. It's a Swift Package Manager issue.
-
-### Ubuntu 14.04
-
-Make sure you have Swift 3 development snapshot's `bin` added to `PATH`.
-
-```
-$ swift build
+    $ swift build
 ```
 
-Tests fail to build just as they should. There will be a workaround when `swift-corelibs-xctest` gets a good shape.
+Test:
+```
+    $ swift test
+```
+### Xcode 7.3 with Swift 3 (OS X only) ###
+
+Switch the toolchain to Swift development snapshot, and open `LangKit.xcodeproj`.
+
+Build: `⌘b`
+
+Test: `⌘u`
+
+## Note
+
+Currently LangKit compiles with both Swift 2.2 and 3.0-dev toolchains. But I will not gurantee the compatibility with Swift 2. 
+
