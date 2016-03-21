@@ -26,6 +26,7 @@ class LangKitTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssertEqual(Array([1, 2, 3, 4, 5].ngrams(2)), [[1,2], [2,3], [3,4], [4,5]])
+        XCTAssertEqual("I am a smart student .".ngrams(2, form: .Word).toArray(), [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]])
     }
     
     func testPerformanceExample() {

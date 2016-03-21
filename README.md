@@ -1,5 +1,7 @@
 # LangKit
 
+[![Build Status](https://travis-ci.org/xinranmsn/LangKit.svg?branch=master)](https://travis-ci.org/xinranmsn/LangKit)
+
 Computational Linguistics in Swift
 
 **In construction, not up to date**
