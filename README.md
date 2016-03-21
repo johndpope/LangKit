@@ -8,7 +8,7 @@ Author: Richard Wei
 
 License: The University of Illinois/NCSA Open Source License (NCSA)
 
-## Instructions
+## Build
 
 ### OS X 10.11
 
@@ -36,4 +36,4 @@ Make sure you have Swift 3 development snapshot's `bin` added to `PATH`.
 $ swift build
 ```
 
-Tests fail to build just as they should be. There will be a workaround when `swift-corelibs-xctest` gets a good shape.
+Tests fail to build just as they should. There will be a workaround when `swift-corelibs-xctest` gets a good shape.
