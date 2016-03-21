@@ -4,16 +4,24 @@ let package = Package(
     name: "LangKit",
     exclude: ["Documentation", "build", "Frameworks"],
     dependencies: [
-//        .Package(url: "https://github.com/xinranmsn/Dollar", versions: Version(5,0,1)...Version(5,0,2))
+       // .Package(url: "https://github.com/xinranmsn/Dollar", versions: Version(5,0,1)...Version(5,0,2))
     ],
     targets: [
         Target(
-            name: "LangKit",
+            name: "Tokenization",
             dependencies: []
         ),
         Target(
-            name: "LangKitDemo",
-            dependencies: [.Target(name: "LangKit")]
+            name: "Alignment",
+            dependencies: []
+        ),
+        Target(
+            name: "LanguageModeling",
+            dependencies: [ "Tokenization" ]
+        ),
+        Target(
+            name: "SequenceLabeling",
+            dependencies: []
         )
     ]
 )

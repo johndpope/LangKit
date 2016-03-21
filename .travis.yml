@@ -1,5 +1,5 @@
 language: objective-c
 xcode_project: LangKit.xcodeproj
-xcode_scheme: LangKitTests
-osx_image: xcode7.2
+xcode_scheme: LangKit
+osx_image: xcode7.3
 xcode_sdk: macosx10.11

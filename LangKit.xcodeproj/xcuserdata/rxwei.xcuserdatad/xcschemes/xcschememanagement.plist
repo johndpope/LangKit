@@ -2,67 +2,44 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>LangKit.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>LangKitBundle.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>293AEAB91C9FC6F800A05A5E</key>
+		<key>______Target_Alignment</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A3459C1C9F3D4F00D8A465</key>
+		<key>______Target_AlignmentTestSuite</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A345A61C9F3D4F00D8A465</key>
+		<key>______Target_LanguageModeling</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A345C21C9F410E00D8A465</key>
+		<key>______Target_LanguageModelingTestSuite</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A345CF1C9F419000D8A465</key>
+		<key>______Target_SequenceLabeling</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A345DB1C9F41D600D8A465</key>
+		<key>______Target_SequenceLabelingTestSuite</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29A345E61C9F41F200D8A465</key>
+		<key>______Target_Tokenization</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29B107261C9FB07F005EABC1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>29B107331C9FB09D005EABC1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>29B107471C9FB131005EABC1</key>
+		<key>______Target_TokenizationTestSuite</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -3,6 +3,8 @@
  *
  */
 
+import Tokenization
+
 public enum NgramForm {
     case Letter
     case Word
