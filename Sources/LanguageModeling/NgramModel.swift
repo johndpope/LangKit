@@ -13,10 +13,10 @@ class NgramModel<T> {
 
 }
 
-extension NgramModel : Model {
+extension NgramModel : LanguageModel {
 
     func train() {
-        
+        // TODO
     }
 
     func probability<T>(item: T) -> Float {
