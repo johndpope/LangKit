@@ -17,3 +17,13 @@ class LanguageModelingTests: XCTestCase {
     }
 
 }
+
+extension LanguageModelingTests {
+
+    static var allTests: [(String, LanguageModelingTests -> () throws -> Void)] {
+        return [
+            ("testNgrams", testNgrams)
+        ]
+    }
+
+}

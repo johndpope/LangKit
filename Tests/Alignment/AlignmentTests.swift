@@ -14,3 +14,11 @@ class AlignmentTests: XCTestCase {
     
 
 }
+
+extension AlignmentTests {
+    static var allTests : [(String, AlignmentTests -> () throws -> Void)] {
+        return [
+            
+        ]
+    }
+}

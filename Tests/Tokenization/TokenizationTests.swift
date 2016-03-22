@@ -13,3 +13,13 @@ class TokenizationTests: XCTestCase {
 
 
 }
+
+extension TokenizationTests {
+
+    static var allTests: [(String, TokenizationTests -> () throws -> Void)] {
+        return [
+
+        ]
+    }
+
+}

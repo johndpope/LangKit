@@ -8,9 +8,9 @@
 
 protocol SequenceLabeler {
 
-    typealias Item
-    typealias Label
+    associatedtype ItemType
+    associatedtype LabelType
 
-    var tag(sequence: [Item]) -> [Label]
+    func tag(sequence: [ItemType]) -> [LabelType]
 
 }

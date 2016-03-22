@@ -13,3 +13,13 @@ class SequenceLabelingTests: XCTestCase {
 
 
 }
+
+extension SequenceLabelingTests {
+
+    static var allTests: [(String, SequenceLabelingTests -> () throws -> Void)] {
+        return [
+
+        ]
+    }
+
+}
