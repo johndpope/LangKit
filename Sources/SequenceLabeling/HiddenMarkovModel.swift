@@ -6,10 +6,31 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-class HiddenMarkovModel {
+public class HiddenMarkovModel {
+    
+    public typealias ItemType = String
+    public typealias LabelType = String
 
-    init() {
+    public init() {
         
     }
+    
+}
 
+extension HiddenMarkovModel : SequenceLabeler {
+    
+    public func tag(sequence: [ItemType]) -> [(ItemType, LabelType)] {
+        // TODO
+        return []
+    }
+    
+}
+
+extension HiddenMarkovModel {
+    
+    public func tag(sentence: String) -> [(ItemType, LabelType)] {
+        // TODO
+        return []
+    }
+    
 }

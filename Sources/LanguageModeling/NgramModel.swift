@@ -3,11 +3,13 @@
  *
  */
 
-class NgramModel<T> {
+public class NgramModel {
+    
+    public typealias ItemType = [String]
 
-    var n: Int
+    public var n: Int
 
-    init(n: Int) {
+    public init(n: Int) {
         self.n = n
     }
 
@@ -15,11 +17,11 @@ class NgramModel<T> {
 
 extension NgramModel : LanguageModel {
 
-    func train() {
+    public func train() {
         // TODO
     }
 
-    func probability<T>(item: T) -> Float {
+    public func probability(item: ItemType) -> Float {
         return 0.0
     }
 

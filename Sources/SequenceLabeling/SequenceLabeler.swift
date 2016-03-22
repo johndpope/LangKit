@@ -11,6 +11,6 @@ protocol SequenceLabeler {
     associatedtype ItemType
     associatedtype LabelType
 
-    func tag(sequence: [ItemType]) -> [LabelType]
+    func tag(sequence: [ItemType]) -> [(ItemType, LabelType)]
 
 }

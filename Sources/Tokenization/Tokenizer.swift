@@ -13,3 +13,11 @@ public extension String {
     }
     
 }
+
+public class Tokenizer {
+    
+    public init() {
+        
+    }
+    
+}

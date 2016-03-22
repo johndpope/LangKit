@@ -7,9 +7,11 @@
 //
 
 protocol LanguageModel {
+    
+    associatedtype ItemType = String
 
     func train()
 
-    func probability<T>(item: T) -> Float
+    func probability(item: ItemType) -> Float
 
 }
