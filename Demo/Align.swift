@@ -24,8 +24,6 @@ for (i, (f, e)) in bitext.enumerate() {
     print("French: \(f)\nEnglish: \(e)")
 }
 
-let x = "I am dumb .".tokenize()
-print("Tokenization: \(x)")
-
-//let aligner = IBMModel1(bitext: bitext)
-//aligner.train(100)
+let aligner = IBMModel1(bitext: bitext)
+aligner.train(100)
+print(aligner.alignmentIndices)
