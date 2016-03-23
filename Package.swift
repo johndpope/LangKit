@@ -22,6 +22,10 @@ let package = Package(
         Target(
             name: "SequenceLabeling",
             dependencies: []
+        ),
+        Target(
+            name: "Classification",
+            dependencies: [ "LanguageModeling" ]
         )
     ]
 )
