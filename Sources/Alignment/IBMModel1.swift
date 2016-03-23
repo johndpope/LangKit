@@ -40,7 +40,7 @@ public class IBMModel1: Aligner {
     }
     
     public convenience required init(bitext: [([String], [String])]) {
-        self.init(bitext: bitext) // probabiltyThreshold default
+        self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
     
     public func train(iterations: Int) {
