@@ -8,7 +8,9 @@
 
 public protocol Aligner {
     
-    init(bitext: [([String], [String])])
+    associatedtype SentenceTuple
+    
+    init(bitext: [SentenceTuple])
     
     func train(iterations: Int)
     

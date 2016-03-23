@@ -26,24 +26,26 @@ public struct WordPair : Hashable {
 /// Classic algorithm of IBM Model 1
 public class IBMModel1: Aligner {
     
+    public typealias SentenceTuple = ([String], [String])
+    
     var trans: [WordPair: Float]
-    var bitext: [([String], [String])]
+    var bitext: [SentenceTuple]
     
     var threshold: Float
     
     let initialTrans: Float = 0.1
     
-    public init(bitext: [([String], [String])], probabilityThreshold threshold: Float = 0.9) {
+    public init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
         self.bitext = bitext
         self.trans = [:]
         self.threshold = threshold
     }
     
-    public convenience required init(bitext: [([String], [String])]) {
+    public convenience required init(bitext: [SentenceTuple]) {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
     
-    public func train(iterations: Int) {
+    public func train(iterations: Int = 100) {
         for _ in 1...iterations {
             var count = [WordPair: Float]()
             var total = [String: Float]()
