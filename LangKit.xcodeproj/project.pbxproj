@@ -13,6 +13,7 @@
 		299831931CA25D5F0056062E /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
 		299831941CA25D5F0056062E /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
 		299831951CA25D5F0056062E /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
+		2998319C1CA264F30056062E /* Aligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2998319B1CA264F30056062E /* Aligner.swift */; };
 		_LinkFileRef_Alignment /* libAlignment.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Alignment" /* libAlignment.dylib */; };
 		_LinkFileRef_Classification /* libClassification.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Classification" /* libClassification.dylib */; };
 		_LinkFileRef_LanguageModeling /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
@@ -74,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2998319B1CA264F30056062E /* Aligner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aligner.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel1.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel2.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Classification/Classifier.swift /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
@@ -90,15 +92,15 @@
 		__PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
 		"_____Product_Alignment" /* libAlignment.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libAlignment.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_AlignmentTestSuite" /* AlignmentTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = AlignmentTestSuite.xctest; path = Alignment.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Alignment.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Classification" /* libClassification.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libClassification.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_ClassificationTestSuite" /* ClassificationTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = ClassificationTestSuite.xctest; path = Classification.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Classification.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LanguageModeling" /* libLanguageModeling.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLanguageModeling.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_LanguageModelingTestSuite" /* LanguageModelingTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = LanguageModelingTestSuite.xctest; path = LanguageModeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LanguageModeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSequenceLabeling.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SequenceLabelingTestSuite" /* SequenceLabelingTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = SequenceLabelingTestSuite.xctest; path = SequenceLabeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SequenceLabeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_Tokenization" /* libTokenization.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libTokenization.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TokenizationTestSuite" /* TokenizationTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = TokenizationTestSuite.xctest; path = Tokenization.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Tokenization.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,11 +191,11 @@
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_AlignmentTestSuite" /* AlignmentTestSuite.xctest */,
-				"_____Product_ClassificationTestSuite" /* ClassificationTestSuite.xctest */,
-				"_____Product_LanguageModelingTestSuite" /* LanguageModelingTestSuite.xctest */,
-				"_____Product_SequenceLabelingTestSuite" /* SequenceLabelingTestSuite.xctest */,
-				"_____Product_TokenizationTestSuite" /* TokenizationTestSuite.xctest */,
+				"_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */,
+				"_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */,
+				"_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */,
+				"_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */,
+				"_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -237,6 +239,7 @@
 			children = (
 				__PBXFileRef_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift */,
 				__PBXFileRef_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift */,
+				2998319B1CA264F30056062E /* Aligner.swift */,
 			);
 			name = Alignment;
 			path = Sources/Alignment;
@@ -372,7 +375,7 @@
 			);
 			name = Alignment.testsuite;
 			productName = AlignmentTestSuite;
-			productReference = "_____Product_AlignmentTestSuite" /* AlignmentTestSuite.xctest */;
+			productReference = "_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_Classification" /* Classification */ = {
@@ -406,7 +409,7 @@
 			);
 			name = Classification.testsuite;
 			productName = ClassificationTestSuite;
-			productReference = "_____Product_ClassificationTestSuite" /* ClassificationTestSuite.xctest */;
+			productReference = "_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_LanguageModeling" /* LanguageModeling */ = {
@@ -440,7 +443,7 @@
 			);
 			name = LanguageModeling.testsuite;
 			productName = LanguageModelingTestSuite;
-			productReference = "_____Product_LanguageModelingTestSuite" /* LanguageModelingTestSuite.xctest */;
+			productReference = "_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_SequenceLabeling" /* SequenceLabeling */ = {
@@ -473,7 +476,7 @@
 			);
 			name = SequenceLabeling.testsuite;
 			productName = SequenceLabelingTestSuite;
-			productReference = "_____Product_SequenceLabelingTestSuite" /* SequenceLabelingTestSuite.xctest */;
+			productReference = "_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_Tokenization" /* Tokenization */ = {
@@ -506,7 +509,7 @@
 			);
 			name = Tokenization.testsuite;
 			productName = TokenizationTestSuite;
-			productReference = "_____Product_TokenizationTestSuite" /* TokenizationTestSuite.xctest */;
+			productReference = "_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -549,6 +552,7 @@
 			buildActionMask = 0;
 			files = (
 				__src_cc_ref_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift in Sources */,
+				2998319C1CA264F30056062E /* Aligner.swift in Sources */,
 				__src_cc_ref_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

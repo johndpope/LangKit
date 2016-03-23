@@ -29,7 +29,7 @@ public class HiddenMarkovModel {
         }
         
         public var hashValue: Int {
-            return label1.hashValue & label2.hashValue
+            return "\(label1), \(label2)".hashValue
         }
     }
 
@@ -38,7 +38,7 @@ public class HiddenMarkovModel {
         public var item: ItemType
         
         public var hashValue: Int {
-            return label.hashValue * item.hashValue
+            return "\(item), \(label)".hashValue
         }
     }
 
