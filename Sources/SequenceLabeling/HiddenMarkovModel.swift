@@ -33,7 +33,7 @@ public class HiddenMarkovModel {
         }
     }
 
-    public struct Emission : Hashable {
+    public struct Emission : Equatable, Hashable {
         public var label: ItemType
         public var item: ItemType
         

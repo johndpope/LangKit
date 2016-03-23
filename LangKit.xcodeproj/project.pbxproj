@@ -29,7 +29,7 @@
 		__src_cc_ref_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift */; };
 		__src_cc_ref_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift */; };
 		__src_cc_ref_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift */; };
-		__src_cc_ref_Tests/Classification/ClassificationTests.swift /* ClassificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Classification/ClassificationTests.swift /* ClassificationTests.swift */; };
+		__src_cc_ref_Tests/Classification/ClassificationTests.swift /* NaiveBayesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Classification/ClassificationTests.swift /* NaiveBayesTests.swift */; };
 		__src_cc_ref_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift */; };
 		__src_cc_ref_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */; };
 		__src_cc_ref_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */; };
@@ -85,7 +85,7 @@
 		__PBXFileRef_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeler.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/Classification/ClassificationTests.swift /* ClassificationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/Classification/ClassificationTests.swift /* NaiveBayesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 		"_______Group_ClassificationTestSuite" /* Classification.testsuite */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Tests/Classification/ClassificationTests.swift /* ClassificationTests.swift */,
+				__PBXFileRef_Tests/Classification/ClassificationTests.swift /* NaiveBayesTests.swift */,
 			);
 			name = Classification.testsuite;
 			path = Tests/Classification;
@@ -574,7 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Tests/Classification/ClassificationTests.swift /* ClassificationTests.swift in Sources */,
+				__src_cc_ref_Tests/Classification/ClassificationTests.swift /* NaiveBayesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

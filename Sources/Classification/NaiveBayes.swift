@@ -8,17 +8,17 @@
 
 import LanguageModeling
 
-class NaiveBayes<InputType, LabelType: Hashable> {
+public class NaiveBayes<InputType, LabelType: Hashable> {
     
-    typealias KeyFunc = InputType -> Float
+    public typealias KeyFunc = InputType -> Float
     
     private var classes: [LabelType: KeyFunc]
     
-    init() {
+    public init() {
         classes = [:]
     }
     
-    init(classes: [LabelType: KeyFunc]) {
+    public init(classes: [LabelType: KeyFunc]) {
         self.classes = classes
     }
     
@@ -26,7 +26,7 @@ class NaiveBayes<InputType, LabelType: Hashable> {
 
 extension NaiveBayes {
     
-    func add(classLabel: LabelType, keyFunc: KeyFunc) {
+    public func add(classLabel: LabelType, keyFunc: KeyFunc) {
         if !classes.contains({$0.0 == classLabel})  {
             classes[classLabel] = keyFunc
         }
@@ -36,7 +36,7 @@ extension NaiveBayes {
 
 extension NaiveBayes : Classifier {
     
-    func classify(input: InputType) -> LabelType? {
+    public func classify(input: InputType) -> LabelType? {
         return argmax({ self.classes[$0]!(input) }, args: Array(classes.keys))
     }
     
