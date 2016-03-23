@@ -6,7 +6,7 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-protocol LanguageModel {
+public protocol LanguageModel {
     
     associatedtype ItemType = String
 

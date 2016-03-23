@@ -6,7 +6,7 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-protocol SequenceLabeler {
+public protocol SequenceLabeler {
 
     associatedtype ItemType
     associatedtype LabelType

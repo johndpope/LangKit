@@ -28,6 +28,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_Classification"
+               BuildableName = "libClassification.dylib"
+               BlueprintName = "Classification"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "______Target_LanguageModeling"
                BuildableName = "libLanguageModeling.dylib"
                BlueprintName = "LanguageModeling"
@@ -77,6 +91,16 @@
                BlueprintIdentifier = "______Target_AlignmentTestSuite"
                BuildableName = "Alignment.testsuite.xctest"
                BlueprintName = "Alignment.testsuite"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_ClassificationTestSuite"
+               BuildableName = "Classification.testsuite.xctest"
+               BlueprintName = "Classification.testsuite"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

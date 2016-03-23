@@ -14,6 +14,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>______Target_Classification</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>______Target_ClassificationTestSuite</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>______Target_LanguageModeling</key>
 		<dict>
 			<key>primary</key>
