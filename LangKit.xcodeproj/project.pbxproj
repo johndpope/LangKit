@@ -7,246 +7,101 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2989F91C1CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		2989F91D1CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		2989F91E1CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
-		2989F91F1CA4F4A400ECBDA4 /* libAlignment.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Alignment" /* libAlignment.dylib */; };
-		2989F9201CA4F4A400ECBDA4 /* libClassification.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Classification" /* libClassification.dylib */; };
-		2989F9211CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
-		2989F9221CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		2989F9231CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
-		2989F9241CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		2989F9251CA4F4A400ECBDA4 /* libSequenceLabeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */; };
-		2989F9261CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		_LinkFileRef_Alignment /* libAlignment.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Alignment" /* libAlignment.dylib */; };
-		_LinkFileRef_Classification /* libClassification.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Classification" /* libClassification.dylib */; };
-		_LinkFileRef_DataStructures /* libDataStructures.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_DataStructures" /* libDataStructures.dylib */; };
-		_LinkFileRef_LanguageModeling /* libLanguageModeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */; };
-		_LinkFileRef_SequenceLabeling /* libSequenceLabeling.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */; };
-		_LinkFileRef_Tokenization /* libTokenization.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Tokenization" /* libTokenization.dylib */; };
-		__src_cc_ref_Sources/Alignment/Aligner.swift /* Aligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Alignment/Aligner.swift /* Aligner.swift */; };
-		__src_cc_ref_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift */; };
-		__src_cc_ref_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift */; };
-		__src_cc_ref_Sources/Classification/Classifier.swift /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Classification/Classifier.swift /* Classifier.swift */; };
-		__src_cc_ref_Sources/Classification/NaiveBayes.swift /* NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Classification/NaiveBayes.swift /* NaiveBayes.swift */; };
-		__src_cc_ref_Sources/DataStructures/Trie.swift /* Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/DataStructures/Trie.swift /* Trie.swift */; };
+		2980E8E81CA5D4B500C2E0CA /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		__src_cc_ref_Sources/Demo/main.swift /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Demo/main.swift /* main.swift */; };
-		__src_cc_ref_Sources/LanguageModeling/LanguageModel.swift /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LanguageModeling/LanguageModel.swift /* LanguageModel.swift */; };
-		__src_cc_ref_Sources/LanguageModeling/NgramModel.swift /* NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LanguageModeling/NgramModel.swift /* NgramModel.swift */; };
-		__src_cc_ref_Sources/LanguageModeling/Ngrams.swift /* Ngrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LanguageModeling/Ngrams.swift /* Ngrams.swift */; };
-		__src_cc_ref_Sources/SequenceLabeling/HiddenMarkovModel.swift /* HiddenMarkovModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SequenceLabeling/HiddenMarkovModel.swift /* HiddenMarkovModel.swift */; };
-		__src_cc_ref_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift */; };
-		__src_cc_ref_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift */; };
-		__src_cc_ref_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift */; };
-		__src_cc_ref_Tests/Classification/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Classification/NaiveBayesTests.swift /* NaiveBayesTests.swift */; };
-		__src_cc_ref_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift */; };
-		__src_cc_ref_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */; };
-		__src_cc_ref_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */; };
+		__src_cc_ref_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift */; };
+		__src_cc_ref_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift */; };
+		__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */; };
+		__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */; };
+		__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */; };
+		__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */; };
+		__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */; };
+		__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */; };
+		__src_cc_ref_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */; };
+		__src_cc_ref_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift */; };
+		__src_cc_ref_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */; };
+		__src_cc_ref_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */; };
+		__src_cc_ref_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */; };
+		__src_cc_ref_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */; };
+		__src_cc_ref_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */; };
+		__src_cc_ref_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */; };
+		__src_cc_ref_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2989F9271CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
+		2980E8E91CA5D4B500C2E0CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = "______Target_LanguageModeling";
-			remoteInfo = LanguageModeling;
-		};
-		2989F9281CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_Tokenization";
-			remoteInfo = Tokenization;
-		};
-		2989F9291CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_DataStructures";
-			remoteInfo = DataStructures;
-		};
-		2989F92A1CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_Alignment";
-			remoteInfo = Alignment;
-		};
-		2989F92B1CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_SequenceLabeling";
-			remoteInfo = SequenceLabeling;
-		};
-		2989F92C1CA4F4A400ECBDA4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = __RootObject_ /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_Classification";
-			remoteInfo = Classification;
+			remoteGlobalIDString = "______Target_LangKit";
+			remoteInfo = LangKit;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2989F92D1CA4F57100ECBDA4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		__PBXFileRef_Sources/Alignment/Aligner.swift /* Aligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aligner.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel1.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel2.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Classification/Classifier.swift /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Classification/NaiveBayes.swift /* NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayes.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/DataStructures/Trie.swift /* Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trie.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/Demo/main.swift /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LanguageModeling/LanguageModel.swift /* LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LanguageModeling/NgramModel.swift /* NgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NgramModel.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LanguageModeling/Ngrams.swift /* Ngrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ngrams.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/SequenceLabeling/HiddenMarkovModel.swift /* HiddenMarkovModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenMarkovModel.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeler.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenizer.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/Classification/NaiveBayesTests.swift /* NaiveBayesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModelingTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
-		"_____Product_Alignment" /* libAlignment.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libAlignment.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Alignment.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_Classification" /* libClassification.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libClassification.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Classification.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_DataStructures" /* libDataStructures.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libDataStructures.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		__PBXFileRef_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/Aligner.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel1.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel2.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/Classifier.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/NaiveBayes.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/LanguageModel.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/NgramModel.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/Ngrams.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeling/HiddenMarkovModel.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeling/SequenceLabeler.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenization/Tokenizer.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModelingTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
 		"_____Product_Demo" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_LanguageModeling" /* libLanguageModeling.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLanguageModeling.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LanguageModeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libSequenceLabeling.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = SequenceLabeling.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_Tokenization" /* libTokenization.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libTokenization.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Tokenization.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKit" /* libLangKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLangKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = LangKitTestSuite.xctest; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		"___LinkPhase_Alignment" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_AlignmentTestSuite" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				2989F91F1CA4F4A400ECBDA4 /* libAlignment.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_Classification" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				_LinkFileRef_LanguageModeling /* libLanguageModeling.dylib in Frameworks */,
-				2989F91C1CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_ClassificationTestSuite" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				2989F9201CA4F4A400ECBDA4 /* libClassification.dylib in Frameworks */,
-				2989F9211CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */,
-				2989F9221CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_DataStructures" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		"___LinkPhase_Demo" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				_LinkFileRef_DataStructures /* libDataStructures.dylib in Frameworks */,
-				2989F91D1CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */,
-				_LinkFileRef_Alignment /* libAlignment.dylib in Frameworks */,
-				2989F91E1CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */,
-				_LinkFileRef_SequenceLabeling /* libSequenceLabeling.dylib in Frameworks */,
-				_LinkFileRef_Classification /* libClassification.dylib in Frameworks */,
+				_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		"___LinkPhase_LanguageModeling" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				_LinkFileRef_Tokenization /* libTokenization.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_LanguageModelingTestSuite" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				2989F9231CA4F4A400ECBDA4 /* libLanguageModeling.dylib in Frameworks */,
-				2989F9241CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_SequenceLabeling" /* Frameworks */ = {
+		"___LinkPhase_LangKit" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		"___LinkPhase_SequenceLabelingTestSuite" /* Frameworks */ = {
+		"___LinkPhase_LangKitTestSuite" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				2989F9251CA4F4A400ECBDA4 /* libSequenceLabeling.dylib in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_Tokenization" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		"___LinkPhase_TokenizationTestSuite" /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 0;
-			files = (
-				2989F9261CA4F4A400ECBDA4 /* libTokenization.dylib in Frameworks */,
+				2980E8E81CA5D4B500C2E0CA /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		Dependencies_ /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */,
-				"_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */,
-				"_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */,
-				"_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */,
-				"_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */,
+				"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -254,7 +109,9 @@
 		"___RootGroup_" = {
 			isa = PBXGroup;
 			children = (
+				__PBXFileRef_Package.swift /* Package.swift */,
 				"_____Sources_" /* Sources */,
+				Dependencies_ /* Dependencies */,
 				"_______Tests_" /* Tests */,
 				"____Products_" /* Products */,
 			);
@@ -264,13 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				TestProducts_ /* Tests */,
-				"_____Product_Alignment" /* libAlignment.dylib */,
-				"_____Product_Classification" /* libClassification.dylib */,
-				"_____Product_DataStructures" /* libDataStructures.dylib */,
 				"_____Product_Demo" /* Demo */,
-				"_____Product_LanguageModeling" /* libLanguageModeling.dylib */,
-				"_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */,
-				"_____Product_Tokenization" /* libTokenization.dylib */,
+				"_____Product_LangKit" /* libLangKit.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -278,63 +130,10 @@
 		"_____Sources_" /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				"_______Group_LangKit" /* LangKit */,
 				"_______Group_Demo" /* Demo */,
-				"_______Group_Alignment" /* Alignment */,
-				"_______Group_Classification" /* Classification */,
-				"_______Group_DataStructures" /* DataStructures */,
-				"_______Group_LanguageModeling" /* LanguageModeling */,
-				"_______Group_SequenceLabeling" /* SequenceLabeling */,
-				"_______Group_Tokenization" /* Tokenization */,
 			);
 			name = Sources;
-			sourceTree = "<group>";
-		};
-		"_______Group_Alignment" /* Alignment */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/Alignment/Aligner.swift /* Aligner.swift */,
-				__PBXFileRef_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift */,
-				__PBXFileRef_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift */,
-			);
-			name = Alignment;
-			path = Sources/Alignment;
-			sourceTree = "<group>";
-		};
-		"_______Group_AlignmentTestSuite" /* Alignment.testsuite */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift */,
-			);
-			name = Alignment.testsuite;
-			path = Tests/Alignment;
-			sourceTree = "<group>";
-		};
-		"_______Group_Classification" /* Classification */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/Classification/Classifier.swift /* Classifier.swift */,
-				__PBXFileRef_Sources/Classification/NaiveBayes.swift /* NaiveBayes.swift */,
-			);
-			name = Classification;
-			path = Sources/Classification;
-			sourceTree = "<group>";
-		};
-		"_______Group_ClassificationTestSuite" /* Classification.testsuite */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Tests/Classification/NaiveBayesTests.swift /* NaiveBayesTests.swift */,
-			);
-			name = Classification.testsuite;
-			path = Tests/Classification;
-			sourceTree = "<group>";
-		};
-		"_______Group_DataStructures" /* DataStructures */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/DataStructures/Trie.swift /* Trie.swift */,
-			);
-			name = DataStructures;
-			path = Sources/DataStructures;
 			sourceTree = "<group>";
 		};
 		"_______Group_Demo" /* Demo */ = {
@@ -346,71 +145,43 @@
 			path = Sources/Demo;
 			sourceTree = "<group>";
 		};
-		"_______Group_LanguageModeling" /* LanguageModeling */ = {
+		"_______Group_LangKit" /* LangKit */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Sources/LanguageModeling/LanguageModel.swift /* LanguageModel.swift */,
-				__PBXFileRef_Sources/LanguageModeling/NgramModel.swift /* NgramModel.swift */,
-				__PBXFileRef_Sources/LanguageModeling/Ngrams.swift /* Ngrams.swift */,
+				__PBXFileRef_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift */,
+				__PBXFileRef_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift */,
+				__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */,
+				__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */,
+				__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */,
+				__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */,
+				__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */,
+				__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */,
+				__PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */,
+				__PBXFileRef_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift */,
+				__PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */,
+				__PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */,
 			);
-			name = LanguageModeling;
-			path = Sources/LanguageModeling;
+			name = LangKit;
+			path = Sources/LangKit;
 			sourceTree = "<group>";
 		};
-		"_______Group_LanguageModelingTestSuite" /* LanguageModeling.testsuite */ = {
+		"_______Group_LangKitTestSuite" /* LangKit.testsuite */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift */,
+				__PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */,
+				__PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */,
+				__PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */,
+				__PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */,
+				__PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */,
 			);
-			name = LanguageModeling.testsuite;
-			path = Tests/LanguageModeling;
-			sourceTree = "<group>";
-		};
-		"_______Group_SequenceLabeling" /* SequenceLabeling */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/SequenceLabeling/HiddenMarkovModel.swift /* HiddenMarkovModel.swift */,
-				__PBXFileRef_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift */,
-			);
-			name = SequenceLabeling;
-			path = Sources/SequenceLabeling;
-			sourceTree = "<group>";
-		};
-		"_______Group_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */,
-			);
-			name = SequenceLabeling.testsuite;
-			path = Tests/SequenceLabeling;
-			sourceTree = "<group>";
-		};
-		"_______Group_Tokenization" /* Tokenization */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift */,
-			);
-			name = Tokenization;
-			path = Sources/Tokenization;
-			sourceTree = "<group>";
-		};
-		"_______Group_TokenizationTestSuite" /* Tokenization.testsuite */ = {
-			isa = PBXGroup;
-			children = (
-				__PBXFileRef_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift */,
-			);
-			name = Tokenization.testsuite;
-			path = Tests/Tokenization;
+			name = LangKit.testsuite;
+			path = Tests/LangKit;
 			sourceTree = "<group>";
 		};
 		"_______Tests_" /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_______Group_AlignmentTestSuite" /* Alignment.testsuite */,
-				"_______Group_ClassificationTestSuite" /* Classification.testsuite */,
-				"_______Group_LanguageModelingTestSuite" /* LanguageModeling.testsuite */,
-				"_______Group_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite */,
-				"_______Group_TokenizationTestSuite" /* Tokenization.testsuite */,
+				"_______Group_LangKitTestSuite" /* LangKit.testsuite */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -418,210 +189,54 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"______Target_Alignment" /* Alignment */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Alignment" /* Build configuration list for PBXNativeTarget "Alignment" */;
-			buildPhases = (
-				CompilePhase_Alignment /* Sources */,
-				"___LinkPhase_Alignment" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Alignment;
-			productName = Alignment;
-			productReference = "_____Product_Alignment" /* libAlignment.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		"______Target_AlignmentTestSuite" /* Alignment.testsuite */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_AlignmentTestSuite" /* Build configuration list for PBXNativeTarget "Alignment.testsuite" */;
-			buildPhases = (
-				CompilePhase_AlignmentTestSuite /* Sources */,
-				"___LinkPhase_AlignmentTestSuite" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_Alignment /* PBXTargetDependency */,
-			);
-			name = Alignment.testsuite;
-			productName = AlignmentTestSuite;
-			productReference = "_____Product_AlignmentTestSuite" /* Alignment.testsuite.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"______Target_Classification" /* Classification */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Classification" /* Build configuration list for PBXNativeTarget "Classification" */;
-			buildPhases = (
-				CompilePhase_Classification /* Sources */,
-				"___LinkPhase_Classification" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_LanguageModeling /* PBXTargetDependency */,
-			);
-			name = Classification;
-			productName = Classification;
-			productReference = "_____Product_Classification" /* libClassification.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		"______Target_ClassificationTestSuite" /* Classification.testsuite */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_ClassificationTestSuite" /* Build configuration list for PBXNativeTarget "Classification.testsuite" */;
-			buildPhases = (
-				CompilePhase_ClassificationTestSuite /* Sources */,
-				"___LinkPhase_ClassificationTestSuite" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_Classification /* PBXTargetDependency */,
-			);
-			name = Classification.testsuite;
-			productName = ClassificationTestSuite;
-			productReference = "_____Product_ClassificationTestSuite" /* Classification.testsuite.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"______Target_DataStructures" /* DataStructures */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_DataStructures" /* Build configuration list for PBXNativeTarget "DataStructures" */;
-			buildPhases = (
-				CompilePhase_DataStructures /* Sources */,
-				"___LinkPhase_DataStructures" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DataStructures;
-			productName = DataStructures;
-			productReference = "_____Product_DataStructures" /* libDataStructures.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
 		"______Target_Demo" /* Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = "_______Confs_Demo" /* Build configuration list for PBXNativeTarget "Demo" */;
 			buildPhases = (
 				CompilePhase_Demo /* Sources */,
 				"___LinkPhase_Demo" /* Frameworks */,
-				2989F92D1CA4F57100ECBDA4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				__Dependency_DataStructures /* PBXTargetDependency */,
-				__Dependency_Tokenization /* PBXTargetDependency */,
-				__Dependency_Alignment /* PBXTargetDependency */,
-				__Dependency_LanguageModeling /* PBXTargetDependency */,
-				__Dependency_SequenceLabeling /* PBXTargetDependency */,
-				__Dependency_Classification /* PBXTargetDependency */,
+				__Dependency_LangKit /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
 			productReference = "_____Product_Demo" /* Demo */;
 			productType = "com.apple.product-type.tool";
 		};
-		"______Target_LanguageModeling" /* LanguageModeling */ = {
+		"______Target_LangKit" /* LangKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_LanguageModeling" /* Build configuration list for PBXNativeTarget "LanguageModeling" */;
+			buildConfigurationList = "_______Confs_LangKit" /* Build configuration list for PBXNativeTarget "LangKit" */;
 			buildPhases = (
-				CompilePhase_LanguageModeling /* Sources */,
-				"___LinkPhase_LanguageModeling" /* Frameworks */,
+				CompilePhase_LangKit /* Sources */,
+				"___LinkPhase_LangKit" /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				__Dependency_Tokenization /* PBXTargetDependency */,
 			);
-			name = LanguageModeling;
-			productName = LanguageModeling;
-			productReference = "_____Product_LanguageModeling" /* libLanguageModeling.dylib */;
+			name = LangKit;
+			productName = LangKit;
+			productReference = "_____Product_LangKit" /* libLangKit.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		"______Target_LanguageModelingTestSuite" /* LanguageModeling.testsuite */ = {
+		"______Target_LangKitTestSuite" /* LangKit.testsuite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_LanguageModelingTestSuite" /* Build configuration list for PBXNativeTarget "LanguageModeling.testsuite" */;
+			buildConfigurationList = "_______Confs_LangKitTestSuite" /* Build configuration list for PBXNativeTarget "LangKit.testsuite" */;
 			buildPhases = (
-				CompilePhase_LanguageModelingTestSuite /* Sources */,
-				"___LinkPhase_LanguageModelingTestSuite" /* Frameworks */,
+				CompilePhase_LangKitTestSuite /* Sources */,
+				"___LinkPhase_LangKitTestSuite" /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				__Dependency_LanguageModeling /* PBXTargetDependency */,
+				__Dependency_LangKit /* PBXTargetDependency */,
 			);
-			name = LanguageModeling.testsuite;
-			productName = LanguageModelingTestSuite;
-			productReference = "_____Product_LanguageModelingTestSuite" /* LanguageModeling.testsuite.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"______Target_SequenceLabeling" /* SequenceLabeling */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_SequenceLabeling" /* Build configuration list for PBXNativeTarget "SequenceLabeling" */;
-			buildPhases = (
-				CompilePhase_SequenceLabeling /* Sources */,
-				"___LinkPhase_SequenceLabeling" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = SequenceLabeling;
-			productName = SequenceLabeling;
-			productReference = "_____Product_SequenceLabeling" /* libSequenceLabeling.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		"______Target_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_SequenceLabelingTestSuite" /* Build configuration list for PBXNativeTarget "SequenceLabeling.testsuite" */;
-			buildPhases = (
-				CompilePhase_SequenceLabelingTestSuite /* Sources */,
-				"___LinkPhase_SequenceLabelingTestSuite" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_SequenceLabeling /* PBXTargetDependency */,
-			);
-			name = SequenceLabeling.testsuite;
-			productName = SequenceLabelingTestSuite;
-			productReference = "_____Product_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		"______Target_Tokenization" /* Tokenization */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Tokenization" /* Build configuration list for PBXNativeTarget "Tokenization" */;
-			buildPhases = (
-				CompilePhase_Tokenization /* Sources */,
-				"___LinkPhase_Tokenization" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Tokenization;
-			productName = Tokenization;
-			productReference = "_____Product_Tokenization" /* libTokenization.dylib */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
-		"______Target_TokenizationTestSuite" /* Tokenization.testsuite */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_TokenizationTestSuite" /* Build configuration list for PBXNativeTarget "Tokenization.testsuite" */;
-			buildPhases = (
-				CompilePhase_TokenizationTestSuite /* Sources */,
-				"___LinkPhase_TokenizationTestSuite" /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				__Dependency_Tokenization /* PBXTargetDependency */,
-			);
-			name = Tokenization.testsuite;
-			productName = TokenizationTestSuite;
-			productReference = "_____Product_TokenizationTestSuite" /* Tokenization.testsuite.xctest */;
+			name = LangKit.testsuite;
+			productName = LangKitTestSuite;
+			productReference = "_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -644,66 +259,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"______Target_Alignment" /* Alignment */,
-				"______Target_Classification" /* Classification */,
-				"______Target_DataStructures" /* DataStructures */,
 				"______Target_Demo" /* Demo */,
-				"______Target_LanguageModeling" /* LanguageModeling */,
-				"______Target_SequenceLabeling" /* SequenceLabeling */,
-				"______Target_Tokenization" /* Tokenization */,
-				"______Target_AlignmentTestSuite" /* Alignment.testsuite */,
-				"______Target_ClassificationTestSuite" /* Classification.testsuite */,
-				"______Target_LanguageModelingTestSuite" /* LanguageModeling.testsuite */,
-				"______Target_SequenceLabelingTestSuite" /* SequenceLabeling.testsuite */,
-				"______Target_TokenizationTestSuite" /* Tokenization.testsuite */,
+				"______Target_LangKit" /* LangKit */,
+				"______Target_LangKitTestSuite" /* LangKit.testsuite */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CompilePhase_Alignment /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/Alignment/Aligner.swift /* Aligner.swift in Sources */,
-				__src_cc_ref_Sources/Alignment/IBMModel1.swift /* IBMModel1.swift in Sources */,
-				__src_cc_ref_Sources/Alignment/IBMModel2.swift /* IBMModel2.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_AlignmentTestSuite /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Tests/Alignment/AlignmentTests.swift /* AlignmentTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_Classification /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/Classification/Classifier.swift /* Classifier.swift in Sources */,
-				__src_cc_ref_Sources/Classification/NaiveBayes.swift /* NaiveBayes.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_ClassificationTestSuite /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Tests/Classification/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_DataStructures /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/DataStructures/Trie.swift /* Trie.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CompilePhase_Demo /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -712,166 +275,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CompilePhase_LanguageModeling /* Sources */ = {
+		CompilePhase_LangKit /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Sources/LanguageModeling/LanguageModel.swift /* LanguageModel.swift in Sources */,
-				__src_cc_ref_Sources/LanguageModeling/NgramModel.swift /* NgramModel.swift in Sources */,
-				__src_cc_ref_Sources/LanguageModeling/Ngrams.swift /* Ngrams.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CompilePhase_LanguageModelingTestSuite /* Sources */ = {
+		CompilePhase_LangKitTestSuite /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Tests/LanguageModeling/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_SequenceLabeling /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/SequenceLabeling/HiddenMarkovModel.swift /* HiddenMarkovModel.swift in Sources */,
-				__src_cc_ref_Sources/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeler.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_SequenceLabelingTestSuite /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Tests/SequenceLabeling/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_Tokenization /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Sources/Tokenization/Tokenizer.swift /* Tokenizer.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CompilePhase_TokenizationTestSuite /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 0;
-			files = (
-				__src_cc_ref_Tests/Tokenization/TokenizationTests.swift /* TokenizationTests.swift in Sources */,
+				__src_cc_ref_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift in Sources */,
+				__src_cc_ref_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */,
+				__src_cc_ref_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */,
+				__src_cc_ref_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */,
+				__src_cc_ref_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		__Dependency_Alignment /* PBXTargetDependency */ = {
+		__Dependency_LangKit /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = "______Target_Alignment" /* Alignment */;
-			targetProxy = 2989F92A1CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
-		};
-		__Dependency_Classification /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_Classification" /* Classification */;
-			targetProxy = 2989F92C1CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
-		};
-		__Dependency_DataStructures /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_DataStructures" /* DataStructures */;
-			targetProxy = 2989F9291CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
-		};
-		__Dependency_LanguageModeling /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_LanguageModeling" /* LanguageModeling */;
-			targetProxy = 2989F9271CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
-		};
-		__Dependency_SequenceLabeling /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_SequenceLabeling" /* SequenceLabeling */;
-			targetProxy = 2989F92B1CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
-		};
-		__Dependency_Tokenization /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = "______Target_Tokenization" /* Tokenization */;
-			targetProxy = 2989F9281CA4F4A400ECBDA4 /* PBXContainerItemProxy */;
+			target = "______Target_LangKit" /* LangKit */;
+			targetProxy = 2980E8E91CA5D4B500C2E0CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		_ReleaseConf_Alignment /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Alignment;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_AlignmentTestSuite /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = AlignmentTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_Classification /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Classification;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_ClassificationTestSuite /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = ClassificationTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_DataStructures /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = DataStructures;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		_ReleaseConf_Demo /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_MODULE_NAME = Demo;
@@ -881,21 +331,21 @@
 			};
 			name = Release;
 		};
-		_ReleaseConf_LanguageModeling /* Release */ = {
+		_ReleaseConf_LangKit /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = LanguageModeling;
+				PRODUCT_MODULE_NAME = LangKit;
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 			};
 			name = Release;
 		};
-		_ReleaseConf_LanguageModelingTestSuite /* Release */ = {
+		_ReleaseConf_LangKitTestSuite /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -903,143 +353,16 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = LanguageModelingTestSuite;
+				PRODUCT_MODULE_NAME = LangKitTestSuite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
-		};
-		_ReleaseConf_SequenceLabeling /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = SequenceLabeling;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_SequenceLabelingTestSuite /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = SequenceLabelingTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_Tokenization /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Tokenization;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		_ReleaseConf_TokenizationTestSuite /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = TokenizationTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		"___DebugConf_Alignment" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Alignment;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_AlignmentTestSuite" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = AlignmentTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_Classification" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Classification;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_ClassificationTestSuite" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = ClassificationTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_DataStructures" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = DataStructures;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
 		};
 		"___DebugConf_Demo" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_MODULE_NAME = Demo;
@@ -1050,22 +373,22 @@
 			};
 			name = Debug;
 		};
-		"___DebugConf_LanguageModeling" /* Debug */ = {
+		"___DebugConf_LangKit" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
 				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = LanguageModeling;
+				PRODUCT_MODULE_NAME = LangKit;
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		"___DebugConf_LanguageModelingTestSuite" /* Debug */ = {
+		"___DebugConf_LangKitTestSuite" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1073,65 +396,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = LanguageModelingTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_SequenceLabeling" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = SequenceLabeling;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_SequenceLabelingTestSuite" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = SequenceLabelingTestSuite;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_Tokenization" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
-				ENABLE_TESTABILITY = YES;
-				LD_RUNPATH_SEARCH_PATHS = "/Users/rxwei/Library/Developer/Toolchains/swift-3.0.0-rxwei+20160321.xctoolchain/usr/lib/swift/macosx";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Tokenization;
-				PRODUCT_NAME = "lib$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		"___DebugConf_TokenizationTestSuite" /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = TokenizationTestSuite;
+				PRODUCT_MODULE_NAME = LangKitTestSuite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1161,51 +426,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_Alignment" /* Build configuration list for PBXNativeTarget "Alignment" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_Alignment" /* Debug */,
-				_ReleaseConf_Alignment /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_AlignmentTestSuite" /* Build configuration list for PBXNativeTarget "Alignment.testsuite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_AlignmentTestSuite" /* Debug */,
-				_ReleaseConf_AlignmentTestSuite /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_Classification" /* Build configuration list for PBXNativeTarget "Classification" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_Classification" /* Debug */,
-				_ReleaseConf_Classification /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_ClassificationTestSuite" /* Build configuration list for PBXNativeTarget "Classification.testsuite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_ClassificationTestSuite" /* Debug */,
-				_ReleaseConf_ClassificationTestSuite /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_DataStructures" /* Build configuration list for PBXNativeTarget "DataStructures" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_DataStructures" /* Debug */,
-				_ReleaseConf_DataStructures /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
 		"_______Confs_Demo" /* Build configuration list for PBXNativeTarget "Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1215,56 +435,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_LanguageModeling" /* Build configuration list for PBXNativeTarget "LanguageModeling" */ = {
+		"_______Confs_LangKit" /* Build configuration list for PBXNativeTarget "LangKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_LanguageModeling" /* Debug */,
-				_ReleaseConf_LanguageModeling /* Release */,
+				"___DebugConf_LangKit" /* Debug */,
+				_ReleaseConf_LangKit /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_LanguageModelingTestSuite" /* Build configuration list for PBXNativeTarget "LanguageModeling.testsuite" */ = {
+		"_______Confs_LangKitTestSuite" /* Build configuration list for PBXNativeTarget "LangKit.testsuite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_LanguageModelingTestSuite" /* Debug */,
-				_ReleaseConf_LanguageModelingTestSuite /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_SequenceLabeling" /* Build configuration list for PBXNativeTarget "SequenceLabeling" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_SequenceLabeling" /* Debug */,
-				_ReleaseConf_SequenceLabeling /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_SequenceLabelingTestSuite" /* Build configuration list for PBXNativeTarget "SequenceLabeling.testsuite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_SequenceLabelingTestSuite" /* Debug */,
-				_ReleaseConf_SequenceLabelingTestSuite /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_Tokenization" /* Build configuration list for PBXNativeTarget "Tokenization" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_Tokenization" /* Debug */,
-				_ReleaseConf_Tokenization /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
-		};
-		"_______Confs_TokenizationTestSuite" /* Build configuration list for PBXNativeTarget "Tokenization.testsuite" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				"___DebugConf_TokenizationTestSuite" /* Debug */,
-				_ReleaseConf_TokenizationTestSuite /* Release */,
+				"___DebugConf_LangKitTestSuite" /* Debug */,
+				_ReleaseConf_LangKitTestSuite /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

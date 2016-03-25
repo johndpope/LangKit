@@ -1,0 +1,16 @@
+version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
+options: "6650e0a107f5bf76349969437a951ba5"
+build_time: [512252086, 492543000]
+inputs:
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Alignment/Aligner.swift": [512198025, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Alignment/IBMModel1.swift": [512247808, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Alignment/IBMModel2.swift": [512193185, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Classification/Classifier.swift": [512088868, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Classification/NaiveBayes.swift": [512252086, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/DataStructures/Trie.swift": [512193829, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/LanguageModel.swift": [512021169, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/NgramModel.swift": [511930525, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/Ngrams.swift": [512252028, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift": [512029434, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/SequenceLabeling/SequenceLabeler.swift": [512250032, 0]
+  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/Tokenization/Tokenizer.swift": [511930426, 0]

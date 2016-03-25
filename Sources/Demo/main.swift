@@ -1,6 +1,5 @@
 import Foundation
-import Tokenization
-import Alignment
+import LangKit
 
 guard let etest = try? String(contentsOfFile: "../../../Demo/Data/Alignment/hansards.e", encoding: NSUTF8StringEncoding), ftest = try? String(contentsOfFile: "../../../Demo/Data/Alignment/hansards.f", encoding: NSUTF8StringEncoding) else {
     print("Data files don't exist.")

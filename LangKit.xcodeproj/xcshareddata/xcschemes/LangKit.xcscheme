@@ -14,48 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Alignment"
-               BuildableName = "libAlignment.dylib"
-               BlueprintName = "Alignment"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Classification"
-               BuildableName = "libClassification.dylib"
-               BlueprintName = "Classification"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_DataStructures"
-               BuildableName = "libDataStructures.dylib"
-               BlueprintName = "DataStructures"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "______Target_Demo"
                BuildableName = "Demo"
                BlueprintName = "Demo"
@@ -70,37 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_LanguageModeling"
-               BuildableName = "libLanguageModeling.dylib"
-               BlueprintName = "LanguageModeling"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SequenceLabeling"
-               BuildableName = "libSequenceLabeling.dylib"
-               BlueprintName = "SequenceLabeling"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Tokenization"
-               BuildableName = "libTokenization.dylib"
-               BlueprintName = "Tokenization"
+               BlueprintIdentifier = "______Target_LangKit"
+               BuildableName = "libLangKit.dylib"
+               BlueprintName = "LangKit"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -116,49 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_AlignmentTestSuite"
-               BuildableName = "Alignment.testsuite.xctest"
-               BlueprintName = "Alignment.testsuite"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_ClassificationTestSuite"
-               BuildableName = "Classification.testsuite.xctest"
-               BlueprintName = "Classification.testsuite"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_LanguageModelingTestSuite"
-               BuildableName = "LanguageModeling.testsuite.xctest"
-               BlueprintName = "LanguageModeling.testsuite"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SequenceLabelingTestSuite"
-               BuildableName = "SequenceLabeling.testsuite.xctest"
-               BlueprintName = "SequenceLabeling.testsuite"
-               ReferencedContainer = "container:LangKit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_TokenizationTestSuite"
-               BuildableName = "Tokenization.testsuite.xctest"
-               BlueprintName = "Tokenization.testsuite"
+               BlueprintIdentifier = "______Target_LangKitTestSuite"
+               BuildableName = "LangKit.testsuite.xctest"
+               BlueprintName = "LangKit.testsuite"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -179,9 +69,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_Alignment"
-            BuildableName = "libAlignment.dylib"
-            BlueprintName = "Alignment"
+            BlueprintIdentifier = "______Target_Demo"
+            BuildableName = "Demo"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:LangKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

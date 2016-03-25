@@ -17,17 +17,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>______Target_Alignment</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>______Target_AlignmentTestSuite</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>______Target_Classification</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,17 +27,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>______Target_DataStructures</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>______Target_Demo</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>______Target_LanguageModeling</key>
+		<key>______Target_LangKit</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>______Target_LangKitTestSuite</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,17 +47,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>______Target_SequenceLabeling</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>______Target_SequenceLabelingTestSuite</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>______Target_Tokenization</key>
 		<dict>
 			<key>primary</key>
 			<true/>
