@@ -6,25 +6,28 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-public func ==(lhs: WordPair, rhs: WordPair) -> Bool {
+internal func ==(lhs: IBMModel1.WordPair, rhs: IBMModel1.WordPair) -> Bool {
     return lhs.first == rhs.first && lhs.second == rhs.second
-}
-
-public struct WordPair : Hashable {
-    public var first, second: String
-    
-    public var hashValue: Int {
-        return "\(first), \(second)".hashValue
-    }
-    
-    public init(_ first: String, _ second: String) {
-        self.first = first
-        self.second = second
-    }
 }
 
 /// Classic algorithm of IBM Model 1
 public class IBMModel1: Aligner {
+    
+    /**
+     *  Word pair hash key
+     */
+    internal struct WordPair : Hashable {
+        var first, second: String
+        
+        var hashValue: Int {
+            return "\(first), \(second)".hashValue
+        }
+        
+        init(_ first: String, _ second: String) {
+            self.first = first
+            self.second = second
+        }
+    }
     
     public typealias SentenceTuple = ([String], [String])
     
