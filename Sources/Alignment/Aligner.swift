@@ -47,11 +47,10 @@ extension Aligner {
     public var alignmentIndices: [[(Int, Int)]]? {
         var indices = [[(Int, Int)]]()
         for (f, e) in bitext {
-            guard let sentenceAlignment = align(fSentence: f, eSentence: e) else {
-                return nil
+            if let sentenceAlignment = align(fSentence: f, eSentence: e) {
+                indices.append(sentenceAlignment.map{$0})
             }
-            indices.append(sentenceAlignment.map{$0})
         }
-        return indices
+        return indices.isEmpty ? nil : indices
     }
 }

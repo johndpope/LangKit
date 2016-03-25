@@ -50,32 +50,39 @@ public class IBMModel1: Aligner {
     }
     
     public func train(iterations iterations: Int = 100) {
-        for _ in 1...iterations {
-            var count = [WordPair: Float]()
-            var total = [String: Float]()
-            var sTotal = [String: Float]()
-            for (f, e) in bitext {
+        var count = [WordPair: Float]()
+        var total = [String: Float]()
+        var sTotal = [String: Float]()
+        for i in 1...iterations {
+            // Initialization
+            count.removeAll(keepCapacity: true)
+            total.removeAll(keepCapacity: true)
+            bitext.forEach { (f, e) in
                 // Compute normalization
-                for ej in e {
+                e.forEach { ej in
                     sTotal[ej] = 0.0
-                    for fi in f {
+                    f.forEach { fi in
                         let pair = WordPair(ej, fi)
-                        sTotal[ej] = trans[pair] ?? initialTrans
+                        sTotal[ej] = self.trans[pair] ?? initialTrans
                     }
                 }
                 // Collect counts
-                for ej in e {
-                    for fi in e {
+                e.forEach { ej in
+                    f.forEach { fi in
                         let pair = WordPair(ej, fi)
-                        count[pair] = count[pair]! + trans[pair]! / sTotal[ej]!
-                        total[fi] = (total[fi] ?? 0.0) + trans[pair]! / sTotal[ej]!
+                        let transProb = self.trans[pair] ?? initialTrans
+                        count[pair] = (count[pair] ?? 0.0) + transProb / sTotal[ej]!
+                        total[fi] = (total[fi] ?? 0.0) + transProb / sTotal[ej]!
                     }
                 }
             }
             // Update translation probability
-            for pair in count.keys {
-                trans[pair] = count[pair]! / total[pair.second]!
+            count.keys.forEach { pair in
+                self.trans[pair] = count[pair]! / total[pair.second]!
             }
+            
+            // Debug progress output
+            debugPrint("\(Float(i) / Float(iterations) * 100)%")
         }
     }
     
@@ -96,7 +103,7 @@ public class IBMModel1: Aligner {
                     return nil
                 }
                 if probability >= threshold {
-                    alignment[j] = i
+                    alignment[i] = j
                 }
             }
         }

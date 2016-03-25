@@ -7,6 +7,10 @@ let package = Package(
     ],
     targets: [
         Target(
+            name: "DataStructures",
+            dependencies: []
+        ),
+        Target(
             name: "Tokenization",
             dependencies: []
         ),
@@ -25,6 +29,10 @@ let package = Package(
         Target(
             name: "Classification",
             dependencies: [ "LanguageModeling" ]
+        ),
+        Target(
+            name: "Demo",
+            dependencies: [ "DataStructures", "Tokenization", "Alignment", "LanguageModeling", "SequenceLabeling", "Classification" ]
         )
     ]
 )
