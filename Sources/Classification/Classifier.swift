@@ -30,7 +30,7 @@ public func argext<T, K: Comparable>(@noescape compare compare: (K, K) -> Bool, 
  - returns: Argument extremum function that uses comparison function
  */
 public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> (T -> K, [T]) -> T? {
-    return { argext(compare: compare, keyFunc: $0, args: $1) }
+    return { keyFunc, args in argext(compare: compare, keyFunc: keyFunc, args: args) }
 }
 
 /**

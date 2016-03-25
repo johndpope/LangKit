@@ -8,7 +8,7 @@ let package = Package(
     targets: [
         Target(
             name: "Tokenization",
-            dependencies: []
+            dependencies: [ "Classification" ]
         ),
         Target(
             name: "Alignment",

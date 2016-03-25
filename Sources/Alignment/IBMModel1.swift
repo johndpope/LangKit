@@ -28,12 +28,13 @@ public class IBMModel1: Aligner {
     
     public typealias SentenceTuple = ([String], [String])
     
-    var trans: [WordPair: Float]
-    var bitext: [SentenceTuple]
+    public var bitext: [([String], [String])]
     
-    var threshold: Float
+    internal var trans: [WordPair: Float]
     
-    let initialTrans: Float = 0.1
+    internal var threshold: Float
+    
+    internal let initialTrans: Float = 0.1
     
     public init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
         self.bitext = bitext
@@ -45,7 +46,7 @@ public class IBMModel1: Aligner {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
     
-    public func train(iterations: Int = 100) {
+    public func train(iterations iterations: Int = 100) {
         for _ in 1...iterations {
             var count = [WordPair: Float]()
             var total = [String: Float]()
@@ -75,18 +76,30 @@ public class IBMModel1: Aligner {
         }
     }
     
-    public var alignmentIndices: [[(Int, Int)]]? {
-        var alignment = [[(Int, Int)]]()
-        for (s, (f, e)) in bitext.enumerate() {
-            for (j, ej) in e.enumerate() {
-                for (i, fi) in f.enumerate() {
-                    if trans[WordPair(ej, fi)] >= threshold {
-                        alignment[s].append((i, j))
-                    }
+    /**
+     Compute alignment for a sentence pair
+     
+     - parameter eSentence: source tokenized sentence
+     - parameter fSentence: destination tokenized sentence
+     
+     - returns: alignment dictionary
+     */
+    public func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
+        if trans.isEmpty { return nil }
+        var alignment = [Int: Int]()
+        for (j, ej) in eSentence.enumerate() {
+            for (i, fi) in fSentence.enumerate() {
+                guard let probability = trans[WordPair(ej, fi)] else {
+                    return nil
+                }
+                if probability >= threshold {
+                    alignment[j] = i
                 }
             }
         }
         return alignment
     }
+    
+
     
 }
