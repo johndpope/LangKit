@@ -1,7 +1,0 @@
-version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
-options: "c35d53c18b40e04d9817f033e8da71db"
-build_time: [512250222, 370864000]
-inputs:
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LanguageModeling/LanguageModel.swift": [512021169, 0]
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LanguageModeling/NgramModel.swift": [511930525, 0]
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LanguageModeling/Ngrams.swift": !private [512250107, 0]

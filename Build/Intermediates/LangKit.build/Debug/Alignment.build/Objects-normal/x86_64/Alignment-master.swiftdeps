@@ -1,7 +1,0 @@
-version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
-options: "cdead4ac6db9a26815943403bb2ed796"
-build_time: [512249702, 589950000]
-inputs:
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Alignment/Aligner.swift": [512198025, 0]
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Alignment/IBMModel1.swift": [512247808, 0]
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Alignment/IBMModel2.swift": [512193185, 0]

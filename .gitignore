@@ -1,2 +1,11 @@
 .build/
-Packages/
+Packages/Build/
+Build/
+
+*.o
+*.dylib
+*.swiftmodule
+*.framework
+*.xctest
+
+.DS_Store

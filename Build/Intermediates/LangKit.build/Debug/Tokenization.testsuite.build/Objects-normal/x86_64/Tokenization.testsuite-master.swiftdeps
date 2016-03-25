@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
-options: "2e930260d96f8d50ccbf5d303bd08b36"
-build_time: [512252224, 795441000]
-inputs:
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Tests/Tokenization/TokenizationTests.swift": [512252221, 0]

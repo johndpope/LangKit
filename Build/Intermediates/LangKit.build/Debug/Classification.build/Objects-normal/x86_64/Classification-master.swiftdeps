@@ -1,6 +1,0 @@
-version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
-options: "d38094d6b7ddce8d5091834a90a16ff8"
-build_time: [512249703, 373073000]
-inputs:
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Classification/Classifier.swift": [512088868, 0]
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Classification/NaiveBayes.swift": [512248285, 0]

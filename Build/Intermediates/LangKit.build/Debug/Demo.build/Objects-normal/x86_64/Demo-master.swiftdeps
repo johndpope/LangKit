@@ -1,5 +1,0 @@
-version: "Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)"
-options: "6bbe154ac5b7bda5892b408913a57ff8"
-build_time: [512252380, 943152000]
-inputs:
-  "/Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/Demo/main.swift": [512252380, 0]
