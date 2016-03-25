@@ -39,6 +39,10 @@ public class IBMModel1: Aligner {
     
     internal let initialTrans: Float = 0.1
     
+    internal func translationProbability(pair: WordPair) -> Float {
+        return trans[pair] ?? initialTrans
+    }
+    
     public init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
         self.bitext = bitext
         self.trans = [:]
@@ -53,24 +57,25 @@ public class IBMModel1: Aligner {
         var count = [WordPair: Float]()
         var total = [String: Float]()
         var sTotal = [String: Float]()
-        for i in 1...iterations {
+        for iter in 1...iterations {
             // Initialization
             count.removeAll(keepCapacity: true)
             total.removeAll(keepCapacity: true)
-            bitext.forEach { (f, e) in
+            sTotal.removeAll(keepCapacity: true)
+            bitext.forEach { f, e in
                 // Compute normalization
                 e.forEach { ej in
                     sTotal[ej] = 0.0
                     f.forEach { fi in
                         let pair = WordPair(ej, fi)
-                        sTotal[ej] = self.trans[pair] ?? initialTrans
+                        sTotal[ej] = translationProbability(pair)
                     }
                 }
                 // Collect counts
                 e.forEach { ej in
                     f.forEach { fi in
                         let pair = WordPair(ej, fi)
-                        let transProb = self.trans[pair] ?? initialTrans
+                        let transProb = translationProbability(pair)
                         count[pair] = (count[pair] ?? 0.0) + transProb / sTotal[ej]!
                         total[fi] = (total[fi] ?? 0.0) + transProb / sTotal[ej]!
                     }
@@ -82,7 +87,7 @@ public class IBMModel1: Aligner {
             }
             
             // Debug progress output
-            debugPrint("\(Float(i) / Float(iterations) * 100)%")
+            debugPrint("\(Float(iter) / Float(iterations) * 100)%")
         }
     }
     
@@ -99,9 +104,7 @@ public class IBMModel1: Aligner {
         var alignment = [Int: Int]()
         for (j, ej) in eSentence.enumerate() {
             for (i, fi) in fSentence.enumerate() {
-                guard let probability = trans[WordPair(ej, fi)] else {
-                    return nil
-                }
+                let probability = translationProbability(WordPair(ej, fi))
                 if probability >= threshold {
                     alignment[i] = j
                 }

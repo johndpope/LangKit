@@ -48,7 +48,7 @@ extension Aligner {
         var indices = [[(Int, Int)]]()
         for (f, e) in bitext {
             if let sentenceAlignment = align(fSentence: f, eSentence: e) {
-                indices.append(sentenceAlignment.map{$0})
+                indices.append(sentenceAlignment.sort{(a, b) in a.0 < b.0})
             }
         }
         return indices.isEmpty ? nil : indices

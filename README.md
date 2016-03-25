@@ -42,3 +42,6 @@ Test: `⌘u`
 
 2. I am using Swift 3.0-dev 03/01/16 build. SwiftPM in 03/16/16 build does not work.
 
+## Known Issues
+
+1. Swift Dictionary is **incredibly slow**. I might migrate to NSDictionary, or rewrite one.
