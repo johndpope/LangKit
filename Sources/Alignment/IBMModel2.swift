@@ -6,8 +6,6 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-import Classification
-    
 internal func ==(lhs: IBMModel2.AlignmentKey, rhs: IBMModel2.AlignmentKey) -> Bool {
     return lhs.i == rhs.i && lhs.j == rhs.j && lhs.le == rhs.le && lhs.lf == rhs.lf
 }
