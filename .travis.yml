@@ -1,5 +1,9 @@
 language: objective-c
-xcode_project: LangKit.xcodeproj
-xcode_scheme: LangKit
 osx_image: xcode7.3
-xcode_sdk: macosx10.11
+script:
+ - swift build -fetch
+before_install:
+ - export SWIFT_VERSION=swift-DEVELOPMENT-SNAPSHOT-2016Ð03Ð24-a
+ - curl -O https://swift.org/builds/development/xcode/${SWIFT_VERSION}/${SWIFT_VERSION}-osx.pkg
+ - sudo installer -pkg ${SWIFT_VERSION}-osx.pkg -target /
+ - export TOOLCHAINS=swift
