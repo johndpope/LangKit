@@ -58,10 +58,6 @@ public class IBMModel1: Aligner {
         var total = [String: Float]()
         var sTotal = [String: Float]()
         for iter in 1...iterations {
-            // Initialization
-            count.removeAll(keepCapacity: true)
-            total.removeAll(keepCapacity: true)
-            sTotal.removeAll(keepCapacity: true)
             bitext.forEach { f, e in
                 // Compute normalization
                 e.forEach { ej in
@@ -88,6 +84,11 @@ public class IBMModel1: Aligner {
             
             // Debug progress output
             debugPrint("\(Float(iter) / Float(iterations) * 100)%")
+            
+            // Re-initialization
+            count.removeAll(keepingCapacity: true)
+            total.removeAll(keepingCapacity: true)
+            sTotal.removeAll(keepingCapacity: true)
         }
     }
     
@@ -102,8 +103,8 @@ public class IBMModel1: Aligner {
     public func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
         if trans.isEmpty { return nil }
         var alignment = [Int: Int]()
-        for (j, ej) in eSentence.enumerate() {
-            for (i, fi) in fSentence.enumerate() {
+        for (j, ej) in eSentence.enumerated() {
+            for (i, fi) in fSentence.enumerated() {
                 let probability = translationProbability(WordPair(ej, fi))
                 if probability >= threshold {
                     alignment[i] = j

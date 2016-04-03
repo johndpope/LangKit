@@ -29,7 +29,7 @@ public extension String {
     
 }
 
-public struct Ngrams<T> : GeneratorType, SequenceType {
+public struct Ngrams<T> : IteratorProtocol, Sequence {
     
     public typealias Element = [T]
     

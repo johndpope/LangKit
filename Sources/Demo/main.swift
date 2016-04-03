@@ -11,13 +11,14 @@ let sentences = 100
 let iterations = 100
 let threshold: Float = 0.5
 
-let untokenizedBitext = zip(ftext.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()),
-                            etext.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()))
+let untokenizedBitext = zip( ftext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()),
+                             etext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()))
                         .prefix(sentences)
 
-let bitext = untokenizedBitext.map{ ($0.0.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), $0.1.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())) }
+let bitext = untokenizedBitext.map{
+    ($0.0.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace()), $0.1.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace())) }
 
-for (i, (f, e)) in bitext.enumerate() {
+for (i, (f, e)) in bitext.enumerated() {
 //    print("French: \(f)\nEnglish: \(e)")
 }
 

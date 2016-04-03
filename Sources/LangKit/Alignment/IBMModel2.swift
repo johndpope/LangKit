@@ -58,16 +58,16 @@ public class IBMModel2 : IBMModel1 {
                 let (lf, le) = (f.count, e.count)
                 // Compute normalization
                 var sTotal = [String: Float]()
-                for (j, ej) in e.enumerate() {
+                for (j, ej) in e.enumerated() {
                     sTotal[ej] = 0
-                    for (i, fi) in f.enumerate() {
+                    for (i, fi) in f.enumerated() {
                         let key = AlignmentKey(i, j, le, lf)
                         sTotal[ej] = sTotal[ej]! + trans[WordPair(ej, fi)]! * (alignment[key] ?? probablize(key))
                     }
                 }
                 // Collect counts
-                for (j, ej) in e.enumerate() {
-                    for (i, fi) in f.enumerate() {
+                for (j, ej) in e.enumerated() {
+                    for (i, fi) in f.enumerated() {
                         let key = AlignmentKey(i, j, le, lf)
                         let totalKey = AlignmentKey(nil, j, le, lf)
                         let wordPair = WordPair(ej, fi)
@@ -103,9 +103,9 @@ public class IBMModel2 : IBMModel1 {
     public override func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
         let (lf, le) = (fSentence.count, eSentence.count)
         var vitAlignment = [Int: Int]()
-        for (j, ej) in eSentence.enumerate() {
+        for (j, ej) in eSentence.enumerated() {
             var (maxI, maxP): (Int, Float) = (0, -1.0)
-            for (i, fi) in fSentence.enumerate() {
+            for (i, fi) in fSentence.enumerated() {
                 let t = trans[WordPair(ej, fi)] ?? initialTrans
                 let alignmentKey = AlignmentKey(i, j, le, lf)
                 let a = alignment[alignmentKey] ?? probablize(alignmentKey)

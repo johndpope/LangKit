@@ -1,6 +1,7 @@
 .build/
 Packages/Build/
 Build/
+Data/
 
 *.o
 *.dylib

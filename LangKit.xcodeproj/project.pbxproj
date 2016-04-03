@@ -61,7 +61,7 @@
 		__PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
 		"_____Product_Demo" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LangKit" /* libLangKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLangKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = LangKitTestSuite.xctest; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */,
+				"_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			);
 			name = LangKit.testsuite;
 			productName = LangKitTestSuite;
-			productReference = "_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */;
+			productReference = "_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */

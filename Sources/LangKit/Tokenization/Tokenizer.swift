@@ -9,7 +9,7 @@
 public extension String {
     
     public func tokenize() -> [String] {
-        return characters.split(" ").map(String.init)
+        return characters.split(separator: " ").map(String.init)
     }
     
 }
