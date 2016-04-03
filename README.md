@@ -38,7 +38,7 @@ Test: `⌘u`
 
 1. Currently LangKit compiles with both Swift 2.2 and 3.0-dev toolchains. But I will not gurantee the compatibility with Swift 2. 
 
-2. I am using Swift 3.0-dev 03/01/16 build. SwiftPM in 03/16/16 build does not work.
+2. I am using Swift 3.0-dev 03/24/16 build. 
 
 ## Known Issues
 
