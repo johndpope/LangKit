@@ -1,10 +1,15 @@
-language: objective-c
-osx_image: xcode7.3
+os:
+  - linux
+  - osx
+language: generic
+sudo: required
+dist: trusty
+osx_image: xcode7.2
+install:
+  - curl -sL https://gist.github.com/kylef/5c0475ff02b7c7671d2a/raw/621ef9b29bbb852
+  - . ~/.swiftenv/init
+  - swiftenv install DEVELOPMENT-SNAPSHOT-2016-03-24-a
+  - swiftenv global DEVELOPMENT-SNAPSHOT-2016-03-24-a
 script:
- - swift build
- - swift test
-before_install:
- - export SWIFT_VERSION=swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a
- - curl -O https://swift.org/builds/development/xcode/${SWIFT_VERSION}/${SWIFT_VERSION}-osx.pkg
- - sudo installer -pkg ${SWIFT_VERSION}-osx.pkg -target /
- - export TOOLCHAINS=swift
+  - swift build
+  - swift test
