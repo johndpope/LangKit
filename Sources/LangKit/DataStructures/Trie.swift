@@ -1,5 +1,5 @@
 //
-//  RedBlackTree.swift
+//  Trie.swift
 //  LangKit
 //
 //  Created by Richard Wei on 4/3/16.
