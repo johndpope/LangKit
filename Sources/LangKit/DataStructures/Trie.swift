@@ -210,19 +210,35 @@ public extension Trie {
         }
     }
     
-    /* Potentially meaningless
     /**
-     * Sum all values of self and children
+     Sum all leave counts
+     
+     - returns: Count
      */
-    public var sum: Int {
+    public func sumLeaves() -> Int {
         switch self {
         case .Leaf(_, let v):
             return v
         case .Node(_, _, let children):
-            let sums = children.values.map{$0.sum}
+            let sums = children.values.map{$0.sumLeaves()}
             return sums.reduce(sums.first!, combine: +)
         }
     }
-    */
     
+    /**
+     Sum all counts
+     
+     - returns: Count
+     */
+    public func sum() -> Int {
+        switch self {
+        case .Leaf(_, let v):
+            return v
+        case .Node(_, let v, let children):
+            let sums = children.values.map{$0.sum()}
+            return v + sums.reduce(sums.first!, combine: +)
+        }
+    }
+    
+ 
 }
