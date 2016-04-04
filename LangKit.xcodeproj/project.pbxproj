@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2974C7921CB1CBF000E28170 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		29D72D941CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29D72D951CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29D72D961CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29D72D971CB320F300DE3A5A /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
-		__src_cc_ref_Sources/Demo/main.swift /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/Demo/main.swift /* main.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */; };
 		__src_cc_ref_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift */; };
 		__src_cc_ref_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift */; };
 		__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */; };
@@ -23,6 +31,10 @@
 		__src_cc_ref_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift */; };
 		__src_cc_ref_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */; };
 		__src_cc_ref_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */; };
+		__src_cc_ref_Sources/LangKitDemo/Demo.swift /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */; };
+		__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */; };
+		__src_cc_ref_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */; };
+		__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */; };
 		__src_cc_ref_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */; };
 		__src_cc_ref_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */; };
 		__src_cc_ref_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */; };
@@ -31,7 +43,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2974C7931CB1CBF100E28170 /* PBXContainerItemProxy */ = {
+		29D72D981CB320F300DE3A5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_CommandLine";
+			remoteInfo = CommandLine;
+		};
+		29D72D991CB320F300DE3A5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
@@ -42,36 +61,53 @@
 
 /* Begin PBXFileReference section */
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/Demo/main.swift /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineTests.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Alignment/Aligner.swift /* Alignment/Aligner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/Aligner.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Alignment/IBMModel1.swift /* Alignment/IBMModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel1.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel2.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/Classifier.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/NaiveBayes.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/RedBlackTree.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/LanguageModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/NgramModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/Ngrams.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/SequenceLabeling/HiddenMarkovModel.swift /* SequenceLabeling/HiddenMarkovModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeling/HiddenMarkovModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeling/SequenceLabeler.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenization/Tokenizer.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel1Demo.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieDemo.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaiveBayesTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
-		"_____Product_Demo" /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_CommandLine" /* libCommandLine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libCommandLine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = CommandLineTestSuite.xctest; path = CommandLine.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LangKit" /* libLangKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLangKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKitDemo" /* LangKitDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = LangKitDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = LangKitTestSuite.xctest; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		"___LinkPhase_Demo" /* Frameworks */ = {
+		"___LinkPhase_CommandLine" /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_CommandLineTestSuite" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +115,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				29D72D941CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_LangKitDemo" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				29D72D951CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */,
+				_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				2974C7921CB1CBF000E28170 /* libLangKit.dylib in Frameworks */,
+				29D72D961CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */,
+				29D72D971CB320F300DE3A5A /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +143,7 @@
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				"_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */,
 				"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */,
 			);
 			name = Tests;
@@ -115,8 +163,9 @@
 			isa = PBXGroup;
 			children = (
 				TestProducts_ /* Tests */,
-				"_____Product_Demo" /* Demo */,
+				"_____Product_CommandLine" /* libCommandLine.dylib */,
 				"_____Product_LangKit" /* libLangKit.dylib */,
+				"_____Product_LangKitDemo" /* LangKitDemo */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,19 +173,32 @@
 		"_____Sources_" /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				"_______Group_Demo" /* Demo */,
+				"_______Group_CommandLine" /* CommandLine */,
 				"_______Group_LangKit" /* LangKit */,
+				"_______Group_LangKitDemo" /* LangKitDemo */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
 		};
-		"_______Group_Demo" /* Demo */ = {
+		"_______Group_CommandLine" /* CommandLine */ = {
 			isa = PBXGroup;
 			children = (
-				__PBXFileRef_Sources/Demo/main.swift /* main.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */,
 			);
-			name = Demo;
-			path = Sources/Demo;
+			name = CommandLine;
+			path = "Packages/CommandLine-2.2.1-pre1/CommandLine";
+			sourceTree = "<group>";
+		};
+		"_______Group_CommandLineTestSuite" /* CommandLine.testsuite */ = {
+			isa = PBXGroup;
+			children = (
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */,
+			);
+			name = CommandLine.testsuite;
+			path = "Packages/CommandLine-2.2.1-pre1/Tests/CommandLine";
 			sourceTree = "<group>";
 		};
 		"_______Group_LangKit" /* LangKit */ = {
@@ -160,6 +222,18 @@
 			path = Sources/LangKit;
 			sourceTree = "<group>";
 		};
+		"_______Group_LangKitDemo" /* LangKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */,
+				__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */,
+				__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */,
+				__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */,
+			);
+			name = LangKitDemo;
+			path = Sources/LangKitDemo;
+			sourceTree = "<group>";
+		};
 		"_______Group_LangKitTestSuite" /* LangKit.testsuite */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +250,7 @@
 		"_______Tests_" /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				"_______Group_CommandLineTestSuite" /* CommandLine.testsuite */,
 				"_______Group_LangKitTestSuite" /* LangKit.testsuite */,
 			);
 			name = Tests;
@@ -184,22 +259,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		"______Target_Demo" /* Demo */ = {
+		"______Target_CommandLine" /* CommandLine */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "_______Confs_Demo" /* Build configuration list for PBXNativeTarget "Demo" */;
+			buildConfigurationList = "_______Confs_CommandLine" /* Build configuration list for PBXNativeTarget "CommandLine" */;
 			buildPhases = (
-				CompilePhase_Demo /* Sources */,
-				"___LinkPhase_Demo" /* Frameworks */,
+				CompilePhase_CommandLine /* Sources */,
+				"___LinkPhase_CommandLine" /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				__Dependency_LangKit /* PBXTargetDependency */,
 			);
-			name = Demo;
-			productName = Demo;
-			productReference = "_____Product_Demo" /* Demo */;
-			productType = "com.apple.product-type.tool";
+			name = CommandLine;
+			productName = CommandLine;
+			productReference = "_____Product_CommandLine" /* libCommandLine.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_CommandLineTestSuite" /* CommandLine.testsuite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_CommandLineTestSuite" /* Build configuration list for PBXNativeTarget "CommandLine.testsuite" */;
+			buildPhases = (
+				CompilePhase_CommandLineTestSuite /* Sources */,
+				"___LinkPhase_CommandLineTestSuite" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_CommandLine /* PBXTargetDependency */,
+			);
+			name = CommandLine.testsuite;
+			productName = CommandLineTestSuite;
+			productReference = "_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_LangKit" /* LangKit */ = {
 			isa = PBXNativeTarget;
@@ -211,11 +302,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				__Dependency_CommandLine /* PBXTargetDependency */,
 			);
 			name = LangKit;
 			productName = LangKit;
 			productReference = "_____Product_LangKit" /* libLangKit.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
+		};
+		"______Target_LangKitDemo" /* LangKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_LangKitDemo" /* Build configuration list for PBXNativeTarget "LangKitDemo" */;
+			buildPhases = (
+				CompilePhase_LangKitDemo /* Sources */,
+				"___LinkPhase_LangKitDemo" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_CommandLine /* PBXTargetDependency */,
+				__Dependency_LangKit /* PBXTargetDependency */,
+			);
+			name = LangKitDemo;
+			productName = LangKitDemo;
+			productReference = "_____Product_LangKitDemo" /* LangKitDemo */;
+			productType = "com.apple.product-type.tool";
 		};
 		"______Target_LangKitTestSuite" /* LangKit.testsuite */ = {
 			isa = PBXNativeTarget;
@@ -227,6 +337,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				__Dependency_CommandLine /* PBXTargetDependency */,
 				__Dependency_LangKit /* PBXTargetDependency */,
 			);
 			name = LangKit.testsuite;
@@ -254,19 +365,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				"______Target_Demo" /* Demo */,
+				"______Target_CommandLine" /* CommandLine */,
+				"______Target_CommandLineTestSuite" /* CommandLine.testsuite */,
 				"______Target_LangKit" /* LangKit */,
+				"______Target_LangKitDemo" /* LangKitDemo */,
 				"______Target_LangKitTestSuite" /* LangKit.testsuite */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CompilePhase_Demo /* Sources */ = {
+		CompilePhase_CommandLine /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				__src_cc_ref_Sources/Demo/main.swift /* main.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_CommandLineTestSuite /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +414,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CompilePhase_LangKitDemo /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Sources/LangKitDemo/Demo.swift /* Demo.swift in Sources */,
+				__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift in Sources */,
+				__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */,
+				__src_cc_ref_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CompilePhase_LangKitTestSuite /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
@@ -305,25 +440,43 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		__Dependency_CommandLine /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_CommandLine" /* CommandLine */;
+			targetProxy = 29D72D981CB320F300DE3A5A /* PBXContainerItemProxy */;
+		};
 		__Dependency_LangKit /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_LangKit" /* LangKit */;
-			targetProxy = 2974C7931CB1CBF100E28170 /* PBXContainerItemProxy */;
+			targetProxy = 29D72D991CB320F300DE3A5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		_ReleaseConf_Demo /* Release */ = {
+		_ReleaseConf_CommandLine /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Demo;
+				PRODUCT_MODULE_NAME = CommandLine;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		_ReleaseConf_CommandLineTestSuite /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = CommandLineTestSuite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 			};
 			name = Release;
 		};
@@ -341,6 +494,20 @@
 			};
 			name = Release;
 		};
+		_ReleaseConf_LangKitDemo /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = LangKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+			};
+			name = Release;
+		};
 		_ReleaseConf_LangKitTestSuite /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -354,17 +521,31 @@
 			};
 			name = Release;
 		};
-		"___DebugConf_Demo" /* Debug */ = {
+		"___DebugConf_CommandLine" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_INSTALL_NAME_BASE = "$(CONFIGURATION_BUILD_DIR)";
+				ENABLE_TESTABILITY = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_SWIFT_FLAGS = "-DXcode";
-				PRODUCT_MODULE_NAME = Demo;
+				PRODUCT_MODULE_NAME = CommandLine;
+				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_CommandLineTestSuite" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = CommandLineTestSuite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
-				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -380,6 +561,21 @@
 				OTHER_SWIFT_FLAGS = "-DXcode";
 				PRODUCT_MODULE_NAME = LangKit;
 				PRODUCT_NAME = "lib$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		"___DebugConf_LangKitDemo" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = LangKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -422,11 +618,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"_______Confs_Demo" /* Build configuration list for PBXNativeTarget "Demo" */ = {
+		"_______Confs_CommandLine" /* Build configuration list for PBXNativeTarget "CommandLine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				"___DebugConf_Demo" /* Debug */,
-				_ReleaseConf_Demo /* Release */,
+				"___DebugConf_CommandLine" /* Debug */,
+				_ReleaseConf_CommandLine /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_CommandLineTestSuite" /* Build configuration list for PBXNativeTarget "CommandLine.testsuite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_CommandLineTestSuite" /* Debug */,
+				_ReleaseConf_CommandLineTestSuite /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -436,6 +641,15 @@
 			buildConfigurations = (
 				"___DebugConf_LangKit" /* Debug */,
 				_ReleaseConf_LangKit /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_LangKitDemo" /* Build configuration list for PBXNativeTarget "LangKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_LangKitDemo" /* Debug */,
+				_ReleaseConf_LangKitDemo /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

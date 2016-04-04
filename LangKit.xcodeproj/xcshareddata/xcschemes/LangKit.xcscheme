@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Demo"
-               BuildableName = "Demo"
-               BlueprintName = "Demo"
+               BlueprintIdentifier = "______Target_CommandLine"
+               BuildableName = "libCommandLine.dylib"
+               BlueprintName = "CommandLine"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,6 +34,20 @@
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_LangKitDemo"
+               BuildableName = "LangKitDemo"
+               BlueprintName = "LangKitDemo"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -42,6 +56,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_CommandLineTestSuite"
+               BuildableName = "CommandLine.testsuite.xctest"
+               BlueprintName = "CommandLine.testsuite"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -69,9 +93,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "______Target_Demo"
-            BuildableName = "Demo"
-            BlueprintName = "Demo"
+            BlueprintIdentifier = "______Target_CommandLine"
+            BuildableName = "libCommandLine.dylib"
+            BlueprintName = "CommandLine"
             ReferencedContainer = "container:LangKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
