@@ -12,7 +12,7 @@
  - Leaf: (key, count)
  - Node: (key, count, children)
  */
-public enum Trie<K: Hashable> {
+public enum Trie<K: Hashable> : Equatable {
     
     case Leaf(K, Int)
     
@@ -20,6 +20,42 @@ public enum Trie<K: Hashable> {
     
 }
 
+/**
+ Equate two tries
+ 
+ - parameter lhs: Trie
+ - parameter rhs: Trie
+ 
+ - returns: Equal or not
+ */
+public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
+    switch (lhs, rhs) {
+    case (.Leaf(let k1, let v1), .Leaf(let k2, let v2)):
+        return k1 == k2 && v1 == v2
+    case (.Node(let k1, let v1, let c1), .Node(let k2, let v2, let c2)):
+        return k1 == k2 && v1 == v2 && c1 == c2
+    default:
+        return false
+    }
+}
+
+/**
+ Match type of two tries
+ 
+ - parameter lhs: Trie
+ - parameter rhs: Trie
+ 
+ - returns: Match or not
+ */
+public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
+    switch (lhs, rhs) {
+    case (.Leaf(_, _)   , .Leaf(_, _)),
+         (.Node(_, _, _), .Node(_, _, _)):
+        return true
+    default:
+        return false
+    }
+}
 
 /**
  Combine two tries
@@ -43,7 +79,7 @@ public extension Trie {
      
      - returns: New trie after insertion
      */
-    public func insert(item: [K]) -> Trie<K> {
+    public func insert(item: [K], incrementingNodes incr: Bool = false) -> Trie<K> {
         switch self {
             
         // Base cases
@@ -57,7 +93,7 @@ public extension Trie {
         case .Leaf(let k, let v):
             let nk = item.first!
             let child = Trie.Leaf(nk, 1).insert(item.dropFirst().map{$0})
-            return .Node(k, v, [nk : child])
+            return .Node(k, incr ? v + 1 : v, [nk : child])
             
         // Node
         case .Node(let k, let v, var children):
@@ -71,7 +107,7 @@ public extension Trie {
             else {
                 children[nk] = Trie.Leaf(nk, 1).insert(restItem)
             }
-            return .Node(k, v, children)
+            return .Node(k, incr ? v + 1 : v, children)
         }
         
     }
