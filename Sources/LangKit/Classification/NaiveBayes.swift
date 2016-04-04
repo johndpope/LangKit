@@ -25,7 +25,7 @@ public class NaiveBayes<InputType, LabelType: Hashable> {
 extension NaiveBayes {
     
     public func add(classLabel: LabelType, keyFunc: KeyFunc) {
-        if !classes.contains({$0.0 == classLabel})  {
+        if !classes.keys.contains(classLabel)  {
             classes[classLabel] = keyFunc
         }
     }
