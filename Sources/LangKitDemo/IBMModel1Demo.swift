@@ -16,7 +16,7 @@ class IBMModel1Demo : Demo {
         guard let etext = try? NSString(contentsOfFile: "Data/Demo/Alignment/hansards.e", encoding: NSUTF8StringEncoding),
             ftext = try? NSString(contentsOfFile: "Data/Demo/Alignment/hansards.f", encoding: NSUTF8StringEncoding) else {
                 print("Data files don't exist.")
-                exit(0)
+                exit(EXIT_FAILURE)
         }
         
         let sentenceCount = 100
