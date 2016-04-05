@@ -12,7 +12,7 @@
  - Leaf: (key, count)
  - Node: (key, count, children)
  */
-public enum Trie<K: Hashable> : Equatable {
+public enum Trie<K: Hashable> {
     
     case leaf(K?, Int)
     
@@ -23,6 +23,9 @@ public enum Trie<K: Hashable> : Equatable {
     }
     
 }
+
+// MARK: - Equatable conformity
+extension Trie : Equatable {}
 
 /**
  Equate two tries
@@ -118,11 +121,6 @@ public extension Trie {
     
 }
 
-// MARK: - Updating
-public extension Trie {
-    
-}
-
 // MARK: - Combination
 public extension Trie {
     
@@ -135,6 +133,7 @@ public extension Trie {
      - returns: New trie after union
      */
     public func union(other: Trie<K>, @noescape conflictResolver: (K, K) -> K?) -> Trie<K> {
+        // TODO
         return self
     }
     
@@ -194,6 +193,21 @@ public extension Trie {
         }
         // Leaf has no children
         return 0
+    }
+    
+}
+
+// MARK: - Sequence and IteratorProtocol conformity
+extension Trie : Sequence {
+    
+    public func makeIterator() -> AnyIterator<K> {
+        var stack: [Trie<K>] = []
+        var current: Trie<K> = self
+        
+        return AnyIterator {
+            // TODO!!
+            return nil
+        }
     }
     
 }
@@ -258,6 +272,14 @@ public extension Trie {
             return v + sums.reduce(sums.first!, combine: +)
         }
     }
-    
  
+}
+
+
+extension Trie {
+    
+    public func prettyPrint() {
+        // TODO
+    }
+    
 }
