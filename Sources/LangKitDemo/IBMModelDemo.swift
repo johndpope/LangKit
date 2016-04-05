@@ -57,8 +57,10 @@ class IBMModelDemo : Demo {
         }
         #endif
         
-        let aligner = model == .One ? IBMModel1(bitext: bitext, probabilityThreshold: threshold) :
-            IBMModel1(bitext: bitext, probabilityThreshold: threshold)
+        let aligner: Aligner = (model == .One) ?
+            IBMModel1(bitext: bitext, probabilityThreshold: threshold) :
+            IBMModel2(bitext: bitext, probabilityThreshold: threshold)
+        
         aligner.train(iterations: iterations)
         
         // Print alignment
