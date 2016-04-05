@@ -227,8 +227,8 @@
 			children = (
 				__PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */,
 				__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */,
-				__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */,
 				__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */,
+				__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */,
 			);
 			name = LangKitDemo;
 			path = Sources/LangKitDemo;
