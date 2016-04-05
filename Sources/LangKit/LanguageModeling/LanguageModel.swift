@@ -8,7 +8,7 @@
 
 public protocol LanguageModel {
     
-    associatedtype ItemType = String
+    associatedtype ItemType : Sequence
 
     func train()
 
