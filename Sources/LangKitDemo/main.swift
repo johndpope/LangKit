@@ -20,7 +20,7 @@ do {
     try cli.parse()
 } catch let error {
     cli.printUsage(error)
-    exit(EX_USAGE)
+    exit(EXIT_FAILURE)
 }
 
 // Demo name
@@ -31,7 +31,7 @@ guard let run = actions[name] else {
     print("Demo \"\(name)\" does not exist!")
     print("Available demos:")
     print("  " + actions.keys.joined(separator: "\n  "))
-    exit(EX_USAGE)
+    exit(EXIT_FAILURE)
 }
 
 print("Running Demo: \(name)")
