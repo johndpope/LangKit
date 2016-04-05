@@ -14,9 +14,13 @@
  */
 public enum Trie<K: Hashable> : Equatable {
     
-    case leaf(K, Int)
+    case leaf(K?, Int)
     
-    indirect case node(K, Int, [K: Trie<K>])
+    indirect case node(K?, Int, [K: Trie<K>])
+    
+    public init() {
+        self = .leaf(nil, 0)
+    }
     
 }
 
@@ -92,7 +96,7 @@ public extension Trie {
         // Leaf
         case .leaf(let k, let v):
             let nk = item.first!
-            let child = Trie.leaf(nk, 1).insert(item.dropFirst().map{$0})
+            let child = Trie.leaf(nk, 0).insert(item.dropFirst().map{$0})
             return .node(k, incr ? v + 1 : v, [nk : child])
             
         // Node
@@ -105,7 +109,7 @@ public extension Trie {
             }
             // Child does not exist. Call insert on a new leaf
             else {
-                children[nk] = Trie.leaf(nk, 1).insert(restItem)
+                children[nk] = Trie.leaf(nk, 0).insert(restItem)
             }
             return .node(k, incr ? v + 1 : v, children)
         }
@@ -190,16 +194,16 @@ public extension Trie {
      - returns: Count of sequence
      */
     public func count(item: [K]) -> Int {
-        if item.isEmpty {
-            return 0
-        }
         switch self {
         // Base case
         case .leaf(_, let v):
-            return item.count == 1 ? v : 0
+            guard item.isEmpty else {
+                return 0
+            }
+            return v
         // Node
         case .node(_, let v, let children):
-            if item.count == 1 {
+            if item.isEmpty {
                 return v
             }
             let nk = item.first!

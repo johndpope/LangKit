@@ -11,6 +11,7 @@
 		29D72D951CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		29D72D961CB320F300DE3A5A /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		29D72D971CB320F300DE3A5A /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		29D72D9B1CB34B3700DE3A5A /* TrieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D72D9A1CB34B3700DE3A5A /* TrieTests.swift */; };
 		_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29D72D9A1CB34B3700DE3A5A /* TrieTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrieTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */,
+				29D72D9A1CB34B3700DE3A5A /* TrieTests.swift */,
 				__PBXFileRef_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift */,
 				__PBXFileRef_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift */,
 				__PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */,
@@ -432,6 +435,7 @@
 				__src_cc_ref_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift in Sources */,
 				__src_cc_ref_Tests/LangKit/LanguageModelingTests.swift /* LanguageModelingTests.swift in Sources */,
 				__src_cc_ref_Tests/LangKit/NaiveBayesTests.swift /* NaiveBayesTests.swift in Sources */,
+				29D72D9B1CB34B3700DE3A5A /* TrieTests.swift in Sources */,
 				__src_cc_ref_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */,
 				__src_cc_ref_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift in Sources */,
 			);

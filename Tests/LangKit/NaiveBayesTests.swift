@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import LangKit
+@testable import LangKit
 
 class NaiveBayesTests: XCTestCase {
     
