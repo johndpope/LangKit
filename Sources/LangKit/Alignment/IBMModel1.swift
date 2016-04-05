@@ -84,7 +84,9 @@ public class IBMModel1: Aligner {
             
             // Debug progress output
             let progress = Float(iter) / Float(iterations) * 100
-            debugPrint(progress % 10 == 0 ? progress : ".", terminator: "")
+            if progress % 10 == 0 {
+                debugPrint(progress)
+            }
             
             // Re-initialization
             count.removeAll(keepingCapacity: true)
