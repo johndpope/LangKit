@@ -35,7 +35,12 @@ guard let run = demos[name] else {
     exit(EXIT_FAILURE)
 }
 
-print("Running Demo: \(name)")
+print("Demo n.   a demonstration of a product or technique")
+print("... which means that you watch while I demonstrate.")
+print("▶️  Running Demo: \(name)")
 
 // Run demo
 run()
+
+print("⏹  Demo ended.")
+
