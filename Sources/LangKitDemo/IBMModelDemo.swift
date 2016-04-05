@@ -1,5 +1,5 @@
 //
-//  IBMModel1Demo.swift
+//  IBMModelDemo.swift
 //  LangKit
 //
 //  Created by Richard Wei on 4/4/16.
@@ -9,9 +9,18 @@
 import Foundation
 import LangKit
 
-class IBMModel1Demo : Demo {
+class IBMModelDemo : Demo {
+    
+    enum Model {
+        case One
+        case Two
+    }
     
     static func run() {
+        run(.One)
+    }
+    
+    static func run(model: Model) {
         
         guard let etext = try? NSString(contentsOfFile: "Data/Demo/Alignment/hansards.e", encoding: NSUTF8StringEncoding),
             ftext = try? NSString(contentsOfFile: "Data/Demo/Alignment/hansards.f", encoding: NSUTF8StringEncoding) else {
@@ -48,7 +57,8 @@ class IBMModel1Demo : Demo {
         }
         #endif
         
-        let aligner = IBMModel1(bitext: bitext, probabilityThreshold: threshold)
+        let aligner = model == .One ? IBMModel1(bitext: bitext, probabilityThreshold: threshold) :
+            IBMModel1(bitext: bitext, probabilityThreshold: threshold)
         aligner.train(iterations: iterations)
         
         // Print alignment

@@ -33,7 +33,7 @@
 		__src_cc_ref_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */; };
 		__src_cc_ref_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */; };
 		__src_cc_ref_Sources/LangKitDemo/Demo.swift /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */; };
-		__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */; };
+		__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModelDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModelDemo.swift */; };
 		__src_cc_ref_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */; };
 		__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */; };
 		__src_cc_ref_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */; };
@@ -82,7 +82,7 @@
 		__PBXFileRef_Sources/LangKit/SequenceLabeling/SequenceLabeler.swift /* SequenceLabeling/SequenceLabeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabeling/SequenceLabeler.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Tokenization/Tokenizer.swift /* Tokenization/Tokenizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokenization/Tokenizer.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModel1Demo.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModelDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBMModelDemo.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieDemo.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/AlignmentTests.swift /* AlignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignmentTests.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/LangKitDemo/Demo.swift /* Demo.swift */,
-				__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift */,
+				__PBXFileRef_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModelDemo.swift */,
 				__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */,
 				__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */,
 			);
@@ -422,7 +422,7 @@
 			buildActionMask = 0;
 			files = (
 				__src_cc_ref_Sources/LangKitDemo/Demo.swift /* Demo.swift in Sources */,
-				__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModel1Demo.swift in Sources */,
+				__src_cc_ref_Sources/LangKitDemo/IBMModel1Demo.swift /* IBMModelDemo.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift in Sources */,
 			);

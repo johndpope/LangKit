@@ -4,7 +4,8 @@ import CommandLine
 // Action table
 let demos: [String: () -> ()] =
 [
-    "IBMModel1" : IBMModel1Demo.run,
+    "IBMModel1" : { _ in IBMModelDemo.run(.One) },
+    "IBMModel2" : { _ in IBMModelDemo.run(.Two) },
     "Trie"      : TrieDemo.run,
 ]
 
