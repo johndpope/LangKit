@@ -36,10 +36,17 @@ class IBMModel1Demo : Demo {
         
         let rawBitext = allRawBitext.prefix(sentenceCount)
         
+        #if os(Linux)
+        let bitext = rawBitext.map {
+            ($0.0.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()),
+             $0.1.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()))
+        }
+        #else
         let bitext = rawBitext.map {
             ($0.0.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace()),
              $0.1.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace()))
         }
+        #endif
         
         let aligner = IBMModel1(bitext: bitext, probabilityThreshold: threshold)
         aligner.train(iterations: iterations)
