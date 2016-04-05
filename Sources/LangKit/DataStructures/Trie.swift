@@ -197,10 +197,12 @@ public extension Trie {
     
 }
 
-// MARK: - Sequence and IteratorProtocol conformity
+// MARK: - Sequence conformity
 extension Trie : Sequence {
     
-    public func makeIterator() -> AnyIterator<K> {
+    public typealias Iterator = AnyIterator<K>
+    
+    public func makeIterator() -> Trie.Iterator {
         var stack: [Trie<K>] = []
         var current: Trie<K> = self
         
