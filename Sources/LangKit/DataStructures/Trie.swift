@@ -7,7 +7,7 @@
 //
 
 /**
- Trie data structure
+ Trie data structure (immutable)
  
  - Leaf: (key, count)
  - Node: (key, count, children)
