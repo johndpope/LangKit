@@ -164,7 +164,7 @@ public extension Trie {
     
 }
 
-// MARK: - Predication
+// MARK: - Predication and Cardinality
 public extension Trie {
     
     /**
@@ -178,7 +178,22 @@ public extension Trie {
         if case .node(_, _, let children) = self {
             return children.keys.contains(key)
         }
+        // Leaf has no children
         return false
+    }
+    
+    
+    /**
+     Returns the number of children
+     
+     - returns: Count
+     */
+    public var childCount: Int {
+        if case .node(_, _, let children) = self {
+            return children.count
+        }
+        // Leaf has no children
+        return 0
     }
     
 }
