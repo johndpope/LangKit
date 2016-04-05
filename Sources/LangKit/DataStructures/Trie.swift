@@ -14,9 +14,9 @@
  */
 public enum Trie<K: Hashable> : Equatable {
     
-    case Leaf(K, Int)
+    case leaf(K, Int)
     
-    indirect case Node(K, Int, [K: Trie<K>])
+    indirect case node(K, Int, [K: Trie<K>])
     
 }
 
@@ -30,9 +30,9 @@ public enum Trie<K: Hashable> : Equatable {
  */
 public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     switch (lhs, rhs) {
-    case (.Leaf(let k1, let v1), .Leaf(let k2, let v2)):
+    case (.leaf(let k1, let v1), .leaf(let k2, let v2)):
         return k1 == k2 && v1 == v2
-    case (.Node(let k1, let v1, let c1), .Node(let k2, let v2, let c2)):
+    case (.node(let k1, let v1, let c1), .node(let k2, let v2, let c2)):
         return k1 == k2 && v1 == v2 && c1 == c2
     default:
         return false
@@ -49,8 +49,8 @@ public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
  */
 public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     switch (lhs, rhs) {
-    case (.Leaf(_, _)   , .Leaf(_, _)),
-         (.Node(_, _, _), .Node(_, _, _)):
+    case (.leaf(_, _)   , .leaf(_, _)),
+         (.node(_, _, _), .node(_, _, _)):
         return true
     default:
         return false
@@ -83,20 +83,20 @@ public extension Trie {
         switch self {
             
         // Base cases
-        case .Leaf(let k, let v) where item.isEmpty:
-            return .Leaf(k, v + 1)
+        case .leaf(let k, let v) where item.isEmpty:
+            return .leaf(k, v + 1)
             
-        case .Node(let k, let v, let children) where item.isEmpty:
-            return .Node(k, v + 1, children)
+        case .node(let k, let v, let children) where item.isEmpty:
+            return .node(k, v + 1, children)
             
         // Leaf
-        case .Leaf(let k, let v):
+        case .leaf(let k, let v):
             let nk = item.first!
-            let child = Trie.Leaf(nk, 1).insert(item.dropFirst().map{$0})
-            return .Node(k, incr ? v + 1 : v, [nk : child])
+            let child = Trie.leaf(nk, 1).insert(item.dropFirst().map{$0})
+            return .node(k, incr ? v + 1 : v, [nk : child])
             
         // Node
-        case .Node(let k, let v, var children):
+        case .node(let k, let v, var children):
             let nk = item.first!
             let restItem = item.dropFirst().map{$0}
             // Child exists
@@ -105,9 +105,9 @@ public extension Trie {
             }
             // Child does not exist. Call insert on a new leaf
             else {
-                children[nk] = Trie.Leaf(nk, 1).insert(restItem)
+                children[nk] = Trie.leaf(nk, 1).insert(restItem)
             }
-            return .Node(k, incr ? v + 1 : v, children)
+            return .node(k, incr ? v + 1 : v, children)
         }
         
     }
@@ -171,7 +171,7 @@ public extension Trie {
      - returns: Exists or not
      */
     public func hasChild(key: K) -> Bool {
-        if case .Node(_, _, let children) = self {
+        if case .node(_, _, let children) = self {
             return children.keys.contains(key)
         }
         return false
@@ -195,10 +195,10 @@ public extension Trie {
         }
         switch self {
         // Base case
-        case .Leaf(_, let v):
+        case .leaf(_, let v):
             return item.count == 1 ? v : 0
         // Node
-        case .Node(_, let v, let children):
+        case .node(_, let v, let children):
             if item.count == 1 {
                 return v
             }
@@ -217,9 +217,9 @@ public extension Trie {
      */
     public func sumLeaves() -> Int {
         switch self {
-        case .Leaf(_, let v):
+        case .leaf(_, let v):
             return v
-        case .Node(_, _, let children):
+        case .node(_, _, let children):
             let sums = children.values.map{$0.sumLeaves()}
             return sums.reduce(sums.first!, combine: +)
         }
@@ -232,9 +232,9 @@ public extension Trie {
      */
     public func sum() -> Int {
         switch self {
-        case .Leaf(_, let v):
+        case .leaf(_, let v):
             return v
-        case .Node(_, let v, let children):
+        case .node(_, let v, let children):
             let sums = children.values.map{$0.sum()}
             return v + sums.reduce(sums.first!, combine: +)
         }
