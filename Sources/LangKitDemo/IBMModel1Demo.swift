@@ -19,15 +19,24 @@ class IBMModel1Demo : Demo {
                 exit(0)
         }
         
-        let sentences = 100
+        let sentenceCount = 100
         let iterations = 100
         let threshold: Float = 0.5
         
-        let untokenizedBitext = zip( ftext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()),
-                                     etext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()))
-            .prefix(sentences)
+        // Temporary solution to the inconsistent method name change on OS X and Linux
+        #if os(Linux)
+        let allRawBitext = zip(
+            ftext.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()),
+            etext.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()))
+        #else
+        let allRawBitext = zip(
+            ftext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()),
+            etext.componentsSeparatedByCharacters(in: NSCharacterSet.newline()))
+        #endif
         
-        let bitext = untokenizedBitext.map {
+        let rawBitext = allRawBitext.prefix(sentenceCount)
+        
+        let bitext = rawBitext.map {
             ($0.0.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace()),
              $0.1.componentsSeparatedByCharacters(in: NSCharacterSet.whitespace()))
         }
