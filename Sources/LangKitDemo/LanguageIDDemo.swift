@@ -53,9 +53,9 @@ class LanguageIDDemo: Demo {
 
         // Create and train bigram models
         let classes : [String: [String] -> Float] =
-            [ "🇬🇧 English": NgramModel(n: 1, trainingCorpus: corpora[0], smoothingMode: .GoodTuring).sentenceLogProbability,
-              "🇫🇷 French" : NgramModel(n: 1, trainingCorpus: corpora[1], smoothingMode: .GoodTuring).sentenceLogProbability,
-              "🇮🇹 Italian": NgramModel(n: 1, trainingCorpus: corpora[2], smoothingMode: .GoodTuring).sentenceLogProbability ]
+            [ "🌐  English": NgramModel(n: 1, trainingCorpus: corpora[0], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "🌐  French" : NgramModel(n: 1, trainingCorpus: corpora[1], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "🌐  Italian": NgramModel(n: 1, trainingCorpus: corpora[2], smoothingMode: .GoodTuring).sentenceLogProbability ]
 
         print("✅  Training complete")
 
@@ -71,17 +71,10 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            #if os(OSX)
-                let inputData = NSFileHandle.withStandardInput().availableData
-            #else // Temporary solution to inconsistent Foundation corelib
-                let inputData = NSFileHandle.fileHandleWithStandardInput().availableData
-            #endif
-            guard let rawString = String(data: inputData, encoding: NSUTF8StringEncoding) else {
+            guard let sentence = readLine()?.tokenized() else {
                 continue
             }
-
             // Classify
-            let sentence = String(rawString.characters.dropLast()).tokenized() // Drop '\n'
             let result = classifier.classify(sentence)
             print(result)
         }

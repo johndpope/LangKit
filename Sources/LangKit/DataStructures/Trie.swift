@@ -18,8 +18,9 @@ public enum Trie<K: Hashable> {
 
     indirect case node(K?, Int, [K: Trie<K>])
 
-    public init() {
-        self = .leaf(nil, 0)
+    public init(initial: [K]? = nil) {
+        let base = Trie.leaf(nil, 0)
+        self = initial == nil ? base : base.insert(initial!)
     }
 
 }
@@ -214,6 +215,13 @@ extension Trie : Sequence {
 
 // MARK: - Calculation
 public extension Trie {
+
+    /**
+     Count at current node or leaf
+     */
+    public var count: Int {
+        return self.count([])
+    }
 
     /**
      Count item sequence
