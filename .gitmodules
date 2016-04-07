@@ -1,0 +1,3 @@
+[submodule "LangKit-Data"]
+	path = Data
+	url = https://github.com/xinranmsn/LangKit-Data.git

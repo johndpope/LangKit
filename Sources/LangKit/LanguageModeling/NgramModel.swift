@@ -91,6 +91,13 @@ extension NgramModel {
 // MARK: - Smoothing utilities
 extension NgramModel {
 
+    /**
+     Smooth Ngram based on the smoothing method
+
+     - parameter ngram: Ngram item
+
+     - returns: Smoothed ngram
+     */
     private func smoothNgram(ngram: [Token]) -> [Token] {
         // 'Unk'ify (preprocess)
         let unkedNgram = ngram.map { tokens.contains($0) ? $0 : Preprocessor.unknown }
