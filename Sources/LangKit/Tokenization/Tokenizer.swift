@@ -8,8 +8,12 @@
 
 public extension String {
     
-    public func tokenize() -> [String] {
-        return characters.split(separator: " ").map(String.init)
+    public func tokenized() -> [String] {
+        return characters.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
+    }
+    
+    public func lineSplit() -> [String] {
+        return characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains).map(String.init)
     }
     
 }
