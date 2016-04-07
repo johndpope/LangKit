@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import LangKit
+@testable import struct LangKit.NgramModel
 
 class LanguageModelingTests: XCTestCase {
 
