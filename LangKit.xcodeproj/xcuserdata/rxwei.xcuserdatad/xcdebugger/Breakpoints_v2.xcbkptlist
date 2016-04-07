@@ -161,5 +161,133 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/LangKit/LanguageModeling/NgramModel.swift"
+            timestampString = "481712796.917768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "train(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangKit.NgramModel.train (Swift.Array&lt;Swift.Array&lt;Swift.String&gt;&gt;) -&gt; ()"
+                  moduleName = "libLangKit.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/NgramModel.swift"
+                  timestampString = "481703861.5997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "121"
+                  endingLineNumber = "121"
+                  offsetFromSymbolStart = "130">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangKit.NgramModel.(train (Swift.Array&lt;Swift.Array&lt;Swift.String&gt;&gt;) -&gt; ()).(closure #1)"
+                  moduleName = "libLangKit.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/NgramModel.swift"
+                  timestampString = "481703861.599913"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/LangKit/LanguageModeling/NgramModel.swift"
+            timestampString = "481712796.917768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "train(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/LangKit/LanguageModeling/NgramModel.swift"
+            timestampString = "481712796.917768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "sentenceLogProbability(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangKit.NgramModel.sentenceLogProbability (Swift.Array&lt;Swift.String&gt;) -&gt; Swift.Float"
+                  moduleName = "libLangKit.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/NgramModel.swift"
+                  timestampString = "481713027.003134"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "142">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LangKit.NgramModel.(sentenceLogProbability (Swift.Array&lt;Swift.String&gt;) -&gt; Swift.Float).(closure #1)"
+                  moduleName = "libLangKit.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rxwei/Development/Linguistics/Tools/LangKit/Sources/LangKit/LanguageModeling/NgramModel.swift"
+                  timestampString = "481713027.003272"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "66">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/LangKitDemo/LanguageIDDemo.swift"
+            timestampString = "481713099.145678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "run()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

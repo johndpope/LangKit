@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29037EE01CB629A6005F9D48 /* LanguageIDDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29037EDF1CB629A6005F9D48 /* LanguageIDDemo.swift */; };
 		299CE9511CB5DFA7002A4FAB /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		299CE9521CB5DFA7002A4FAB /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		299CE9531CB5DFA7002A4FAB /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29037EDF1CB629A6005F9D48 /* LanguageIDDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageIDDemo.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				__PBXFileRef_Sources/LangKitDemo/IBMModelDemo.swift /* IBMModelDemo.swift */,
 				__PBXFileRef_Sources/LangKitDemo/main.swift /* main.swift */,
 				__PBXFileRef_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift */,
+				29037EDF1CB629A6005F9D48 /* LanguageIDDemo.swift */,
 			);
 			name = LangKitDemo;
 			path = Sources/LangKitDemo;
@@ -425,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				29037EE01CB629A6005F9D48 /* LanguageIDDemo.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/Demo.swift /* Demo.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/IBMModelDemo.swift /* IBMModelDemo.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */,

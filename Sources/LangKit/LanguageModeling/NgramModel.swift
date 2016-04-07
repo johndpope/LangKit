@@ -29,10 +29,13 @@ public struct NgramModel {
     public typealias Item = [Token]
     
     // Gram number
-    public var n: Int
+    private var n: Int
+    
+    // Unknown replacement threshold
+    private var threshold: Int
     
     // Smoothing mode
-    public var smoothing: SmoothingMode
+    private var smoothing: SmoothingMode
     
     // Ngram count structure
     private var countTrie = Trie<Token>()
@@ -48,9 +51,10 @@ public struct NgramModel {
      
      - parameter n: Gram number
      */
-    public init(n: Int, smoothingMode smoothing: SmoothingMode = nil) {
+    public init(n: Int, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10) {
         self.n = n
         self.smoothing = smoothing
+        self.threshold = threshold
         if smoothing == .GoodTuring {
             self.countFrequency = [:]
         }
@@ -117,13 +121,16 @@ extension NgramModel : LanguageModel {
      - parameter corpus: Tokenized corpus
      */
     public mutating func train(corpus: [[Token]]) {
-        let corpus = Preprocessor.replaceRareTokens(in: corpus, unknownThreshold: 10)
-        corpus.forEach { sentence in
+        let corpus = Preprocessor.replaceRareTokens(in: corpus, unknownThreshold: threshold)
+        for (i, sentence) in corpus.enumerated() {
             // Wrap <s> and </s> symbols
             let sentence = Preprocessor.wrapSentenceBoundary(sentence)
             // Train the countTrie
-            sentence.ngrams(n).forEach { ngram in
+            for ngram in sentence.ngrams(n) {
+                // Insert ngram to trie; add ngram to token set
                 self.insert(ngram)
+                
+                // Count frequency adjustment for Good Turing smoothing
                 if smoothing == .GoodTuring {
                     let count = self.count(ngram)
                     var prevCountFreq = countFrequency![count-1] ?? 0
@@ -133,12 +140,17 @@ extension NgramModel : LanguageModel {
                     countFrequency![count] = (countFrequency![count] ?? 0) + 1
                 }
             }
+            // Print progress
+            if i % 100 == 0 {
+                debugPrint(terminator: ".")
+            }
         }
         // If no (UNK, ..., UNK) present, insert one
-        let unkNgram = Array(repeating: Preprocessor.unknown, count: n)
-        if self.count(unkNgram) == 0 {
-            self.insert(unkNgram)
+        let unk = Array(repeating: Preprocessor.unknown, count: n)
+        if self.count(unk) == 0 {
+            self.insert(unk)
         }
+        debugPrint()
     }
 
     /**

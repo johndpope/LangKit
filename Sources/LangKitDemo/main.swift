@@ -4,9 +4,10 @@ import CommandLine
 // Action table
 let demos: [String: () -> ()] =
 [
-    "IBMModel1" : { _ in IBMModelDemo.run(.One) },
-    "IBMModel2" : { _ in IBMModelDemo.run(.Two) },
-    "Trie"      : TrieDemo.run,
+    "IBM1"  : { IBMModelDemo.run(.One) },
+    "IBM2"  : { IBMModelDemo.run(.Two) },
+    "Trie"  :   TrieDemo.run,
+    "LangID":   LanguageIDDemo.run,
 ]
 
 let cli = CommandLine()
