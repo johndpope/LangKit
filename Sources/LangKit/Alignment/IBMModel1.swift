@@ -12,47 +12,47 @@ internal func ==(lhs: IBMModel1.WordPair, rhs: IBMModel1.WordPair) -> Bool {
 
 /// Classic algorithm of IBM Model 1
 public class IBMModel1: Aligner {
-    
+
     /**
      *  Word pair hash key
      */
     internal struct WordPair : Hashable {
         var first, second: String
-        
+
         var hashValue: Int {
             return "\(first), \(second)".hashValue
         }
-        
+
         init(_ first: String, _ second: String) {
             self.first = first
             self.second = second
         }
     }
-    
+
     public typealias SentenceTuple = ([String], [String])
-    
+
     public var bitext: [([String], [String])]
-    
+
     internal var trans: [WordPair: Float]
-    
+
     internal var threshold: Float
-    
+
     internal let initialTrans: Float = 0.1
-    
+
     internal func translationProbability(pair: WordPair) -> Float {
         return trans[pair] ?? initialTrans
     }
-    
+
     public init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
         self.bitext = bitext
         self.trans = [:]
         self.threshold = threshold
     }
-    
+
     public convenience required init(bitext: [SentenceTuple]) {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
-    
+
     public func train(iterations iterations: Int = 100) {
         var count = [WordPair: Float]()
         var total = [String: Float]()
@@ -81,26 +81,26 @@ public class IBMModel1: Aligner {
             count.keys.forEach { pair in
                 self.trans[pair] = count[pair]! / total[pair.second]!
             }
-            
+
             // Debug progress output
             let progress = Float(iter) / Float(iterations) * 100
             if progress % 10 == 0 {
                 debugPrint(progress)
             }
-            
+
             // Re-initialization
             count.removeAll(keepingCapacity: true)
             total.removeAll(keepingCapacity: true)
             sTotal.removeAll(keepingCapacity: true)
         }
     }
-    
+
     /**
      Compute alignment for a sentence pair
-     
+
      - parameter eSentence: source tokenized sentence
      - parameter fSentence: destination tokenized sentence
-     
+
      - returns: alignment dictionary
      */
     public func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
@@ -116,7 +116,7 @@ public class IBMModel1: Aligner {
         }
         return alignment
     }
-    
 
-    
+
+
 }

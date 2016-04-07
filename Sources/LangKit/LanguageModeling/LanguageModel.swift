@@ -7,46 +7,46 @@
 //
 
 public protocol LanguageModel {
-    
+
     associatedtype Token
-    
+
     associatedtype Item = [Token]
 
     /**
      Train the model with tokenized corpus
-     
+
      - parameter corpus: Tokenized corpus
      */
     mutating func train(corpus: [[Token]])
 
     /**
      Probability of item
-     
+
      - parameter item:     Item
      - parameter logspace: Enable logspace
-    
+
      - returns: Probability
      */
     func probability(item: Item, logspace: Bool) -> Float
-    
+
     /**
      Markov conditional probability of item
-     
+
      - parameter item:     Item
      - parameter logspace: Enable logspace
-     
+
      - returns: Probability
      */
     func markovProbability(item: Item, logspace: Bool) -> Float
-    
-    
+
+
     /**
      Log probability of tokenized sentence
-     
+
      - parameter sentence: Tokenized sentence
-     
+
      - returns: Log probability
      */
     func sentenceLogProbability(sentence: [Token]) -> Float
-    
+
 }

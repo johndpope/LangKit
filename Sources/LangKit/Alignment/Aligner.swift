@@ -7,39 +7,39 @@
 //
 
 public protocol Aligner {
-    
+
     /// Parallel corpus
     var bitext: [([String], [String])] { get }
-    
+
     /**
      Initialize a model with a parallel corpus
-     
+
      - parameter bitext: tokenized parallel corpus
      */
     init(bitext: [([String], [String])])
-    
+
     /**
      Train model iteratively
-     
+
      - parameter iterations: number of iterations of EM algorithm
      */
     func train(iterations iterations: Int)
-    
+
     /**
      Align two sentences
-     
+
      - parameter fSentence: source sentence
      - parameter eSentence: destination sentence
-     
+
      - returns: Alignment dictionary
      */
     func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]?
-    
+
     /**
      Alignment for the entire parallel corpus
      */
     var alignmentIndices: [[(Int, Int)]]? { get }
-    
+
 }
 
 extension Aligner {

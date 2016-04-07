@@ -7,26 +7,26 @@
 //
 
 public class Preprocessor {
-    
+
     // Token replacements for preprocessing
     internal static let unknown = "UNK"
     internal static let sentenceStart = "<s>"
     internal static let sentenceEnd = "</s>"
-    
+
 }
 
 // MARK: - Sentence preprocessor
 public extension Preprocessor {
-    
+
     public class func wrapSentenceBoundary(sentence: [String]) -> [String] {
         return [sentenceStart] + sentence + [sentenceEnd]
     }
-    
+
 }
 
 // MARK: - Corpus preprocessor
 public extension Preprocessor {
-    
+
     public class func replaceRareTokens(in corpus: [[String]], unknownThreshold threshold: Int) -> [[String]] {
         var frequency: [String: Int] = [:]
         corpus.forEach { sentence in
@@ -38,5 +38,5 @@ public extension Preprocessor {
             sentence.map { frequency[$0]! > threshold ? $0 : unknown }
         }
     }
-    
+
 }

@@ -11,7 +11,7 @@ internal func ==(lhs: IBMModel2.AlignmentKey, rhs: IBMModel2.AlignmentKey) -> Bo
 }
 
 public class IBMModel2 : IBMModel1 {
-    
+
     /**
      *  Nasty hash key structure
      *  Currently NOT intended to adopt a good naming
@@ -20,40 +20,40 @@ public class IBMModel2 : IBMModel1 {
     internal struct AlignmentKey : Equatable, Hashable {
         var i, j: Int?
         var le, lf: Int
-        
+
         init(_ i: Int?, _ j: Int?, _ le: Int, _ lf: Int) {
             (self.i, self.j, self.le, self.lf) = (i, j, le, lf)
         }
-        
+
         var hashValue: Int {
             return "\(i), \(j), \(le), \(lf)".hashValue
         }
     }
-    
+
     var alignment: [AlignmentKey: Float]
     let probablize = { (key: AlignmentKey) -> Float in 1.0 / (Float(key.lf) + 1.0) }
-    
+
     public override init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
         self.alignment = [:]
         super.init(bitext: bitext, probabilityThreshold: threshold)
     }
-    
+
     public override func train(iterations iterations: Int = 100) {
         self.train(lexicalIterations: iterations, alignmentIterations: iterations)
     }
-    
+
     public func train(lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
         // Train Model 1
         super.train(iterations: m1Iterations)
-        
+
         for iter in 1...m2Iterations {
-            
+
             // Initialize
             var count = [WordPair: Float]()
             var total = [String: Float]()
             var countA = [AlignmentKey: Float]()
             var totalA = [AlignmentKey: Float]()
-            
+
             for (f, e) in bitext {
                 let (lf, le) = (f.count, e.count)
                 // Compute normalization
@@ -91,13 +91,13 @@ public class IBMModel2 : IBMModel1 {
             debugPrint("\(Float(iter) / Float(m2Iterations) * 100)%")
         }
     }
-    
+
     /**
      Compute alignment for a sentence pair
-     
+
      - parameter eSentence: source tokenized sentence
      - parameter fSentence: destination tokenized sentence
-     
+
      - returns: alignment dictionary
      */
     public override func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
@@ -118,5 +118,5 @@ public class IBMModel2 : IBMModel1 {
         }
         return vitAlignment
     }
-    
+
 }

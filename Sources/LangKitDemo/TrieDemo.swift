@@ -9,9 +9,9 @@
 import enum LangKit.Trie
 
 class TrieDemo {
-    
+
     static func run() {
-        
+
     }
-    
+
 }

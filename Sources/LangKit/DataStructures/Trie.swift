@@ -8,20 +8,20 @@
 
 /**
  Trie data structure (immutable)
- 
+
  - Leaf: (key, count)
  - Node: (key, count, children)
  */
 public enum Trie<K: Hashable> {
-    
+
     case leaf(K?, Int)
-    
+
     indirect case node(K?, Int, [K: Trie<K>])
-    
+
     public init() {
         self = .leaf(nil, 0)
     }
-    
+
 }
 
 // MARK: - Equatable conformity
@@ -29,10 +29,10 @@ extension Trie : Equatable {}
 
 /**
  Equate two tries
- 
+
  - parameter lhs: Trie
  - parameter rhs: Trie
- 
+
  - returns: Equal or not
  */
 public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
@@ -48,10 +48,10 @@ public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
 
 /**
  Match type of two tries
- 
+
  - parameter lhs: Trie
  - parameter rhs: Trie
- 
+
  - returns: Match or not
  */
 public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
@@ -66,10 +66,10 @@ public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
 
 /**
  Combine two tries
- 
+
  - parameter lhs: Left trie
  - parameter rhs: Rigth trie
- 
+
  - returns: New trie
  */
 public func +<K>(lhs: Trie<K>, rhs: Trie<K>) -> Trie<K> {
@@ -78,30 +78,30 @@ public func +<K>(lhs: Trie<K>, rhs: Trie<K>) -> Trie<K> {
 
 // MARK: - Insertion
 public extension Trie {
-    
+
     /**
      Return a new trie with an item sequence inserted
-     
+
      - parameter item: item sequence
-     
+
      - returns: New trie after insertion
      */
     public func insert(item: [K], incrementingNodes incr: Bool = false) -> Trie<K> {
         switch self {
-            
+
         // Base cases
         case .leaf(let k, let v) where item.isEmpty:
             return .leaf(k, v + 1)
-            
+
         case .node(let k, let v, let children) where item.isEmpty:
             return .node(k, v + 1, children)
-            
+
         // Leaf
         case .leaf(let k, let v):
             let nk = item.first!
             let child = Trie.leaf(nk, 0).insert(item.dropFirst().map{$0})
             return .node(k, incr ? v + 1 : v, [nk : child])
-            
+
         // Node
         case .node(let k, let v, var children):
             let nk = item.first!
@@ -116,61 +116,61 @@ public extension Trie {
             }
             return .node(k, incr ? v + 1 : v, children)
         }
-        
+
     }
-    
+
 }
 
 // MARK: - Combination
 public extension Trie {
-    
+
     /**
      Returns a union of two tries
-     
+
      - parameter other:            Other trie
      - parameter conflictResolver: Conflict resolving function
-     
+
      - returns: New trie after union
      */
     public func union(other: Trie<K>, @noescape conflictResolver: (K, K) -> K?) -> Trie<K> {
         // TODO
         return self
     }
-    
+
     /**
      Returns a union of two tries
      If there's a conflict, take the original (left)
-     
+
      - parameter other: Other trie
-     
+
      - returns: New trie after union
      */
     public func unionLeft(other: Trie<K>) -> Trie<K> {
         return union(other) {left, _ in left}
     }
-    
+
     /**
      Returns a union of two tries
      If there's a conflict, take the new (right)
-     
+
      - parameter other: Other trie
-     
+
      - returns: New trie after union
      */
     public func unionRight(other: Trie<K>) -> Trie<K> {
         return union(other) {_, right in right}
     }
-    
+
 }
 
 // MARK: - Predication and Cardinality
 public extension Trie {
-    
+
     /**
      Determine if the key exists in children
-     
+
      - parameter key: Key
-     
+
      - returns: Exists or not
      */
     public func hasChild(key: K) -> Bool {
@@ -179,11 +179,11 @@ public extension Trie {
         }
         return children.keys.contains(key)
     }
-    
-    
+
+
     /**
      Returns the number of children
-     
+
      - returns: Count
      */
     public var childCount: Int {
@@ -192,34 +192,34 @@ public extension Trie {
         }
         return children.count
     }
-    
+
 }
 
 // MARK: - Sequence conformity
 extension Trie : Sequence {
-    
+
     public typealias Iterator = AnyIterator<K>
-    
+
     public func makeIterator() -> Trie.Iterator {
 //        var stack: [Trie<K>] = []
 //        var current: Trie<K> = self
-        
+
         return AnyIterator {
             // TODO!!
             return nil
         }
     }
-    
+
 }
 
 // MARK: - Calculation
 public extension Trie {
-    
+
     /**
      Count item sequence
-     
+
      - parameter item: Item sequence
-     
+
      - returns: Count of sequence
      */
     public func count(item: [K]) -> Int {
@@ -239,10 +239,10 @@ public extension Trie {
             return child.count(item.dropFirst().map{$0})
         }
     }
-    
+
     /**
      Sum all leave counts
-     
+
      - returns: Count
      */
     public func sumLeaves() -> Int {
@@ -254,10 +254,10 @@ public extension Trie {
             return sums.reduce(sums.first!, combine: +)
         }
     }
-    
+
     /**
      Sum all counts
-     
+
      - returns: Count
      */
     public func sum() -> Int {
@@ -269,14 +269,14 @@ public extension Trie {
             return v + sums.reduce(sums.first!, combine: +)
         }
     }
- 
+
 }
 
 
 extension Trie {
-    
+
     public func prettyPrint() {
         // TODO
     }
-    
+
 }

@@ -8,11 +8,11 @@
 
 /**
  Argument extremum by comparison on keys
- 
+
  - parameter compare: Comparison function
  - parameter keyFunc: Key function
  - parameter args:    Arguments
- 
+
  - returns: Extremum
  */
 public func argext<T, K: Comparable>(@noescape compare compare: (K, K) -> Bool, @noescape keyFunc: T -> K, args: [T]) -> T? {
@@ -24,9 +24,9 @@ public func argext<T, K: Comparable>(@noescape compare compare: (K, K) -> Bool, 
 
 /**
  Argument extremum function provider
- 
+
  - parameter compFunc: Comparison function
- 
+
  - returns: Argument extremum function that uses comparison function
  */
 public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> (T -> K, [T]) -> T? {
@@ -35,10 +35,10 @@ public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> (T -> K
 
 /**
  Argument maximum
- 
+
  - parameter keyFunc: Key function
  - parameter args:    Arguments
- 
+
  - returns: Argument maximum
  */
 public func argmax<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
@@ -47,10 +47,10 @@ public func argmax<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
 
 /**
  Argument minimum
- 
+
  - parameter keyFunc: Key function
  - parameter args:    Arguments
- 
+
  - returns: Argument minimum
  */
 public func argmin<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
@@ -61,10 +61,10 @@ public func argmin<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
  *  Classifier protocol which each classifier conforms to
  */
 public protocol Classifier {
-    
+
     associatedtype InputType
     associatedtype LabelType
-    
+
     func classify(input: InputType) -> LabelType
-    
+
 }

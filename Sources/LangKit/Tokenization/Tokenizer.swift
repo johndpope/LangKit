@@ -7,21 +7,21 @@
 //
 
 public extension String {
-    
+
     public func tokenized() -> [String] {
         return characters.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
     }
-    
+
     public func lineSplit() -> [String] {
         return characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains).map(String.init)
     }
-    
+
 }
 
 public class Tokenizer {
-    
+
     public init() {
-        
+
     }
-    
+
 }

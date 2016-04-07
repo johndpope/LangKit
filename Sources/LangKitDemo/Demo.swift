@@ -7,7 +7,7 @@
 //
 
 protocol Demo {
-    
+
     static func run()
-    
+
 }
