@@ -69,15 +69,14 @@ class LanguageIDDemo: Demo {
             #else // Temporary solution to inconsistent Foundation corelib
                 let inputData = NSFileHandle.fileHandleWithStandardInput().availableData
             #endif
-
-            guard let string = String(data: inputData, encoding: NSUTF8StringEncoding)?
-                .replacingOccurrences(of: "\n", with: "") else {
+            guard let rawString = String(data: inputData, encoding: NSUTF8StringEncoding) else {
                 continue
             }
+
             // Classify
-            if let result = classifier.classify(string.tokenized()) {
-                print(result)
-            }
+            let sentence = String(rawString.characters.dropLast()).tokenized() // Drop '\n'
+            let result = classifier.classify(sentence)
+            print(result)
         }
     }
 }
