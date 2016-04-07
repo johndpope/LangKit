@@ -150,7 +150,7 @@ extension NgramModel : LanguageModel {
      - returns: Probability
      */
     public func probability(item: Item, logspace: Bool = false) -> Float {
-        if item.count != n {
+        guard item.count == n else {
             return 0
         }
         let count = countTrie.count(item)
