@@ -51,12 +51,15 @@ public struct NgramModel {
      
      - parameter n: Gram number
      */
-    public init(n: Int, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10) {
+    public init(n: Int, trainingCorpus corpus: [[Token]]?, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
         if smoothing == .GoodTuring {
             self.countFrequency = [:]
+        }
+        if let corpus = corpus {
+            self.train(corpus)
         }
     }
     
@@ -220,7 +223,8 @@ extension NgramModel : LanguageModel {
      - returns: Log probability
      */
     public func sentenceLogProbability(sentence: [Token]) -> Float {
-        let probabilities = sentence.ngrams(n).map { self.markovProbability($0, logspace: true) }
+        let probabilities = Preprocessor.wrapSentenceBoundary(sentence).ngrams(n)
+            .map { self.markovProbability($0, logspace: true) }
         return probabilities.reduce(0, combine: +)
     }
 

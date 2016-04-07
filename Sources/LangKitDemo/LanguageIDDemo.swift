@@ -16,13 +16,10 @@ class LanguageIDDemo: Demo {
     static let  frenchTrain = "Data/Demo/LanguageModeling/LangId.train.French"
     static let italianTrain = "Data/Demo/LanguageModeling/LangId.train.Italian"
     
-    /**
-     Run demo
-     */
-    static func run() {
+    static func readCorpora(fromFiles files: [String]) -> [[[String]]] {
         var corporaRead: [[[String]]]?
         do {
-            try corporaRead = [englishTrain, frenchTrain, italianTrain]
+            try corporaRead = files
                 // Load files
                 .map { path in try String(contentsOfFile: path, encoding: NSISOLatin1StringEncoding) }
                 // Split sentences
@@ -38,22 +35,26 @@ class LanguageIDDemo: Demo {
             print("❌  Corpora empty!")
             exit(EXIT_FAILURE)
         }
-        
-        // Class labels
-        let classesLabels = ["English", "French", "Italian"]
+        return corpora
+    }
+    
+    /**
+     Run demo
+     */
+    static func run() {
+        let files = [englishTrain, frenchTrain, italianTrain]
+        let corpora = readCorpora(fromFiles: files)
         
         // Create and train ngram models
-        var models = (0..<3).map { _ in NgramModel(n: 2, smoothingMode: .GoodTuring) }
-        for (i, (var model, corpus)) in zip(models, corpora).enumerated() {
-            model.train(corpus)
-            models[i] = model
-        }
+        let classes : [String: [String] -> Float] =
+            [ "English": NgramModel(n: 2, trainingCorpus: corpora[0], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "French" : NgramModel(n: 2, trainingCorpus: corpora[1], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "Italian": NgramModel(n: 2, trainingCorpus: corpora[2], smoothingMode: .GoodTuring).sentenceLogProbability ]
         print("✅  Training complete.")
         
         // Initialize classifier
-        let probabilityFunctions = models.map{$0.sentenceLogProbability}
-        let classes = Dictionary(pairs: zip(classesLabels, probabilityFunctions).map{$0})
         let classifier = NaiveBayes(classes: classes)
+        classifier.flipped = true
         
         // Interactively accept and classify sentences
         print("Now entering interactive classification.")
