@@ -6,17 +6,15 @@
 //
 //
 
-public class NaiveBayes<InputType, LabelType: Hashable> {
+public class NaiveBayes<Input, Label: Hashable> {
     
-    public typealias KeyFunc = InputType -> Float
+    public typealias KeyFunc = Input -> Float
     
-    private var classes: [LabelType: KeyFunc]
+    private var classes: [Label: KeyFunc] = [:]
     
-    public init() {
-        classes = [:]
-    }
+    public var flipped: Bool = false
     
-    public init(classes: [LabelType: KeyFunc]) {
+    public init(classes: [Label: KeyFunc]) {
         self.classes = classes
     }
     
@@ -24,7 +22,7 @@ public class NaiveBayes<InputType, LabelType: Hashable> {
 
 extension NaiveBayes {
     
-    public func add(classLabel: LabelType, keyFunc: KeyFunc) {
+    public func add(classLabel: Label, keyFunc: KeyFunc) {
         if !classes.keys.contains(classLabel)  {
             classes[classLabel] = keyFunc
         }
@@ -34,8 +32,8 @@ extension NaiveBayes {
 
 extension NaiveBayes : Classifier {
     
-    public func classify(input: InputType) -> LabelType? {
-        return argmax({ self.classes[$0]!(input) }, args: Array(classes.keys))
+    public func classify(input: Input) -> Label? {
+        return (flipped ? argmin : argmax)({ self.classes[$0]!(input) }, args: Array(classes.keys))
     }
     
 }
