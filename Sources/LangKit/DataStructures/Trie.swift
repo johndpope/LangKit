@@ -201,8 +201,8 @@ extension Trie : Sequence {
     public typealias Iterator = AnyIterator<K>
     
     public func makeIterator() -> Trie.Iterator {
-        var stack: [Trie<K>] = []
-        var current: Trie<K> = self
+//        var stack: [Trie<K>] = []
+//        var current: Trie<K> = self
         
         return AnyIterator {
             // TODO!!
