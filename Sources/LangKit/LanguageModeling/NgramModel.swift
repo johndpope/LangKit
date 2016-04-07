@@ -44,7 +44,7 @@ public struct NgramModel {
     private var tokens: Set<Token> = []
 
     // Count frequency table for Good Turing smoothing
-    private var countFrequency: [Int: Int]?
+    private var countFrequency: [Int: Int]!
 
     /**
      Initializer
@@ -136,11 +136,11 @@ extension NgramModel : LanguageModel {
                 // Count frequency adjustment for Good Turing smoothing
                 if smoothing == .GoodTuring {
                     let count = self.count(ngram)
-                    var prevCountFreq = countFrequency![count-1] ?? 0
+                    var prevCountFreq = countFrequency[count-1] ?? 0
                     if prevCountFreq != 0 {
                         prevCountFreq -= 1
                     }
-                    countFrequency![count] = (countFrequency![count] ?? 0) + 1
+                    countFrequency[count] = (countFrequency[count] ?? 0) + 1
                 }
             }
             // Print progress
@@ -204,8 +204,8 @@ extension NgramModel : LanguageModel {
             probability = Float(count + 1) / Float(precount + self.count)
 
         case .GoodTuring:
-            let numCount = countFrequency![count]!
-            let numCountPlusOne = countFrequency![count + 1] ?? 1
+            let numCount = countFrequency[count]!
+            let numCountPlusOne = countFrequency[count + 1] ?? 1
             probability = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
 
         default:
