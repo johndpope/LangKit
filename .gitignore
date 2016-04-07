@@ -9,6 +9,7 @@ DerivedData/
 *.swiftmodule
 *.framework
 *.xctest
+.#*
 
 ## Various settings
 *.pbxuser
