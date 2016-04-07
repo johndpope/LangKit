@@ -56,7 +56,7 @@ public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
  */
 public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     switch (lhs, rhs) {
-    case (.leaf(_, _)   , .leaf(_, _)),
+    case (.leaf(_, _)   , .leaf(_, _)   ),
          (.node(_, _, _), .node(_, _, _)):
         return true
     default:
@@ -174,11 +174,10 @@ public extension Trie {
      - returns: Exists or not
      */
     public func hasChild(key: K) -> Bool {
-        if case .node(_, _, let children) = self {
-            return children.keys.contains(key)
+        guard case .node(_, _, let children) = self else {
+            return false // Leaf has no children
         }
-        // Leaf has no children
-        return false
+        return children.keys.contains(key)
     }
     
     
@@ -188,11 +187,10 @@ public extension Trie {
      - returns: Count
      */
     public var childCount: Int {
-        if case .node(_, _, let children) = self {
-            return children.count
+        guard case .node(_, _, let children) = self else {
+            return 0 // Leaf has no children
         }
-        // Leaf has no children
-        return 0
+        return children.count
     }
     
 }
@@ -228,10 +226,7 @@ public extension Trie {
         switch self {
         // Base case
         case .leaf(_, let v):
-            guard item.isEmpty else {
-                return 0
-            }
-            return v
+            return item.isEmpty ? v : 0
         // Node
         case .node(_, let v, let children):
             if item.isEmpty {
