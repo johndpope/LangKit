@@ -65,14 +65,6 @@
                BlueprintName = "CommandLine.testsuite"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "CommandLineTests">
-               </Test>
-               <Test
-                  Identifier = "StringExtensionTests">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
