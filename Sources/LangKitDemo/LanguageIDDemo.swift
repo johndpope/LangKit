@@ -8,7 +8,7 @@
 
 import Foundation
 import struct LangKit.NgramModel
-import class LangKit.NaiveBayes
+import struct LangKit.NaiveBayes
 
 class LanguageIDDemo: Demo {
 
@@ -60,8 +60,7 @@ class LanguageIDDemo: Demo {
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier = NaiveBayes(classes: classes)
-        classifier.flipped = true
+        let classifier = NaiveBayes(classes: classes, flipped: true)
 
         // Interactively accept and classify sentences
         print("Now entering interactive classification")

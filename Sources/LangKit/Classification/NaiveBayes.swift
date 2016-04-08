@@ -12,10 +12,11 @@ public struct NaiveBayes<Input, Label: Hashable> {
 
     private var classes: [Label: KeyFunc] = [:]
 
-    public var flipped: Bool = false
+    public var flipped: Bool
 
-    public init(classes: [Label: KeyFunc]) {
+    public init(classes: [Label: KeyFunc], flipped: Bool = false) {
         self.classes = classes
+        self.flipped = flipped
     }
 
 }
