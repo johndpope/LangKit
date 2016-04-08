@@ -6,7 +6,7 @@
 //
 //
 
-public class NaiveBayes<Input, Label: Hashable> {
+public struct NaiveBayes<Input, Label: Hashable> {
 
     public typealias KeyFunc = Input -> Float
 
@@ -22,7 +22,7 @@ public class NaiveBayes<Input, Label: Hashable> {
 
 extension NaiveBayes {
 
-    public func add(classLabel: Label, keyFunc: KeyFunc) {
+    public mutating func add(classLabel: Label, keyFunc: KeyFunc) {
         if !classes.keys.contains(classLabel)  {
             classes[classLabel] = keyFunc
         }
