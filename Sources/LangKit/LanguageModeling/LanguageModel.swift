@@ -39,7 +39,6 @@ public protocol LanguageModel {
      */
     func markovProbability(item: Item, logspace: Bool) -> Float
 
-
     /**
      Log probability of tokenized sentence
 

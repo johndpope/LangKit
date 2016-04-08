@@ -62,9 +62,9 @@ public func argmin<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
  */
 public protocol Classifier {
 
-    associatedtype InputType
-    associatedtype LabelType
+    associatedtype Input
+    associatedtype Label
 
-    func classify(input: InputType) -> LabelType
+    func classify(input: Input) -> Label?
 
 }

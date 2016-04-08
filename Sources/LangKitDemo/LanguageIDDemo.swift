@@ -75,7 +75,7 @@ class LanguageIDDemo: Demo {
                 continue
             }
             // Classify
-            let result = classifier.classify(sentence)
+            let result = classifier.classify(sentence)!
             print(result)
         }
     }
