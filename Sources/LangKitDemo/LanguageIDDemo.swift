@@ -30,7 +30,7 @@ class LanguageIDDemo: Demo {
                 // Load files
                 .map { path in try String(contentsOfFile: path, encoding: NSISOLatin1StringEncoding) }
                 // Split sentences
-                .map { $0.lineSplit().map { $0.tokenized() } }
+                .map { $0.lineSplit().map { $0.characters.map{String($0)} } }
         }
         catch let error {
             print("❌  Read error!", error)
@@ -53,14 +53,14 @@ class LanguageIDDemo: Demo {
 
         // Create and train bigram models
         let classes : [String: [String] -> Float] =
-            [ "🌐  English": NgramModel(n: 1, trainingCorpus: corpora[0], smoothingMode: .GoodTuring).sentenceLogProbability,
-              "🌐  French" : NgramModel(n: 1, trainingCorpus: corpora[1], smoothingMode: .GoodTuring).sentenceLogProbability,
-              "🌐  Italian": NgramModel(n: 1, trainingCorpus: corpora[2], smoothingMode: .GoodTuring).sentenceLogProbability ]
+            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .GoodTuring).sentenceLogProbability,
+              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .GoodTuring).sentenceLogProbability ]
 
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier = NaiveBayes(classes: classes, flipped: true)
+        let classifier = NaiveBayes(classes: classes)
 
         // Interactively accept and classify sentences
         print("Now entering interactive classification")
@@ -70,7 +70,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            guard let sentence = readLine()?.tokenized() else {
+            guard let sentence = readLine()?.characters.map({String($0)}) else {
                 continue
             }
             // Classify
