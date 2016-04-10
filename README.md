@@ -8,7 +8,7 @@
 
 ## Requirements
 
-* Swift 3.0-dev 03/24/16 (DEVELOPMENT-SNAPSHOT-2016-03-24-a)
+* Swift 3.0-dev 03/24/16 (`DEVELOPMENT-SNAPSHOT-2016-03-24-a`)
 
 ## Instructions
 
