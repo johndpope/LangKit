@@ -1,10 +1,14 @@
-# LangKit [![Build Status](https://travis-ci.org/xinranmsn/LangKit.svg?branch=master)](https://travis-ci.org/xinranmsn/LangKit)
+# LangKit
 
-**In construction**
+[![Build Status](https://travis-ci.org/xinranmsn/LangKit.svg?branch=master)](https://travis-ci.org/xinranmsn/LangKit)
+[![Swift](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://swift.org/download/#snapshots)
+[![License](https://img.shields.io/badge/licence-UIUC-blue.svg)](https://github.com/xinranmsn/LangKit/blob/master/LICENCE.md)
 
-Author: Richard Wei
+**Early work**
 
-License: The University of Illinois/NCSA Open Source License (NCSA)
+## Requirements
+
+* Swift 3.0-dev 03/24/16 (DEVELOPMENT-SNAPSHOT-2016-03-24-a)
 
 ## Instructions
 
@@ -34,10 +38,7 @@ Test: `⌘u`
 
 ## Note
 
-1. Swift 2 is not supported.
+* Swift 2 is **not** supported.
 
-2. I am using Swift 3.0-dev 03/24/16 build. 
+* Earlier versions of Swift 3.0-dev may not compile due to frequent language changes.
 
-## Known Issues
-
-1. Swift Dictionary is **incredibly slow**. I might migrate to NSDictionary, or rewrite one.
