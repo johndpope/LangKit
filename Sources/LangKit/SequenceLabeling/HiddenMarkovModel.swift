@@ -16,14 +16,14 @@ public func ==(lhs: HiddenMarkovModel.Emission, rhs: HiddenMarkovModel.Emission)
 
 public class HiddenMarkovModel {
 
-    public typealias ItemType = String
-    public typealias LabelType = String
+    public typealias Item = String
+    public typealias Label = String
 
 
     public struct Transition : Equatable, Hashable {
-        public var label1, label2: ItemType
+        public var label1, label2: Item
 
-        public init(label1: ItemType, label2: ItemType) {
+        public init(label1: Item, label2: Item) {
             self.label1 = label1
             self.label2 = label2
         }
@@ -34,8 +34,8 @@ public class HiddenMarkovModel {
     }
 
     public struct Emission : Equatable, Hashable {
-        public var label: ItemType
-        public var item: ItemType
+        public var label: Item
+        public var item: Item
 
         public var hashValue: Int {
             return "\(item), \(label)".hashValue
@@ -43,11 +43,11 @@ public class HiddenMarkovModel {
     }
 
 
-    private(set) var initial: [LabelType: Float]
+    private(set) var initial: [Label: Float]
     private(set) var transition: [Transition: Float]
     private(set) var emission: [Emission: Float]
 
-    public init(initial: [LabelType: Float], transition: [Transition: Float], emission: [Emission: Float]) {
+    public init(initial: [Label: Float], transition: [Transition: Float], emission: [Emission: Float]) {
         self.initial = initial
         self.transition = transition
         self.emission = emission
@@ -57,7 +57,7 @@ public class HiddenMarkovModel {
 
 extension HiddenMarkovModel : SequenceLabeler {
 
-    public func tag(sequence: [ItemType]) -> [(ItemType, LabelType)] {
+    public func tag(sequence: [Item]) -> [(Item, Label)] {
         // TODO
         return []
     }
@@ -67,7 +67,7 @@ extension HiddenMarkovModel : SequenceLabeler {
 
 extension HiddenMarkovModel {
 
-    public func tag(sentence: String) -> [(ItemType, LabelType)] {
+    public func tag(sentence: String) -> [(Item, Label)] {
         // TODO
         return []
     }
@@ -76,7 +76,7 @@ extension HiddenMarkovModel {
 
 extension HiddenMarkovModel {
 
-    public func viterbi(observation: [ItemType]) -> [(Float, LabelType)] {
+    public func viterbi(observation: [Item]) -> [(Float, Label)] {
         // TODO
         return []
     }
