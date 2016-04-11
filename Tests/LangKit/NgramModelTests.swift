@@ -13,7 +13,7 @@ class NgramModelTests: XCTestCase {
 
     func testNgrams() {
         XCTAssertEqual(Array([1, 2, 3, 4, 5].ngrams(2)), [[1,2], [2,3], [3,4], [4,5]])
-        XCTAssertEqual("I am a smart student .".ngrams(2, form: .Word).toArray(), [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]])
+        XCTAssertEqual("I am a smart student .".ngrams(2, form: .word).toArray(), [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]])
     }
 
     func testUnigramProbability() {
