@@ -28,6 +28,8 @@ Test:
 ```
     $ swift test
 ```
+* Tests currently do not run due to an external package. Please run the tests on Xcode!
+
 ### Xcode 7.3 with Swift 3 (OS X only) ###
 
 Switch the toolchain to Swift development snapshot, and open `LangKit.xcodeproj`.
