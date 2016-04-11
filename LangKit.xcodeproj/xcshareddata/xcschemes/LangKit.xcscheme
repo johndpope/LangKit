@@ -28,6 +28,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_RedBlackTree"
+               BuildableName = "libRedBlackTree.dylib"
+               BlueprintName = "RedBlackTree"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "______Target_LangKit"
                BuildableName = "libLangKit.dylib"
                BlueprintName = "LangKit"
@@ -63,6 +77,16 @@
                BlueprintIdentifier = "______Target_CommandLineTestSuite"
                BuildableName = "CommandLine.testsuite.xctest"
                BlueprintName = "CommandLine.testsuite"
+               ReferencedContainer = "container:LangKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_HelpersTestSuite"
+               BuildableName = "Helpers.testsuite.xctest"
+               BlueprintName = "Helpers.testsuite"
                ReferencedContainer = "container:LangKit.xcodeproj">
             </BuildableReference>
          </TestableReference>

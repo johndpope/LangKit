@@ -3,10 +3,13 @@ import PackageDescription
 let package = Package(
     name: "LangKit",
     exclude: ["Documentation", "Build", "Frameworks"],
-    dependencies: [
-        .Package(url: "https://github.com/xinranmsn/CommandLine", versions: Version(2,0,0)...Version(2,2,1))
+    dependencies:
+    [
+        .Package(url: "https://github.com/xinranmsn/CommandLine", versions: Version(2,0,0)...Version(2,2,1)),
+        .Package(url: "https://github.com/xinranmsn/RedBlackTree", majorVersion: 0, minor: 1)
     ],
-    targets: [
+    targets:
+    [
         Target(
             name: "LangKit"
         ),
