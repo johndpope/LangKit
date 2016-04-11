@@ -35,7 +35,6 @@
 		__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */; };
 		__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */; };
 		__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */; };
-		__src_cc_ref_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift */; };
 		__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */; };
 		__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */; };
 		__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */; };
@@ -103,7 +102,6 @@
 		__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel2.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/Classifier.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/NaiveBayes.swift; sourceTree = "<group>"; };
-		__PBXFileRef_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/RedBlackTree.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/LanguageModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/NgramModel.swift; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 				__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */,
-				__PBXFileRef_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift */,
 				__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */,
@@ -540,7 +537,6 @@
 				__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */,
-				__src_cc_ref_Sources/LangKit/DataStructures/RedBlackTree.swift /* DataStructures/RedBlackTree.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */,
