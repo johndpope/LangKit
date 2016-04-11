@@ -9,14 +9,14 @@
 import Foundation
 
 public enum SmoothingMode : NilLiteralConvertible {
-    case None
-    case Laplace
-    case GoodTuring
-    case LinearInterpolation
-    case AbsoluteDiscounting
+    case none
+    case laplace
+    case goodTuring
+    case linearInterpolation
+    case absoluteDiscounting
 
     public init(nilLiteral: ()) {
-        self = .None
+        self = .none
     }
 }
 
@@ -55,7 +55,7 @@ public struct NgramModel {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
-        if smoothing == .GoodTuring {
+        if smoothing == .goodTuring {
             self.countFrequency = [:]
         }
         if let corpus = corpus {
@@ -103,7 +103,7 @@ extension NgramModel {
         let unkedNgram = ngram.map { tokens.contains($0) ? $0 : Preprocessor.unknown }
 
         // Good Turing smoothing--preprocess only
-        if smoothing == .GoodTuring {
+        if smoothing == .goodTuring {
             return unkedNgram
         }
 
@@ -141,7 +141,7 @@ extension NgramModel : LanguageModel {
                 self.insert(ngram)
 
                 // Count frequency adjustment for Good Turing smoothing
-                if smoothing == .GoodTuring {
+                if smoothing == .goodTuring {
                     let count = self.count(ngram)
                     var prevCountFreq = countFrequency[count-1] ?? 0
                     if prevCountFreq != 0 {
@@ -204,13 +204,13 @@ extension NgramModel : LanguageModel {
         var probability: Float
         switch smoothing {
 
-        case .None:
+        case .none:
             probability = Float(count) / Float(precount)
 
-        case .Laplace:
+        case .laplace:
             probability = Float(count + 1) / Float(precount + self.count)
 
-        case .GoodTuring:
+        case .goodTuring:
             let numCount = countFrequency[count]!
             let numCountPlusOne = countFrequency[count + 1] ?? 1
             probability = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))

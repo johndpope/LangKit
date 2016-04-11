@@ -4,8 +4,8 @@
  */
 
 public enum NgramForm {
-    case Letter
-    case Word
+    case letter
+    case word
 }
 
 public extension Array where Element : Equatable {
@@ -20,9 +20,9 @@ public extension String {
 
     public func ngrams(n: Int, form: NgramForm) -> Ngrams<String> {
         switch form {
-        case .Letter:
+        case .letter:
             return characters.map{String($0)}.ngrams(n)
-        case .Word:
+        case .word:
             return self.tokenized().ngrams(n)
         }
     }
