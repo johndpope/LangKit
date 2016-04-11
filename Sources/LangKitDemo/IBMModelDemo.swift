@@ -12,12 +12,12 @@ import LangKit
 class IBMModelDemo : Demo {
 
     enum Model {
-        case One
-        case Two
+        case one
+        case two
     }
 
     static func run() {
-        run(.One)
+        run(.one)
     }
 
     static func run(model: Model) {
@@ -36,9 +36,14 @@ class IBMModelDemo : Demo {
         let rawBitext = allRawBitext.prefix(sentenceCount)
         let bitext = rawBitext.map { ($0.0.tokenized(), $0.1.tokenized()) }
 
-        let aligner: Aligner = (model == .One) ?
-            IBMModel1(bitext: bitext, probabilityThreshold: threshold) :
-            IBMModel2(bitext: bitext, probabilityThreshold: threshold)
+        var aligner: Aligner!
+
+        switch (model) {
+        case .one:
+            aligner = IBMModel1(bitext: bitext, probabilityThreshold: threshold)
+        case .two:
+            aligner = IBMModel2(bitext: bitext, probabilityThreshold: threshold)
+        }
 
         aligner.train(iterations: iterations)
 
