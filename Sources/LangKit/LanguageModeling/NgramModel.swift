@@ -83,7 +83,7 @@ extension NgramModel {
     }
 
     public var count: Int {
-        return countTrie.count([])
+        return countTrie.count
     }
 
 }
@@ -176,7 +176,7 @@ extension NgramModel : LanguageModel {
             return 0
         }
         let count = countTrie.count(item)
-        let total = countTrie.count([])
+        let total = countTrie.count
         let probability = Float(count) / Float(total)
         return logspace ? log(probability) : probability
     }
