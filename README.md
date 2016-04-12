@@ -28,7 +28,7 @@ Test:
 ```
     $ swift test
 ```
-* Tests currently do not run due to an external package. Please run the tests on Xcode!
+* Tests currently do not run due to a bug in SwiftPM as of 03/24/16. Please run the tests on Xcode!
 
 ### Xcode 7.3 with Swift 3 (OS X only) ###
 
