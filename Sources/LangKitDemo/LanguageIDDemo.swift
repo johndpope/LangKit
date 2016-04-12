@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import struct LangKit.NgramModel
-import struct LangKit.NaiveBayes
+import LangKit
 
 class LanguageIDDemo: Demo {
 
@@ -23,24 +22,27 @@ class LanguageIDDemo: Demo {
 
      - returns: Corpora array
      */
-    static func readCorpora(fromFiles files: [String]) -> [[[String]]] {
-        var corporaRead: [[[String]]]?
-        do {
-            try corporaRead = files
-                // Load files
-                .map { path in try String(contentsOfFile: path, encoding: NSISOLatin1StringEncoding) }
-                // Split sentences
-                .map { $0.lineSplit().map { $0.characters.map{String($0)} } }
+    static func readCorpora(fromFiles files: [String]) -> [CorpusReader] {
+//        var corporaRead: [[[String]]]?
+//        do {
+//            try corporaRead = files
+//                // Load files
+//                .map { path in try String(contentsOfFile: path, encoding: NSISOLatin1StringEncoding) }
+//                // Split sentences
+//                .map { $0.lineSplit().map { $0.characters.map{String($0)} } }
+//        }
+//        catch let error {
+//            print("❌  Read error!", error)
+//            exit(EXIT_FAILURE)
+//        }
+        let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}) }
+        return readers.map {
+            guard let corpus = $0 else {
+                print("❌  Corpora error!")
+                exit(EXIT_FAILURE)
+            }
+            return corpus
         }
-        catch let error {
-            print("❌  Read error!", error)
-            exit(EXIT_FAILURE)
-        }
-        guard let corpora = corporaRead else {
-            print("❌  Corpora empty!")
-            exit(EXIT_FAILURE)
-        }
-        return corpora
     }
 
     /**
@@ -53,9 +55,9 @@ class LanguageIDDemo: Demo {
 
         // Create and train bigram models
         let classes : [String: [String] -> Float] =
-            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .goodTuring).sentenceLogProbability,
-              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .goodTuring).sentenceLogProbability,
-              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .goodTuring).sentenceLogProbability ]
+            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .laplace).sentenceLogProbability,
+              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .laplace).sentenceLogProbability,
+              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .laplace).sentenceLogProbability ]
 
         print("✅  Training complete")
 

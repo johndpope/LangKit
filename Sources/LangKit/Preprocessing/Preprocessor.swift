@@ -27,7 +27,7 @@ public extension Preprocessor {
 // MARK: - Corpus preprocessor
 public extension Preprocessor {
 
-    public class func replaceRareTokens(in corpus: [[String]], unknownThreshold threshold: Int) -> [[String]] {
+    public class func replaceRareTokens<C: Sequence where C.Iterator.Element == [String]>(in corpus: C, unknownThreshold threshold: Int) -> [[String]] {
         var frequency: [String: Int] = [:]
         corpus.forEach { sentence in
             sentence.forEach { token in
