@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		293BAB851CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293BAB861CBB868A00FAEE12 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		293BAB871CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293BAB881CBB868A00FAEE12 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		293BAB891CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293BAB8A1CBB868A00FAEE12 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		29E008851CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29E008861CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		29E008871CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29E008881CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		29E008891CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29E0088A1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		29E0088B1CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		29E0088C1CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		29E0088D1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		_LinkFileRef_LangKitDemo /* LangKitDemo in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKitDemo" /* LangKitDemo */; };
 		_LinkFileRef_RedBlackTree /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */; };
-		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */; };
-		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */; };
-		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */; };
-		"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/StringExtensions.swift" /* StringExtensions.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */; };
+		"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */; };
 		"__src_cc_ref_Packages/RedBlackTree-0.1.0/Sources/RedBlackKey.swift" /* RedBlackKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackKey.swift" /* RedBlackKey.swift */; };
 		"__src_cc_ref_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree descriptions.swift" /* RedBlackTree descriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree descriptions.swift" /* RedBlackTree descriptions.swift */; };
 		"__src_cc_ref_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree.swift" /* RedBlackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = "__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree.swift" /* RedBlackTree.swift */; };
@@ -36,6 +40,7 @@
 		__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */; };
 		__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */; };
 		__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */; };
+		__src_cc_ref_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */; };
 		__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */; };
 		__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */; };
 		__src_cc_ref_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */; };
@@ -55,39 +60,47 @@
 		__src_cc_ref_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */; };
 		__src_cc_ref_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */; };
 		__src_cc_ref_Tests/LangKit/TrieTests.swift /* TrieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKit/TrieTests.swift /* TrieTests.swift */; };
+		__src_cc_ref_Tests/LangKitDemo/DemoTests.swift /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Tests/LangKitDemo/DemoTests.swift /* DemoTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		293BAB8B1CBB868A00FAEE12 /* PBXContainerItemProxy */ = {
+		29E0088E1CBCB69700ED6C90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_RedBlackTree";
 			remoteInfo = RedBlackTree;
 		};
-		293BAB8C1CBB868A00FAEE12 /* PBXContainerItemProxy */ = {
+		29E0088F1CBCB69700ED6C90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_CommandLine";
 			remoteInfo = CommandLine;
 		};
-		293BAB8D1CBB868A00FAEE12 /* PBXContainerItemProxy */ = {
+		29E008901CBCB69700ED6C90 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_LangKit";
 			remoteInfo = LangKit;
 		};
+		29E008911CBCB69700ED6C90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = __RootObject_ /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_LangKitDemo";
+			remoteInfo = LangKitDemo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineTests.swift; sourceTree = "<group>"; };
-		"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/StringExtensions.swift" /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineTests.swift; sourceTree = "<group>"; };
+		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackKey.swift" /* RedBlackKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBlackKey.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree descriptions.swift" /* RedBlackTree descriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RedBlackTree descriptions.swift"; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/RedBlackTree-0.1.0/Sources/RedBlackTree.swift" /* RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBlackTree.swift; sourceTree = "<group>"; };
@@ -103,6 +116,7 @@
 		__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/Classifier.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/NaiveBayes.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIO/CorpusReader.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/LanguageModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/NgramModel.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageModeling/Ngrams.swift; sourceTree = "<group>"; };
@@ -122,12 +136,14 @@
 		__PBXFileRef_Tests/LangKit/SequenceLabelingTests.swift /* SequenceLabelingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceLabelingTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/TokenizationTests.swift /* TokenizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenizationTests.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Tests/LangKit/TrieTests.swift /* TrieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrieTests.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Tests/LangKitDemo/DemoTests.swift /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		"_____Product_CommandLine" /* libCommandLine.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libCommandLine.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = CommandLineTestSuite.xctest; path = CommandLine.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_HelpersTestSuite" /* HelpersTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = HelpersTestSuite.xctest; path = Helpers.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_CommandLineTestSuite" /* CommandLine.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = CommandLine.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_HelpersTestSuite" /* Helpers.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = Helpers.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LangKit" /* libLangKit.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libLangKit.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_LangKitDemo" /* LangKitDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = LangKitDemo; sourceTree = BUILT_PRODUCTS_DIR; };
-		"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; name = LangKitTestSuite.xctest; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKitDemoTestSuite" /* LangKitDemo.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LangKitDemo.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = LangKit.testsuite.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		"_____Product_RedBlackTree" /* libRedBlackTree.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libRedBlackTree.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -159,7 +175,7 @@
 			buildActionMask = 0;
 			files = (
 				_LinkFileRef_RedBlackTree /* libRedBlackTree.dylib in Frameworks */,
-				293BAB851CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */,
+				29E008851CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,9 +183,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293BAB861CBB868A00FAEE12 /* libRedBlackTree.dylib in Frameworks */,
-				293BAB871CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */,
+				29E008861CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */,
+				29E008871CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */,
 				_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		"___LinkPhase_LangKitDemoTestSuite" /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				29E0088B1CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */,
+				29E0088C1CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */,
+				_LinkFileRef_LangKitDemo /* LangKitDemo in Frameworks */,
+				29E0088D1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,9 +204,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293BAB881CBB868A00FAEE12 /* libRedBlackTree.dylib in Frameworks */,
-				293BAB891CBB868A00FAEE12 /* libCommandLine.dylib in Frameworks */,
-				293BAB8A1CBB868A00FAEE12 /* libLangKit.dylib in Frameworks */,
+				29E008881CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */,
+				29E008891CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */,
+				29E0088A1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,9 +223,10 @@
 		TestProducts_ /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				"_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */,
-				"_____Product_HelpersTestSuite" /* HelpersTestSuite.xctest */,
-				"_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */,
+				"_____Product_CommandLineTestSuite" /* CommandLine.testsuite.xctest */,
+				"_____Product_HelpersTestSuite" /* Helpers.testsuite.xctest */,
+				"_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */,
+				"_____Product_LangKitDemoTestSuite" /* LangKitDemo.testsuite.xctest */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -239,22 +267,22 @@
 		"_______Group_CommandLine" /* CommandLine */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift */,
-				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift */,
-				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/StringExtensions.swift" /* StringExtensions.swift */,
 			);
 			name = CommandLine;
-			path = "Packages/CommandLine-2.2.1-pre1/CommandLine";
+			path = "Packages/CommandLine-2.2.1-pre2/CommandLine";
 			sourceTree = "<group>";
 		};
 		"_______Group_CommandLineTestSuite" /* CommandLine.testsuite */ = {
 			isa = PBXGroup;
 			children = (
-				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */,
-				"__PBXFileRef_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift */,
+				"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift */,
 			);
 			name = CommandLine.testsuite;
-			path = "Packages/CommandLine-2.2.1-pre1/Tests/CommandLine";
+			path = "Packages/CommandLine-2.2.1-pre2/Tests/CommandLine";
 			sourceTree = "<group>";
 		};
 		"_______Group_HelpersTestSuite" /* Helpers.testsuite */ = {
@@ -279,6 +307,7 @@
 				__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */,
 				__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */,
+				__PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift */,
@@ -302,6 +331,15 @@
 			);
 			name = LangKitDemo;
 			path = Sources/LangKitDemo;
+			sourceTree = "<group>";
+		};
+		"_______Group_LangKitDemoTestSuite" /* LangKitDemo.testsuite */ = {
+			isa = PBXGroup;
+			children = (
+				__PBXFileRef_Tests/LangKitDemo/DemoTests.swift /* DemoTests.swift */,
+			);
+			name = LangKitDemo.testsuite;
+			path = Tests/LangKitDemo;
 			sourceTree = "<group>";
 		};
 		"_______Group_LangKitTestSuite" /* LangKit.testsuite */ = {
@@ -337,6 +375,7 @@
 				"_______Group_CommandLineTestSuite" /* CommandLine.testsuite */,
 				"_______Group_HelpersTestSuite" /* Helpers.testsuite */,
 				"_______Group_LangKitTestSuite" /* LangKit.testsuite */,
+				"_______Group_LangKitDemoTestSuite" /* LangKitDemo.testsuite */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -374,7 +413,7 @@
 			);
 			name = CommandLine.testsuite;
 			productName = CommandLineTestSuite;
-			productReference = "_____Product_CommandLineTestSuite" /* CommandLineTestSuite.xctest */;
+			productReference = "_____Product_CommandLineTestSuite" /* CommandLine.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_HelpersTestSuite" /* Helpers.testsuite */ = {
@@ -390,7 +429,7 @@
 			);
 			name = Helpers.testsuite;
 			productName = HelpersTestSuite;
-			productReference = "_____Product_HelpersTestSuite" /* HelpersTestSuite.xctest */;
+			productReference = "_____Product_HelpersTestSuite" /* Helpers.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_LangKit" /* LangKit */ = {
@@ -430,6 +469,25 @@
 			productReference = "_____Product_LangKitDemo" /* LangKitDemo */;
 			productType = "com.apple.product-type.tool";
 		};
+		"______Target_LangKitDemoTestSuite" /* LangKitDemo.testsuite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = "_______Confs_LangKitDemoTestSuite" /* Build configuration list for PBXNativeTarget "LangKitDemo.testsuite" */;
+			buildPhases = (
+				CompilePhase_LangKitDemoTestSuite /* Sources */,
+				"___LinkPhase_LangKitDemoTestSuite" /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				__Dependency_RedBlackTree /* PBXTargetDependency */,
+				__Dependency_CommandLine /* PBXTargetDependency */,
+				__Dependency_LangKitDemo /* PBXTargetDependency */,
+			);
+			name = LangKitDemo.testsuite;
+			productName = LangKitDemoTestSuite;
+			productReference = "_____Product_LangKitDemoTestSuite" /* LangKitDemo.testsuite.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		"______Target_LangKitTestSuite" /* LangKit.testsuite */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = "_______Confs_LangKitTestSuite" /* Build configuration list for PBXNativeTarget "LangKit.testsuite" */;
@@ -446,7 +504,7 @@
 			);
 			name = LangKit.testsuite;
 			productName = LangKitTestSuite;
-			productReference = "_____Product_LangKitTestSuite" /* LangKitTestSuite.xctest */;
+			productReference = "_____Product_LangKitTestSuite" /* LangKit.testsuite.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		"______Target_RedBlackTree" /* RedBlackTree */ = {
@@ -492,6 +550,7 @@
 				"______Target_LangKit" /* LangKit */,
 				"______Target_LangKitDemo" /* LangKitDemo */,
 				"______Target_LangKitTestSuite" /* LangKit.testsuite */,
+				"______Target_LangKitDemoTestSuite" /* LangKitDemo.testsuite */,
 			);
 		};
 /* End PBXProject section */
@@ -501,9 +560,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */,
-				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/Option.swift" /* Option.swift in Sources */,
-				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/CommandLine/StringExtensions.swift" /* StringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,8 +570,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */,
-				"__src_cc_ref_Packages/CommandLine-2.2.1-pre1/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/CommandLineTests.swift" /* CommandLineTests.swift in Sources */,
+				"__src_cc_ref_Packages/CommandLine-2.2.1-pre2/Tests/CommandLine/StringExtensionTests.swift" /* StringExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +597,7 @@
 				__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/Ngrams.swift /* LanguageModeling/Ngrams.swift in Sources */,
@@ -557,6 +617,14 @@
 				__src_cc_ref_Sources/LangKitDemo/LanguageIDDemo.swift /* LanguageIDDemo.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/main.swift /* main.swift in Sources */,
 				__src_cc_ref_Sources/LangKitDemo/TrieDemo.swift /* TrieDemo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CompilePhase_LangKitDemoTestSuite /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				__src_cc_ref_Tests/LangKitDemo/DemoTests.swift /* DemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,17 +659,22 @@
 		__Dependency_CommandLine /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_CommandLine" /* CommandLine */;
-			targetProxy = 293BAB8C1CBB868A00FAEE12 /* PBXContainerItemProxy */;
+			targetProxy = 29E0088F1CBCB69700ED6C90 /* PBXContainerItemProxy */;
 		};
 		__Dependency_LangKit /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_LangKit" /* LangKit */;
-			targetProxy = 293BAB8D1CBB868A00FAEE12 /* PBXContainerItemProxy */;
+			targetProxy = 29E008901CBCB69700ED6C90 /* PBXContainerItemProxy */;
+		};
+		__Dependency_LangKitDemo /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "______Target_LangKitDemo" /* LangKitDemo */;
+			targetProxy = 29E008911CBCB69700ED6C90 /* PBXContainerItemProxy */;
 		};
 		__Dependency_RedBlackTree /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_RedBlackTree" /* RedBlackTree */;
-			targetProxy = 293BAB8B1CBB868A00FAEE12 /* PBXContainerItemProxy */;
+			targetProxy = 29E0088E1CBCB69700ED6C90 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -671,6 +744,19 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
 				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+			};
+			name = Release;
+		};
+		_ReleaseConf_LangKitDemoTestSuite /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = LangKitDemoTestSuite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -774,6 +860,20 @@
 			};
 			name = Debug;
 		};
+		"___DebugConf_LangKitDemoTestSuite" /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_MODULE_NAME = LangKitDemoTestSuite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
 		"___DebugConf_LangKitTestSuite" /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -868,6 +968,15 @@
 			buildConfigurations = (
 				"___DebugConf_LangKitDemo" /* Debug */,
 				_ReleaseConf_LangKitDemo /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		"_______Confs_LangKitDemoTestSuite" /* Build configuration list for PBXNativeTarget "LangKitDemo.testsuite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				"___DebugConf_LangKitDemoTestSuite" /* Debug */,
+				_ReleaseConf_LangKitDemoTestSuite /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
