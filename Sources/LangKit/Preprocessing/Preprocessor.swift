@@ -7,7 +7,7 @@
 //
 
 // Token replacements for preprocessing
-internal let unknown = "UNK"
+internal let unknown = "<unk>"
 internal let sentenceStart = "<s>"
 internal let sentenceEnd = "</s>"
 
