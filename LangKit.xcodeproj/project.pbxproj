@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29E008851CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		29E008861CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		29E008871CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		29E008881CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		29E008891CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		29E0088A1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
-		29E0088B1CBCB69700ED6C90 /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		29E0088C1CBCB69700ED6C90 /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		29E0088D1CBCB69700ED6C90 /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		293C99181CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C99191CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C991A1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C991B1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C991C1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C991D1CBE1342005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		293C991E1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C991F1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C99201CBE1342005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		293C99261CBE16CD005F566C /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293C99251CBE16CD005F566C /* Key.swift */; };
 		_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		_LinkFileRef_LangKitDemo /* LangKitDemo in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKitDemo" /* LangKitDemo */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		293C99251CBE16CD005F566C /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Key.swift; path = DataStructures/Key.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */,
 				__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */,
+				293C99251CBE16CD005F566C /* Key.swift */,
 				__PBXFileRef_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift */,
 				__PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */,
@@ -605,6 +608,7 @@
 				__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift in Sources */,
+				293C99261CBE16CD005F566C /* Key.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramCounter.swift /* LanguageModeling/NgramCounter.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */,
