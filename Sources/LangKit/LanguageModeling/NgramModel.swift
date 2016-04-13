@@ -13,7 +13,7 @@ public struct NgramModel {
 
     public enum SmoothingMode : NilLiteralConvertible {
         case none
-        case laplace
+        case laplace(Float)
         case goodTuring
         case linearInterpolation
         case absoluteDiscounting
@@ -58,7 +58,7 @@ public struct NgramModel {
         self.smoothing = smoothing
         self.threshold = threshold
         self.counter = counter
-        if smoothing == .goodTuring {
+        if case .goodTuring = smoothing {
             self.countFrequency = [:]
         }
         if let corpus = corpus {
@@ -93,7 +93,7 @@ extension NgramModel {
         let unkedNgram = ngram.map { tokens.contains($0) ? $0 : unknown }
 
         // Good Turing smoothing--preprocess only
-        if smoothing == .goodTuring {
+        if case .goodTuring = smoothing {
             return unkedNgram
         }
 
@@ -131,7 +131,7 @@ extension NgramModel : LanguageModel {
                 self.insert(ngram)
 
                 // Count frequency adjustment for Good Turing smoothing
-                if smoothing == .goodTuring {
+                if case .goodTuring = smoothing {
                     let count = counter[ngram]
                     var prevCountFreq = countFrequency[count-1] ?? 0
                     if prevCountFreq != 0 {
@@ -197,8 +197,8 @@ extension NgramModel : LanguageModel {
         case .none:
             probability = Float(count) / Float(precount)
 
-        case .laplace:
-            probability = Float(count + 1) / Float(precount + counter.count)
+        case .laplace(let k):
+            probability = (Float(count) + k) / (Float(precount) + Float(counter.count) * k)
 
         case .goodTuring:
             let numCount = countFrequency[count]!
