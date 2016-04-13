@@ -8,7 +8,7 @@ public enum NgramForm {
     case word
 }
 
-public extension Array where Element : Equatable {
+public extension Array {
 
     public func ngrams(n: Int) -> Ngrams<Element> {
         return Ngrams<Element>(n, source: self)

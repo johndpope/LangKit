@@ -11,17 +11,38 @@ internal let unknown = "UNK"
 internal let sentenceStart = "<s>"
 internal let sentenceEnd = "</s>"
 
-public func wrapSentenceBoundary(sentence: [String]) -> [String] {
-    return [sentenceStart] + sentence + [sentenceEnd]
+extension Sequence where Iterator.Element == String {
+
+    public func wrapSentenceBoundary() -> [String] {
+        return [sentenceStart] + self + [sentenceEnd]
+    }
+
+    public func replaceRareTokens(minimumCount threshold: Int) -> [String] {
+        var frequency: [String: Int] = [:]
+        self.forEach {
+            frequency[$0] = (frequency[$0] ?? 0) + 1
+        }
+        return self.map {
+            frequency[$0]! > threshold ? $0 : unknown
+        }
+    }
+
 }
 
-public func replaceRareTokens<C: Sequence where C.Iterator.Element == String>(in tokens: C, minimumCount threshold: Int) -> [String] {
-    var frequency: [String: Int] = [:]
-    tokens.forEach {
-        frequency[$0] = (frequency[$0] ?? 0) + 1
-    }
-    return tokens.map {
-        frequency[$0]! > threshold ? $0 : unknown
-    }
-}
+extension Sequence where Iterator.Element == [String] {
 
+    public func replaceRareTokens(minimumCount threshold: Int) -> [[String]] {
+        var frequency: [String: Int] = [:]
+        self.forEach {
+            $0.forEach {
+                frequency[$0] = (frequency[$0] ?? 0) + 1
+            }
+        }
+        return self.map {
+            $0.map {
+                frequency[$0]! > threshold ? $0 : unknown
+            }
+        }
+    }
+    
+}

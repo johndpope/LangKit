@@ -101,7 +101,7 @@ extension NgramModel {
      */
     private func smoothNgram(ngram: [Token]) -> [Token] {
         // 'Unk'ify (preprocess)
-        let unkedNgram = ngram.map { tokens.contains($0) ? $0 : Preprocessor.unknown }
+        let unkedNgram = ngram.map { tokens.contains($0) ? $0 : unknown }
 
         // Good Turing smoothing--preprocess only
         if smoothing == .goodTuring {
@@ -111,9 +111,9 @@ extension NgramModel {
         // Pregram does not exist
         if self.count(unkedNgram.dropLast().map{$0}) == 0 {
             // Smooth pregram
-            let presmoothedNgram = Array(repeating: Preprocessor.unknown, count: n) + [unkedNgram.last!]
+            let presmoothedNgram = Array(repeating: unknown, count: n) + [unkedNgram.last!]
             return self.count(presmoothedNgram) == 0
-                ? presmoothedNgram.dropLast() + [Preprocessor.unknown]
+                ? presmoothedNgram.dropLast() + [unknown]
                 : presmoothedNgram
         }
 
@@ -132,10 +132,10 @@ extension NgramModel : LanguageModel {
      - parameter corpus: Tokenized corpus
      */
     public mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus: C) {
-        let corpus = Preprocessor.replaceRareTokens(in: corpus, unknownThreshold: threshold)
+        let corpus = corpus.replaceRareTokens(minimumCount: threshold)
         for (i, sentence) in corpus.enumerated() {
             // Wrap <s> and </s> symbols
-            let sentence = Preprocessor.wrapSentenceBoundary(sentence)
+            let sentence = sentence.wrapSentenceBoundary()
             // Train the countTrie
             for ngram in sentence.ngrams(n) {
                 // Insert ngram to trie; add ngram to token set
@@ -157,7 +157,7 @@ extension NgramModel : LanguageModel {
             }
         }
         // If no (UNK, ..., UNK) present, insert one
-        let unk = Array(repeating: Preprocessor.unknown, count: n)
+        let unk = Array(repeating: unknown, count: n)
         if self.count(unk) == 0 {
             self.insert(unk)
         }
@@ -231,7 +231,7 @@ extension NgramModel : LanguageModel {
      - returns: Log probability
      */
     public func sentenceLogProbability(sentence: [Token]) -> Float {
-        let probabilities = Preprocessor.wrapSentenceBoundary(sentence).ngrams(n)
+        let probabilities = sentence.wrapSentenceBoundary().ngrams(n)
             .map { self.markovProbability($0, logspace: true) }
         return probabilities.reduce(0, combine: +)
     }

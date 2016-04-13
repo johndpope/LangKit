@@ -55,9 +55,9 @@ class LanguageIDDemo: Demo {
 
         // Create and train bigram models
         let classes : [String: [String] -> Float] =
-            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .laplace).sentenceLogProbability,
-              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .laplace).sentenceLogProbability,
-              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .laplace).sentenceLogProbability ]
+            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .goodTuring).sentenceLogProbability,
+              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .goodTuring).sentenceLogProbability,
+              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .goodTuring).sentenceLogProbability ]
 
         print("✅  Training complete")
 
