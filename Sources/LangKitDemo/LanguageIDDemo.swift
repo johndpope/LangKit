@@ -23,18 +23,6 @@ class LanguageIDDemo: Demo {
      - returns: Corpora array
      */
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader] {
-//        var corporaRead: [[[String]]]?
-//        do {
-//            try corporaRead = files
-//                // Load files
-//                .map { path in try String(contentsOfFile: path, encoding: NSISOLatin1StringEncoding) }
-//                // Split sentences
-//                .map { $0.lineSplit().map { $0.characters.map{String($0)} } }
-//        }
-//        catch let error {
-//            print("❌  Read error!", error)
-//            exit(EXIT_FAILURE)
-//        }
         let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}) }
         return readers.map {
             guard let corpus = $0 else {
@@ -43,6 +31,10 @@ class LanguageIDDemo: Demo {
             }
             return corpus
         }
+    }
+
+    static func probabilityFunction(fromCorpus corpus: CorpusReader) -> [String] -> Float {
+        return NgramModel(n: 3, trainingCorpus: corpus, smoothingMode: .goodTuring, counter: TrieNgramCounter()).sentenceLogProbability
     }
 
     /**
@@ -55,9 +47,9 @@ class LanguageIDDemo: Demo {
 
         // Create and train bigram models
         let classes : [String: [String] -> Float] =
-            [ "🌐  English": NgramModel(n: 3, trainingCorpus: corpora[0], smoothingMode: .goodTuring).sentenceLogProbability,
-              "🌐  French" : NgramModel(n: 3, trainingCorpus: corpora[1], smoothingMode: .goodTuring).sentenceLogProbability,
-              "🌐  Italian": NgramModel(n: 3, trainingCorpus: corpora[2], smoothingMode: .goodTuring).sentenceLogProbability ]
+            [ "🌐  English": probabilityFunction(fromCorpus: corpora[0]),
+              "🌐  French" : probabilityFunction(fromCorpus: corpora[1]),
+              "🌐  Italian": probabilityFunction(fromCorpus: corpora[2]) ]
 
         print("✅  Training complete")
 

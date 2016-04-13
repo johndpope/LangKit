@@ -8,19 +8,20 @@
 
 import Foundation
 
-public enum SmoothingMode : NilLiteralConvertible {
-    case none
-    case laplace
-    case goodTuring
-    case linearInterpolation
-    case absoluteDiscounting
-
-    public init(nilLiteral: ()) {
-        self = .none
-    }
-}
 
 public struct NgramModel {
+
+    public enum SmoothingMode : NilLiteralConvertible {
+        case none
+        case laplace
+        case goodTuring
+        case linearInterpolation
+        case absoluteDiscounting
+        
+        public init(nilLiteral: ()) {
+            self = .none
+        }
+    }
 
     // Token type
     public typealias Token = String
@@ -29,16 +30,16 @@ public struct NgramModel {
     public typealias Item = [Token]
 
     // Gram number
-    private var n: Int
+    private let n: Int
 
     // Unknown replacement threshold
-    private var threshold: Int
+    private let threshold: Int
 
     // Smoothing mode
-    private var smoothing: SmoothingMode
+    private let smoothing: SmoothingMode
 
-    // Ngram count structure
-    private var countTrie = Trie<Token>()
+    // Ngram count trie
+    private var counter: NgramCounter
 
     // Unigram count
     private var tokens: Set<Token> = []
@@ -52,10 +53,11 @@ public struct NgramModel {
      - parameter n: Gram number
      */
     public init<C: Sequence where C.Iterator.Element == [Token]>
-        (n: Int, trainingCorpus corpus: C?, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10) {
+        (n: Int, trainingCorpus corpus: C?, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10, counter: NgramCounter = DictionaryNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
+        self.counter = counter
         if smoothing == .goodTuring {
             self.countFrequency = [:]
         }
@@ -70,21 +72,8 @@ public struct NgramModel {
 extension NgramModel {
 
     public mutating func insert(ngram: [Token]) {
-        self.countTrie = countTrie.insert(ngram, incrementingNodes: true)
+        counter.insert(ngram)
         ngram.forEach { self.tokens.insert($0) }
-    }
-
-}
-
-// MARK: - Count properties
-extension NgramModel {
-
-    public func count(ngram: [Token]) -> Int {
-        return countTrie.count(ngram)
-    }
-
-    public var count: Int {
-        return countTrie.count
     }
 
 }
@@ -109,10 +98,10 @@ extension NgramModel {
         }
 
         // Pregram does not exist
-        if self.count(unkedNgram.dropLast().map{$0}) == 0 {
+        if counter[unkedNgram.dropLast().map{$0}] == 0 {
             // Smooth pregram
             let presmoothedNgram = Array(repeating: unknown, count: n) + [unkedNgram.last!]
-            return self.count(presmoothedNgram) == 0
+            return counter[presmoothedNgram] == 0
                 ? presmoothedNgram.dropLast() + [unknown]
                 : presmoothedNgram
         }
@@ -143,7 +132,7 @@ extension NgramModel : LanguageModel {
 
                 // Count frequency adjustment for Good Turing smoothing
                 if smoothing == .goodTuring {
-                    let count = self.count(ngram)
+                    let count = counter[ngram]
                     var prevCountFreq = countFrequency[count-1] ?? 0
                     if prevCountFreq != 0 {
                         prevCountFreq -= 1
@@ -158,7 +147,7 @@ extension NgramModel : LanguageModel {
         }
         // If no (UNK, ..., UNK) present, insert one
         let unk = Array(repeating: unknown, count: n)
-        if self.count(unk) == 0 {
+        if counter[unk] == 0 {
             self.insert(unk)
         }
         debugPrint()
@@ -176,8 +165,8 @@ extension NgramModel : LanguageModel {
         guard item.count == n else {
             return 0
         }
-        let count = countTrie.count(item)
-        let total = countTrie.count
+        let count = counter[item]
+        let total = counter.count
         let probability = Float(count) / Float(total)
         return logspace ? log(probability) : probability
     }
@@ -196,9 +185,9 @@ extension NgramModel : LanguageModel {
         let pregram = ngram.dropLast().map{$0}
 
         // Count and precount smoothing
-        let rawCount = countTrie.count(ngram)
+        let rawCount = counter[ngram]
         let count = rawCount == 0 ? 1 : rawCount
-        let rawPrecount = countTrie.count(pregram)
+        let rawPrecount = counter[pregram]
         let precount = rawPrecount == 0 ? 1 : rawPrecount
 
         // Calculate probabiliy according to smoothing method
@@ -209,7 +198,7 @@ extension NgramModel : LanguageModel {
             probability = Float(count) / Float(precount)
 
         case .laplace:
-            probability = Float(count + 1) / Float(precount + self.count)
+            probability = Float(count + 1) / Float(precount + counter.count)
 
         case .goodTuring:
             let numCount = countFrequency[count]!
