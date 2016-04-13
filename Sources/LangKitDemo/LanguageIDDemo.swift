@@ -34,7 +34,10 @@ class LanguageIDDemo: Demo {
     }
 
     static func probabilityFunction(fromCorpus corpus: CorpusReader) -> [String] -> Float {
-        return NgramModel(n: 3, trainingCorpus: corpus, smoothingMode: .goodTuring, counter: TrieNgramCounter()).sentenceLogProbability
+        return NgramModel(n: 3, trainingCorpus:
+                          corpus, smoothingMode: .goodTuring,
+                          counter: DictionaryNgramCounter(minimumCapacity: 1024))
+            .sentenceLogProbability
     }
 
     /**

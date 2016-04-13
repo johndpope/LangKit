@@ -56,26 +56,35 @@ public struct DictionaryNgramCounter : NgramCounter {
             return "\(ngram)".hashValue
         }
 
+        var pregramKey: NgramKey {
+            return .init(Array(ngram.dropLast()))
+        }
+
     }
 
     private var table: [NgramKey: Int]
+    private var backoffTable: [NgramKey: Int]
+
+    public init(minimumCapacity capacity: Int) {
+        table = .init(minimumCapacity: capacity)
+        backoffTable = .init(minimumCapacity: capacity)
+    }
 
     public init() {
-        table = [:]
+        table = .init()
+        backoffTable = .init()
     }
 
     public mutating func insert(ngram: [String]) {
         let key = NgramKey(ngram)
         table[key] = (table[key] ?? 0) + 1
+        let pregramKey = key.pregramKey
+        backoffTable[pregramKey] = (backoffTable[pregramKey] ?? 0) + 1
     }
 
     public subscript(ngram: [String]) -> Int {
-        if let n = table.keys.first?.ngram.count where ngram.count < n {
-            // Brute force backoff
-            let pregrams = table.keys.filter { $0.ngram.dropLast().elementsEqual(ngram) }
-            return pregrams.count
-        }
-        return table[NgramKey(ngram)] ?? 0
+        let key = NgramKey(ngram)
+        return table[key] ?? backoffTable[key] ?? 0
     }
 
     public var count: Int {

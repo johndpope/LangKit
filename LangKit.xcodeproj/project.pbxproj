@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		293C99181CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293C99191CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		293C991A1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293C991B1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		293C991C1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293C991D1CBE1342005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
-		293C991E1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
-		293C991F1CBE1342005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
-		293C99201CBE1342005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
-		293C99261CBE16CD005F566C /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293C99251CBE16CD005F566C /* Key.swift */; };
+		293C99291CBF0771005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C992A1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C992B1CBF0771005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C992C1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C992D1CBF0771005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C992E1CBF0771005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
+		293C992F1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_RedBlackTree" /* libRedBlackTree.dylib */; };
+		293C99301CBF0771005F566C /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
+		293C99311CBF0771005F566C /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		_LinkFileRef_CommandLine /* libCommandLine.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_CommandLine" /* libCommandLine.dylib */; };
 		_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKit" /* libLangKit.dylib */; };
 		_LinkFileRef_LangKitDemo /* LangKitDemo in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LangKitDemo" /* LangKitDemo */; };
@@ -40,6 +39,7 @@
 		__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */; };
 		__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */; };
 		__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */; };
+		__src_cc_ref_Sources/LangKit/DataStructures/Key.swift /* DataStructures/Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/Key.swift /* DataStructures/Key.swift */; };
 		__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */; };
 		__src_cc_ref_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift */; };
 		__src_cc_ref_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = __PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */; };
@@ -67,28 +67,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		293C99211CBE1342005F566C /* PBXContainerItemProxy */ = {
+		293C99321CBF0771005F566C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_RedBlackTree";
 			remoteInfo = RedBlackTree;
 		};
-		293C99221CBE1342005F566C /* PBXContainerItemProxy */ = {
+		293C99331CBF0771005F566C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_CommandLine";
 			remoteInfo = CommandLine;
 		};
-		293C99231CBE1342005F566C /* PBXContainerItemProxy */ = {
+		293C99341CBF0771005F566C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = "______Target_LangKit";
 			remoteInfo = LangKit;
 		};
-		293C99241CBE1342005F566C /* PBXContainerItemProxy */ = {
+		293C99351CBF0772005F566C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = __RootObject_ /* Project object */;
 			proxyType = 1;
@@ -98,7 +98,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		293C99251CBE16CD005F566C /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Key.swift; path = DataStructures/Key.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = /Users/rxwei/Development/Linguistics/Tools/LangKit/Package.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/CommandLine.swift" /* CommandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/CommandLine-2.2.1-pre2/CommandLine/Option.swift" /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alignment/IBMModel2.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/Classifier.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classification/NaiveBayes.swift; sourceTree = "<group>"; };
+		__PBXFileRef_Sources/LangKit/DataStructures/Key.swift /* DataStructures/Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Key.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures/Trie.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIO/ARPA.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIO/CorpusReader.swift; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 			buildActionMask = 0;
 			files = (
 				_LinkFileRef_RedBlackTree /* libRedBlackTree.dylib in Frameworks */,
-				293C99181CBE1342005F566C /* libCommandLine.dylib in Frameworks */,
+				293C99291CBF0771005F566C /* libCommandLine.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,8 +189,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293C99191CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */,
-				293C991A1CBE1342005F566C /* libCommandLine.dylib in Frameworks */,
+				293C992A1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */,
+				293C992B1CBF0771005F566C /* libCommandLine.dylib in Frameworks */,
 				_LinkFileRef_LangKit /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,10 +199,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293C991E1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */,
-				293C991F1CBE1342005F566C /* libCommandLine.dylib in Frameworks */,
+				293C992F1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */,
+				293C99301CBF0771005F566C /* libCommandLine.dylib in Frameworks */,
 				_LinkFileRef_LangKitDemo /* LangKitDemo in Frameworks */,
-				293C99201CBE1342005F566C /* libLangKit.dylib in Frameworks */,
+				293C99311CBF0771005F566C /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,9 +210,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
-				293C991B1CBE1342005F566C /* libRedBlackTree.dylib in Frameworks */,
-				293C991C1CBE1342005F566C /* libCommandLine.dylib in Frameworks */,
-				293C991D1CBE1342005F566C /* libLangKit.dylib in Frameworks */,
+				293C992C1CBF0771005F566C /* libRedBlackTree.dylib in Frameworks */,
+				293C992D1CBF0771005F566C /* libCommandLine.dylib in Frameworks */,
+				293C992E1CBF0771005F566C /* libLangKit.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,8 +312,8 @@
 				__PBXFileRef_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift */,
 				__PBXFileRef_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift */,
+				__PBXFileRef_Sources/LangKit/DataStructures/Key.swift /* DataStructures/Key.swift */,
 				__PBXFileRef_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift */,
-				293C99251CBE16CD005F566C /* Key.swift */,
 				__PBXFileRef_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift */,
 				__PBXFileRef_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift */,
 				__PBXFileRef_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift */,
@@ -605,10 +605,10 @@
 				__src_cc_ref_Sources/LangKit/Alignment/IBMModel2.swift /* Alignment/IBMModel2.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/Classification/Classifier.swift /* Classification/Classifier.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/Classification/NaiveBayes.swift /* Classification/NaiveBayes.swift in Sources */,
+				__src_cc_ref_Sources/LangKit/DataStructures/Key.swift /* DataStructures/Key.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/DataStructures/Trie.swift /* DataStructures/Trie.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/FileIO/ARPA.swift /* FileIO/ARPA.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/FileIO/CorpusReader.swift /* FileIO/CorpusReader.swift in Sources */,
-				293C99261CBE16CD005F566C /* Key.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/LanguageModel.swift /* LanguageModeling/LanguageModel.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramCounter.swift /* LanguageModeling/NgramCounter.swift in Sources */,
 				__src_cc_ref_Sources/LangKit/LanguageModeling/NgramModel.swift /* LanguageModeling/NgramModel.swift in Sources */,
@@ -671,22 +671,22 @@
 		__Dependency_CommandLine /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_CommandLine" /* CommandLine */;
-			targetProxy = 293C99221CBE1342005F566C /* PBXContainerItemProxy */;
+			targetProxy = 293C99331CBF0771005F566C /* PBXContainerItemProxy */;
 		};
 		__Dependency_LangKit /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_LangKit" /* LangKit */;
-			targetProxy = 293C99231CBE1342005F566C /* PBXContainerItemProxy */;
+			targetProxy = 293C99341CBF0771005F566C /* PBXContainerItemProxy */;
 		};
 		__Dependency_LangKitDemo /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_LangKitDemo" /* LangKitDemo */;
-			targetProxy = 293C99241CBE1342005F566C /* PBXContainerItemProxy */;
+			targetProxy = 293C99351CBF0772005F566C /* PBXContainerItemProxy */;
 		};
 		__Dependency_RedBlackTree /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = "______Target_RedBlackTree" /* RedBlackTree */;
-			targetProxy = 293C99211CBE1342005F566C /* PBXContainerItemProxy */;
+			targetProxy = 293C99321CBF0771005F566C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
