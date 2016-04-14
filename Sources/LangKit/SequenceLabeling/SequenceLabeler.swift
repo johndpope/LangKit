@@ -11,6 +11,8 @@ public protocol SequenceLabeler {
     associatedtype Item
     associatedtype Label
 
-    func tag(sequence: [Item]) -> [(Item, Label)]
+    mutating func train<C: Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C)
+
+    func tag(sequence: [Item]) -> [(item: Item, label: Label)]
 
 }
