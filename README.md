@@ -4,6 +4,8 @@
 [![Swift](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://swift.org/download/#snapshots)
 [![License](https://img.shields.io/badge/licence-UIUC-blue.svg)](https://github.com/xinranmsn/LangKit/blob/master/LICENSE)
 
+Natural Language Processing Toolkit in Swift
+
 **Early work**
 
 ## Requirements
