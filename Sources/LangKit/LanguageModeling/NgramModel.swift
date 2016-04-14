@@ -62,7 +62,7 @@ public struct NgramModel {
             self.countFrequency = [:]
         }
         if let corpus = corpus {
-            self.train(corpus)
+            self.train(corpus: corpus)
         }
     }
 
@@ -120,7 +120,7 @@ extension NgramModel : LanguageModel {
 
      - parameter corpus: Tokenized corpus
      */
-    public mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus: C) {
+    public mutating func train<C: Sequence where C.Iterator.Element == Item>(corpus corpus: C) {
         let corpus = corpus.replaceRareTokens(minimumCount: threshold)
         for (i, sentence) in corpus.enumerated() {
             // Wrap <s> and </s> symbols
