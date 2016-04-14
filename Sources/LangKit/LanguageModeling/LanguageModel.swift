@@ -17,7 +17,7 @@ public protocol LanguageModel {
 
      - parameter corpus: Tokenized corpus
      */
-    mutating func train(corpus: [[Token]])
+    mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus corpus: C)
 
     /**
      Probability of item

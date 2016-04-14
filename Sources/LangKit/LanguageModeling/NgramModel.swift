@@ -53,7 +53,11 @@ public struct NgramModel {
      - parameter n: Gram number
      */
     public init<C: Sequence where C.Iterator.Element == [Token]>
-        (n: Int, trainingCorpus corpus: C?, smoothingMode smoothing: SmoothingMode = nil, unknownThreshold threshold: Int = 10, counter: NgramCounter = DictionaryNgramCounter()) {
+               (n: Int,
+                trainingCorpus corpus: C?,
+                smoothingMode smoothing: SmoothingMode = nil,
+                unknownThreshold threshold: Int = 10,
+                counter: NgramCounter = DictionaryNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
@@ -120,7 +124,7 @@ extension NgramModel : LanguageModel {
 
      - parameter corpus: Tokenized corpus
      */
-    public mutating func train<C: Sequence where C.Iterator.Element == Item>(corpus corpus: C) {
+    public mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus corpus: C) {
         let corpus = corpus.replaceRareTokens(minimumCount: threshold)
         for (i, sentence) in corpus.enumerated() {
             // Wrap <s> and </s> symbols
