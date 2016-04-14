@@ -6,8 +6,8 @@ let demos: [String: () -> ()] =
 [
     "IBM1"  : { IBMModelDemo.run(.one) },
     "IBM2"  : { IBMModelDemo.run(.two) },
-    "Trie"  :   TrieDemo.run,
     "LangID":   LanguageIDDemo.run,
+    "POS"   :   POSTaggingDemo.run,
 ]
 
 let cli = CommandLine()
