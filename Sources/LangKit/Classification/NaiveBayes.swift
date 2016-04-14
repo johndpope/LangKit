@@ -34,7 +34,9 @@ extension NaiveBayes {
 extension NaiveBayes : Classifier {
 
     public func classify(input: Input) -> Label? {
-        return (flipped ? argmin : argmax)({ self.classes[$0]!(input) }, args: Array(classes.keys))
+        return (flipped ? argmin : argmax)(Array(classes.keys)) {
+            self.classes[$0]!(input)
+        }
     }
 
 }

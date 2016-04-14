@@ -15,7 +15,7 @@
 
  - returns: Extremum
  */
-public func argext<T, K: Comparable>(@noescape compare compare: (K, K) -> Bool, @noescape keyFunc: T -> K, args: [T]) -> T? {
+public func argext<T, K: Comparable>(args: [T], @noescape compare: (K, K) -> Bool, @noescape keyFunc: T -> K) -> T? {
     guard let first = args.first else {
         return nil
     }
@@ -29,8 +29,8 @@ public func argext<T, K: Comparable>(@noescape compare compare: (K, K) -> Bool, 
 
  - returns: Argument extremum function that uses comparison function
  */
-public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> (T -> K, [T]) -> T? {
-    return { keyFunc, args in argext(compare: compare, keyFunc: keyFunc, args: args) }
+public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> ([T], T -> K) -> T? {
+    return { args, keyFunc in argext(args, compare: compare, keyFunc: keyFunc) }
 }
 
 /**
@@ -41,8 +41,8 @@ public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> (T -> K
 
  - returns: Argument maximum
  */
-public func argmax<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
-    return argext(compare: >)(keyFunc, args)
+public func argmax<T, K : Comparable>(args: [T], keyFunc: T -> K) -> T? {
+    return argext(args, compare: >, keyFunc: keyFunc)
 }
 
 /**
@@ -53,8 +53,8 @@ public func argmax<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
 
  - returns: Argument minimum
  */
-public func argmin<T, K : Comparable>(keyFunc: T -> K, args: [T]) -> T? {
-    return argext(compare: <)(keyFunc, args)
+public func argmin<T, K : Comparable>(args: [T], keyFunc: T -> K) -> T? {
+    return argext(args, compare: <, keyFunc: keyFunc)
 }
 
 /**
