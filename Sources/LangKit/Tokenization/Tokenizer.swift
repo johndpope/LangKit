@@ -16,12 +16,11 @@ public extension String {
         return characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains).map(String.init)
     }
 
-}
-
-public class Tokenizer {
-
-    public init() {
-        
+    public func tagSplit(delimiter: Character = "_") -> (String, String?) {
+        let split = characters.split(separator: delimiter)
+        guard split.count >= 2 else { return (String(split.first), nil) }
+        return (String(split[0]), String(split[1]))
     }
 
 }
+
