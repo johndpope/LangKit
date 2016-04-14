@@ -8,15 +8,50 @@
 
 import Foundation
 
-public struct HiddenMarkovModel {
+public func ==<T>(lhs: Transition<T>, rhs: Transition<T>) -> Bool {
+    return lhs.state1 == rhs.state1 && lhs.state2 == rhs.state2
+}
 
-    public typealias Item = String
-    public typealias Label = String
-    public typealias Key = ArrayKey<Item>
+public func ==<T, U>(lhs: Emission<T, U>, rhs: Emission<T, U>) -> Bool {
+    return lhs.state == rhs.state && lhs.item == rhs.item
+}
+
+public struct Transition<T: Hashable> : Hashable {
+    var state1, state2: T
+
+    public init(_ state1: T, _ state2: T) {
+        self.state1 = state1
+        self.state2 = state2
+    }
+
+    public var hashValue: Int {
+        return "\(state1), \(state2)".hashValue
+    }
+}
+
+public struct Emission<T: Hashable, U: Hashable> : Hashable {
+    var state: T
+    var item: U
+
+    public init(_ state: T, _ item: U) {
+        self.state = state
+        self.item = item
+    }
+
+    public var hashValue: Int {
+        return "\(item), \(state)".hashValue
+    }
+}
+
+public struct HiddenMarkovModel<Item: Hashable, Label: Hashable> {
+
+//    public typealias Item = String
+//    public typealias Label = String
+//    public typealias Key = ArrayKey<Item>
 
     private var initial: [Label: Float]!
-    private var transition: [Key: Float]!
-    private var emission: [Key: Float]!
+    private var transition: [Transition<Label>: Float]!
+    private var emission: [Emission<Label, Item>: Float]!
     private(set) var states: Set<Label>!
 
     /**
@@ -26,7 +61,7 @@ public struct HiddenMarkovModel {
      - parameter transition: Transition probability distribution
      - parameter emission:   Emission probability distribution
      */
-    public init(initial: [Label: Float], transition: [Key: Float], emission: [Key: Float]) {
+    public init(initial: [Label: Float], transition: [Transition<Label>: Float], emission: [Emission<Label, Item>: Float]) {
         self.initial = initial
         self.transition = transition
         self.emission = emission
@@ -38,26 +73,28 @@ public struct HiddenMarkovModel {
 
      - parameter taggedCorpus: Tagged corpus
      */
-    public init<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
+    public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
         train(taggedCorpus: corpus)
     }
 
 }
 
-extension HiddenMarkovModel : SequenceLabeler {
+extension HiddenMarkovModel : SequenceLabelingModel {
 
     /**
      Train the model with tagged corpus
      
      - parameter taggedCorpus: Tagged corpus
      */
-    public mutating func train<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
+    public mutating func train<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
         corpus.forEach { sentence in
             sentence.forEach { (token, label) in
-                let key: ArrayKey<String> = [label ?? unknown, token]
+                let key: Emission<Label, Item> = .init(label, token)
                 emission[key] = (emission[key] ?? 0.0) + 1.0
             }
         }
+
+        // TODO!
     }
 
     /**
@@ -89,7 +126,7 @@ extension HiddenMarkovModel {
         var trellis : [[Label: Float]] = [[:]]
         var path: [Label: [Label]] = [:]
         for y in states {
-            trellis[0][y] = -logf(initial[y]!) - logf(emission[[y, observation[0]]]!)
+            trellis[0][y] = -logf(initial[y]!) - logf(emission[Emission(y, observation[0])]!)
             path[y] = [y]
         }
         for i in 1..<observation.count {
@@ -99,7 +136,7 @@ extension HiddenMarkovModel {
                 var bestArg: Label!
                 var bestProb: Float = FLT_MAX
                 for y0 in states {
-                    let prob = trellis[i-1][y0]! - logf(transition[[y0, y]]!) - logf(emission[[y, observation[i]]]!)
+                    let prob = trellis[i-1][y0]! - logf(transition[Transition(y0, y)]!) - logf(emission[Emission(y, observation[i])]!)
                     if prob < bestProb {
                         bestArg = y0
                         bestProb = prob
