@@ -12,20 +12,30 @@ public class CorpusReader {
 
     public typealias Sentence = [String]
 
-    let chunkSize = 4096
+    // Chunk size constant
+    private let chunkSize = 4096
 
-    let path: String
-    let encoding: NSStringEncoding
-    let sentenceSeparator: String
-    let fileHandle: NSFileHandle
+    private let path: String
+    private let encoding: NSStringEncoding
+    private let sentenceSeparator: String
+    private let fileHandle: NSFileHandle
+    private let buffer: NSMutableData
+    private let delimiterData: NSData
 
-    let buffer: NSMutableData
-    let delimiterData: NSData
+    // Tokenization function
+    private var tokenize: String -> [String]
 
-    var tokenize: String -> [String]
+    // EOF state
+    private var eof: Bool
 
-    var eof: Bool
-
+    /**
+     Initialize a CorpusReader with configurations
+     
+     - parameter fromFile:          File path
+     - parameter sentenceSeparator: Sentence separator (default: "\n")
+     - parameter encoding:          File encoding (default: UTF8)
+     - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
+     */
     public init?(fromFile path: String, sentenceSeparator: String = "\n",
                  encoding: NSStringEncoding = NSUTF8StringEncoding,
                  tokenizingWith tokenize: String -> [String] = {$0.tokenized()}) {
@@ -48,10 +58,16 @@ public class CorpusReader {
         self.close()
     }
 
-    public func close() {
+    /**
+     Close file
+     */
+    private func close() {
         fileHandle.closeFile()
     }
 
+    /**
+     Go to the beginning of the file
+     */
     public func rewind() {
         fileHandle.seek(toFileOffset: 0)
         buffer.length = 0
@@ -64,6 +80,11 @@ extension CorpusReader : IteratorProtocol {
 
     public typealias Elememnt = Sentence
 
+    /**
+     Next tokenized sentence
+
+     - returns: Tokenized sentence
+     */
     public func next() -> [String]? {
         if eof {
             return nil
@@ -95,6 +116,11 @@ extension CorpusReader : Sequence {
 
     public typealias Iterator = CorpusReader
 
+    /**
+     Make corpus iterator
+
+     - returns: Iterator
+     */
     public func makeIterator() -> Iterator {
         self.rewind()
         return self

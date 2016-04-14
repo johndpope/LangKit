@@ -19,6 +19,13 @@ public struct HiddenMarkovModel {
     private var emission: [Key: Float]!
     private(set) var states: Set<Label>!
 
+    /**
+     Initialize with HMM configuration
+
+     - parameter initial:    Initial probability distribution
+     - parameter transition: Transition probability distribution
+     - parameter emission:   Emission probability distribution
+     */
     public init(initial: [Label: Float], transition: [Key: Float], emission: [Key: Float]) {
         self.initial = initial
         self.transition = transition
@@ -26,6 +33,11 @@ public struct HiddenMarkovModel {
         self.states = Set(initial.keys)
     }
 
+    /**
+     Initialize from tagged corpus
+
+     - parameter taggedCorpus: Tagged corpus
+     */
     public init<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
         train(taggedCorpus: corpus)
     }
@@ -34,6 +46,11 @@ public struct HiddenMarkovModel {
 
 extension HiddenMarkovModel : SequenceLabeler {
 
+    /**
+     Train the model with tagged corpus
+     
+     - parameter taggedCorpus: Tagged corpus
+     */
     public mutating func train<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
         corpus.forEach { sentence in
             sentence.forEach { (token, label) in
@@ -43,6 +60,14 @@ extension HiddenMarkovModel : SequenceLabeler {
         }
     }
 
+    /**
+     Tag an observation sequence (sentence) using Viterbi algorithm
+     Complexity: O(n * |S|^2)   where S = state space
+
+     - parameter sequence: Sentence [w0, w1, w2, ...]
+
+     - returns: Tagged sentence [(w0, t0), (w1, t1), (w2, t2), ...]
+     */
     public func tag(sequence: [Item]) -> [(item: Item, label: Label)] {
         let (_, labels) = viterbi(observation: sequence)
         return zip(sequence, labels).map{$0}
@@ -63,7 +88,6 @@ extension HiddenMarkovModel {
     public func viterbi(observation observation: [Item]) -> (probability: Float, label: [Label]) {
         var trellis : [[Label: Float]] = [[:]]
         var path: [Label: [Label]] = [:]
-
         for y in states {
             trellis[0][y] = -logf(initial[y]!) - logf(emission[[y, observation[0]]]!)
             path[y] = [y]
@@ -92,7 +116,6 @@ extension HiddenMarkovModel {
             bestProb = trellis[n][y]!
             bestArg = y
         }
-
         return (bestProb, path[bestArg]!)
     }
 

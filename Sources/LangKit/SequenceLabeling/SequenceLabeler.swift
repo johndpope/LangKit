@@ -11,8 +11,20 @@ public protocol SequenceLabeler {
     associatedtype Item
     associatedtype Label
 
+    /**
+     Train from tagged corpus
+
+     - parameter taggedCorpus: Tagged corpus [[(w0, t0), (w1, t1), ...], [(w0, t0), (w1, t1), ...], ...]
+     */
     mutating func train<C: Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C)
 
+    /**
+     Tag a sequence
+
+     - parameter sequence: Sequence of items [w0, w1, w2, ...]
+
+     - returns: [(w0, t0), (w1, t1), (w2, t2), ...]
+     */
     func tag(sequence: [Item]) -> [(item: Item, label: Label)]
 
 }
