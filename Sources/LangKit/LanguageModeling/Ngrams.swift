@@ -11,7 +11,7 @@ public enum NgramForm {
 public extension Array {
 
     public func ngrams(n: Int) -> Ngrams<Element> {
-        return Ngrams<Element>(n, source: self)
+        return .init(self, n)
     }
 
 }
@@ -33,10 +33,10 @@ public struct Ngrams<T> : IteratorProtocol, Sequence {
 
     public typealias Element = [T]
 
-    private(set) var n: Int
+    private let n: Int
     private var source: [T]
 
-    public init(_ n: Int, source: [T]) {
+    public init(_ source: [T], _ n: Int) {
         self.n = n
         self.source = source
     }
