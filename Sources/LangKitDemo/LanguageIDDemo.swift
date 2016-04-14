@@ -22,8 +22,8 @@ class LanguageIDDemo: Demo {
 
      - returns: Corpora array
      */
-    static func readCorpora(fromFiles files: [String]) -> [CorpusReader] {
-        let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}) }
+    static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
+        let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}, itemifyingWith: {$0}) }
         return readers.map {
             guard let corpus = $0 else {
                 print("❌  Corpora error!")
@@ -33,7 +33,7 @@ class LanguageIDDemo: Demo {
         }
     }
 
-    static func probabilityFunction(fromCorpus corpus: CorpusReader) -> [String] -> Float {
+    static func probabilityFunction(fromCorpus corpus: CorpusReader<String>) -> [String] -> Float {
         return NgramModel(n: 3, trainingCorpus:
                           corpus, smoothingMode: .goodTuring,
                           counter: DictionaryNgramCounter(minimumCapacity: 1024))

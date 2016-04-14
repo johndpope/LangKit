@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class CorpusReader {
+public class CorpusReader<Item> {
 
-    public typealias Sentence = [String]
+    public typealias Sentence = [Item]
 
     // Chunk size constant
     private let chunkSize = 4096
@@ -25,6 +25,9 @@ public class CorpusReader {
     // Tokenization function
     private var tokenize: String -> [String]
 
+    // Itemification function
+    private var itemify: String -> Item
+
     // EOF state
     private var eof: Bool
 
@@ -38,7 +41,8 @@ public class CorpusReader {
      */
     public init?(fromFile path: String, sentenceSeparator: String = "\n",
                  encoding: NSStringEncoding = NSUTF8StringEncoding,
-                 tokenizingWith tokenize: String -> [String] = {$0.tokenized()}) {
+                 tokenizingWith tokenize: String -> [String] = {$0.tokenized()},
+                 itemifyingWith itemify: String -> Item) {
         guard let handle = NSFileHandle(forReadingAtPath: path),
               let delimiterData = sentenceSeparator.data(usingEncoding: encoding),
               let buffer = NSMutableData(capacity: chunkSize) else {
@@ -52,6 +56,7 @@ public class CorpusReader {
         self.eof = false
         self.delimiterData = delimiterData
         self.tokenize = tokenize
+        self.itemify = itemify
     }
 
     deinit {
@@ -85,7 +90,7 @@ extension CorpusReader : IteratorProtocol {
 
      - returns: Tokenized sentence
      */
-    public func next() -> [String]? {
+    public func next() -> [Item]? {
         if eof {
             return nil
         }
@@ -107,7 +112,7 @@ extension CorpusReader : IteratorProtocol {
             return nil
         }
 
-        return tokenize(line)
+        return tokenize(line).map(itemify)
     }
 
 }

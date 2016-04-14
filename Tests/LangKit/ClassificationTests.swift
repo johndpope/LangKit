@@ -12,11 +12,11 @@ import XCTest
 class ClassificationTests: XCTestCase {
 
     func testArgmax() {
-        XCTAssertEqual(argmax({$0.characters.count}, args: ["a", "ab", "abc"]), "abc")
+        XCTAssertEqual(argmax(["a", "ab", "abc"], keyFunc: {$0.characters.count}), "abc")
     }
 
     func testArgmin() {
-        XCTAssertEqual(argmin({$0.characters.count}, args: ["a", "ab", "abc"]), "a")
+        XCTAssertEqual(argmin(["a", "ab", "abc"], keyFunc: {$0.characters.count}), "a")
     }
     
 }
