@@ -6,19 +6,19 @@
 //
 //
 
-internal func ==<Element>(lhs: ArrayKey<Element>, rhs: ArrayKey<Element>) -> Bool {
+public func ==<Element>(lhs: ArrayKey<Element>, rhs: ArrayKey<Element>) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
 
-internal struct ArrayKey<Element> : Hashable, ArrayLiteralConvertible {
+public struct ArrayKey<Element> : Hashable, ArrayLiteralConvertible {
 
-    let elements: [Element]
+    private let elements: [Element]
 
-    init(arrayLiteral elements: Element...) {
+    public init(arrayLiteral elements: Element...) {
         self.elements = elements
     }
 
-    var hashValue: Int {
+    public var hashValue: Int {
         return "\(elements)".hashValue
     }
 
