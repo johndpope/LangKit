@@ -10,7 +10,7 @@ import Foundation
 
 public class TaggedCorpusReader : CorpusReader {
 
-    public typealias Element = [(String, String?)]
+    public typealias Element = [(String, String)]
 
     /**
      Next tagged sentence

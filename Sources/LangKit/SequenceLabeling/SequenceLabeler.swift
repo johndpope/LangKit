@@ -6,7 +6,7 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-public protocol SequenceLabeler {
+public protocol SequenceLabelingModel {
 
     associatedtype Item
     associatedtype Label
@@ -16,7 +16,7 @@ public protocol SequenceLabeler {
 
      - parameter taggedCorpus: Tagged corpus [[(w0, t0), (w1, t1), ...], [(w0, t0), (w1, t1), ...], ...]
      */
-    mutating func train<C: Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C)
+    mutating func train<C: Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C)
 
     /**
      Tag a sequence
