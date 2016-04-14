@@ -6,79 +6,94 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-public func ==(lhs: HiddenMarkovModel.Transition, rhs: HiddenMarkovModel.Transition) -> Bool {
-    return lhs.label1 == rhs.label1 && lhs.label2 == rhs.label2
-}
+import Foundation
 
-public func ==(lhs: HiddenMarkovModel.Emission, rhs: HiddenMarkovModel.Emission) -> Bool {
-    return lhs.label == rhs.label && lhs.item == rhs.item
-}
-
-public class HiddenMarkovModel {
+public struct HiddenMarkovModel {
 
     public typealias Item = String
     public typealias Label = String
+    public typealias Key = ArrayKey<Item>
 
+    private var initial: [Label: Float]!
+    private var transition: [Key: Float]!
+    private var emission: [Key: Float]!
+    private(set) var states: Set<Label>!
 
-    public struct Transition : Equatable, Hashable {
-        public var label1, label2: Item
-
-        public init(label1: Item, label2: Item) {
-            self.label1 = label1
-            self.label2 = label2
-        }
-
-        public var hashValue: Int {
-            return "\(label1), \(label2)".hashValue
-        }
-    }
-
-    public struct Emission : Equatable, Hashable {
-        public var label: Item
-        public var item: Item
-
-        public var hashValue: Int {
-            return "\(item), \(label)".hashValue
-        }
-    }
-
-
-    private(set) var initial: [Label: Float]
-    private(set) var transition: [Transition: Float]
-    private(set) var emission: [Emission: Float]
-
-    public init(initial: [Label: Float], transition: [Transition: Float], emission: [Emission: Float]) {
+    public init(initial: [Label: Float], transition: [Key: Float], emission: [Key: Float]) {
         self.initial = initial
         self.transition = transition
         self.emission = emission
+        self.states = Set(initial.keys)
+    }
+
+    public init<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
+        train(taggedCorpus: corpus)
     }
 
 }
 
 extension HiddenMarkovModel : SequenceLabeler {
 
-    public func tag(sequence: [Item]) -> [(Item, Label)] {
-        // TODO
-        return []
+    public mutating func train<C : Sequence where C.Iterator.Element == [(Item, Label?)]>(taggedCorpus corpus: C) {
+        corpus.forEach { sentence in
+            sentence.forEach { (token, label) in
+                let key: ArrayKey<String> = [label ?? unknown, token]
+                emission[key] = (emission[key] ?? 0.0) + 1.0
+            }
+        }
+    }
+
+    public func tag(sequence: [Item]) -> [(item: Item, label: Label)] {
+        let (_, labels) = viterbi(observation: sequence)
+        return zip(sequence, labels).map{$0}
     }
 
 }
 
-
 extension HiddenMarkovModel {
+    /**
+     Viterbi Algorithm - Find the most likely sequence of hidden states
+     A nasty implementation directly ported from Python version (needs rewriting)
+     Complexity: O(n * |S|^2)   where S = state space
 
-    public func tag(sentence: String) -> [(Item, Label)] {
-        // TODO
-        return []
-    }
+     - parameter observation: Observation sequence
 
-}
+     - returns: Most likely label sequence along with probabolity
+     */
+    public func viterbi(observation observation: [Item]) -> (probability: Float, label: [Label]) {
+        var trellis : [[Label: Float]] = [[:]]
+        var path: [Label: [Label]] = [:]
 
-extension HiddenMarkovModel {
+        for y in states {
+            trellis[0][y] = -logf(initial[y]!) - logf(emission[[y, observation[0]]]!)
+            path[y] = [y]
+        }
+        for i in 1..<observation.count {
+            trellis.append([:])
+            var newPath: [Label: [Label]] = [:]
+            for y in states {
+                var bestArg: Label!
+                var bestProb: Float = FLT_MAX
+                for y0 in states {
+                    let prob = trellis[i-1][y0]! - logf(transition[[y0, y]]!) - logf(emission[[y, observation[i]]]!)
+                    if prob < bestProb {
+                        bestArg = y0
+                        bestProb = prob
+                    }
+                }
+                trellis[i][y] = bestProb
+                newPath[y] = path[bestArg]! + [y]
+            }
+            path = newPath
+        }
+        let n = observation.count - 1
+        var bestArg: Label!, bestProb: Float = FLT_MAX
+        for y in states where trellis[n][y] < bestProb {
+            bestProb = trellis[n][y]!
+            bestArg = y
+        }
 
-    public func viterbi(observation: [Item]) -> [(Float, Label)] {
-        // TODO
-        return []
+        return (bestProb, path[bestArg]!)
     }
 
 }
