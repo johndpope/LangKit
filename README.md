@@ -24,7 +24,7 @@ Natural Language Processing Toolkit in Swift
 - Tokenization
   - [x] Basics
   - [ ] Penn Treebank tokenizer
-- [ ] Classification
+- Classification
   - [x] Naive Bayes
   - [ ] Support vector machine
 - Alignment
