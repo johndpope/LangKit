@@ -23,7 +23,7 @@ class LanguageIDDemo: Demo {
      - returns: Corpora array
      */
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
-        let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}, itemifyingWith: {$0}) }
+        let readers = files.map { CorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding, tokenizingWith: {$0.characters.map{String($0)}}, itemizingWith: {$0}) }
         return readers.map {
             guard let corpus = $0 else {
                 print("❌  Corpora error!")

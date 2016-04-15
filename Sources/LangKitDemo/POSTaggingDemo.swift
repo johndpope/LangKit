@@ -15,7 +15,7 @@ class POSTaggingDemo : Demo {
      Run demo
      */
     static func run() {
-        guard let taggedCorpus = CorpusReader(fromFile: "Data/Demo/POSTagging/train.txt", itemifyingWith: {$0.tagSplit()}) else {
+        guard let taggedCorpus = CorpusReader(fromFile: "Data/Demo/POSTagging/train.txt", itemizingWith: {$0.tagSplit()}) else {
             print("❌  Corpora error!")
             exit(EXIT_FAILURE)
         }
