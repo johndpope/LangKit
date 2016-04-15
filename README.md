@@ -17,7 +17,7 @@ Natural Language Processing Toolkit in Swift
     - [x] Dictionary counter
 - Sequence Labeling
   - [x] Hidden Markov model
-  - [x] HMM Part-of-speech tagger
+  - [x] HMM part-of-speech tagger
   - [ ] Maximum-entropy Markov model
 - Preprocessing
   - [x] Basics
@@ -26,7 +26,7 @@ Natural Language Processing Toolkit in Swift
   - [ ] Penn Treebank tokenizer
 - [ ] Classification
   - [x] Naive Bayes
-  - [ ] Support Vector Machine
+  - [ ] Support vector machine
 - Alignment
   - [x] IBM Model 1
   - [x] IBM Model 2
@@ -35,7 +35,7 @@ Natural Language Processing Toolkit in Swift
   - [ ] ARPA LM file support
 - Demo
   - [x] Language identification (`$ ./demo -n LangID`)
-  - [x] HMM POS Tagging (`$ ./demo -n POS`)
+  - [x] HMM POS tagging (`$ ./demo -n POS`)
 
 ## Requirements
 
