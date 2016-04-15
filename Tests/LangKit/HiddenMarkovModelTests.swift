@@ -14,7 +14,6 @@ import XCTest
 class HiddenMarkovModelTests: XCTestCase {
 
     func testParameterInitialization() {
-        let items: Set = ["walk", "shop", "clean"]
         let initial = [ "Rainy": 50, "Sunny": 50 ]
         let transition = [
             Transition("Rainy", "Sunny"): 30,
