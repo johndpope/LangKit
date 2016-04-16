@@ -7,21 +7,23 @@
 //
 
 import XCTest
+import Foundation
 @testable import LangKit
 
 class NgramModelTests: XCTestCase {
 
     func testNgrams() {
         XCTAssertEqual(Array([1, 2, 3, 4, 5].ngrams(2)), [[1,2], [2,3], [3,4], [4,5]])
-        XCTAssertEqual("I am a smart student .".ngrams(2, form: .word).toArray(), [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]])
+        let ngrams = "I am a smart student .".ngrams(2, form: .word).toArray()
+        XCTAssertEqual(ngrams, [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]])
     }
 
     func testUnigramProbability() {
         let sentence = "Colorless green ideas sleep furiously .".tokenized()
         let model = NgramModel(n: 1, trainingCorpus: [sentence], unknownThreshold: 0)
         XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless"], logspace: false), 1.0/9.0, accuracy: 0.2)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["ideas"], logspace: true), log(1.0/9.0), accuracy: 0.02)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["<s>"], logspace: true), log(1.0/9.0), accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["ideas"], logspace: true), logf(1.0/9.0), accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["<s>"], logspace: true), logf(1.0/9.0), accuracy: 0.02)
         XCTAssertEqualWithAccuracy(model.sentenceLogProbability(sentence), log(0.000000023230495), accuracy: 0.02)
     }
 
