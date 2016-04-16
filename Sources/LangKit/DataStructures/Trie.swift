@@ -87,7 +87,7 @@ public extension Trie {
 
      - returns: New trie after insertion
      */
-    public func insert(item: [K], incrementingNodes incr: Bool = false) -> Trie<K> {
+    public func insert(_ item: [K], incrementingNodes incr: Bool = false) -> Trie<K> {
         switch self {
 
         // Base cases
@@ -133,7 +133,7 @@ public extension Trie {
 
      - returns: New trie after union
      */
-    public func union(other: Trie<K>, @noescape conflictResolver: (K, K) -> K?) -> Trie<K> {
+    public func union(_ other: Trie<K>, @noescape conflictResolver: (K, K) -> K?) -> Trie<K> {
         // TODO
         return self
     }
@@ -146,7 +146,7 @@ public extension Trie {
 
      - returns: New trie after union
      */
-    public func unionLeft(other: Trie<K>) -> Trie<K> {
+    public func unionLeft(_ other: Trie<K>) -> Trie<K> {
         return union(other) {left, _ in left}
     }
 
@@ -158,7 +158,7 @@ public extension Trie {
 
      - returns: New trie after union
      */
-    public func unionRight(other: Trie<K>) -> Trie<K> {
+    public func unionRight(_ other: Trie<K>) -> Trie<K> {
         return union(other) {_, right in right}
     }
 
@@ -174,7 +174,7 @@ public extension Trie {
 
      - returns: Exists or not
      */
-    public func hasChild(key: K) -> Bool {
+    public func hasChild(_ key: K) -> Bool {
         guard case .node(_, _, let children) = self else {
             return false // Leaf has no children
         }
@@ -230,7 +230,7 @@ public extension Trie {
 
      - returns: Count of sequence
      */
-    public func count(item: [K]) -> Int {
+    public func count(_ item: [K]) -> Int {
         switch self {
         // Base case
         case .leaf(_, let v):

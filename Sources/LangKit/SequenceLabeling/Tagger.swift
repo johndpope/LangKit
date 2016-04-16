@@ -15,6 +15,6 @@ public protocol Tagger {
 
      - returns: [(w0, t0), (w1, t1), (w2, t2), ...]
      */
-    func tag(sequence: [String]) -> [(String, String)]
+    func tag(_ sequence: [String]) -> [(String, String)]
 
 }

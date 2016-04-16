@@ -10,7 +10,7 @@ public enum NgramForm {
 
 public extension Array {
 
-    public func ngrams(n: Int) -> Ngrams<Element> {
+    public func ngrams(_ n: Int) -> Ngrams<Element> {
         return .init(self, n)
     }
 
@@ -18,7 +18,7 @@ public extension Array {
 
 public extension String {
 
-    public func ngrams(n: Int, form: NgramForm) -> Ngrams<String> {
+    public func ngrams(_ n: Int, form: NgramForm) -> Ngrams<String> {
         switch form {
         case .letter:
             return characters.map{String($0)}.ngrams(n)

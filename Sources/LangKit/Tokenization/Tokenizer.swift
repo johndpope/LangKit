@@ -26,6 +26,10 @@ public extension String {
         return String.init <^> characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains)
     }
 
+    public func letterized() -> [String] {
+        return {String($0)} <^> characters
+    }
+
     /**
      Split a tagged token `token_tag` into tuple (token, tag)
 
@@ -33,7 +37,7 @@ public extension String {
 
      - returns: Tuple (token, tag)
      */
-    public func tagSplit(delimiter delimiter: Character) -> (String, String) {
+    public func tagSplit(delimiter: Character) -> (String, String) {
         let split = characters.split(separator: delimiter)
         guard split.count >= 2 else {
             return (String(split.first), unknown)

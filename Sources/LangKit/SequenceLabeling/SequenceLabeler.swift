@@ -25,6 +25,6 @@ public protocol SequenceLabelingModel {
 
      - returns: [(w0, t0), (w1, t1), (w2, t2), ...]
      */
-    func tag(sequence: [Item]) -> [(Item, Label)]
+    func tag(_ sequence: [Item]) -> [(Item, Label)]
 
 }

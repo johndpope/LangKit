@@ -44,7 +44,7 @@ public class CorpusReader<Item> {
                  tokenizingWith tokenize: String -> [String] = §String.tokenized,
                  itemizingWith itemize: String -> Item) {
         guard let handle = NSFileHandle(forReadingAtPath: path),
-              let delimiterData = sentenceSeparator.data(usingEncoding: encoding),
+              let delimiterData = sentenceSeparator.data(using: encoding),
               let buffer = NSMutableData(capacity: chunkSize) else {
             return nil
         }
@@ -94,7 +94,7 @@ extension CorpusReader : IteratorProtocol {
         if eof {
             return nil
         }
-        var range = buffer.range(of: delimiterData, options: [], range: NSMakeRange(0, buffer.length))
+        var range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         while range.location == NSNotFound {
             let data = fileHandle.readData(ofLength: chunkSize)
             guard data.length > 0 else {
@@ -102,7 +102,7 @@ extension CorpusReader : IteratorProtocol {
                 return nil
             }
             buffer.append(data)
-            range = buffer.range(of: delimiterData, options: [], range: NSMakeRange(0, buffer.length))
+            range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         }
 
         let maybeLine = String(data: buffer.subdata(with: NSMakeRange(0, range.location)), encoding: encoding)

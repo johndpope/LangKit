@@ -25,7 +25,7 @@ extension PartOfSpeechTagger: Tagger {
 
      - returns: [(w0, t0), (w1, t1), (w2, t2), ...]
      */
-    public func tag(sequence: [String]) -> [(String, String)] {
+    public func tag(_ sequence: [String]) -> [(String, String)] {
         return model.tag(sequence)
     }
 

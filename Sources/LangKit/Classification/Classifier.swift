@@ -15,7 +15,7 @@
 
  - returns: Extremum
  */
-public func argext<T, K: Comparable>(args: [T], compare: (K, K) -> Bool, keyFunc: T -> K) -> T? {
+public func argext<T, K: Comparable>(_ args: [T], compare: (K, K) -> Bool, keyFunc: T -> K) -> T? {
     return args.first >>- { args.reduce($0, combine: { compare(keyFunc($0), keyFunc($1)) ? $0 : $1 } ) }
 }
 
@@ -26,7 +26,7 @@ public func argext<T, K: Comparable>(args: [T], compare: (K, K) -> Bool, keyFunc
 
  - returns: Argument extremum function that uses comparison function
  */
-public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> ([T], T -> K) -> T? {
+public func argext<T, K: Comparable>(_ compare: (K, K) -> Bool) -> ([T], T -> K) -> T? {
     return { args, keyFunc in argext(args, compare: compare, keyFunc: keyFunc) }
 }
 
@@ -38,7 +38,7 @@ public func argext<T, K: Comparable>(compare compare: (K, K) -> Bool) -> ([T], T
 
  - returns: Argument maximum
  */
-public func argmax<T, K : Comparable>(args: [T], keyFunc: T -> K) -> T? {
+public func argmax<T, K : Comparable>(_ args: [T], keyFunc: T -> K) -> T? {
     return argext(args, compare: >, keyFunc: keyFunc)
 }
 
@@ -50,7 +50,7 @@ public func argmax<T, K : Comparable>(args: [T], keyFunc: T -> K) -> T? {
 
  - returns: Argument minimum
  */
-public func argmin<T, K : Comparable>(args: [T], keyFunc: T -> K) -> T? {
+public func argmin<T, K : Comparable>(_ args: [T], keyFunc: T -> K) -> T? {
     return argext(args, compare: <, keyFunc: keyFunc)
 }
 
@@ -62,6 +62,6 @@ public protocol Classifier {
     associatedtype Input
     associatedtype Label
 
-    func classify(input: Input) -> Label?
+    func classify(_ input: Input) -> Label?
 
 }

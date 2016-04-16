@@ -38,7 +38,7 @@ public class IBMModel2 : IBMModel1 {
         super.init(bitext: bitext, probabilityThreshold: threshold)
     }
 
-    public override func train(iterations iterations: Int = 100) {
+    public override func train(iterations: Int = 100) {
         self.train(lexicalIterations: iterations, alignmentIterations: iterations)
     }
 
@@ -100,7 +100,7 @@ public class IBMModel2 : IBMModel1 {
 
      - returns: alignment dictionary
      */
-    public override func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
+    public override func align(fSentence: [String], eSentence: [String]) -> [Int: Int]? {
         let (lf, le) = (fSentence.count, eSentence.count)
         var vitAlignment = [Int: Int]()
         for (j, ej) in eSentence.enumerated() {

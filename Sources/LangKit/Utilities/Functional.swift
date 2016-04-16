@@ -110,21 +110,6 @@ public func <^><A, B, FA: Sequence where FA.Iterator.Element == A>(lhs: A -> B, 
     return rhs.map(lhs)
 }
 
-/* Invoke instance method */
-public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
-    return {f($0)()}
-}
-
-/* Generate sequence */
-public prefix func !!<A, B: Sequence where B.Iterator.Element == A>(sequence: B) -> [A] {
-    return sequence.map{$0}
-}
-
-/* Increment dictionary key */
-public func <++<K, V: Integer>(dictionary: inout [K: V], key: K) {
-    dictionary[key] = (dictionary[key] ?? 0) + 1
-}
-
 /* Monad - Bind and invoke instance method */
 // Optional
 public func >>§<A, B>(a: A?, b: A -> () -> B?) -> B?  {
@@ -134,3 +119,7 @@ public func >>§<A, B>(a: A?, b: A -> () -> B?) -> B?  {
 public func >>§<A, B, MA: Sequence where MA.Iterator.Element == A>(a: MA, b: A -> () -> [B]) -> [B]  {
     return a >>- §b
 }
+
+/**************
+ * Extensions *
+ **************/

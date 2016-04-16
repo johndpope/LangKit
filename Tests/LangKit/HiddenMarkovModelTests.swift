@@ -9,7 +9,7 @@
 import XCTest
 @testable import struct LangKit.Transition
 @testable import struct LangKit.Emission
-@testable import struct LangKit.HiddenMarkovModel
+@testable import class LangKit.HiddenMarkovModel
 
 class HiddenMarkovModelTests: XCTestCase {
 

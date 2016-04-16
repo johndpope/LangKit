@@ -4,8 +4,8 @@ import CommandLine
 // Action table
 let demos: [String: () -> ()] =
 [
-    "IBM1"  : { IBMModelDemo.run(.one) },
-    "IBM2"  : { IBMModelDemo.run(.two) },
+    "IBM1"  : { IBMModelDemo.run(model: .one) },
+    "IBM2"  : { IBMModelDemo.run(model: .two) },
     "LangID":   LanguageIDDemo.run,
     "POS"   :   POSTaggingDemo.run,
 ]
@@ -21,7 +21,7 @@ cli.addOptions(nameOption)
 do {
     try cli.parse()
 } catch let error {
-    cli.printUsage(error)
+    cli.printUsage(error: error)
     exit(EXIT_FAILURE)
 }
 

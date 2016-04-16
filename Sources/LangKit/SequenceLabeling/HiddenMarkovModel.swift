@@ -101,7 +101,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 // MARK: - Probability functions. Cache *mutating*
 extension HiddenMarkovModel {
 
-    public func initialProbability(state state: Label) -> Float {
+    public func initialProbability(state: Label) -> Float {
         // Lookup cache
         if let prob = initial[state] {
             return prob
@@ -122,7 +122,7 @@ extension HiddenMarkovModel {
         return transitionProbability(TransitionType(state1, state2))
     }
 
-    private func transitionProbability(transition: TransitionType) -> Float {
+    private func transitionProbability(_ transition: TransitionType) -> Float {
         // Lookup cache
         if let prob = self.transition[transition] {
             return prob
@@ -143,7 +143,7 @@ extension HiddenMarkovModel {
         return emissionProbability(EmissionType(state, item))
     }
 
-    private func emissionProbability(emission: EmissionType) -> Float {
+    private func emissionProbability(_ emission: EmissionType) -> Float {
         // Lookup cache
         if let prob = self.emission[emission] {
             return prob
@@ -205,7 +205,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
 
      - returns: Tagged sentence [(w0, t0), (w1, t1), (w2, t2), ...]
      */
-    public func tag(sequence: [Item]) -> [(Item, Label)] {
+    public func tag(_ sequence: [Item]) -> [(Item, Label)] {
         let (_, labels) = viterbi(observation: sequence)
         return !!zip(sequence, labels)
     }
@@ -222,7 +222,7 @@ extension HiddenMarkovModel {
 
      - returns: Most likely label sequence along with probabolity
      */
-    public func viterbi(observation observation: [Item]) -> (probability: Float, label: [Label]) {
+    public func viterbi(observation: [Item]) -> (probability: Float, label: [Label]) {
         var trellis : [[Label: Float]] = [[:]]
         var path: [Label: [Label]] = [:]
         for y in states.keys {

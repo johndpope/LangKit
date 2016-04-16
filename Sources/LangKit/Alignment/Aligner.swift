@@ -20,7 +20,7 @@ public protocol Aligner {
 
      - parameter iterations: number of iterations of EM algorithm
      */
-    func train(iterations iterations: Int)
+    func train(iterations: Int)
 
     /**
      Align two sentences
@@ -30,7 +30,7 @@ public protocol Aligner {
 
      - returns: Alignment dictionary
      */
-    func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]?
+    func align(fSentence: [String], eSentence: [String]) -> [Int: Int]?
 
 }
 

@@ -8,7 +8,7 @@
 
 public protocol NgramCounter {
 
-    mutating func insert(ngram: [String])
+    mutating func insert(_ ngram: [String])
 
     subscript(ngram: [String]) -> Int { get }
 
@@ -24,7 +24,7 @@ public struct TrieNgramCounter : NgramCounter {
         trie = Trie()
     }
 
-    public mutating func insert(ngram: [String]) {
+    public mutating func insert(_ ngram: [String]) {
         trie = trie.insert(ngram, incrementingNodes: true)
     }
 
@@ -75,7 +75,7 @@ public struct DictionaryNgramCounter : NgramCounter {
         backoffTable = .init()
     }
 
-    public mutating func insert(ngram: [String]) {
+    public mutating func insert(_ ngram: [String]) {
         let key = NgramKey(ngram)
         table        <++ key
         backoffTable <++ key.pregramKey

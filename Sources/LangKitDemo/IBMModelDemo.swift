@@ -17,7 +17,7 @@ class IBMModelDemo : Demo {
     }
 
     static func run() {
-        run(.one)
+        run(model: .one)
     }
 
     static func run(model: Model) {
@@ -48,7 +48,7 @@ class IBMModelDemo : Demo {
         aligner.train(iterations: iterations)
 
         // Print alignment
-        let indices = aligner.alignmentIndices(bitext)
+        let indices = aligner.alignmentIndices(bitext: bitext)
         indices.forEach { sen in
             print(sen.map { "\($0.0)-\($0.1)" }
                 .reduce("", combine: { acc, s in acc + " " + s }))

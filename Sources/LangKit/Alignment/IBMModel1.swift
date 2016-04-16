@@ -39,7 +39,7 @@ public class IBMModel1: Aligner {
 
     internal let initialTrans: Float = 0.1
 
-    internal func translationProbability(pair: WordPair) -> Float {
+    internal func translationProbability(_ pair: WordPair) -> Float {
         return trans[pair] ?? initialTrans
     }
 
@@ -53,7 +53,7 @@ public class IBMModel1: Aligner {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
 
-    public func train(iterations iterations: Int = 100) {
+    public func train(iterations: Int = 100) {
         var count = [WordPair: Float]()
         var total = [String: Float]()
         var sTotal = [String: Float]()
@@ -103,7 +103,7 @@ public class IBMModel1: Aligner {
 
      - returns: alignment dictionary
      */
-    public func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]? {
+    public func align(fSentence: [String], eSentence: [String]) -> [Int: Int]? {
         if trans.isEmpty { return nil }
         var alignment = [Int: Int]()
         for (j, ej) in eSentence.enumerated() {

@@ -17,7 +17,7 @@ public protocol LanguageModel {
 
      - parameter corpus: Tokenized corpus
      */
-    mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus corpus: C)
+    mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus: C)
 
     /**
      Probability of item
@@ -27,7 +27,7 @@ public protocol LanguageModel {
 
      - returns: Probability
      */
-    func probability(item: Item, logspace: Bool) -> Float
+    func probability(_ item: Item, logspace: Bool) -> Float
 
     /**
      Markov conditional probability of item
@@ -37,7 +37,7 @@ public protocol LanguageModel {
 
      - returns: Probability
      */
-    func markovProbability(item: Item, logspace: Bool) -> Float
+    func markovProbability(_ item: Item, logspace: Bool) -> Float
 
     /**
      Log probability of tokenized sentence
@@ -46,6 +46,6 @@ public protocol LanguageModel {
 
      - returns: Log probability
      */
-    func sentenceLogProbability(sentence: [Token]) -> Float
+    func sentenceLogProbability(_ sentence: [Token]) -> Float
 
 }
