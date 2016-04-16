@@ -48,11 +48,10 @@ class IBMModelDemo : Demo {
         aligner.train(iterations: iterations)
 
         // Print alignment
-        if let indices = aligner.alignmentIndices {
-            indices.forEach { sen in
-                print(sen.map { "\($0.0)-\($0.1)" }
-                    .reduce("", combine: { acc, s in acc + " " + s }))
-            }
+        let indices = aligner.alignmentIndices(bitext)
+        indices.forEach { sen in
+            print(sen.map { "\($0.0)-\($0.1)" }
+                .reduce("", combine: { acc, s in acc + " " + s }))
         }
     }
 

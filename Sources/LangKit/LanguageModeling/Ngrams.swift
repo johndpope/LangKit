@@ -49,7 +49,7 @@ public struct Ngrams<T> : IteratorProtocol, Sequence {
         guard source.count >= n else {
             return nil
         }
-        let ngram = source[0..<n].map{$0}
+        let ngram = !!source[0..<n]
         self.source.removeFirst()
         return ngram
     }

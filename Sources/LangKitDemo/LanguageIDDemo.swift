@@ -67,12 +67,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            guard let sentence = readLine()?.characters.map({String($0)}) else {
-                continue
-            }
-            // Classify
-            let result = classifier.classify(sentence)!
-            print(result)
+            readLine()?.characters.map{String($0)} >>- classifier.classify >>- {print($0)}
         }
     }
 }

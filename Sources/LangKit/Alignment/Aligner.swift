@@ -8,9 +8,6 @@
 
 public protocol Aligner {
 
-    /// Parallel corpus
-    var bitext: [([String], [String])] { get }
-
     /**
      Initialize a model with a parallel corpus
 
@@ -35,23 +32,17 @@ public protocol Aligner {
      */
     func align(fSentence fSentence: [String], eSentence: [String]) -> [Int: Int]?
 
-    /**
-     Alignment for the entire parallel corpus
-     */
-    var alignmentIndices: [[(Int, Int)]]? { get }
-
 }
 
 extension Aligner {
 
-    public var alignmentIndices: [[(Int, Int)]]? {
-        var indices = [[(Int, Int)]]()
-        for (f, e) in bitext {
-            if let sentenceAlignment = align(fSentence: f, eSentence: e) {
-                indices.append(sentenceAlignment.sorted{(key, value) in key.0 < value.0}
-                    .map{(key, value) in (key, value)})
+    public func alignmentIndices(bitext: [([String], [String])]) -> [[(Int, Int)]] {
+        var indices: [[(Int, Int)]] = []
+        bitext.forEach { (f, e) in
+            align(fSentence: f, eSentence: e) >>- {
+                indices.append(identity <^> $0.sorted(isOrderedBefore: {$0.0} • (<)))
             }
         }
-        return indices.isEmpty ? nil : indices
+        return indices
     }
 }

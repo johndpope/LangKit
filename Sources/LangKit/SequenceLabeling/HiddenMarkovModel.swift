@@ -43,20 +43,25 @@ public struct Emission<T: Hashable, U: Hashable> : Hashable {
     }
 }
 
+/**
+ * Lazily cached hidden Markov model for sequence labeling
+ */
 public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 
     public typealias TransitionType = Transition<Label>
     public typealias EmissionType = Emission<Label, Item>
 
-    private var initialCountTable: [Label: Int]!
-    private var transitionCountTable: [TransitionType: Int]!
-    private var emissionCountTable: [EmissionType: Int]!
+    // Count tables
+    private var initialCountTable: [Label: Int] = [:]
+    private var transitionCountTable: [TransitionType: Int] = [:]
+    private var emissionCountTable: [EmissionType: Int] = [:]
+
     // Total number of seen sequences
     private var sequenceCount: Int
     // Seen items
     private var items: Set<Item>
     // State count table
-    private var states: [Label: Int]
+    private var states: [Label: Int] = [:]
 
     /// Caching probability tables
     private var initial: [Label: Float] = [:]
@@ -77,13 +82,10 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.initialCountTable = initial
         self.transitionCountTable = transition
         self.emissionCountTable = emission
-        self.states = [:]
         self.sequenceCount = sequenceCount
-        self.items = emission.keys.reduce(Set()) { (acc, emission) in
-            acc.union([emission.item])
-        }
-        transition.keys.forEach { trans in
-            self.states[trans.state1] = (self.states[trans.state1] ?? 0) + 1
+        self.items = emission.keys.reduce([]) { $0.union([$1.item]) }
+        transition.keys.forEach {
+            self.states <++ $0.state1
         }
     }
 
@@ -169,6 +171,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
 
     /**
      Train the model with tagged corpus
+     Available for incremental training
      Complexity: O(n^2)
      
      - parameter taggedCorpus: Tagged corpus
@@ -177,15 +180,14 @@ extension HiddenMarkovModel : SequenceLabelingModel {
         for sentence in corpus {
             // Add initial
             let (_, head) = sentence[0]
-            initialCountTable[head] = (initialCountTable[head] ?? 0) + 1
+            initialCountTable <++ head
             // Collect transitions and emissions in each sentence
             for (i, (token, label)) in sentence.enumerated() {
                 // Add state
-                states[label] = (states[label] ?? 0) + 1
+                states <++ label
 
                 // Add emission
-                let key = Emission(label, token)
-                emissionCountTable[key] = (emissionCountTable[key] ?? 0) + 1
+                emissionCountTable <++ Emission(label, token)
 
                 // Add seen item
                 items.insert(token)
@@ -193,8 +195,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                 // Add bigram transition
                 if i < sentence.count - 1 {
                     let (_, nextLabel) = sentence[i+1]
-                    let transKey = Transition(label, nextLabel)
-                    transitionCountTable[transKey] = (transitionCountTable[transKey] ?? 0) + 1
+                    transitionCountTable <++ Transition(label, nextLabel)
                 }
             }
             sequenceCount += 1
@@ -211,7 +212,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
      */
     public func tag(sequence: [Item]) -> [(Item, Label)] {
         let (_, labels) = viterbi(observation: sequence)
-        return zip(sequence, labels).map{$0}
+        return !!zip(sequence, labels)
     }
 
 }

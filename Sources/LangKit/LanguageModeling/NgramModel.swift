@@ -65,9 +65,7 @@ public struct NgramModel {
         if case .goodTuring = smoothing {
             self.countFrequency = [:]
         }
-        if let corpus = corpus {
-            self.train(corpus: corpus)
-        }
+        corpus >>- { self.train(corpus: $0) }
     }
 
 }
@@ -141,7 +139,7 @@ extension NgramModel : LanguageModel {
                     if prevCountFreq != 0 {
                         prevCountFreq -= 1
                     }
-                    countFrequency[count] = (countFrequency[count] ?? 0) + 1
+                    countFrequency! <++ count
                 }
             }
             // Print progress
@@ -186,7 +184,7 @@ extension NgramModel : LanguageModel {
     public func markovProbability(item: Item, logspace: Bool = false) -> Float {
         // Ngram and pregram ({N-1}gram)
         let ngram = smoothNgram(item)
-        let pregram = ngram.dropLast().map{$0}
+        let pregram = !!ngram.dropLast()
 
         // Count and precount smoothing
         let rawCount = counter[ngram]

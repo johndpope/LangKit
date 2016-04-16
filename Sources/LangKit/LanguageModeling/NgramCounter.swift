@@ -77,9 +77,8 @@ public struct DictionaryNgramCounter : NgramCounter {
 
     public mutating func insert(ngram: [String]) {
         let key = NgramKey(ngram)
-        table[key] = (table[key] ?? 0) + 1
-        let pregramKey = key.pregramKey
-        backoffTable[pregramKey] = (backoffTable[pregramKey] ?? 0) + 1
+        table        <++ key
+        backoffTable <++ key.pregramKey
     }
 
     public subscript(ngram: [String]) -> Int {

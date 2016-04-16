@@ -41,7 +41,7 @@ public class CorpusReader<Item> {
      */
     public init?(fromFile path: String, sentenceSeparator: String = "\n",
                  encoding: NSStringEncoding = NSUTF8StringEncoding,
-                 tokenizingWith tokenize: String -> [String] = {$0.tokenized()},
+                 tokenizingWith tokenize: String -> [String] = §String.tokenized,
                  itemizingWith itemize: String -> Item) {
         guard let handle = NSFileHandle(forReadingAtPath: path),
               let delimiterData = sentenceSeparator.data(usingEncoding: encoding),
@@ -112,7 +112,7 @@ extension CorpusReader : IteratorProtocol {
             return nil
         }
 
-        return tokenize(line).map(itemize)
+        return itemize <^> tokenize(line)
     }
 
 }

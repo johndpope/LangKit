@@ -33,12 +33,7 @@ class POSTaggingDemo : Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            guard let sentence = readLine()?.tokenized() else {
-                continue
-            }
-            // Classify
-            let taggedSentence = tagger.tag(sentence)
-            print(taggedSentence)
+            readLine()?.characters.map{String($0)} >>- tagger.tag >>- {print($0)}
         }
     }
 }

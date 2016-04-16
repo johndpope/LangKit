@@ -14,7 +14,7 @@ public extension String {
      - returns: Array of tokens
      */
     public func tokenized() -> [String] {
-        return characters.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
+        return String.init <^> characters.split(separator: " ", omittingEmptySubsequences: true)
     }
 
     /**
@@ -23,7 +23,7 @@ public extension String {
      - returns: Array of strings
      */
     public func lineSplit() -> [String] {
-        return characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains).map(String.init)
+        return String.init <^> characters.split(omittingEmptySubsequences: true, isSeparator: ["\n", "\r"].contains)
     }
 
     /**

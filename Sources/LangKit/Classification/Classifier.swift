@@ -15,11 +15,8 @@
 
  - returns: Extremum
  */
-public func argext<T, K: Comparable>(args: [T], @noescape compare: (K, K) -> Bool, @noescape keyFunc: T -> K) -> T? {
-    guard let first = args.first else {
-        return nil
-    }
-    return args.reduce(first, combine: { compare(keyFunc($0), keyFunc($1)) ? $0 : $1 } )
+public func argext<T, K: Comparable>(args: [T], compare: (K, K) -> Bool, keyFunc: T -> K) -> T? {
+    return args.first >>- { args.reduce($0, combine: { compare(keyFunc($0), keyFunc($1)) ? $0 : $1 } ) }
 }
 
 /**
