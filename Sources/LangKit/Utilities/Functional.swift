@@ -30,18 +30,25 @@ public func curry<A, B, C, D>(f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
 
-infix  operator >>> { associativity left  }
+infix  operator |>  { associativity left  }
+infix  operator <|  { associativity left  }
 infix  operator •   { associativity right }
 infix  operator >>- { associativity left  }
+infix  operator >>§ {}
 infix  operator <*> { associativity left  }
 infix  operator <^> { associativity left  }
 prefix operator !!  {                     }
 prefix operator §   {                     }
 infix  operator <++ {                     }
 
-/* Flat apply */
-public func >>><T, U>(lhs: T, rhs: T -> U) -> U {
+/* Pipeline */
+// Reverse function application
+public func |><T, U>(lhs: T, rhs: T -> U) -> U {
     return rhs(lhs)
+}
+// Function application
+public func <|<T, U>(lhs: T -> U, rhs: T) -> U {
+    return lhs(rhs)
 }
 
 /* Compose */
@@ -105,4 +112,14 @@ public prefix func !!<T, U: Sequence where U.Iterator.Element == T>(sequence: U)
 /* Increment dictionary key */
 public func <++<K, V: Integer>(dictionary: inout [K: V], key: K) {
     dictionary[key] = (dictionary[key] ?? 0) + 1
+}
+
+/* Monad - Bind and invoke instance method */
+// Optional
+public func >>§<A, B>(a: A?, b: A -> () -> B?) -> B?  {
+    return a >>- §b
+}
+// Array
+public func >>§<A, B, MA: Sequence where MA.Iterator.Element == A>(a: MA, b: A -> () -> [B]) -> [B]  {
+    return a >>- §b
 }
