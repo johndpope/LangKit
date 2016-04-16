@@ -57,9 +57,9 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     private var emissionCountTable: [EmissionType: Int] = [:]
 
     // Total number of seen sequences
-    private var sequenceCount: Int
+    private var sequenceCount: Int = 0
     // Seen items
-    private var items: Set<Item>
+    private var items: Set<Item> = []
     // State count table
     private var states: [Label: Int] = [:]
 
@@ -84,9 +84,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.emissionCountTable = emission
         self.sequenceCount = sequenceCount
         self.items = emission.keys.reduce([]) { $0.union([$1.item]) }
-        transition.keys.forEach {
-            self.states <++ $0.state1
-        }
+        transition.keys.forEach { self.states <++ $0.state1 }
     }
 
     /**
@@ -95,12 +93,6 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
      - parameter taggedCorpus: Tagged corpus
      */
     public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
-        initialCountTable = [:]
-        transitionCountTable = [:]
-        emissionCountTable = [:]
-        items = []
-        states = [:]
-        sequenceCount = 0
         train(labeledSequences: corpus)
     }
 
