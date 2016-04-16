@@ -67,7 +67,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            readLine()?.characters.map{String($0)} >>- classifier.classify >>- {print($0)}
+            readLine()?.characters.map{String($0)} >>- classifier.classify >>- print
         }
     }
 }

@@ -34,7 +34,7 @@ class POSTaggingDemo : Demo {
         // Interactive classification
         while true {
             print("💬  ", terminator: "")
-            readLine() >>- §String.tokenized >>- tagger.tag >>- {print($0)}
+            readLine() >>- §String.tokenized >>- tagger.tag >>- print
         }
     }
 }
