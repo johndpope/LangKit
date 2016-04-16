@@ -30,14 +30,14 @@ public func curry<A, B, C, D>(f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
 
-infix operator >>> { associativity left }
-infix operator • { associativity right }
-infix operator >>- { associativity left }
-infix operator <*> { associativity left }
-infix operator <^> { associativity left }
-prefix operator !! {}
-prefix operator § {}
-infix operator <++ {}
+infix  operator >>> { associativity left  }
+infix  operator •   { associativity right }
+infix  operator >>- { associativity left  }
+infix  operator <*> { associativity left  }
+infix  operator <^> { associativity left  }
+prefix operator !!  {                     }
+prefix operator §   {                     }
+infix  operator <++ {                     }
 
 /* Flat apply */
 public func >>><T, U>(lhs: T, rhs: T -> U) -> U {
