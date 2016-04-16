@@ -111,7 +111,7 @@ extension HiddenMarkovModel {
         if let count = initialCountTable[state] {
             prob = Float(count) / Float(sequenceCount)
         } else {
-            prob = FLT_MIN
+            prob = -Float.infinity
         }
         // Write cache
         initial[state] = prob
@@ -132,7 +132,7 @@ extension HiddenMarkovModel {
         if let count = self.transitionCountTable[transition] {
             prob = Float(count) / Float(self.states[transition.state1]!)
         } else {
-            prob = FLT_MIN
+            prob = -Float.infinity
         }
         // Write cache
         self.transition[transition] = prob
@@ -153,7 +153,7 @@ extension HiddenMarkovModel {
         if let count = self.emissionCountTable[emission] {
             prob = Float(count) / Float(self.states[emission.state]!)
         } else {
-            prob = FLT_MIN
+            prob = -Float.infinity
         }
         // Write cache
         self.emission[emission] = prob
@@ -234,7 +234,7 @@ extension HiddenMarkovModel {
             var newPath: [Label: [Label]] = [:]
             for y in states.keys {
                 var bestArg: Label = states.keys.first!
-                var bestProb: Float = FLT_MAX
+                var bestProb: Float = Float.infinity
                 for y0 in states.keys {
                     let prob = trellis[i-1][y0]! - logf(transitionProbability(Transition(y0, y))) - logf(emissionProbability(Emission(y, observation[i])))
                     if prob < bestProb {
@@ -248,7 +248,7 @@ extension HiddenMarkovModel {
             path = newPath
         }
         let n = observation.count - 1
-        var bestArg: Label!, bestProb: Float = FLT_MAX
+        var bestArg: Label!, bestProb: Float = Float.infinity
         for y in states.keys where trellis[n][y] < bestProb {
             bestProb = trellis[n][y]!
             bestArg = y

@@ -43,11 +43,20 @@ public class CorpusReader<Item> {
                  encoding: NSStringEncoding = NSUTF8StringEncoding,
                  tokenizingWith tokenize: String -> [String] = §String.tokenized,
                  itemizingWith itemize: String -> Item) {
+        // Temporarily resolving Foundation inconsistency between OS X and Linux
+        #if os(OSX)
         guard let handle = NSFileHandle(forReadingAtPath: path),
               let delimiterData = sentenceSeparator.data(using: encoding),
               let buffer = NSMutableData(capacity: chunkSize) else {
             return nil
         }
+        #else // Linux
+        guard let handle = NSFileHandle(forReadingAtPath: path),
+              let delimiterData = sentenceSeparator.dataUsingEncoding(encoding),
+              let buffer = NSMutableData(capacity: chunkSize) else {
+            return nil
+        }
+        #endif
         self.path = path
         self.encoding = encoding
         self.sentenceSeparator = sentenceSeparator
@@ -74,7 +83,11 @@ public class CorpusReader<Item> {
      Go to the beginning of the file
      */
     public func rewind() {
+        #if os(OSX)
         fileHandle.seek(toFileOffset: 0)
+        #else
+        fileHandle.seekToFileOffset(0)
+        #endif
         buffer.length = 0
         eof = false
     }
@@ -94,9 +107,19 @@ extension CorpusReader : IteratorProtocol {
         if eof {
             return nil
         }
+
+        #if os(OSX)
         var range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
+        #else
+        var range = buffer.rangeOfData(delimiterData, options: [], in: NSMakeRange(0, buffer.length))
+        #endif
+
         while range.location == NSNotFound {
+            #if os(OSX)
             let data = fileHandle.readData(ofLength: chunkSize)
+            #else
+            let data = fileHandle.readDataOfLength(chunkSize)
+            #endif
             guard data.length > 0 else {
                 eof = true
                 return nil
