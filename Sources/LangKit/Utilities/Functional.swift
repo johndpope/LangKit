@@ -72,17 +72,6 @@ public func >>-<A, B, MA: Sequence where MA.Iterator.Element == A>(lhs: MA, rhs:
     return lhs.flatMap(rhs)
 }
 
-/* Functor - Map */
-// Optional
-public func <^><A, B>(lhs: A -> B, rhs: A?) -> B? {
-    return rhs.map(lhs)
-}
-// Sequence
-public func <^><A, B, S: Sequence where S.Iterator.Element == A>(lhs: A -> B, rhs: S) -> [B] {
-    return rhs.map(lhs)
-}
-
-
 /* Applicative - Apply */
 // Optional
 public func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
@@ -91,6 +80,16 @@ public func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
 // Sequence
 public func <*><A, B, FAB: Sequence, FA: Sequence where FAB.Iterator.Element == (A -> B), FA.Iterator.Element == A>(lhs: FAB, rhs: FA) -> [B] {
     return lhs.flatMap{f in rhs.map(f)}
+}
+
+/* Functor - Map */
+// Optional
+public func <^><A, B>(lhs: A -> B, rhs: A?) -> B? {
+    return rhs.map(lhs)
+}
+// Sequence
+public func <^><A, B, FA: Sequence where FA.Iterator.Element == A>(lhs: A -> B, rhs: FA) -> [B] {
+    return rhs.map(lhs)
 }
 
 /* Invoke instance method */
