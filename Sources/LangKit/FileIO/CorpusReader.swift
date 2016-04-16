@@ -138,7 +138,7 @@ extension CorpusReader : IteratorProtocol {
         buffer.replaceBytes(in: NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
         #else
         let maybeLine = String(data: buffer.subdataWithRange(NSMakeRange(0, range.location)), encoding: encoding)
-        buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
+        buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: UnsafePointer<Void>(nil)!, length: 0)
         #endif
 
         guard let line = maybeLine else {
