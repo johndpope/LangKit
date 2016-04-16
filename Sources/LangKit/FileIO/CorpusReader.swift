@@ -126,14 +126,20 @@ extension CorpusReader : IteratorProtocol {
             }
             #if os(OSX)
             buffer.append(data)
+            range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
             #else
             buffer.appendData(data)
+            range = buffer.rangeOfData(delimiterData, options: [], range: NSMakeRange(0, buffer.length))
             #endif
-            range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         }
 
+        #if os(OSX)
         let maybeLine = String(data: buffer.subdata(with: NSMakeRange(0, range.location)), encoding: encoding)
         buffer.replaceBytes(in: NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
+        #else
+        let maybeLine = String(data: buffer.subdataWithRange(NSMakeRange(0, range.location)), encoding: encoding)
+        buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
+        #endif
 
         guard let line = maybeLine else {
             return nil
