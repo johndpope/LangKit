@@ -111,7 +111,7 @@ extension CorpusReader : IteratorProtocol {
         #if os(OSX)
         var range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         #else
-        var range = buffer.rangeOfData(delimiterData, options: [], in: NSMakeRange(0, buffer.length))
+        var range = buffer.rangeOfData(delimiterData, options: [], range: NSMakeRange(0, buffer.length))
         #endif
 
         while range.location == NSNotFound {
@@ -124,7 +124,11 @@ extension CorpusReader : IteratorProtocol {
                 eof = true
                 return nil
             }
+            #if os(OSX)
             buffer.append(data)
+            #else
+            buffer.appendData(data)
+            #endif
             range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         }
 
