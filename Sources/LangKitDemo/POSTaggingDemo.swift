@@ -20,6 +20,8 @@ class POSTaggingDemo : Demo {
             exit(EXIT_FAILURE)
         }
 
+        print("☢️  Training...")
+
         // Initialize HMM tagger
         let tagger = PartOfSpeechTagger(taggedCorpus: taggedCorpus)
 
@@ -33,7 +35,7 @@ class POSTaggingDemo : Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            readLine()?.characters.map{String($0)} >>- tagger.tag >>- {print($0)}
+            readLine()?.tokenized() >>- tagger.tag >>- {print($0)}
         }
     }
 }
