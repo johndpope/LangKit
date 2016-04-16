@@ -39,7 +39,8 @@ Natural Language Processing Toolkit in Swift
 
 ## Requirements
 
-* Swift 3.0-dev 03/24/16 (`DEVELOPMENT-SNAPSHOT-2016-03-24-a`)
+* Swift 3.0-dev 04/12/16 build (`DEVELOPMENT-SNAPSHOT-2016-04-12-a`)
+  - swiftenv is strongly recommended for managing multiple versions of Swift
 
 ## Instructions
 
@@ -59,7 +60,7 @@ Test:
 ```
     $ swift test
 ```
-* Tests currently do not run due to a bug in SwiftPM as of 03/24/16. Please run the tests on Xcode!
+* Tests currently can't run on Linux due to LinuxMain.swift.
 
 ### Xcode 7.3 with Swift 3 (OS X only) ###
 
