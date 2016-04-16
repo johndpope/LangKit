@@ -53,6 +53,14 @@ public func •<A, B, C>(f: B -> C, g: A -> B) -> A -> C {
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, A) -> C {
     return { f(g($0), g($1)) }
 }
+// f(x, y) • g(x) = f(x, g(y))
+public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (B, A) -> C {
+    return { f($0, g($1)) }
+}
+// f(x, y) • g(x) = f(g(x), y)
+public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
+    return { f(g($0), $1) }
+}
 
 /* Monad - Bind */
 // Optional

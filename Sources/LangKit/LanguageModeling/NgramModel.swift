@@ -181,7 +181,7 @@ extension NgramModel : LanguageModel {
 
      - returns: Probability
      */
-    public func markovProbability(item: Item, logspace: Bool = false) -> Float {
+    public func markovProbability(item: Item, logspace: Bool = true) -> Float {
         // Ngram and pregram ({N-1}gram)
         let ngram = smoothNgram(item)
         let pregram = !!ngram.dropLast()
@@ -214,6 +214,10 @@ extension NgramModel : LanguageModel {
         return logspace ? log(probability) : probability
     }
 
+    public func markovProbability(item: Item) -> Float {
+        return markovProbability(item, logspace: true)
+    }
+
     /**
      Log probability of tokenized sentence
 
@@ -222,9 +226,8 @@ extension NgramModel : LanguageModel {
      - returns: Log probability
      */
     public func sentenceLogProbability(sentence: [Token]) -> Float {
-        let probabilities = sentence.wrapSentenceBoundary().ngrams(n)
-            .map { self.markovProbability($0, logspace: true) }
-        return probabilities.reduce(0, combine: +)
+        return sentence.wrapSentenceBoundary().ngrams(n)
+            .reduce(0, combine: (+) • markovProbability)
     }
 
 }
