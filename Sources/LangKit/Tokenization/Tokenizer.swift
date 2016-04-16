@@ -33,12 +33,16 @@ public extension String {
 
      - returns: Tuple (token, tag)
      */
-    public func tagSplit(delimiter delimiter: Character = "_") -> (String, String) {
+    public func tagSplit(delimiter delimiter: Character) -> (String, String) {
         let split = characters.split(separator: delimiter)
         guard split.count >= 2 else {
             return (String(split.first), unknown)
         }
         return (String(split[0]), String(split[1]))
+    }
+
+    public func tagSplit() -> (String, String) {
+        return tagSplit(delimiter: "_")
     }
 
 }
