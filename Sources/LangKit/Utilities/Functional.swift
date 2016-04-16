@@ -10,12 +10,24 @@ public func identity<T>(x: T) -> T {
     return x
 }
 
-public func uncurry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
+// Curry
+// ((a, b) -> c) -> a -> b -> c
+public func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
     return { x in { y in f(x, y) } }
 }
-
-public func uncurry<A, B, C, D>(f: (A, B, C) -> D) -> A -> B -> C -> D {
+// ((a, b, c) -> d) -> a -> b -> c -> d
+public func curry<A, B, C, D>(f: (A, B, C) -> D) -> A -> B -> C -> D {
     return { x in { y in { z in f(x, y, z) } } }
+}
+
+// Uncurry
+// (a -> b -> c) -> (a, b) -> c
+public func curry<A, B, C>(f: A -> B -> C) -> (A, B) -> C {
+    return { (x, y) in f(x)(y) }
+}
+// (a -> b -> c -> d) -> (a, b, c) -> d
+public func curry<A, B, C, D>(f: A -> B -> C -> D) -> (A, B, C) -> D {
+    return { (x, y, z) in f(x)(y)(z) }
 }
 
 infix operator >>> { associativity left }
@@ -28,17 +40,16 @@ prefix operator § {}
 infix operator <++ {}
 
 /* Flat apply */
-
 public func >>><T, U>(lhs: T, rhs: T -> U) -> U {
     return rhs(lhs)
 }
 
 /* Compose */
-// f(g(x))
+// f(x) • g(x) = f(g(x))
 public func •<A, B, C>(f: B -> C, g: A -> B) -> A -> C {
     return { f(g($0)) }
 }
-// f(g(x), g(y))
+// f(x, y) • g(x) = f(g(x), g(y))
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, A) -> C {
     return { f(g($0), g($1)) }
 }
@@ -69,7 +80,7 @@ public func <^><A, B, S: Sequence where S.Iterator.Element == A>(lhs: A -> B, rh
 public func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
     return lhs.flatMap{f in rhs.map(f)}
 }
-// Array
+// Sequence
 public func <*><A, B, FAB: Sequence, FA: Sequence where FAB.Iterator.Element == (A -> B), FA.Iterator.Element == A>(lhs: FAB, rhs: FA) -> [B] {
     return lhs.flatMap{f in rhs.map(f)}
 }
