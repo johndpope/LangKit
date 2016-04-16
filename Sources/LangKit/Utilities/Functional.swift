@@ -30,10 +30,15 @@ public func curry<A, B, C, D>(f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
 
+/*************
+ * Operators *
+ *************/
+
 infix  operator |>  { associativity left  }
 infix  operator <|  { associativity left  }
 infix  operator •   { associativity right }
 infix  operator >>- { associativity left  }
+infix  operator -<< { associativity right }
 infix  operator >>§ {}
 infix  operator <*> { associativity left  }
 infix  operator <^> { associativity left  }
@@ -43,11 +48,11 @@ infix  operator <++ {                     }
 
 /* Pipeline */
 // Reverse function application
-public func |><T, U>(lhs: T, rhs: T -> U) -> U {
+public func |><A, B>(lhs: A, rhs: A -> B) -> B {
     return rhs(lhs)
 }
 // Function application
-public func <|<T, U>(lhs: T -> U, rhs: T) -> U {
+public func <|<A, B>(lhs: A -> B, rhs: A) -> B {
     return lhs(rhs)
 }
 
@@ -74,9 +79,15 @@ public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
 public func >>-<A, B>(lhs: A?, rhs: A -> B?) -> B? {
     return lhs.flatMap(rhs)
 }
+public func -<<<A, B>(lhs: A -> B?, rhs: A?) -> B? {
+    return rhs.flatMap(lhs)
+}
 // Sequence
 public func >>-<A, B, MA: Sequence where MA.Iterator.Element == A>(lhs: MA, rhs: A -> [B]) -> [B] {
     return lhs.flatMap(rhs)
+}
+public func -<<<A, B, MA: Sequence where MA.Iterator.Element == A>(lhs: A -> [B], rhs: MA) -> [B] {
+    return rhs.flatMap(lhs)
 }
 
 /* Applicative - Apply */
@@ -100,12 +111,12 @@ public func <^><A, B, FA: Sequence where FA.Iterator.Element == A>(lhs: A -> B, 
 }
 
 /* Invoke instance method */
-public prefix func §<T, U>(f: T -> () -> U) -> T -> U {
+public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
     return {f($0)()}
 }
 
 /* Generate sequence */
-public prefix func !!<T, U: Sequence where U.Iterator.Element == T>(sequence: U) -> [T] {
+public prefix func !!<A, B: Sequence where B.Iterator.Element == A>(sequence: B) -> [A] {
     return sequence.map{$0}
 }
 
