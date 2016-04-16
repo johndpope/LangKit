@@ -43,26 +43,28 @@ public struct Emission<T: Hashable, U: Hashable> : Hashable {
     }
 }
 
-public struct HiddenMarkovModel<Item: Hashable, Label: Hashable> {
+public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 
     public typealias TransitionType = Transition<Label>
     public typealias EmissionType = Emission<Label, Item>
 
-    private var initial: [Label: Int]
-    private var transition: [TransitionType: Int]
-    private var emission: [EmissionType: Int]
-
+    private var initialCountTable: [Label: Int]!
+    private var transitionCountTable: [TransitionType: Int]!
+    private var emissionCountTable: [EmissionType: Int]!
+    // Total number of seen sequences
+    private var sequenceCount: Int
     // Seen items
     private var items: Set<Item>
-
     // State count table
     private var states: [Label: Int]
 
-    // Total number of seen sequences
-    private var sequenceCount: Int
+    /// Caching probability tables
+    private var initial: [Label: Float] = [:]
+    private var transition: [TransitionType: Float] = [:]
+    private var emission: [EmissionType: Float] = [:]
 
     /**
-     Initialize with HMM configuration
+     Initialize with HMM counts
 
      - parameter initial:    Initial probability distribution
      - parameter transition: Transition probability distribution
@@ -72,9 +74,9 @@ public struct HiddenMarkovModel<Item: Hashable, Label: Hashable> {
                 transition: [TransitionType: Int],
                 emission: [EmissionType: Int],
                 seenSequenceCount sequenceCount: Int) {
-        self.initial = initial
-        self.transition = transition
-        self.emission = emission
+        self.initialCountTable = initial
+        self.transitionCountTable = transition
+        self.emissionCountTable = emission
         self.states = [:]
         self.sequenceCount = sequenceCount
         self.items = emission.keys.reduce(Set()) { (acc, emission) in
@@ -91,39 +93,74 @@ public struct HiddenMarkovModel<Item: Hashable, Label: Hashable> {
      - parameter taggedCorpus: Tagged corpus
      */
     public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
-        initial = [:]
-        transition = [:]
-        emission = [:]
+        initialCountTable = [:]
+        transitionCountTable = [:]
+        emissionCountTable = [:]
         items = []
         states = [:]
         sequenceCount = 0
-        train(taggedCorpus: corpus)
+        train(labeledSequences: corpus)
     }
 
 }
 
-// MARK: - Calculation
+// MARK: - Probability functions. Cache *mutating*
 extension HiddenMarkovModel {
 
-    public func initialProbability(state: Label) -> Float {
-        if let count = initial[state] {
-            return Float(count) / Float(sequenceCount)
+    public func initialProbability(state state: Label) -> Float {
+        // Lookup cache
+        if let prob = initial[state] {
+            return prob
         }
-        return FLT_MIN
+        // Compute probability
+        var prob: Float
+        if let count = initialCountTable[state] {
+            prob = Float(count) / Float(sequenceCount)
+        }
+        prob = FLT_MIN
+        // Write cache
+        initial[state] = prob
+        return prob
     }
 
-    public func transitionProbability(transition: TransitionType) -> Float {
-        if let count = self.transition[transition] {
-            return Float(count) / Float(self.states[transition.state1]!)
-        }
-        return FLT_MIN
+    public func transitionProbability(from state1: Label, to state2: Label) -> Float {
+        return transitionProbability(TransitionType(state1, state2))
     }
 
-    public func emissionProbability(emission: EmissionType) -> Float {
-        if let count = self.emission[emission] {
-            return Float(count) / Float(self.states[emission.state]!)
+    private func transitionProbability(transition: TransitionType) -> Float {
+        // Lookup cache
+        if let prob = self.transition[transition] {
+            return prob
         }
-        return FLT_MIN
+        // Compute probability
+        var prob: Float
+        if let count = self.transitionCountTable[transition] {
+            prob = Float(count) / Float(self.states[transition.state1]!)
+        }
+        prob = FLT_MIN
+        // Write cache
+        self.transition[transition] = prob
+        return prob
+    }
+
+    public func emissionProbability(from state: Label, to item: Item) -> Float {
+        return emissionProbability(EmissionType(state, item))
+    }
+
+    private func emissionProbability(emission: EmissionType) -> Float {
+        // Lookup cache
+        if let prob = self.emission[emission] {
+            return prob
+        }
+        // Compute probability
+        var prob: Float
+        if let count = self.emissionCountTable[emission] {
+            prob = Float(count) / Float(self.states[emission.state]!)
+        }
+        prob = FLT_MIN
+        // Write cache
+        self.emission[emission] = prob
+        return prob
     }
 
 }
@@ -136,11 +173,11 @@ extension HiddenMarkovModel : SequenceLabelingModel {
      
      - parameter taggedCorpus: Tagged corpus
      */
-    public mutating func train<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
+    public func train<C : Sequence where C.Iterator.Element == [(Item, Label)]>(labeledSequences corpus: C) {
         for sentence in corpus {
             // Add initial
             let (_, head) = sentence[0]
-            initial[head] = (initial[head] ?? 0) + 1
+            initialCountTable[head] = (initialCountTable[head] ?? 0) + 1
             // Collect transitions and emissions in each sentence
             for (i, (token, label)) in sentence.enumerated() {
                 // Add state
@@ -148,7 +185,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
 
                 // Add emission
                 let key = Emission(label, token)
-                emission[key] = (emission[key] ?? 0) + 1
+                emissionCountTable[key] = (emissionCountTable[key] ?? 0) + 1
 
                 // Add seen item
                 items.insert(token)
@@ -157,7 +194,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                 if i < sentence.count - 1 {
                     let (_, nextLabel) = sentence[i+1]
                     let transKey = Transition(label, nextLabel)
-                    transition[transKey] = (transition[transKey] ?? 0) + 1
+                    transitionCountTable[transKey] = (transitionCountTable[transKey] ?? 0) + 1
                 }
             }
             sequenceCount += 1
@@ -193,7 +230,7 @@ extension HiddenMarkovModel {
         var trellis : [[Label: Float]] = [[:]]
         var path: [Label: [Label]] = [:]
         for y in states.keys {
-            trellis[0][y] = -logf(initialProbability(y)) - logf(emissionProbability(Emission(y, observation[0])))
+            trellis[0][y] = -logf(initialProbability(state: y)) - logf(emissionProbability(Emission(y, observation[0])))
             path[y] = [y]
         }
         for i in 1..<observation.count {
