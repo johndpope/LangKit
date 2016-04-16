@@ -110,8 +110,9 @@ extension HiddenMarkovModel {
         var prob: Float
         if let count = initialCountTable[state] {
             prob = Float(count) / Float(sequenceCount)
+        } else {
+            prob = FLT_MIN
         }
-        prob = FLT_MIN
         // Write cache
         initial[state] = prob
         return prob
@@ -130,8 +131,9 @@ extension HiddenMarkovModel {
         var prob: Float
         if let count = self.transitionCountTable[transition] {
             prob = Float(count) / Float(self.states[transition.state1]!)
+        } else {
+            prob = FLT_MIN
         }
-        prob = FLT_MIN
         // Write cache
         self.transition[transition] = prob
         return prob
@@ -150,8 +152,9 @@ extension HiddenMarkovModel {
         var prob: Float
         if let count = self.emissionCountTable[emission] {
             prob = Float(count) / Float(self.states[emission.state]!)
+        } else {
+            prob = FLT_MIN
         }
-        prob = FLT_MIN
         // Write cache
         self.emission[emission] = prob
         return prob
