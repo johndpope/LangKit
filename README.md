@@ -60,10 +60,6 @@ Test:
 ```
     $ swift test
 ```
-<<<<<<< HEAD
-=======
-* Tests currently can't run on Linux due to LinuxMain.swift.
->>>>>>> 7ca46fef9209078c051376d02e8be049ecc93520
 
 ### Xcode 7.3 with Swift 3 (OS X only) ###
 
