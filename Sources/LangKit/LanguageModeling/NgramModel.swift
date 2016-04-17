@@ -11,18 +11,6 @@ import Foundation
 
 public struct NgramModel {
 
-    public enum SmoothingMode : NilLiteralConvertible {
-        case none
-        case laplace(Float)
-        case goodTuring
-        case linearInterpolation
-        case absoluteDiscounting
-        
-        public init(nilLiteral: ()) {
-            self = .none
-        }
-    }
-
     // Token type
     public typealias Token = String
 
@@ -135,9 +123,9 @@ extension NgramModel : LanguageModel {
                 // Count frequency adjustment for Good Turing smoothing
                 if case .goodTuring = smoothing {
                     let count = counter[ngram]
-                    var prevCountFreq = countFrequency[count-1] ?? 0
-                    if prevCountFreq != 0 {
-                        prevCountFreq -= 1
+                    let prevCountFreq = countFrequency[count-1] ?? 0
+                    if prevCountFreq > 0 {
+                        countFrequency[count-1] = prevCountFreq - 1
                     }
                     countFrequency! <++ count
                 }
@@ -181,7 +169,7 @@ extension NgramModel : LanguageModel {
 
      - returns: Probability
      */
-    public func markovProbability(_ item: Item, logspace: Bool = true) -> Float {
+    public func markovProbability(_ item: Item, logspace: Bool) -> Float {
         // Ngram and pregram ({N-1}gram)
         let ngram = smoothNgram(item)
         let pregram = !!ngram.dropLast()
@@ -207,8 +195,13 @@ extension NgramModel : LanguageModel {
             let numCountPlusOne = countFrequency[count + 1] ?? 1
             probability = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
 
-        default:
-            probability = 0.0 // TODO: Implement other smoothing methods
+        case .absoluteDiscounting:
+            // TODO
+            probability = 0.0
+
+        case .linearInterpolation:
+            // TODO
+            probability = 0.0
         }
 
         return logspace ? log(probability) : probability

@@ -10,8 +10,10 @@ public class PartOfSpeechTagger {
 
     let model: HiddenMarkovModel<String, String>
 
-    public init<C: Sequence where C.Iterator.Element == [(String, String)]>(taggedCorpus corpus: C) {
-        model = HiddenMarkovModel(taggedCorpus: corpus)
+    public init<C: Sequence where C.Iterator.Element == [(String, String)]>
+                (taggedCorpus corpus: C,
+                 smoothingMode smoothing: SmoothingMode = .goodTuring) {
+        model = HiddenMarkovModel(taggedCorpus: corpus, smoothingMode: smoothing, replacingItemsFewerThan: 0)
     }
 
 }

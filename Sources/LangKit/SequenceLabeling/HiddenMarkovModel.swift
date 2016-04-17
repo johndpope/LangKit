@@ -52,21 +52,40 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     public typealias EmissionType = Emission<Label, Item>
 
     // Count tables
-    private var initialCountTable: [Label: Int] = [:]
+    private var    initialCountTable: [Label: Int]          = [:]
     private var transitionCountTable: [TransitionType: Int] = [:]
-    private var emissionCountTable: [EmissionType: Int] = [:]
+    private var   emissionCountTable: [EmissionType: Int]   = [:]
 
     // Total number of seen sequences
     private var sequenceCount: Int = 0
+    // Total number of seen transitions
+    private var transitionCount: Int = 0
+    // Total number of seen emissions
+    private var emissionCount: Int = 0
     // Seen items
     private var items: Set<Item> = []
     // State count table
-    private var states: [Label: Int] = [:]
+    private var stateCountTable: [Label: Int] = [:]
 
-    /// Caching probability tables
-    private var initial: [Label: Float] = [:]
+    // Caching probability tables
+    private var    initial: [Label: Float]          = [:]
     private var transition: [TransitionType: Float] = [:]
-    private var emission: [EmissionType: Float] = [:]
+    private var   emission: [EmissionType: Float]   = [:]
+
+    // Smoothing mode
+    private let smoothing: SmoothingMode = .none
+
+    // Rare item replacement threshold
+    private let threshold: Int
+    // Unseen emission count table
+    private var unseenEmissionCountTable: [Label: Int] = [:]
+
+    // Count frequency for Good-Turing smoothing
+    private var transitionCountFrequency: [Int: Int]!
+    private var   emissionCountFrequency: [Int: Int]!
+
+    // Minimum probability limit
+    private var minimumProbability: Float = 0.1e-44
 
     /**
      Initialize with HMM counts
@@ -75,16 +94,28 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
      - parameter transition: Transition probability distribution
      - parameter emission:   Emission probability distribution
      */
-    public init(initial: [Label: Int],
-                transition: [TransitionType: Int],
-                emission: [EmissionType: Int],
-                seenSequenceCount sequenceCount: Int) {
+    public init(initialCountTable initial: [Label: Int],
+                transitionCountTable transition: [TransitionType: Int],
+                emissionCountTable emission: [EmissionType: Int],
+                seenSequenceCount sequenceCount: Int,
+                smoothingMode smoothing: SmoothingMode = .none,
+                replacingItemsFewerThan threshold: Int = 0) {
         self.initialCountTable = initial
         self.transitionCountTable = transition
         self.emissionCountTable = emission
         self.sequenceCount = sequenceCount
-        self.items = emission.keys.reduce([]) { $0.union([$1.item]) }
-        transition.keys.forEach { self.states <++ $0.state1 }
+        self.threshold = threshold
+        updateUnseenEmissionCountTable()
+        self.items = emissionCountTable.keys.reduce([]) { $0.union([$1.item]) }
+        self.transition.keys.forEach { self.stateCountTable <++ $0.state1 }
+
+        // Initialize smoothing data structures
+        if case .goodTuring = smoothing {
+            transitionCountFrequency = [:]
+            emissionCountFrequency   = [:]
+            transitionCountTable.values.forEach { transitionCountFrequency! <++ $0 }
+            emissionCountTable.values.forEach   {   emissionCountFrequency! <++ $0 }
+        }
     }
 
     /**
@@ -92,7 +123,15 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 
      - parameter taggedCorpus: Tagged corpus
      */
-    public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>(taggedCorpus corpus: C) {
+    public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>
+                (taggedCorpus corpus: C,
+                 smoothingMode smoothing: SmoothingMode = .goodTuring,
+                 replacingItemsFewerThan threshold: Int = 0) {
+        self.threshold = threshold
+        if case .goodTuring = smoothing {
+            transitionCountFrequency = [:]
+            emissionCountFrequency   = [:]
+        }
         train(labeledSequences: corpus)
     }
 
@@ -108,11 +147,10 @@ extension HiddenMarkovModel {
         }
         // Compute probability
         var prob: Float
-        if let count = initialCountTable[state] {
-            prob = Float(count) / Float(sequenceCount)
-        } else {
-            prob = -Float.infinity
+        guard let count = initialCountTable[state] else {
+            return minimumProbability
         }
+        prob = Float(count) / Float(sequenceCount)
         // Write cache
         initial[state] = prob
         return prob
@@ -129,10 +167,24 @@ extension HiddenMarkovModel {
         }
         // Compute probability
         var prob: Float
-        if let count = self.transitionCountTable[transition] {
-            prob = Float(count) / Float(self.states[transition.state1]!)
-        } else {
-            prob = -Float.infinity
+        let count = self.transitionCountTable[transition] ?? 0
+        if count == 0 { return minimumProbability }
+        switch smoothing {
+        case .none:
+            prob = Float(count) / Float(stateCountTable[transition.state1]!)
+        case .laplace(let k):
+            prob = (Float(count) + k) /
+                (Float(stateCountTable[transition.state1]!) + k * Float(transitionCount))
+        case .goodTuring:
+            let numCount = transitionCountFrequency[count]!
+            let numCountPlusOne = transitionCountFrequency[count + 1] ?? 1
+            prob = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+        case .linearInterpolation:
+            // Currently nsupported
+            return 0.0
+        case .absoluteDiscounting:
+            // Unsupported for now
+            return 0.0
         }
         // Write cache
         self.transition[transition] = prob
@@ -150,14 +202,43 @@ extension HiddenMarkovModel {
         }
         // Compute probability
         var prob: Float
-        if let count = self.emissionCountTable[emission] {
-            prob = Float(count) / Float(self.states[emission.state]!)
-        } else {
-            prob = -Float.infinity
+        let count = self.emissionCountTable[emission] ?? self.unseenEmissionCountTable[emission.state] ?? 0
+        if count == 0 { return minimumProbability }
+        switch smoothing {
+        case .none:
+            prob = Float(count) / Float(stateCountTable[emission.state]!)
+        case .laplace(let k):
+            prob = (Float(count) + k) / (Float(stateCountTable[emission.state]!) + k * Float(emissionCount))
+        case .goodTuring:
+            let numCount = emissionCountFrequency[count]!
+            let numCountPlusOne = emissionCountFrequency[count + 1] ?? 1
+            prob = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+        case .linearInterpolation:
+            // TODO
+            return 0.0
+        case .absoluteDiscounting:
+            // TODO
+            return 0.0
         }
         // Write cache
         self.emission[emission] = prob
         return prob
+    }
+
+}
+
+// MARK: - Preprocessing
+extension HiddenMarkovModel {
+
+    private func updateUnseenEmissionCountTable() {
+        for (em, count) in emissionCountTable where count <= threshold {
+            let state = em.state
+            self.unseenEmissionCountTable[state] = (self.unseenEmissionCountTable[state] ?? 0) + 1
+            defer {
+                // Remove from original count table
+                emissionCountTable.removeValue(forKey: em)
+            }
+        }
     }
 
 }
@@ -176,25 +257,49 @@ extension HiddenMarkovModel : SequenceLabelingModel {
             // Add initial
             let (_, head) = sentence[0]
             initialCountTable <++ head
+
+            // Increment total sequence count
+            sequenceCount += 1
+
             // Collect transitions and emissions in each sentence
             for (i, (token, label)) in sentence.enumerated() {
                 // Add state
-                states <++ label
+                stateCountTable <++ label
 
                 // Add emission
-                emissionCountTable <++ Emission(label, token)
+                let emissionCount = emissionCountTable <++ Emission(label, token)
 
                 // Add seen item
                 items.insert(token)
 
-                // Add bigram transition
+                // Add transition (s_{i} -> s_{i+1})
+                // if s_{i} is not the end of the sequence
                 if i < sentence.count - 1 {
                     let (_, nextLabel) = sentence[i+1]
-                    transitionCountTable <++ Transition(label, nextLabel)
+                    let transition = Transition(label, nextLabel)
+                    let transitionCount = transitionCountTable <++ transition
+
+                    // Adjust transition count frequency for Good Turing smoothing
+                    if case .goodTuring = smoothing {
+                        let prevTransCountFreq = emissionCountFrequency[transitionCount-1] ?? 0
+                        if prevTransCountFreq > 0 {
+                            transitionCountFrequency[transitionCount-1] = prevTransCountFreq
+                        }
+                    }
+
+                }
+
+                // Adjust emission count frequency for Good Turing smoothing
+                if case .goodTuring = smoothing {
+                    let prevEmCountFreq = emissionCountFrequency[emissionCount-1] ?? 0
+                    if prevEmCountFreq > 0 {
+                        emissionCountFrequency[emissionCount-1] = prevEmCountFreq
+                    }
                 }
             }
-            sequenceCount += 1
         }
+        updateUnseenEmissionCountTable()
+        emission.removeAll(keepingCapacity: true)
     }
 
     /**
@@ -223,20 +328,25 @@ extension HiddenMarkovModel {
      - returns: Most likely label sequence along with probabolity
      */
     public func viterbi(observation: [Item]) -> (probability: Float, label: [Label]) {
+        if observation.isEmpty {
+            return (0.0, [])
+        }
         var trellis : [[Label: Float]] = [[:]]
         var path: [Label: [Label]] = [:]
-        for y in states.keys {
+        for y in stateCountTable.keys {
             trellis[0][y] = -logf(initialProbability(state: y)) - logf(emissionProbability(Emission(y, observation[0])))
             path[y] = [y]
         }
         for i in 1..<observation.count {
             trellis.append([:])
             var newPath: [Label: [Label]] = [:]
-            for y in states.keys {
-                var bestArg: Label = states.keys.first!
+            for y in stateCountTable.keys {
+                var bestArg: Label = stateCountTable.keys.first!
                 var bestProb: Float = Float.infinity
-                for y0 in states.keys {
-                    let prob = trellis[i-1][y0]! - logf(transitionProbability(Transition(y0, y))) - logf(emissionProbability(Emission(y, observation[i])))
+                for y0 in stateCountTable.keys {
+                    let prob = trellis[i-1][y0]! -
+                                (transitionProbability(Transition(y0, y)) |> logf) -
+                                (emissionProbability(Emission(y, observation[i])) |> logf)
                     if prob < bestProb {
                         bestArg = y0
                         bestProb = prob
@@ -249,7 +359,7 @@ extension HiddenMarkovModel {
         }
         let n = observation.count - 1
         var bestArg: Label!, bestProb: Float = Float.infinity
-        for y in states.keys where trellis[n][y] < bestProb {
+        for y in stateCountTable.keys where trellis[n][y] < bestProb {
             bestProb = trellis[n][y]!
             bestArg = y
         }

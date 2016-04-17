@@ -23,7 +23,7 @@ class POSTaggingDemo : Demo {
         print("☢️  Training...")
 
         // Initialize HMM tagger
-        let tagger = PartOfSpeechTagger(taggedCorpus: taggedCorpus)
+        let tagger = PartOfSpeechTagger(taggedCorpus: taggedCorpus, smoothingMode: .goodTuring)
 
         print("✅  Training complete")
 

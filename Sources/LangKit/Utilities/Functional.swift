@@ -42,9 +42,6 @@ infix  operator -<< { associativity right }
 infix  operator >>§ {}
 infix  operator <*> { associativity left  }
 infix  operator <^> { associativity left  }
-prefix operator !!  {                     }
-prefix operator §   {                     }
-infix  operator <++ {                     }
 
 /* Pipeline */
 // Reverse function application
