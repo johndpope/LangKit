@@ -8,6 +8,6 @@
 
 import Foundation
 
-public func print(_ item: Any) {
+public func print<T>(_ item: T) {
     print(item)
 }

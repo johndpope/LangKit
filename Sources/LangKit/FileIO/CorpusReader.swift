@@ -44,13 +44,13 @@ public class CorpusReader<Item> {
                  tokenizingWith tokenize: String -> [String] = §String.tokenized,
                  itemizingWith itemize: String -> Item) {
         // Temporarily resolving Foundation inconsistency between OS X and Linux
-        #if os(OSX)
+        #if os(OSX) || os(iOS)
         guard let handle = NSFileHandle(forReadingAtPath: path),
               let delimiterData = sentenceSeparator.data(using: encoding),
               let buffer = NSMutableData(capacity: chunkSize) else {
             return nil
         }
-        #else // Linux
+        #elseif os(Linux) // Linux
         guard let handle = NSFileHandle(forReadingAtPath: path),
               let delimiterData = sentenceSeparator.dataUsingEncoding(encoding),
               let buffer = NSMutableData(capacity: chunkSize) else {
@@ -83,9 +83,9 @@ public class CorpusReader<Item> {
      Go to the beginning of the file
      */
     public func rewind() {
-        #if os(OSX)
+        #if os(OSX) || os(iOS)
         fileHandle.seek(toFileOffset: 0)
-        #else
+        #elseif os(Linux)
         fileHandle.seekToFileOffset(0)
         #endif
         buffer.length = 0
@@ -108,35 +108,35 @@ extension CorpusReader : IteratorProtocol {
             return nil
         }
 
-        #if os(OSX)
+        #if os(OSX) || os(iOS)
         var range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
-        #else
+        #elseif os(Linux)
         var range = buffer.rangeOfData(delimiterData, options: [], range: NSMakeRange(0, buffer.length))
         #endif
 
         while range.location == NSNotFound {
-            #if os(OSX)
+            #if os(OSX) || os(iOS)
             let data = fileHandle.readData(ofLength: chunkSize)
-            #else
+            #elseif os(Linux)
             let data = fileHandle.readDataOfLength(chunkSize)
             #endif
             guard data.length > 0 else {
                 eof = true
                 return nil
             }
-            #if os(OSX)
+            #if os(OSX) || os(iOS)
             buffer.append(data)
             range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
-            #else
+            #elseif os(Linux)
             buffer.appendData(data)
             range = buffer.rangeOfData(delimiterData, options: [], range: NSMakeRange(0, buffer.length))
             #endif
         }
 
-        #if os(OSX)
+        #if os(OSX) || os(iOS)
         let maybeLine = String(data: buffer.subdata(with: NSMakeRange(0, range.location)), encoding: encoding)
         buffer.replaceBytes(in: NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
-        #else
+        #elseif os(Linux)
         let maybeLine = String(data: buffer.subdataWithRange(NSMakeRange(0, range.location)), encoding: encoding)
         buffer.replaceBytesInRange(NSMakeRange(0, range.location + range.length), withBytes: UnsafePointer<Void>(nil)!, length: 0)
         #endif
