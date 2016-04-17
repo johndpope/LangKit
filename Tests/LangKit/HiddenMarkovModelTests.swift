@@ -30,7 +30,7 @@ class HiddenMarkovModelTests: XCTestCase {
            Emission("Sunny", "clean"): 10,
         ]
 
-        let model = HiddenMarkovModel(initial: initial, transition: transition, emission: emission, seenSequenceCount: 150)
+        let model = HiddenMarkovModel(initialCountTable: initial, transitionCountTable: transition, emissionCountTable: emission, seenSequenceCount: 150)
 
         let taggedSequence = model.tag(["clean", "walk", "shop"]).map{$0.1}
         XCTAssertTrue(taggedSequence.elementsEqual(["Rainy", "Sunny", "Sunny"]))
