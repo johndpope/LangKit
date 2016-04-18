@@ -12,7 +12,7 @@ public class TokenCorpusReader : CorpusReader<String> {
 
     public init?(fromFile path: String,
                  sentenceSeparator: String = "\n",
-                 encoding: NSStringEncoding,
+                 encoding: NSStringEncoding = NSUTF8StringEncoding,
                  tokenizingWith tokenize: String -> [String] = §String.tokenized) {
         super.init(fromFile: path, sentenceSeparator: sentenceSeparator, encoding: encoding, tokenizingWith: tokenize, itemizingWith: identity)
     }
