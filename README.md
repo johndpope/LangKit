@@ -6,8 +6,6 @@
 
 Natural Language Processing Toolkit in Swift
 
-**Early work**
-
 ## Components
 
 
@@ -58,6 +56,8 @@ dependencies: [
     .Package(url: "https://github.com/xinranmsn/CommandLine", majorVersion: 0, minor: 1),
 ]
 ```
+
+Then add `import LangKit` to your source file.
 
 #### Example
 
