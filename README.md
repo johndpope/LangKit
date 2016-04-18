@@ -6,39 +6,7 @@
 
 Natural Language Processing Toolkit in Swift
 
-## Components
 
-
-- Language Modeling
-  - [x] N-gram language model
-    - [x] Trie counter
-    - [x] Dictionary counter
-    - [x] Smoothing
-      - [x] Additive
-      - [x] Good Turing
-      - [ ] Absolute discounting
-      - [ ] Linear interpolation
-- Sequence Labeling
-  - [x] Hidden Markov model
-  - [x] HMM part-of-speech tagger
-  - [ ] Maximum-entropy Markov model
-- Preprocessing
-  - [x] Basics
-- Tokenization
-  - [x] Basics
-  - [ ] Penn Treebank tokenizer
-- Classification
-  - [x] Naive Bayes
-  - [ ] Support vector machine
-- Alignment
-  - [ ] IBM Model 1
-  - [ ] IBM Model 2
-- File IO
-  - [x] Corpus reader
-  - [ ] ARPA LM file support
-- Demo
-  - [x] Language identification (`$ ./demo -n LangID`)
-  - [x] HMM POS tagging (`$ ./demo -n POS`)
 
 ## Requirements
 
@@ -77,6 +45,11 @@ tagger.tag(sentence) |> print
 
 * Train a n-gram language model with your data
 ```
+guard let corpus = TokenCorpusReader(fromFile: "Data/train.txt") else {
+    print("❌  Corpora error!")
+    exit(EXIT_FAILURE)
+}
+
 let model = NgramModel(n: 3,
     trainingCorpus: corpus,
     smoothingMode: .none,
@@ -113,6 +86,39 @@ Switch the toolchain to Swift development snapshot, and open `LangKit.xcodeproj`
 Build: `⌘b`
 
 Test: `⌘u`
+
+## Components
+
+- Language Modeling
+  - [x] N-gram language model
+    - [x] Trie counter
+    - [x] Dictionary counter
+    - [x] Smoothing
+      - [x] Additive
+      - [x] Good Turing
+      - [ ] Absolute discounting
+      - [ ] Linear interpolation
+- Sequence Labeling
+  - [x] Hidden Markov model
+  - [x] HMM part-of-speech tagger
+  - [ ] Maximum-entropy Markov model
+- Preprocessing
+  - [x] Basics
+- Tokenization
+  - [x] Basics
+  - [ ] Penn Treebank tokenizer
+- Classification
+  - [x] Naive Bayes
+  - [ ] Support vector machine
+- Alignment
+  - [ ] IBM Model 1
+  - [ ] IBM Model 2
+- File IO
+  - [x] Corpus reader
+  - [ ] ARPA LM file support
+- Demo
+  - [x] Language identification (`$ ./demo -n LangID`)
+  - [x] HMM POS tagging (`$ ./demo -n POS`)
 
 ## Note
 
