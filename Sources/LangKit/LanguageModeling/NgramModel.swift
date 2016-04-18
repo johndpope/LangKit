@@ -87,15 +87,6 @@ extension NgramModel {
             return unkedNgram
         }
 
-        // Pregram does not exist
-        if counter[unkedNgram.dropLast().map{$0}] == 0 {
-            // Smooth pregram
-            let presmoothedNgram = Array(repeating: unknown, count: n) + [unkedNgram.last!]
-            return counter[presmoothedNgram] == 0
-                ? presmoothedNgram.dropLast() + [unknown]
-                : presmoothedNgram
-        }
-
         // Ngram exists
         return unkedNgram
     }
@@ -193,7 +184,8 @@ extension NgramModel : LanguageModel {
         case .goodTuring:
             let numCount = countFrequency[count]!
             let numCountPlusOne = countFrequency[count + 1] ?? 1
-            probability = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+            let smoothedCount = Float(count + 1) * Float(numCountPlusOne) / Float(numCount)
+            probability = smoothedCount / Float(precount)
 
         case .absoluteDiscounting:
             // TODO

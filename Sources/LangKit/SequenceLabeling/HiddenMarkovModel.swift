@@ -169,21 +169,22 @@ extension HiddenMarkovModel {
         var prob: Float
         let count = self.transitionCountTable[transition] ?? 0
         if count == 0 { return minimumProbability }
+        let stateCount = stateCountTable[transition.state1]!
         switch smoothing {
         case .none:
-            prob = Float(count) / Float(stateCountTable[transition.state1]!)
+            prob = Float(count) / Float(stateCount)
         case .laplace(let k):
-            prob = (Float(count) + k) /
-                (Float(stateCountTable[transition.state1]!) + k * Float(transitionCount))
+            prob = (Float(count) + k) / (Float(stateCount) + k * Float(transitionCount))
         case .goodTuring:
             let numCount = transitionCountFrequency[count]!
             let numCountPlusOne = transitionCountFrequency[count + 1] ?? 1
-            prob = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
-        case .linearInterpolation:
-            // Currently nsupported
-            return 0.0
+            let smoothedCount = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+            prob = smoothedCount / Float(stateCount)
         case .absoluteDiscounting:
             // Unsupported for now
+            return 0.0
+        case .linearInterpolation:
+            // Currently nsupported
             return 0.0
         }
         // Write cache
@@ -204,15 +205,17 @@ extension HiddenMarkovModel {
         var prob: Float
         let count = self.emissionCountTable[emission] ?? self.unseenEmissionCountTable[emission.state] ?? 0
         if count == 0 { return minimumProbability }
+        let stateCount = stateCountTable[emission.state]!
         switch smoothing {
         case .none:
-            prob = Float(count) / Float(stateCountTable[emission.state]!)
+            prob = Float(count) / Float(stateCount)
         case .laplace(let k):
-            prob = (Float(count) + k) / (Float(stateCountTable[emission.state]!) + k * Float(emissionCount))
+            prob = (Float(count) + k) / (Float(stateCount) + k * Float(emissionCount))
         case .goodTuring:
             let numCount = emissionCountFrequency[count]!
             let numCountPlusOne = emissionCountFrequency[count + 1] ?? 1
-            prob = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+            let smoothedCount = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+            prob = smoothedCount / Float(stateCount)
         case .linearInterpolation:
             // TODO
             return 0.0
