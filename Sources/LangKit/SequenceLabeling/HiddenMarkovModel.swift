@@ -107,7 +107,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.threshold = threshold
         updateUnseenEmissionCountTable()
         self.items = emissionCountTable.keys.reduce([]) { $0.union([$1.item]) }
-        self.transition.keys.forEach { self.stateCountTable <++ $0.state1 }
+        self.transitionCountTable.keys.forEach { self.stateCountTable <++ $0.state1 }
 
         // Initialize smoothing data structures
         if case .goodTuring = smoothing {
@@ -182,10 +182,10 @@ extension HiddenMarkovModel {
             prob = smoothedCount / Float(stateCount)
         case .absoluteDiscounting:
             // Unsupported for now
-            return 0.0
+            return minimumProbability
         case .linearInterpolation:
             // Currently nsupported
-            return 0.0
+            return minimumProbability
         }
         // Write cache
         self.transition[transition] = prob
@@ -218,10 +218,10 @@ extension HiddenMarkovModel {
             prob = smoothedCount / Float(stateCount)
         case .linearInterpolation:
             // TODO
-            return 0.0
+            return minimumProbability
         case .absoluteDiscounting:
             // TODO
-            return 0.0
+            return minimumProbability
         }
         // Write cache
         self.emission[emission] = prob
