@@ -27,7 +27,7 @@ Simply add a dependency in Swift Package Manager.
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/xinranmsn/CommandLine", majorVersion: 0, minor: 1),
+    .Package(url: "https://github.com/xinranmsn/LangKit", majorVersion: 0, minor: 1),
 ]
 ```
 
