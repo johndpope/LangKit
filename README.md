@@ -25,7 +25,7 @@ Upcoming features:
 
 Simply add a dependency in Swift Package Manager.
 
-```
+```swift
 dependencies: [
     .Package(url: "https://github.com/xinranmsn/CommandLine", majorVersion: 0, minor: 1),
 ]
@@ -36,7 +36,7 @@ Then add `import LangKit` to your source file.
 #### Example
 
 * Train a part-of-speech tagger with your data
-```
+```swift
 guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", itemizingWith: §String.tagSplit) else {
     print("❌  Corpora error!")
     exit(EXIT_FAILURE)
@@ -50,7 +50,7 @@ tagger.tag(sentence) |> print
 ```
 
 * Train a n-gram language model with your data
-```
+```swift
 guard let corpus = TokenCorpusReader(fromFile: "Data/train.txt") else {
     print("❌  Corpora error!")
     exit(EXIT_FAILURE)
