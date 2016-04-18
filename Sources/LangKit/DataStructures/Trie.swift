@@ -100,20 +100,20 @@ public extension Trie {
         // Leaf
         case .leaf(let k, let v):
             let nk = item.first!
-            let child = Trie.leaf(nk, 0).insert(item.dropFirst().map{$0})
+            let child = Trie.leaf(nk, 0).insert(!!item.dropFirst(), incrementingNodes: incr)
             return .node(k, incr ? v + 1 : v, [nk : child])
 
         // Node
         case .node(let k, let v, var children):
             let nk = item.first!
-            let restItem = item.dropFirst().map{$0}
+            let restItem = !!item.dropFirst()
             // Child exists
             if let child = children[nk] {
-                children[nk] = child.insert(restItem)
+                children[nk] = child.insert(restItem, incrementingNodes: incr)
             }
             // Child does not exist. Call insert on a new leaf
             else {
-                children[nk] = Trie.leaf(nk, 0).insert(restItem)
+                children[nk] = Trie.leaf(nk, 0).insert(restItem, incrementingNodes: incr)
             }
             return .node(k, incr ? v + 1 : v, children)
         }
