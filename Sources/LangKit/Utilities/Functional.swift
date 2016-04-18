@@ -5,6 +5,9 @@
 //  Created by Richard Wei on 4/15/16.
 //
 //
+/*
+ * This is a micro functional toolset that does not expect too much abstraction
+ */
 
 public func identity<T>(x: T) -> T {
     return x
@@ -39,7 +42,8 @@ infix  operator <|  { associativity left  }
 infix  operator •   { associativity right }
 infix  operator >>- { associativity left  }
 infix  operator -<< { associativity right }
-infix  operator >>§ {}
+infix  operator >-> { associativity left  }
+infix  operator >>§ {                     }
 infix  operator <*> { associativity left  }
 infix  operator <^> { associativity left  }
 
@@ -69,6 +73,16 @@ public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (B, A) -> C {
 // f(x, y) • g(x) = f(g(x), y)
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
     return { f(g($0), $1) }
+}
+
+/* Monad - Compose */
+// Optional
+public func >-><A, B, C>(f: A -> B?, g: B -> C?) -> A -> C? {
+    return { x in f(x) >>- g }
+}
+// Sequence
+public func >-><A, B, C, MB: Sequence, MC: Sequence where MB.Iterator.Element == B, MC.Iterator.Element == C> (f: A -> MB, g: B -> MC) -> A -> [C] {
+    return { x in f(x).flatMap(g) }
 }
 
 /* Monad - Bind */
@@ -117,6 +131,3 @@ public func >>§<A, B, MA: Sequence where MA.Iterator.Element == A>(a: MA, b: A 
     return a >>- §b
 }
 
-/**************
- * Extensions *
- **************/
