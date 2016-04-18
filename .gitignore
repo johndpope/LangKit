@@ -9,6 +9,7 @@ Build/
 Data/
 DerivedData/
 *.o
+*.d
 *.dylib
 *.swiftmodule
 *.framework
