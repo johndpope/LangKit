@@ -145,7 +145,12 @@ extension CorpusReader : IteratorProtocol {
             return nil
         }
 
-        return itemize <^> tokenize(line)
+        let tokens = tokenize(line).map(itemize)
+
+        if !tokens.isEmpty { return tokens }
+
+        // Tail call on next line
+        return next()
     }
 
 }
