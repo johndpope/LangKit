@@ -27,7 +27,7 @@ public extension String {
     }
 
     public func letterized() -> [String] {
-        return {String($0)} <^> characters
+        return characters.map{String($0)}
     }
 
     /**

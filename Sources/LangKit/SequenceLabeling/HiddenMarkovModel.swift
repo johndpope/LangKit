@@ -269,7 +269,9 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                 stateCountTable[label] ?+= 1
 
                 // Add emission
-                let emissionCount = emissionCountTable[Emission(label, token)] ?+= 1
+                let emissionKey = Emission(label, token)
+                let emissionCount = 1 + (emissionCountTable[emissionKey] ?? 0)
+                emissionCountTable[emissionKey] = emissionCount
 
                 // Add seen item
                 items.insert(token)
@@ -278,9 +280,10 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                 // if s_{i} is not the end of the sequence
                 if i < sentence.count - 1 {
                     let (_, nextLabel) = sentence[i+1]
-                    let transition = Transition(label, nextLabel)
-                    let transitionCount = transitionCountTable[transition] ?+= 1
-
+                    // Add transition
+                    let transitionKey = Transition(label, nextLabel)
+                    let transitionCount = 1 + (transitionCountTable[transitionKey] ?? 0)
+                    transitionCountTable[transitionKey] = transitionCount
                     // Adjust transition count frequency for Good Turing smoothing
                     if case .goodTuring = smoothing {
                         let prevTransCountFreq = emissionCountFrequency[transitionCount-1] ?? 0

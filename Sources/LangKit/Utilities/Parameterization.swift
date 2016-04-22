@@ -13,6 +13,7 @@ import Foundation
 
  - parameter item: Single item
  */
+@inline(__always)
 public func print<T>(_ item: T) {
     print(item)
 }

@@ -6,13 +6,21 @@
 //
 //
 
+// Force generate
+// Equivalent to .map{$0}
 prefix operator !!  {}
+
+// Instance method invocation closure
 prefix operator §   {}
+
+// Increment optional variable while unwrapping with default value if nil
 infix operator ?+= {
     associativity right
     precedence 90
     assignment
 }
+
+// Increment optional variable while force-unwrapping
 infix operator !+= {
     associativity right
     precedence 90
@@ -39,42 +47,43 @@ public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
  - returns: Array
  */
 @inline(__always)
-public prefix func !!<A, B: Sequence where B.Iterator.Element == A>(sequence: B) -> [A] {
+public prefix func !!<A, B: Sequence where B.Iterator.Element == A>
+                      (sequence: B) -> [A] {
     return sequence.map{$0}
 }
 
+/**
+ Increment while unwrapping with default value if nil
+
+ - returns: Incremented value
+ */
 @inline(__always)
-public func ?+=<T: Integer>(lhs: inout T?, rhs: T) -> T {
+public func ?+=<T: Integer>(lhs: inout T?, rhs: T) {
     lhs = rhs + (lhs ?? 0)
-    return lhs!
 }
-
 @inline(__always)
-public func ?+=(lhs: inout Float?, rhs: Float) -> Float {
+public func ?+=(lhs: inout Float?, rhs: Float) {
     lhs = rhs + (lhs ?? 0.0)
-    return lhs!
 }
-
 @inline(__always)
-public func ?+=(lhs: inout Double?, rhs: Double) -> Double {
+public func ?+=(lhs: inout Double?, rhs: Double) {
     lhs = rhs + (lhs ?? 0.0)
-    return lhs!
 }
 
-@inline(__always)
-public func !+=<T: Integer>(lhs: inout T?, rhs: T) -> T {
-    lhs = rhs + lhs!
-    return lhs!
-}
+/**
+ Increment while force-unwrapping
 
+ - returns: Incremented value
+ */
 @inline(__always)
-public func !+=(lhs: inout Float?, rhs: Float) -> Float {
+public func !+=<T: Integer>(lhs: inout T?, rhs: T) {
     lhs = rhs + lhs!
-    return lhs!
 }
-
 @inline(__always)
-public func !+=(lhs: inout Double?, rhs: Double) -> Double {
+public func !+=(lhs: inout Float?, rhs: Float) {
     lhs = rhs + lhs!
-    return lhs!
+}
+@inline(__always)
+public func !+=(lhs: inout Double?, rhs: Double) {
+    lhs = rhs + lhs!
 }
