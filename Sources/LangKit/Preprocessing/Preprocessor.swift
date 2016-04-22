@@ -33,7 +33,7 @@ extension Sequence where Iterator.Element == String {
      */
     public func replaceRareTokens(minimumCount threshold: Int) -> [String] {
         var frequency: [String: Int] = [:]
-        self.forEach { frequency <++ $0 }
+        self.forEach { frequency[$0] ?+= 1 }
         return self.map { frequency[$0]! > threshold ? $0 : unknown }
     }
 
@@ -52,7 +52,7 @@ extension Sequence where Iterator.Element == [String] {
     public func replaceRareTokens(minimumCount threshold: Int) -> [[String]] {
         var frequency: [String: Int] = [:]
         // Collect frequency
-        self.forEach { $0.forEach { frequency <++ $0 } }
+        self.forEach { $0.forEach { frequency[$0] ?+= 1 } }
         // Replace
         return self.map { $0.map { frequency[$0]! > threshold ? $0 : unknown } }
     }

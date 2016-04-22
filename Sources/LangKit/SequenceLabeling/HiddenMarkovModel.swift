@@ -106,14 +106,14 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.threshold = threshold
         updateUnseenEmissionCountTable()
         self.items = emissionCountTable.keys.reduce([]) { $0.union([$1.item]) }
-        self.transitionCountTable.keys.forEach { self.stateCountTable <++ $0.state1 }
+        self.transitionCountTable.keys.forEach { self.stateCountTable[$0.state1] ?+= 1 }
 
         // Initialize smoothing data structures
         if case .goodTuring = smoothing {
             transitionCountFrequency = [:]
             emissionCountFrequency   = [:]
-            transitionCountTable.values.forEach { transitionCountFrequency! <++ $0 }
-            emissionCountTable.values.forEach   {   emissionCountFrequency! <++ $0 }
+            transitionCountTable.values.forEach { transitionCountFrequency![$0] ?+= 1 }
+            emissionCountTable.values.forEach   {   emissionCountFrequency![$0] ?+= 1 }
         }
     }
 
@@ -258,7 +258,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
         for sentence in corpus {
             // Add initial
             let (_, head) = sentence[0]
-            initialCountTable <++ head
+            initialCountTable[head] ?+= 1
 
             // Increment total sequence count
             sequenceCount += 1
@@ -266,10 +266,10 @@ extension HiddenMarkovModel : SequenceLabelingModel {
             // Collect transitions and emissions in each sentence
             for (i, (token, label)) in sentence.enumerated() {
                 // Add state
-                stateCountTable <++ label
+                stateCountTable[label] ?+= 1
 
                 // Add emission
-                let emissionCount = emissionCountTable <++ Emission(label, token)
+                let emissionCount = emissionCountTable[Emission(label, token)] ?+= 1
 
                 // Add seen item
                 items.insert(token)
@@ -279,7 +279,7 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                 if i < sentence.count - 1 {
                     let (_, nextLabel) = sentence[i+1]
                     let transition = Transition(label, nextLabel)
-                    let transitionCount = transitionCountTable <++ transition
+                    let transitionCount = transitionCountTable[transition] ?+= 1
 
                     // Adjust transition count frequency for Good Turing smoothing
                     if case .goodTuring = smoothing {

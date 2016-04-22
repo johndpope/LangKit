@@ -8,7 +8,16 @@
 
 prefix operator !!  {}
 prefix operator §   {}
-infix  operator <++ {}
+infix operator ?+= {
+    associativity right
+    precedence 90
+    assignment
+}
+infix operator !+= {
+    associativity right
+    precedence 90
+    assignment
+}
 
 /**
  Instance method invoker
@@ -17,6 +26,7 @@ infix  operator <++ {}
 
  - returns: Uninstantiated method with auto invocation (A -> B)
  */
+@inline(__always)
 public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
     return {f($0)()}
 }
@@ -28,21 +38,43 @@ public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
 
  - returns: Array
  */
+@inline(__always)
 public prefix func !!<A, B: Sequence where B.Iterator.Element == A>(sequence: B) -> [A] {
     return sequence.map{$0}
 }
 
-/* Increment dictionary key */
-/**
- Increment ductionary key by 1
+@inline(__always)
+public func ?+=<T: Integer>(lhs: inout T?, rhs: T) -> T {
+    lhs = rhs + (lhs ?? 0)
+    return lhs!
+}
 
- - parameter dictionary: Dictionary<_, Int>
- - parameter key:        Key
+@inline(__always)
+public func ?+=(lhs: inout Float?, rhs: Float) -> Float {
+    lhs = rhs + (lhs ?? 0.0)
+    return lhs!
+}
 
- - returns: New value
- */
-public func <++<K, V: Integer>(dictionary: inout [K: V], key: K) -> V {
-    let value = (dictionary[key] ?? 0) + 1
-    dictionary[key] = value
-    return value
+@inline(__always)
+public func ?+=(lhs: inout Double?, rhs: Double) -> Double {
+    lhs = rhs + (lhs ?? 0.0)
+    return lhs!
+}
+
+@inline(__always)
+public func !+=<T: Integer>(lhs: inout T?, rhs: T) -> T {
+    lhs = rhs + lhs!
+    return lhs!
+}
+
+@inline(__always)
+public func !+=(lhs: inout Float?, rhs: Float) -> Float {
+    lhs = rhs + lhs!
+    return lhs!
+}
+
+@inline(__always)
+public func !+=(lhs: inout Double?, rhs: Double) -> Double {
+    lhs = rhs + lhs!
+    return lhs!
 }

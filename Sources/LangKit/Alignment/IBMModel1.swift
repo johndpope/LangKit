@@ -34,7 +34,7 @@ public class IBMModel1: Aligner {
         var total: [String: Float] = [:]
         var sTotal: [String: Float] = [:]
         let bitext = !!bitext
-        for iter in 1...iterations {
+        for _ in 1...iterations {
             // Re-initialization
             count.removeAll(keepingCapacity: true)
             total.removeAll(keepingCapacity: true)
@@ -46,7 +46,7 @@ public class IBMModel1: Aligner {
                     sTotal[ej] = 0.0
                     for fi in f {
                         let pair: Key = [ej, fi]
-                        sTotal[ej] = (sTotal[ej] ?? 0.0) + (trans[pair] ?? initialTrans)
+                        sTotal[ej] ?+= trans[pair] ?? initialTrans
                     }
                 }
                 // Collect counts
@@ -55,8 +55,8 @@ public class IBMModel1: Aligner {
                         let pair: Key = [ej, fi]
                         let transProb = trans[pair] ?? initialTrans
                         let ejTotal = sTotal[ej]!
-                        count[pair] = (count[pair] ?? 0.0) + transProb / ejTotal
-                        total[fi] = (total[fi] ?? 0.0) + transProb / ejTotal
+                        count[pair] ?+= transProb / ejTotal
+                        total[fi] ?+= transProb / ejTotal
                     }
                 }
             }

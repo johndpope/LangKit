@@ -46,7 +46,8 @@ public class IBMModel2 : IBMModel1 {
      - parameter m1Iterations: Lexical iterations
      - parameter m2Iterations: Alignment iterations
      */
-    public func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
+    public func train<S: Sequence where S.Iterator.Element == SentenceTuple>
+                      (bitext: S, lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
         let bitext = !!bitext
 
         // Train Model 1 (super)

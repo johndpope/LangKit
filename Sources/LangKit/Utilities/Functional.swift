@@ -15,20 +15,24 @@ public func identity<T>(x: T) -> T {
 
 // Curry
 // ((a, b) -> c) -> a -> b -> c
+@inline(__always)
 public func curry<A, B, C>(_ f: (A, B) -> C) -> A -> B -> C {
     return { x in { y in f(x, y) } }
 }
 // ((a, b, c) -> d) -> a -> b -> c -> d
+@inline(__always)
 public func curry<A, B, C, D>(_ f: (A, B, C) -> D) -> A -> B -> C -> D {
     return { x in { y in { z in f(x, y, z) } } }
 }
 
 // Uncurry
 // (a -> b -> c) -> (a, b) -> c
+@inline(__always)
 public func uncurry<A, B, C>(_ f: A -> B -> C) -> (A, B) -> C {
     return { (x, y) in f(x)(y) }
 }
 // (a -> b -> c -> d) -> (a, b, c) -> d
+@inline(__always)
 public func uncurry<A, B, C, D>(_ f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
@@ -59,74 +63,90 @@ public func <|<A, B>(lhs: A -> B, rhs: A) -> B {
 
 /* Compose */
 // f(x) • g(x) = f(g(x))
+@inline(__always)
 public func •<A, B, C>(f: B -> C, g: A -> B) -> A -> C {
     return { f(g($0)) }
 }
 // f(x, y) • g(x) = f(g(x), g(y))
+@inline(__always)
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, A) -> C {
     return { f(g($0), g($1)) }
 }
 // f(x, y) • g(x) = f(x, g(y))
+@inline(__always)
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (B, A) -> C {
     return { f($0, g($1)) }
 }
 // f(x, y) • g(x) = f(g(x), y)
+@inline(__always)
 public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
     return { f(g($0), $1) }
 }
 
 /* Monad - Compose */
 // Optional
+@inline(__always)
 public func >-><A, B, C>(f: A -> B?, g: B -> C?) -> A -> C? {
     return { x in f(x) >>- g }
 }
 // Sequence
+@inline(__always)
 public func >-><A, B, C, MB: Sequence, MC: Sequence where MB.Iterator.Element == B, MC.Iterator.Element == C> (f: A -> MB, g: B -> MC) -> A -> [C] {
     return { x in f(x).flatMap(g) }
 }
 
 /* Monad - Bind */
 // Optional
+@inline(__always)
 public func >>-<A, B>(lhs: A?, rhs: A -> B?) -> B? {
     return lhs.flatMap(rhs)
 }
+@inline(__always)
 public func -<<<A, B>(lhs: A -> B?, rhs: A?) -> B? {
     return rhs.flatMap(lhs)
 }
 // Sequence
+@inline(__always)
 public func >>-<A, B, MA: Sequence where MA.Iterator.Element == A>(lhs: MA, rhs: A -> [B]) -> [B] {
     return lhs.flatMap(rhs)
 }
+@inline(__always)
 public func -<<<A, B, MA: Sequence where MA.Iterator.Element == A>(lhs: A -> [B], rhs: MA) -> [B] {
     return rhs.flatMap(lhs)
 }
 
 /* Applicative - Apply */
 // Optional
+@inline(__always)
 public func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
     return lhs.flatMap{f in rhs.map(f)}
 }
 // Sequence
+@inline(__always)
 public func <*><A, B, FAB: Sequence, FA: Sequence where FAB.Iterator.Element == (A -> B), FA.Iterator.Element == A>(lhs: FAB, rhs: FA) -> [B] {
     return lhs.flatMap{f in rhs.map(f)}
 }
 
 /* Functor - Map */
 // Optional
+@inline(__always)
 public func <^><A, B>(lhs: A -> B, rhs: A?) -> B? {
     return rhs.map(lhs)
 }
 // Sequence
+@inline(__always)
 public func <^><A, B, FA: Sequence where FA.Iterator.Element == A>(lhs: A -> B, rhs: FA) -> [B] {
     return rhs.map(lhs)
 }
 
 /* Monad - Bind and invoke instance method */
 // Optional
+@inline(__always)
 public func >>§<A, B>(a: A?, b: A -> () -> B?) -> B?  {
     return a >>- §b
 }
 // Array
+@inline(__always)
 public func >>§<A, B, MA: Sequence where MA.Iterator.Element == A>(a: MA, b: A -> () -> [B]) -> [B]  {
     return a >>- §b
 }

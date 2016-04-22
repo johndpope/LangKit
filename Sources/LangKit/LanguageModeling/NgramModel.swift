@@ -118,7 +118,7 @@ extension NgramModel : LanguageModel {
                     if prevCountFreq > 0 {
                         countFrequency[count-1] = prevCountFreq - 1
                     }
-                    countFrequency! <++ count
+                    countFrequency![count] ?+= 1
                 }
             }
             // Print progress
