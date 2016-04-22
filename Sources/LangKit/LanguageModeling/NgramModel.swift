@@ -45,11 +45,11 @@ public struct NgramModel {
                 trainingCorpus corpus: C?,
                 smoothingMode smoothing: SmoothingMode = nil,
                 replacingTokensFewerThan threshold: Int = 0,
-                counter: NgramCounter = TrieNgramCounter()) {
+                @autoclosure counter counterInit: () -> NgramCounter = TrieNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
-        self.counter = counter
+        self.counter = counterInit()
         if case .goodTuring = smoothing {
             self.countFrequency = [:]
         }
@@ -101,7 +101,9 @@ extension NgramModel : LanguageModel {
 
      - parameter corpus: Tokenized corpus
      */
-    public mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus: C) {
+    public mutating func train<C: Sequence where
+                                   C.Iterator.Element == [Token]>
+                               (corpus: C) {
         let corpus = corpus.replaceRareTokens(minimumCount: threshold)
         for (i, sentence) in corpus.enumerated() {
             // Wrap <s> and </s> symbols
