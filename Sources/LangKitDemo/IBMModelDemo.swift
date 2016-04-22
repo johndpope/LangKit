@@ -34,8 +34,8 @@ class IBMModelDemo : Demo {
     static func run(model: Model) {
 
         // Load parallel corpora
-        guard let allBitext = ParallelCorpusReader(fromFFile: "Data/Demo/Alignment/hansards.e",
-                                                   fromEFile: "Data/Demo/Alignment/hansards.f") else {
+        guard let allBitext = ParallelCorpusReader(fromFFile: "Data/Demo/Alignment/hansards.f",
+                                                   fromEFile: "Data/Demo/Alignment/hansards.e") else {
             print("Error opening files")
             exit(EXIT_FAILURE)
         }

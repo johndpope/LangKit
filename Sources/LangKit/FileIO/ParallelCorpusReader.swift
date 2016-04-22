@@ -14,12 +14,12 @@ public class ParallelCorpusReader {
 
     private let fReader, eReader: TokenCorpusReader
 
-    public init?(fromFFile ePath: String, fromEFile fPath: String,
+    public init?(fromFFile fPath: String, fromEFile ePath: String,
                 sentenceSeparator separator: String = "\n",
                 encoding: NSStringEncoding = NSUTF8StringEncoding,
                 tokenizingWith tokenize: String -> [String] = §String.tokenized) {
-        guard let f = TokenCorpusReader(fromFile: ePath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize),
-                  e = TokenCorpusReader(fromFile: fPath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize) else {
+        guard let f = TokenCorpusReader(fromFile: fPath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize),
+                  e = TokenCorpusReader(fromFile: ePath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize) else {
             return nil
         }
         fReader = f
@@ -32,8 +32,8 @@ public class ParallelCorpusReader {
 extension ParallelCorpusReader {
 
     public func rewind() {
-        eReader.rewind()
         fReader.rewind()
+        eReader.rewind()
     }
 
 }

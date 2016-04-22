@@ -9,8 +9,8 @@ import LangKit
 import Foundation
 
 // Load parallel corpora
-guard let allBitext = ParallelCorpusReader(fromFFile: "data/hansards.e",
-                                           fromEFile: "data/hansards.f") else {
+guard let allBitext = ParallelCorpusReader(fromFFile: "data/hansards.f",
+                                           fromEFile: "data/hansards.e") else {
     print("Error reading files")
     exit(EXIT_FAILURE)
 }
