@@ -9,10 +9,11 @@
 Current features:
   * HMM Part-of-Speech Tagging
   * Language Modeling
+  * Word Alignment (IBM Models)
 
 Upcoming features:
-  * Word Alignment (IBM Models)
   * Data format support (ARPA LM, HMM, etc)
+  * Fast-align
 
 ## Requirements
 
