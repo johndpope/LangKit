@@ -61,7 +61,7 @@ public class IBMModel2 : IBMModel1 {
         var totalA: [AlignKey: Float] = [:]
         var sTotal: [String: Float] = [:]
 
-        for iter in 1...m2Iterations {
+        for _ in 1...m2Iterations {
             
             // Re-initialize
             count.removeAll(keepingCapacity: true)
