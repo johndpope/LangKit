@@ -39,10 +39,10 @@ public class CorpusReader<Item> {
      - parameter encoding:          File encoding (default: UTF8)
      - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
      */
-    public init?(fromFile path: String, sentenceSeparator: String = "\n",
-                 encoding: NSStringEncoding = NSUTF8StringEncoding,
-                 tokenizingWith tokenize: String -> [String] = §String.tokenized,
-                 itemizingWith itemize: String -> Item) {
+    public required init?(fromFile path: String, sentenceSeparator: String = "\n",
+                          encoding: NSStringEncoding = NSUTF8StringEncoding,
+                          tokenizingWith tokenize: String -> [String] = §String.tokenized,
+                          itemizingWith itemize: String -> Item) {
         // Temporarily resolving Foundation inconsistency between OS X and Linux
         #if os(OSX) || os(iOS)
         guard let handle = NSFileHandle(forReadingAtPath: path),

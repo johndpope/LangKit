@@ -19,27 +19,26 @@ public func ==<T, U>(lhs: Emission<T, U>, rhs: Emission<T, U>) -> Bool {
 public struct Transition<T: Hashable> : Hashable {
     let state1, state2: T
 
+    public let hashValue: Int
+
     public init(_ state1: T, _ state2: T) {
         self.state1 = state1
         self.state2 = state2
+        hashValue = 31 &* state1.hashValue &+ state2.hashValue
     }
 
-    public var hashValue: Int {
-        return "\(state1), \(state2)".hashValue
-    }
 }
 
 public struct Emission<T: Hashable, U: Hashable> : Hashable {
     let state: T
     let item: U
 
+    public let hashValue: Int
+
     public init(_ state: T, _ item: U) {
         self.state = state
         self.item = item
-    }
-
-    public var hashValue: Int {
-        return "\(item), \(state)".hashValue
+        hashValue = 31 &* state.hashValue &+ item.hashValue
     }
 }
 

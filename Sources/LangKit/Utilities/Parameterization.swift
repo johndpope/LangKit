@@ -8,6 +8,11 @@
 
 import Foundation
 
+/**
+ Parameterized print function from print(...)
+
+ - parameter item: Single item
+ */
 public func print<T>(_ item: T) {
     print(item)
 }

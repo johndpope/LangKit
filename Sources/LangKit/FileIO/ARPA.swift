@@ -10,10 +10,6 @@ import Foundation
 
 public extension NgramModel {
 
-//    public init(fromARPAFile path: String) {
-//
-//    }
-
     public func writeARPA(toFile path: String) {
 
     }

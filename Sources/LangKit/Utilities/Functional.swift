@@ -15,21 +15,21 @@ public func identity<T>(x: T) -> T {
 
 // Curry
 // ((a, b) -> c) -> a -> b -> c
-public func curry<A, B, C>(f: (A, B) -> C) -> A -> B -> C {
+public func curry<A, B, C>(_ f: (A, B) -> C) -> A -> B -> C {
     return { x in { y in f(x, y) } }
 }
 // ((a, b, c) -> d) -> a -> b -> c -> d
-public func curry<A, B, C, D>(f: (A, B, C) -> D) -> A -> B -> C -> D {
+public func curry<A, B, C, D>(_ f: (A, B, C) -> D) -> A -> B -> C -> D {
     return { x in { y in { z in f(x, y, z) } } }
 }
 
 // Uncurry
 // (a -> b -> c) -> (a, b) -> c
-public func curry<A, B, C>(f: A -> B -> C) -> (A, B) -> C {
+public func uncurry<A, B, C>(_ f: A -> B -> C) -> (A, B) -> C {
     return { (x, y) in f(x)(y) }
 }
 // (a -> b -> c -> d) -> (a, b, c) -> d
-public func curry<A, B, C, D>(f: A -> B -> C -> D) -> (A, B, C) -> D {
+public func uncurry<A, B, C, D>(_ f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
 

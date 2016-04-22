@@ -6,89 +6,106 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-internal func ==(lhs: IBMModel2.AlignmentKey, rhs: IBMModel2.AlignmentKey) -> Bool {
-    return lhs.i == rhs.i && lhs.j == rhs.j && lhs.le == rhs.le && lhs.lf == rhs.lf
-}
-
 public class IBMModel2 : IBMModel1 {
 
+    typealias WordKey = ArrayKey<String>
+    typealias AlignKey = ArrayKey<Int>
+
+    // Alignment probabilities
+    var alignment: [AlignKey: Float]
+
+    // Alignment key probablizer
+    let probablize = { (key: AlignKey) -> Float in 1.0 / (Float(key[3]) + 1.0) }
+
     /**
-     *  Nasty hash key structure
-     *  Currently NOT intended to adopt a good naming
-     *  Because it needs to compare with the original IBM Model 2 algorithm
+     Initialize Model 2 from parallel corpora
+
+     - parameter bitext:    Parallel corpora
+     - parameter threshold: Probability threshold for Model 1 training
      */
-    internal struct AlignmentKey : Equatable, Hashable {
-        var i, j: Int?
-        var le, lf: Int
-
-        init(_ i: Int?, _ j: Int?, _ le: Int, _ lf: Int) {
-            (self.i, self.j, self.le, self.lf) = (i, j, le, lf)
-        }
-
-        var hashValue: Int {
-            return "\(i), \(j), \(le), \(lf)".hashValue
-        }
-    }
-
-    var alignment: [AlignmentKey: Float]
-    let probablize = { (key: AlignmentKey) -> Float in 1.0 / (Float(key.lf) + 1.0) }
-
-    public override init(bitext: [SentenceTuple], probabilityThreshold threshold: Float) {
+    public override init<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, probabilityThreshold threshold: Float) {
         self.alignment = [:]
         super.init(bitext: bitext, probabilityThreshold: threshold)
+        train(bitext: bitext)
     }
 
-    public override func train(iterations: Int = 100) {
-        self.train(lexicalIterations: iterations, alignmentIterations: iterations)
+    /**
+     Train Model 2 from parallel corpora
+
+     - parameter bitext:     Parallel corpora
+     - parameter iterations: Number of iterations
+     */
+    public override func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, iterations: Int = 100) {
+        self.train(bitext: bitext, lexicalIterations: iterations, alignmentIterations: iterations)
     }
 
-    public func train(lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
-        // Train Model 1
-        super.train(iterations: m1Iterations)
+    /**
+     Train Model 2 by specifying iterations for lexical training and alignment training
+
+     - parameter bitext:       Parallel corpora
+     - parameter m1Iterations: Lexical iterations
+     - parameter m2Iterations: Alignment iterations
+     */
+    public func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
+        let bitext = !!bitext
+
+        // Train Model 1 (super)
+        super.train(bitext: bitext, iterations: m1Iterations)
+
+        // Train Model 2 (self)
+        // Initialize
+        var count: [WordKey: Float] = [:]
+        var total: [String: Float] = [:]
+        var countA: [AlignKey: Float] = [:]
+        var totalA: [AlignKey: Float] = [:]
+        var sTotal: [String: Float] = [:]
 
         for iter in 1...m2Iterations {
-
-            // Initialize
-            var count = [WordPair: Float]()
-            var total = [String: Float]()
-            var countA = [AlignmentKey: Float]()
-            var totalA = [AlignmentKey: Float]()
+            
+            // Re-initialize
+            count.removeAll(keepingCapacity: true)
+            total.removeAll(keepingCapacity: true)
+            countA.removeAll(keepingCapacity: true)
+            totalA.removeAll(keepingCapacity: true)
 
             for (f, e) in bitext {
                 let (lf, le) = (f.count, e.count)
+
                 // Compute normalization
-                var sTotal = [String: Float]()
+                sTotal.removeAll(keepingCapacity: true)
                 for (j, ej) in e.enumerated() {
                     sTotal[ej] = 0
                     for (i, fi) in f.enumerated() {
-                        let key = AlignmentKey(i, j, le, lf)
-                        sTotal[ej] = sTotal[ej]! + trans[WordPair(ej, fi)]! * (alignment[key] ?? probablize(key))
+                        let key: AlignKey = [i, j, le, lf]
+                        sTotal[ej] = sTotal[ej]! +
+                                     (trans[[ej, fi]] ?? initialTrans) *
+                                     (alignment[key] ?? probablize(key))
                     }
                 }
                 // Collect counts
                 for (j, ej) in e.enumerated() {
                     for (i, fi) in f.enumerated() {
-                        let key = AlignmentKey(i, j, le, lf)
-                        let totalKey = AlignmentKey(nil, j, le, lf)
-                        let wordPair = WordPair(ej, fi)
-                        let c = trans[wordPair]! * (alignment[key] ?? probablize(key))
+                        let key: AlignKey = [i, j, le, lf]
+                        let totalKey: AlignKey = [j, le, lf]
+                        let wordPair: WordKey = [ej, fi]
+                        let c = (trans[wordPair] ?? initialTrans) *
+                                (alignment[key] ?? probablize(key)) /
+                                (sTotal[ej] ?? 0.0)
                         count[wordPair] = (count[wordPair] ?? 0.0) + c
                         total[fi] = (total[fi] ?? 0.0) + c
                         countA[key] = (countA[key] ?? 0.0) + c
                         totalA[totalKey] = (totalA[totalKey] ?? 0.0) + c
                     }
                 }
-                // Estimate probabilities
-                for pair in count.keys {
-                    trans[pair] = count[pair]! / total[pair.second]!
-                }
-                for alignmentKey in countA.keys {
-                    let totalKey = AlignmentKey(nil, alignmentKey.j, alignmentKey.le, alignmentKey.lf)
-                    alignment[alignmentKey] = countA[alignmentKey]! / totalA[totalKey]!
-                }
             }
-            // Debug progress output
-            debugPrint("\(Float(iter) / Float(m2Iterations) * 100)%")
+            // Estimate probabilities
+            for pair in count.keys {
+                self.trans[pair] = count[pair]! / total[pair[1]]!
+            }
+            for alignmentKey in countA.keys {
+                let totalKey: AlignKey = [alignmentKey[1], alignmentKey[2], alignmentKey[3]]
+                self.alignment[alignmentKey] = countA[alignmentKey]! / totalA[totalKey]!
+            }
         }
     }
 
@@ -100,14 +117,14 @@ public class IBMModel2 : IBMModel1 {
 
      - returns: alignment dictionary
      */
-    public override func align(fSentence: [String], eSentence: [String]) -> [Int: Int]? {
+    public override func align(fSentence: [String], eSentence: [String]) -> [Int: Int] {
         let (lf, le) = (fSentence.count, eSentence.count)
         var vitAlignment = [Int: Int]()
         for (j, ej) in eSentence.enumerated() {
             var (maxI, maxP): (Int, Float) = (0, -1.0)
             for (i, fi) in fSentence.enumerated() {
-                let t = trans[WordPair(ej, fi)] ?? initialTrans
-                let alignmentKey = AlignmentKey(i, j, le, lf)
+                let t = trans[[ej, fi]] ?? initialTrans
+                let alignmentKey: AlignKey = [i, j, le, lf]
                 let a = alignment[alignmentKey] ?? probablize(alignmentKey)
                 let p = t * a
                 if maxP < p {

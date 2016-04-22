@@ -36,8 +36,7 @@ guard let run = demos[name] else {
     exit(EXIT_FAILURE)
 }
 
-print("Demo n.   a demonstration of a product or technique")
-print("... which means that you watch while I demonstrate.")
+print("============== LangKit ==============\nn. The missing NLP toolkit for Swift")
 print("▶️  Running Demo: \(name)")
 
 // Run demo

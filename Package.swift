@@ -2,7 +2,7 @@ import PackageDescription
 
 let package = Package(
     name: "LangKit",
-    exclude: ["Documentation", "Build", "Frameworks"],
+    exclude: ["Documentation", "Build", "Frameworks", "Examples"],
     dependencies:
     [
         .Package(url: "https://github.com/xinranmsn/CommandLine", versions: Version(2,2,1)...Version(2,2,2)),

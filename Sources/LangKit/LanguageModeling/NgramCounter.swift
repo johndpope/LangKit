@@ -50,11 +50,12 @@ public struct DictionaryNgramCounter : NgramCounter {
 
         init(_ ngram: [String]) {
             self.ngram = ngram
+            hashValue = ngram.reduce(0) { acc, x in
+                31 &* acc.hashValue &+ x.hashValue
+            }
         }
 
-        var hashValue: Int {
-            return "\(ngram)".hashValue
-        }
+        let hashValue: Int
 
         var pregramKey: NgramKey {
             return .init(Array(ngram.dropLast()))
@@ -71,8 +72,7 @@ public struct DictionaryNgramCounter : NgramCounter {
     }
 
     public init() {
-        table = .init()
-        backoffTable = .init()
+        self.init(minimumCapacity: 4096)
     }
 
     public mutating func insert(_ ngram: [String]) {

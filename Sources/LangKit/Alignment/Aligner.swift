@@ -8,19 +8,21 @@
 
 public protocol Aligner {
 
+    typealias SentenceTuple = ([String], [String])
+
     /**
      Initialize a model with a parallel corpus
 
      - parameter bitext: tokenized parallel corpus
      */
-    init(bitext: [([String], [String])])
+    init(bitext: [SentenceTuple])
 
     /**
      Train model iteratively
 
      - parameter iterations: number of iterations of EM algorithm
      */
-    func train(iterations: Int)
+    func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, iterations: Int)
 
     /**
      Align two sentences
@@ -30,18 +32,17 @@ public protocol Aligner {
 
      - returns: Alignment dictionary
      */
-    func align(fSentence: [String], eSentence: [String]) -> [Int: Int]?
+    func align(fSentence: [String], eSentence: [String]) -> [Int: Int]
 
 }
 
 extension Aligner {
 
-    public func alignmentIndices(bitext: [([String], [String])]) -> [[(Int, Int)]] {
+    public func alignmentIndices<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S) -> [[(Int, Int)]] {
         var indices: [[(Int, Int)]] = []
-        bitext.forEach { (f, e) in
-            align(fSentence: f, eSentence: e) >>- {
-                indices.append(identity <^> $0.sorted(isOrderedBefore: {$0.0} • (<)))
-            }
+        for (f, e) in bitext {
+            let alignment = align(fSentence: f, eSentence: e)
+            indices.append(alignment.sorted(isOrderedBefore: {$0.0 < $1.0}).map{$0})
         }
         return indices
     }
