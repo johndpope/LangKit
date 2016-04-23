@@ -41,7 +41,7 @@ public class CorpusReader<Item> {
      */
     public required init?(fromFile path: String, sentenceSeparator: String = "\n",
                           encoding: NSStringEncoding = NSUTF8StringEncoding,
-                          tokenizingWith tokenize: String -> [String] = §String.tokenized,
+                          tokenizingWith tokenize: String -> [String] = ^String.tokenized,
                           itemizingWith itemize: String -> Item) {
         // Temporarily resolving Foundation inconsistency between OS X and Linux
         #if os(OSX) || os(iOS)

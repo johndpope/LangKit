@@ -11,7 +11,7 @@
 prefix operator !!  {}
 
 // Instance method invocation closure
-prefix operator §   {}
+prefix operator ^   {}
 
 // Increment optional variable while unwrapping with default value if nil
 infix operator ?+= {
@@ -35,7 +35,7 @@ infix operator !+= {
  - returns: Uninstantiated method with auto invocation (A -> B)
  */
 @inline(__always)
-public prefix func §<A, B>(f: A -> () -> B) -> A -> B {
+public prefix func ^<A, B>(f: A -> () -> B) -> A -> B {
     return {f($0)()}
 }
 

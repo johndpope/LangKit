@@ -25,7 +25,7 @@ class LanguageIDDemo: Demo {
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
         let readers = files.map { TokenCorpusReader(fromFile: $0,
                                                     encoding: NSISOLatin1StringEncoding,
-                                                    tokenizingWith: §String.tokenized) }
+                                                    tokenizingWith: ^String.tokenized) }
         return readers.map {
             guard let corpus = $0 else {
                 print("❌  Corpora error!")
@@ -36,10 +36,11 @@ class LanguageIDDemo: Demo {
     }
 
     static func probabilityFunction(fromCorpus corpus: CorpusReader<String>) -> [String] -> Float {
-        return NgramModel(n: 3,
+        return NgramModel(n: 2,
                           trainingCorpus: corpus,
-                          smoothingMode: .none,
-                          counter: TrieNgramCounter())
+                          smoothingMode: .goodTuring,
+                          replacingTokensFewerThan: 0,
+                          counter: DictionaryNgramCounter(minimumCapacity: 10240))
             .sentenceLogProbability
     }
 
@@ -60,7 +61,7 @@ class LanguageIDDemo: Demo {
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier = NaiveBayes(classes: classes)
+        let classifier = NaiveBayes(classes: classes, flipped: true)
 
         // Interactively accept and classify sentences
         print("Now entering interactive classification")
@@ -70,7 +71,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            readLine() >>- §String.letterized >>- classifier.classify >>- print
+            readLine() >>- ^String.tokenized >>- classifier.classify >>- print
         }
     }
 }
