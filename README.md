@@ -18,7 +18,7 @@ Upcoming features:
 ## Requirements
 
 * Swift 3.0-dev 04/12/16 build (`DEVELOPMENT-SNAPSHOT-2016-04-12-a`)
-  - swiftenv is strongly recommended for managing multiple versions of Swift
+  - `swiftenv` is strongly recommended as a Swift version manager
 
 ## Instructions
 
@@ -28,7 +28,7 @@ Simply add a dependency in Swift Package Manager.
 
 ```swift
 dependencies: [
-    .Package(url: "https://github.com/xinranmsn/LangKit", majorVersion: 0, minor: 1),
+    .Package(url: "https://github.com/xinranmsn/LangKit", majorVersion: 0, minor: 2),
 ]
 ```
 
@@ -38,7 +38,7 @@ Then add `import LangKit` to your source file.
 
 * Train a part-of-speech tagger with your data
 ```swift
-guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", itemizingWith: §String.tagSplit) else {
+guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", itemizingWith: ^String.tagSplit) else {
     print("❌  Corpora error!")
     exit(EXIT_FAILURE)
 }
@@ -118,8 +118,8 @@ Test: `⌘u`
   - [x] Naive Bayes
   - [ ] Support vector machine
 - Alignment
-  - [ ] IBM Model 1
-  - [ ] IBM Model 2
+  - [x] IBM Model 1
+  - [x] IBM Model 2
 - File IO
   - [x] Corpus reader
   - [ ] ARPA LM file support
