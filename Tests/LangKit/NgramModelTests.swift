@@ -24,23 +24,23 @@ class NgramModelTests: XCTestCase {
     func testUnigramProbability() {
         let sentence = "Colorless green ideas sleep furiously .".tokenized()
         let model = NgramModel(n: 1, trainingCorpus: [sentence], replacingTokensFewerThan: 0)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless"], logspace: false), 1.0/9.0, accuracy: 0.2)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["ideas"], logspace: true), logf(1.0/9.0), accuracy: 0.02)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["<s>"], logspace: true), logf(1.0/9.0), accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless"]), 1.0/9.0, accuracy: 0.2)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["ideas"]) |> logf, logf(1.0/9.0), accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["<s>"]) |> logf, logf(1.0/9.0), accuracy: 0.02)
         XCTAssertEqualWithAccuracy(model.sentenceLogProbability(sentence), log(0.000000023230495), accuracy: 0.02)
     }
 
     func testBigramProbability() {
         let sentence = "Colorless green ideas sleep furiously .".tokenized()
         let model = NgramModel(n: 2, trainingCorpus: [sentence, sentence], replacingTokensFewerThan: 1)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless", "green"], logspace: false), 1.0, accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless", "green"]), 1.0, accuracy: 0.02)
         XCTAssertEqualWithAccuracy(model.sentenceLogProbability(sentence), 0.0, accuracy: 10.0)
     }
 
     func testTrigramProbability() {
         let sentence = "Colorless green ideas sleep furiously .".tokenized()
         let model = NgramModel(n: 3, trainingCorpus: [sentence, sentence], replacingTokensFewerThan: 1)
-        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless", "green", "ideas"], logspace: false), 1.0, accuracy: 0.02)
+        XCTAssertEqualWithAccuracy(model.markovProbability(["Colorless", "green", "ideas"]), 1.0, accuracy: 0.02)
         XCTAssertEqualWithAccuracy(model.sentenceLogProbability(sentence), 0.0, accuracy: 10.0)
     }
 
