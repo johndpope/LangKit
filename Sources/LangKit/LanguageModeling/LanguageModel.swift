@@ -23,21 +23,19 @@ public protocol LanguageModel {
      Probability of item
 
      - parameter item:     Item
-     - parameter logspace: Enable logspace
 
      - returns: Probability
      */
-    func probability(_ item: Item, logspace: Bool) -> Float
+    func probability(_ item: Item) -> Float
 
     /**
      Markov conditional probability of item
 
      - parameter item:     Item
-     - parameter logspace: Enable logspace
 
      - returns: Probability
      */
-    func markovProbability(_ item: Item, logspace: Bool) -> Float
+    func markovProbability(_ item: Item) -> Float
 
     /**
      Log probability of tokenized sentence
