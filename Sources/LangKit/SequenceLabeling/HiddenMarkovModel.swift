@@ -72,7 +72,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     private var   emission: [EmissionType: Float]   = [:]
 
     // Smoothing mode
-    private let smoothing: SmoothingMode = .none
+    private let smoothing: SmoothingMode
 
     // Rare item replacement threshold
     private let threshold: Int
@@ -87,7 +87,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     private var minimumProbability: Float = 0.1e-44
 
     /**
-     Initialize with HMM counts
+     Initialize from HMM counts
 
      - parameter initial:    Initial probability distribution
      - parameter transition: Transition probability distribution
@@ -104,6 +104,7 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.emissionCountTable = emission
         self.sequenceCount = sequenceCount
         self.threshold = threshold
+        self.smoothing = smoothing
         updateUnseenEmissionCountTable()
         self.items = emissionCountTable.keys.reduce([]) { $0.union([$1.item]) }
         self.transitionCountTable.keys.forEach { self.stateCountTable[$0.state1] ?+= 1 }
@@ -118,21 +119,46 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     }
 
     /**
+     Initialize from HMM probability tables
+
+     - parameter initial:    Initial probability table
+     - parameter transition: Transition probability table
+     - parameter emission:   Emission probability table
+     */
+    public init(initialProbability initial: [Label: Float],
+                transitionProbability transition: [TransitionType: Float],
+                emissionProbability emission: [EmissionType: Float]) {
+        self.initial = initial
+        self.transition = transition
+        self.emission = emission
+        self.threshold = 0
+        self.smoothing = .none
+        self.items = emission.keys.reduce([]) { $0.union([$1.item]) }
+    }
+
+    /**
      Initialize from tagged corpus
 
      - parameter taggedCorpus: Tagged corpus
      */
     public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>
                 (taggedCorpus corpus: C,
-                 smoothingMode smoothing: SmoothingMode = .goodTuring,
+                 smoothingMode smoothing: SmoothingMode = .none,
                  replacingItemsFewerThan threshold: Int = 0) {
         self.threshold = threshold
+        self.smoothing = smoothing
         if case .goodTuring = smoothing {
             transitionCountFrequency = [:]
             emissionCountFrequency   = [:]
         }
         train(labeledSequences: corpus)
     }
+
+}
+
+extension HiddenMarkovModel {
+
+
 
 }
 
@@ -284,18 +310,20 @@ extension HiddenMarkovModel : SequenceLabelingModel {
                     let transitionKey = Transition(label, nextLabel)
                     let transitionCount = 1 + (transitionCountTable[transitionKey] ?? 0)
                     transitionCountTable[transitionKey] = transitionCount
+
                     // Adjust transition count frequency for Good Turing smoothing
                     if case .goodTuring = smoothing {
-                        let prevTransCountFreq = emissionCountFrequency[transitionCount-1] ?? 0
+                        transitionCountFrequency[transitionCount] ?+= 1
+                        let prevTransCountFreq = transitionCountFrequency[transitionCount-1] ?? 0
                         if prevTransCountFreq > 0 {
                             transitionCountFrequency[transitionCount-1] = prevTransCountFreq
                         }
                     }
-
                 }
 
                 // Adjust emission count frequency for Good Turing smoothing
                 if case .goodTuring = smoothing {
+                    emissionCountFrequency[emissionCount] ?+= 1
                     let prevEmCountFreq = emissionCountFrequency[emissionCount-1] ?? 0
                     if prevEmCountFreq > 0 {
                         emissionCountFrequency[emissionCount-1] = prevEmCountFreq

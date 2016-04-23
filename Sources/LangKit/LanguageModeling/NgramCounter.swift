@@ -12,6 +12,8 @@ public protocol NgramCounter {
 
     subscript(ngram: [String]) -> Int { get }
 
+    func contains(ngram: [String]) -> Bool
+
     var count: Int { get }
 
 }
@@ -32,6 +34,10 @@ public struct TrieNgramCounter : NgramCounter {
         return trie.count(ngram)
     }
 
+    public func contains(ngram: [String]) -> Bool {
+        return trie.count(ngram) != 0
+    }
+
     public var count: Int {
         return trie.count
     }
@@ -44,31 +50,25 @@ private func ==(lhs: DictionaryNgramCounter.NgramKey, rhs: DictionaryNgramCounte
 
 public struct DictionaryNgramCounter : NgramCounter {
 
-    private struct NgramKey: Hashable, Equatable  {
-
+    private struct NgramKey: Hashable  {
         let ngram: [String]
-
+        let hashValue: Int
         init(_ ngram: [String]) {
             self.ngram = ngram
             hashValue = ngram.reduce(0) { acc, x in
                 31 &* acc.hashValue &+ x.hashValue
             }
         }
-
-        let hashValue: Int
-
-        var pregramKey: NgramKey {
-            return .init(Array(ngram.dropLast()))
-        }
-
     }
 
     private var table: [NgramKey: Int]
     private var backoffTable: [NgramKey: Int]
+    private let minimumCount: Int
 
-    public init(minimumCapacity capacity: Int) {
+    public init(minimumCapacity capacity: Int, minimumCount: Int = 1) {
         table = .init(minimumCapacity: capacity)
         backoffTable = .init(minimumCapacity: capacity)
+        self.minimumCount = minimumCount
     }
 
     public init() {
@@ -77,13 +77,19 @@ public struct DictionaryNgramCounter : NgramCounter {
 
     public mutating func insert(_ ngram: [String]) {
         let key = NgramKey(ngram)
+        let pregramKey = NgramKey(!!ngram.dropLast())
         table[key] ?+= 1
-        backoffTable[key.pregramKey] ?+= 1
+        backoffTable[pregramKey] ?+= 1
     }
 
     public subscript(ngram: [String]) -> Int {
         let key = NgramKey(ngram)
-        return table[key] ?? backoffTable[key] ?? 0
+        return table[key] ?? backoffTable[key] ?? minimumCount
+    }
+
+    public func contains(ngram: [String]) -> Bool {
+        let key = NgramKey(ngram)
+        return table[key] ?? backoffTable[key] != nil
     }
 
     public var count: Int {

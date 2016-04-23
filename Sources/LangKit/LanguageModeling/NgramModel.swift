@@ -44,7 +44,7 @@ public struct NgramModel {
                (n: Int,
                 trainingCorpus corpus: C?,
                 smoothingMode smoothing: SmoothingMode = nil,
-                replacingTokensFewerThan threshold: Int = 0,
+                replacingTokensFewerThan threshold: Int = 1,
                 @autoclosure counter counterInit: () -> NgramCounter = TrieNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
@@ -82,9 +82,11 @@ extension NgramModel {
         // 'Unk'ify (preprocess)
         let unkedNgram = ngram.map { tokens.contains($0) ? $0 : unknown }
 
-        // Good Turing smoothing--preprocess only
-        if case .goodTuring = smoothing {
-            return unkedNgram
+        let pregram = !!ngram.dropLast()
+        let last = ngram.last!
+
+        if !counter.contains(ngram: pregram) {
+            return Array(repeating: unknown, count: pregram.count) + [last]
         }
 
         // Ngram exists
@@ -105,7 +107,7 @@ extension NgramModel : LanguageModel {
                                    C.Iterator.Element == [Token]>
                                (corpus: C) {
         let corpus = corpus.replaceRareTokens(minimumCount: threshold)
-        for (i, sentence) in corpus.enumerated() {
+        for sentence in corpus {
             // Wrap <s> and </s> symbols
             let sentence = sentence.wrapSentenceBoundary()
             // Train the countTrie
@@ -120,12 +122,8 @@ extension NgramModel : LanguageModel {
                     if prevCountFreq > 0 {
                         countFrequency[count-1] = prevCountFreq - 1
                     }
-                    countFrequency![count] ?+= 1
+                    countFrequency[count] ?+= 1
                 }
-            }
-            // Print progress
-            if i % 100 == 0 {
-                debugPrint(terminator: ".")
             }
         }
         // If no (UNK, ..., UNK) present, insert one
@@ -133,7 +131,6 @@ extension NgramModel : LanguageModel {
         if counter[unk] == 0 {
             self.insert(unk)
         }
-        debugPrint()
     }
 
     /**
@@ -144,14 +141,13 @@ extension NgramModel : LanguageModel {
 
      - returns: Probability
      */
-    public func probability(_ item: Item, logspace: Bool = false) -> Float {
+    public func probability(_ item: Item) -> Float {
         guard item.count == n else {
             return 0
         }
         let count = counter[item]
         let total = counter.count
-        let probability = Float(count) / Float(total)
-        return logspace ? log(probability) : probability
+        return Float(count) / Float(total)
     }
 
     /**
@@ -162,16 +158,14 @@ extension NgramModel : LanguageModel {
 
      - returns: Probability
      */
-    public func markovProbability(_ item: Item, logspace: Bool) -> Float {
+    public func markovProbability(_ item: Item) -> Float {
         // Ngram and pregram ({N-1}gram)
         let ngram = smoothNgram(item)
         let pregram = !!ngram.dropLast()
 
         // Count and precount smoothing
-        let rawCount = counter[ngram]
-        let count = rawCount == 0 ? 1 : rawCount
-        let rawPrecount = counter[pregram]
-        let precount = rawPrecount == 0 ? 1 : rawPrecount
+        let count = counter[ngram]
+        let precount = counter[pregram]
 
         // Calculate probabiliy according to smoothing method
         var probability: Float
@@ -198,11 +192,7 @@ extension NgramModel : LanguageModel {
             probability = 0.0
         }
 
-        return logspace ? log(probability) : probability
-    }
-
-    public func markovProbability(_ item: Item) -> Float {
-        return markovProbability(item, logspace: true)
+        return probability
     }
 
     /**
@@ -214,7 +204,7 @@ extension NgramModel : LanguageModel {
      */
     public func sentenceLogProbability(_ sentence: [Token]) -> Float {
         return sentence.wrapSentenceBoundary().ngrams(n)
-            .reduce(0, combine: (+) • markovProbability)
+            .reduce(0, combine: (+) • logf • markovProbability)
     }
 
 }
