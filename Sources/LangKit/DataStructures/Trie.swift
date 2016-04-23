@@ -14,9 +14,9 @@
  */
 public enum Trie<K: Hashable> {
 
-    case leaf(K?, Int)
+    case leaf(K!, Int)
 
-    indirect case node(K?, Int, [K: Trie<K>])
+    indirect case node(K!, Int, [K: Trie<K>])
 
     public init(initial: [K]? = nil) {
         let base = Trie.leaf(nil, 0)

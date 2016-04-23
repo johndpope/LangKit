@@ -96,5 +96,30 @@ public struct DictionaryNgramCounter : NgramCounter {
         return table.count
     }
 
+}
+
+public struct FastTrieNgramCounter : NgramCounter {
+
+    var root: FastTrie<String>
+
+    public init() {
+        root = FastTrie()
+    }
+
+    public mutating func insert(_ ngram: [String]) {
+        root.insert(ngram, incrementingNodes: true)
+    }
+
+    public subscript(ngram: [String]) -> Int {
+        return root.search(ngram)
+    }
+
+    public func contains(ngram: [String]) -> Bool {
+        return root.search(ngram) != 0
+    }
+
+    public var count: Int {
+        return root.value
+    }
 
 }

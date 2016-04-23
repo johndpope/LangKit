@@ -164,8 +164,8 @@ extension NgramModel : LanguageModel {
         let pregram = !!ngram.dropLast()
 
         // Count and precount smoothing
-        let count = counter[ngram]
-        let precount = counter[pregram]
+        let count = counter[ngram] |> { $0 == 0 ? 1 : $0 }
+        let precount = counter[pregram] |> { $0 == 0 ? 1 : $0 }
 
         // Calculate probabiliy according to smoothing method
         var probability: Float
