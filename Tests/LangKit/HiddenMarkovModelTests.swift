@@ -13,7 +13,7 @@ import XCTest
 
 class HiddenMarkovModelTests: XCTestCase {
 
-    func testParameterInitialization() {
+    func testCountInitialization() {
         let initial = [ "Rainy": 50, "Sunny": 50 ]
         let transition = [
             Transition("Rainy", "Sunny"): 30,
@@ -36,13 +36,33 @@ class HiddenMarkovModelTests: XCTestCase {
         XCTAssertTrue(taggedSequence.elementsEqual(["Rainy", "Sunny", "Sunny"]))
     }
 
+    func testProbabilityInitialization() {
+        let initial: [String: Float] = [ "Rainy": 0.6, "Sunny": 0.4 ]
+        let transition: [Transition<String>: Float] = [ Transition("Rainy", "Rainy"): 0.7,
+                                                        Transition("Rainy", "Sunny"): 0.3,
+                                                        Transition("Sunny", "Rainy"): 0.4,
+                                                        Transition("Sunny", "Sunny"): 0.6 ]
+        let emission: [Emission<String, String>: Float] = [ Emission("Rainy",  "walk"): 0.1,
+                                                            Emission("Rainy",  "shop"): 0.4,
+                                                            Emission("Rainy", "clean"): 0.5,
+                                                            Emission("Sunny",  "walk"): 0.6,
+                                                            Emission("Sunny",  "shop"): 0.3,
+                                                            Emission("Sunny", "clean"): 0.1 ]
+        let model = HiddenMarkovModel(initialProbability: initial, transitionProbability: transition, emissionProbability: emission)
+        let taggedSequence = model.tag(["clean", "walk", "shop"])
+        let expectedResult = [("clean", "Rainy"), ("walk", "Sunny"), ("shop", "Sunny")]
+        XCTAssertTrue(taggedSequence.elementsEqual(expectedResult) {
+            $0.0 == $1.0 && $0.1 == $1.1
+        })
+    }
+    
 }
 
 extension HiddenMarkovModelTests {
-
+    
     static var allTests: [(String, HiddenMarkovModelTests -> () throws -> Void)] {
         return [
-            ("testParameterInitialization", testParameterInitialization)
+                   ("testCountInitialization", testCountInitialization)
         ]
     }
     
