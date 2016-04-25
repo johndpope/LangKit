@@ -4,8 +4,8 @@
 //
 //  Created by Richard Wei on 4/15/16.
 //
-//  This is a compact functional toolset.
-//  The purpose of these functional tools are not to demonstrate the mathematical
+//  This is a compact functional tool set.
+//  The purpose of these functional tools is not to demonstrate the mathematical
 //  abstraction, but to provide higher-order chaining semantics and express the
 //  program logic clearly.
 //
