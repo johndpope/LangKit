@@ -6,7 +6,7 @@
 //
 //
 
-public class PartOfSpeechTagger {
+public final class PartOfSpeechTagger {
 
     let model: HiddenMarkovModel<String, String>
 

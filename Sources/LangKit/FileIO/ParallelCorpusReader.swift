@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ParallelCorpusReader {
+public final class ParallelCorpusReader {
 
     public typealias SentenceTuple = ([String], [String])
 
