@@ -45,7 +45,7 @@ guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", itemizingWith:
 
 let tagger = PartOfSpeechTagger(taggedCorpus: taggedCorpus, smoothingMode: .goodTuring)
 
-let sentence = "Colorless green ideas sleep furiously .".tokenized()
+let sentence = "Colorless green ideas sleep furiously .".tokenize()
 
 tagger.tag(sentence) |> print
 ```
@@ -62,7 +62,7 @@ let model = NgramModel(n: 3,
     smoothingMode: .none,
     counter: TrieNgramCounter())
 
-let sentence = "Colorless green ideas sleep furiously .".tokenized()
+let sentence = "Colorless green ideas sleep furiously .".tokenize()
 
 model.sentenceLogProbability(sentence) |> print
 ```
