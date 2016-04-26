@@ -1,6 +1,7 @@
-# Since we are using SwiftPM
 # To generate Xcode project, use `swift build -X`
 *.xcodeproj
+
+LangKit-*
 
 # Build
 .build/
