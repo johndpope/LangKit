@@ -77,9 +77,9 @@ public extension String {
         let cost = self.characters.last! == other.characters.last! ? 0 : 1
         let selfButLast = String(self.characters.dropLast())
         let otherButLast = String(other.characters.dropLast())
-        return cost + min(1 + selfButLast.levenshteinDistance(other),
-                          1 + levenshteinDistance(otherButLast),
-                          cost + selfButLast.levenshteinDistance(otherButLast))
+        return min(1 + selfButLast.levenshteinDistance(other),
+                   1 + levenshteinDistance(otherButLast),
+                   cost + selfButLast.levenshteinDistance(otherButLast))
     }
 
 }
