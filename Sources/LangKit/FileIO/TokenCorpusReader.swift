@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TokenCorpusReader : CorpusReader<String> {
+public final class TokenCorpusReader : CorpusReader<String> {
 
     public required init?(fromFile path: String,
                  sentenceSeparator: String = "\n",

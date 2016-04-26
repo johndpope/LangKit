@@ -6,7 +6,7 @@
 //  Copyright © 2016 Richard Wei. All rights reserved.
 //
 
-public class IBMModel2 : IBMModel1 {
+public final class IBMModel2 : IBMModel1 {
 
     typealias WordKey = ArrayKey<String>
     typealias AlignKey = ArrayKey<Int>

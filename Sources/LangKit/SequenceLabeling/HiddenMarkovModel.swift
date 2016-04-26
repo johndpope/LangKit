@@ -52,7 +52,7 @@ public struct Emission<T: Hashable, U: Hashable> : Hashable {
 /**
  * Lazily cached hidden Markov model for sequence labeling
  */
-public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
+public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 
     public typealias TransitionType = Transition<Label>
     public typealias EmissionType = Emission<Label, Item>
