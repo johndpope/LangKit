@@ -45,7 +45,7 @@ public struct NgramModel {
                 trainingCorpus corpus: C?,
                 smoothingMode smoothing: SmoothingMode = nil,
                 replacingTokensFewerThan threshold: Int = 1,
-                @autoclosure counter counterInit: () -> NgramCounter = TrieNgramCounter()) {
+                counter counterInit: @autoclosure () -> NgramCounter = TrieNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold

@@ -133,7 +133,7 @@ public extension Trie {
 
      - returns: New trie after union
      */
-    public func union(_ other: Trie<K>, @noescape conflictResolver: (K, K) -> K?) -> Trie<K> {
+    public func union(_ other: Trie<K>, conflictResolver: @noescape (K, K) -> K?) -> Trie<K> {
         // TODO
         return self
     }
