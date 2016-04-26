@@ -23,13 +23,10 @@ public class CorpusReader<Item> {
     private let delimiterData: NSData
 
     // Tokenization function
-    private var tokenize: String -> [String]
-
-    // Itemification function
-    private var itemize: String -> Item
+    private var tokenize: String -> [Item]
 
     // EOF state
-    private var eof: Bool
+    private var eof: Bool = false
 
     /**
      Initialize a CorpusReader with configurations
@@ -41,8 +38,7 @@ public class CorpusReader<Item> {
      */
     public required init?(fromFile path: String, sentenceSeparator: String = "\n",
                           encoding: NSStringEncoding = NSUTF8StringEncoding,
-                          tokenizingWith tokenize: String -> [String] = ^String.tokenized,
-                          itemizingWith itemize: String -> Item) {
+                          tokenizingWith tokenize: String -> [Item]) {
         // Temporarily resolving Foundation inconsistency between OS X and Linux
         #if os(OSX) || os(iOS)
         guard let handle = NSFileHandle(forReadingAtPath: path),
@@ -62,10 +58,8 @@ public class CorpusReader<Item> {
         self.sentenceSeparator = sentenceSeparator
         self.fileHandle = handle
         self.buffer = buffer
-        self.eof = false
         self.delimiterData = delimiterData
         self.tokenize = tokenize
-        self.itemize = itemize
     }
 
     deinit {
@@ -145,7 +139,7 @@ extension CorpusReader : IteratorProtocol {
             return nil
         }
 
-        let tokens = tokenize(line).map(itemize)
+        let tokens = tokenize(line)
 
         if !tokens.isEmpty { return tokens }
 
