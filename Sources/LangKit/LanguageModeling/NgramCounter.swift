@@ -5,6 +5,12 @@
 //  Created by Richard Wei on 4/12/16.
 //
 //
+//  NgramCounter protocol definition.
+//
+//  TrieNgramCounter and FastTrieNgramCounter are wrappers for Trie<K> and FastTrie<K>.
+//  Before Swift supports protocol conformance with generic constraints, this is the
+//  only way of making Trie<K> and FastTrie<K> conform to NgramCounter.
+//
 
 public protocol NgramCounter {
 
