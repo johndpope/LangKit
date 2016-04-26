@@ -25,7 +25,7 @@ class LanguageIDDemo: Demo {
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
         let readers = files.map { TokenCorpusReader(fromFile: $0,
                                                     encoding: NSISOLatin1StringEncoding,
-                                                    tokenizingWith: ^String.tokenized) }
+                                                    tokenizingWith: ^String.tokenize) }
         return readers.map {
             guard let corpus = $0 else {
                 print("❌  Corpora error!")
@@ -71,7 +71,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            readLine() >>- ^String.tokenized >>- classifier.classify >>- print
+            readLine() >>- ^String.tokenize >>- classifier.classify >>- print
         }
     }
 }

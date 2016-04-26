@@ -23,7 +23,7 @@ public extension String {
         case .letter:
             return characters.map{String($0)}.ngrams(n)
         case .word:
-            return self.tokenized().ngrams(n)
+            return self.tokenize().ngrams(n)
         }
     }
 

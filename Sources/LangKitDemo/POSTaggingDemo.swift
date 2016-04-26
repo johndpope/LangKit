@@ -15,7 +15,7 @@ class POSTaggingDemo : Demo {
      Run demo
      */
     static func run() {
-        guard let taggedCorpus = CorpusReader(fromFile: "Data/Demo/POSTagging/train.txt", itemizingWith: ^String.tagSplit) else {
+        guard let taggedCorpus = CorpusReader(fromFile: "Data/Demo/POSTagging/train.txt", tokenizingWith: ^String.tagTokenize) else {
             print("❌  Corpora error!")
             exit(EXIT_FAILURE)
         }
@@ -34,7 +34,7 @@ class POSTaggingDemo : Demo {
         // Interactive classification
         while true {
             print("💬  ", terminator: "")
-            readLine() >>- ^String.tokenized >>- tagger.tag >>- { sentence in
+            readLine() >>- ^String.tokenize >>- tagger.tag >>- { sentence in
                 sentence.map{"\($0)_\($1)"}.joined(separator: " ")
             } >>- print
         }

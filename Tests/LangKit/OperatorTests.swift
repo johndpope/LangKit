@@ -13,7 +13,7 @@ class OperatorTests: XCTestCase {
 
     func testInvoke() {
         let str = "Hello world !"
-        let tokenizer = ^String.tokenized
+        let tokenizer = ^String.tokenize
         XCTAssertEqual(tokenizer(str), ["Hello", "world", "!"])
     }
 

@@ -55,14 +55,13 @@ class HiddenMarkovModelTests: XCTestCase {
             $0.0 == $1.0 && $0.1 == $1.1
         })
     }
-    
+
 }
 
 extension HiddenMarkovModelTests {
     
     static var allTests: [(String, HiddenMarkovModelTests -> () throws -> Void)] {
         return [
-                   ("testCountInitialization", testCountInitialization)
         ]
     }
     

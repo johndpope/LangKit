@@ -17,7 +17,7 @@ public class ParallelCorpusReader {
     public init?(fromFFile fPath: String, fromEFile ePath: String,
                 sentenceSeparator separator: String = "\n",
                 encoding: NSStringEncoding = NSUTF8StringEncoding,
-                tokenizingWith tokenize: String -> [String] = ^String.tokenized) {
+                tokenizingWith tokenize: String -> [String] = ^String.tokenize) {
         guard let f = TokenCorpusReader(fromFile: fPath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize),
                   e = TokenCorpusReader(fromFile: ePath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize) else {
             return nil
