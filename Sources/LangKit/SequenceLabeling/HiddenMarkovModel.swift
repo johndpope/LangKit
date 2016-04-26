@@ -64,9 +64,9 @@ public class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     // States
     public private(set) var states: Set<Label>
     // Probability tables
-    public private(set) var    initial: [Label: Float]          = [:]
-    public private(set) var transition: [TransitionType: Float] = [:]
-    public private(set) var   emission: [EmissionType: Float]   = [:]
+    private var    initial: [Label: Float]          = [:]
+    private var transition: [TransitionType: Float] = [:]
+    private var   emission: [EmissionType: Float]   = [:]
 
     /**** Count training ****/
 
