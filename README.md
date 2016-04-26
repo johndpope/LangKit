@@ -58,9 +58,9 @@ guard let corpus = TokenCorpusReader(fromFile: "Data/train.txt") else {
 }
 
 let model = NgramModel(n: 3,
-    trainingCorpus: corpus,
-    smoothingMode: .none,
-    counter: TrieNgramCounter())
+                       trainingCorpus: corpus,
+                       smoothingMode: .none,
+                       counter: TrieNgramCounter())
 
 let sentence = "Colorless green ideas sleep furiously .".tokenize()
 
