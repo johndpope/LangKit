@@ -13,11 +13,11 @@ public class IBMModel1: Aligner {
 
     typealias Key = ArrayKey<String>
 
-    internal var trans: [Key: Float]
+    var trans: [Key: Float]
 
-    internal var threshold: Float
+    let threshold: Float
 
-    internal let initialTrans: Float = 0.1
+    let initialTrans: Float = 0.1
 
     public init<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, probabilityThreshold threshold: Float) {
         self.trans = [:]
