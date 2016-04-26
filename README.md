@@ -4,7 +4,7 @@
 [![Swift](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://swift.org/download/#snapshots)
 [![License](https://img.shields.io/badge/licence-UIUC-blue.svg)](https://github.com/xinranmsn/LangKit/blob/master/LICENSE)
 
-## Natural Language Processing Toolkit in Swift
+## Natural Language Processing in Swift
 
 Current features:
   * HMM Part-of-Speech Tagging
@@ -88,7 +88,9 @@ Test:
 
 #### Xcode 7.3 with Swift 3 (OS X only) ###
 
-Switch the toolchain to Swift development snapshot, and open `LangKit.xcodeproj`.
+1. Generate an Xcode project by executing `swift build -X`
+2. Switch the toolchain to Swift development snapshot
+3. Open `LangKit.xcodeproj`
 
 Build: `⌘b`
 
@@ -126,10 +128,8 @@ Test: `⌘u`
 - Demo
   - [x] Language identification (`$ ./demo -n LangID`)
   - [x] HMM POS tagging (`$ ./demo -n POS`)
+  - [x] IBM Model 1 and 2 (`$ ./demo -n (IBM1|IBM2)`)
 
 ## Note
 
 * Swift 2 is **not** supported.
-
-* Earlier versions of Swift 3.0-dev may not compile due to frequent language changes.
-
