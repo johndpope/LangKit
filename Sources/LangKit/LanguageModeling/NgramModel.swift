@@ -95,7 +95,7 @@ extension NgramModel {
 
 }
 
-// MARK: - LanguageModel conformity
+// MARK: - LanguageModel conformance
 extension NgramModel : LanguageModel {
 
     /**

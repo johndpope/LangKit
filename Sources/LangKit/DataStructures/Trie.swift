@@ -25,7 +25,7 @@ public enum Trie<K: Hashable> {
 
 }
 
-// MARK: - Equatable conformity
+// MARK: - Equatable conformance
 extension Trie : Equatable {}
 
 /**
@@ -196,7 +196,7 @@ public extension Trie {
 
 }
 
-// MARK: - Sequence conformity
+// MARK: - Sequence conformance
 extension Trie : Sequence {
 
     public typealias Iterator = AnyIterator<K>
