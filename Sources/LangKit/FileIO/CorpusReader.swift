@@ -77,14 +77,14 @@ public class CorpusReader<Item> {
 
 extension CorpusReader : IteratorProtocol {
 
-    public typealias Elememnt = Sentence
+    public typealias Element = Sentence
 
     /**
      Next tokenized sentence
 
      - returns: Tokenized sentence
      */
-    public func next() -> [Item]? {
+    public func next() -> Element? {
         if eof {
             return nil
         }
