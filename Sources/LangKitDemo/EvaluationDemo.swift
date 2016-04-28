@@ -74,12 +74,10 @@ class EvaluationDemo: Demo {
             exit(EXIT_FAILURE)
         }
 
-        let evaluator = Evaluator(classifier: classifier,
-                                  tests: tests,
-                                  solutions: solutions.map{$0.tokenize()[1]})
-
-        let scores = evaluator.evaluate()
-
+        // Evaluate
+        let scores = ClassifierEvaluator(classifier: classifier,
+                                         tests: tests,
+                                         solutions: solutions.map{$0.tokenize()[1]}).fScore()
         for c in classifier.classes {
             print("Class \(c)")
             print("  Precision: \(scores[c]!.precision * 100)%")

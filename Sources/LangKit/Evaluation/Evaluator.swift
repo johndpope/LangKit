@@ -23,23 +23,20 @@ public struct FScore {
     }
 }
 
-public final class Evaluator<C: Classifier> {
+public final class ClassifierEvaluator<C: Classifier> {
 
     let tests: [C.Input]
     let solutions: [C.Label]
     let classifier: C
 
-    public init<T: Sequence, U: Sequence where
-                    T.Iterator.Element == C.Input, U.Iterator.Element == C.Label>
-                (classifier: C,
-                 tests: T,
-                 solutions: U) {
+    public init<T: Sequence, U: Sequence where T.Iterator.Element == C.Input, U.Iterator.Element == C.Label>
+                (classifier: C, tests: T, solutions: U) {
         self.tests = !!tests
         self.solutions = !!solutions
         self.classifier = classifier
     }
 
-    public func evaluate(beta: Float = 1) -> [C.Label: FScore] {
+    public func fScore(beta: Float = 1) -> [C.Label: FScore] {
         // Confusion matrix
         var matrix: [C.Label: [C.Label: Int]] = [:]
         classifier.classes.forEach { matrix[$0] = [:] }
