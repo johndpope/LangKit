@@ -117,15 +117,15 @@ public struct FastTrieNgramCounter : NgramCounter {
     }
 
     public subscript(ngram: [String]) -> Int {
-        return root.search(ngram)
+        return root.count(ngram)
     }
 
     public func contains(ngram: [String]) -> Bool {
-        return root.search(ngram) != 0
+        return root.count(ngram) != 0
     }
 
     public var count: Int {
-        return root.value
+        return root.count()
     }
 
 }
