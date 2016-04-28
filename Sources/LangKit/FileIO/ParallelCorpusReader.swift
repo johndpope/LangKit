@@ -18,10 +18,14 @@ public final class ParallelCorpusReader {
                 sentenceSeparator separator: String = "\n",
                 encoding: NSStringEncoding = NSUTF8StringEncoding,
                 tokenizingWith tokenize: String -> [String] = ^String.tokenize) {
-        guard let f = TokenCorpusReader(fromFile: fPath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize),
-                  e = TokenCorpusReader(fromFile: ePath, sentenceSeparator: separator, encoding: encoding, tokenizingWith: tokenize) else {
-            return nil
-        }
+        guard let f = TokenCorpusReader(fromFile: fPath,
+                                        sentenceSeparator: separator,
+                                        encoding: encoding,
+                                        tokenizingWith: tokenize),
+                  e = TokenCorpusReader(fromFile: ePath,
+                                        sentenceSeparator: separator,
+                                        encoding: encoding,
+                                        tokenizingWith: tokenize) else { return nil }
         fReader = f
         eReader = e
     }
@@ -38,6 +42,7 @@ extension ParallelCorpusReader {
 
 }
 
+// MARK: - IteratorProtocol conformance
 extension ParallelCorpusReader : IteratorProtocol {
 
     public typealias Element = SentenceTuple
@@ -51,6 +56,7 @@ extension ParallelCorpusReader : IteratorProtocol {
 
 }
 
+// MARK: - Sequence conformance
 extension ParallelCorpusReader : Sequence {
 
     public typealias Iterator = ParallelCorpusReader
