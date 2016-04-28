@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class LineReader {
+public final class LineReader {
 
     // Chunk size constant
     private let chunkSize = 4096
@@ -27,7 +27,7 @@ public class LineReader {
      Initialize a LineReader with configurations
 
      - parameter fromFile:          File path
-     - parameter sentenceSeparator: Line separator (default: "\n")
+     - parameter lineSeparator:     Line separator (default: "\n")
      - parameter encoding:          File encoding (default: UTF-8)
      */
     public required init?(fromFile path: String, lineSeparator: String = "\n",
@@ -72,9 +72,9 @@ extension LineReader : IteratorProtocol {
     public typealias Element = String
 
     /**
-     Next tokenized sentence
+     Next line
 
-     - returns: Tokenized sentence
+     - returns: Line
      */
     public func next() -> Element? {
         if eof {
@@ -93,12 +93,8 @@ extension LineReader : IteratorProtocol {
             range = buffer.range(of: delimiterData, options: [], in: NSMakeRange(0, buffer.length))
         }
 
-        let maybeLine = String(data: buffer.subdata(with: NSMakeRange(0, range.location)), encoding: encoding)
+        let line = String(data: buffer.subdata(with: NSMakeRange(0, range.location)), encoding: encoding)
         buffer.replaceBytes(in: NSMakeRange(0, range.location + range.length), withBytes: nil, length: 0)
-
-        guard let line = maybeLine else {
-            return nil
-        }
 
         return line
     }
@@ -110,7 +106,7 @@ extension LineReader : Sequence {
     public typealias Iterator = LineReader
 
     /**
-     Make corpus iterator
+     Make line iterator
 
      - returns: Iterator
      */

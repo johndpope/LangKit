@@ -23,7 +23,7 @@ public class CorpusReader<Item> {
      
      - parameter fromFile:          File path
      - parameter sentenceSeparator: Sentence separator (default: "\n")
-     - parameter encoding:          File encoding (default: UTF8)
+     - parameter encoding:          File encoding (default: UTF-8)
      - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
      */
     public required init?(fromFile path: String, sentenceSeparator: String = "\n",
@@ -65,13 +65,24 @@ extension CorpusReader : Sequence {
     public typealias Iterator = CorpusReader
 
     /**
-     Make corpus iterator
+     Make sentence iterator
 
      - returns: Iterator
      */
     public func makeIterator() -> Iterator {
         rewind()
         return self
+    }
+
+}
+
+public final class TokenCorpusReader : CorpusReader<String> {
+
+    public required init?(fromFile path: String,
+                 sentenceSeparator: String = "\n",
+                 encoding: NSStringEncoding = NSUTF8StringEncoding,
+                 tokenizingWith tokenize: String -> [String] = ^String.tokenize) {
+        super.init(fromFile: path, sentenceSeparator: sentenceSeparator, encoding: encoding, tokenizingWith: tokenize)
     }
 
 }
