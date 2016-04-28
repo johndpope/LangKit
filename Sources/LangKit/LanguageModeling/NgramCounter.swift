@@ -67,6 +67,7 @@ public struct DictionaryNgramCounter : NgramCounter {
         }
     }
 
+    private var total: Int = 0
     private var table: [NgramKey: Int]
     private var backoffTable: [NgramKey: Int]
     private let minimumCount: Int
@@ -86,9 +87,13 @@ public struct DictionaryNgramCounter : NgramCounter {
         let pregramKey = NgramKey(!!ngram.dropLast())
         table[key] ?+= 1
         backoffTable[pregramKey] ?+= 1
+        total += 1
     }
 
     public subscript(ngram: [String]) -> Int {
+        if ngram.isEmpty {
+            return total // Unigram precount
+        }
         let key = NgramKey(ngram)
         return table[key] ?? backoffTable[key] ?? minimumCount
     }
@@ -99,7 +104,7 @@ public struct DictionaryNgramCounter : NgramCounter {
     }
 
     public var count: Int {
-        return table.count
+        return total
     }
 
 }
