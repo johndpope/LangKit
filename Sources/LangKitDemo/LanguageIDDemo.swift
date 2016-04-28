@@ -61,7 +61,7 @@ class LanguageIDDemo: Demo {
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier = NaiveBayes(classes: classes, flipped: true)
+        let classifier = NaiveBayes(probabilityFunctions: classes, flipped: true)
 
         // Interactively accept and classify sentences
         print("Now entering interactive classification")

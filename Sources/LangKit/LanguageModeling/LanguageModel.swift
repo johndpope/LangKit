@@ -12,6 +12,8 @@ public protocol LanguageModel {
 
     associatedtype Item = [Token]
 
+    associatedtype Sentence = [Token]
+
     /**
      Train the model with tokenized corpus
 
@@ -44,6 +46,6 @@ public protocol LanguageModel {
 
      - returns: Log probability
      */
-    func sentenceLogProbability(_ sentence: [Token]) -> Float
+    func sentenceLogProbability(_ sentence: Sentence) -> Float
 
 }
