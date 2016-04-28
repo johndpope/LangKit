@@ -8,14 +8,18 @@
 
 public struct NaiveBayes<Input, Label: Hashable> {
 
-    public typealias KeyFunc = Input -> Float
+    public typealias ProbabilityFunction = Input -> Float
 
-    private var classes: [Label: KeyFunc] = [:]
+    private var probabilityFunctions: [Label: ProbabilityFunction] = [:]
+
+    public var classes: [Label] {
+        return !!probabilityFunctions.keys
+    }
 
     public var flipped: Bool
 
-    public init(classes: [Label: KeyFunc], flipped: Bool = false) {
-        self.classes = classes
+    public init(classes: [Label: ProbabilityFunction], flipped: Bool = false) {
+        self.probabilityFunctions = classes
         self.flipped = flipped
     }
 
@@ -23,9 +27,9 @@ public struct NaiveBayes<Input, Label: Hashable> {
 
 extension NaiveBayes {
 
-    public mutating func add(classLabel: Label, keyFunc: KeyFunc) {
-        if !classes.keys.contains(classLabel)  {
-            classes[classLabel] = keyFunc
+    public mutating func add(classLabel: Label, probabilityFunction probFunc: ProbabilityFunction) {
+        if !probabilityFunctions.keys.contains(classLabel)  {
+            probabilityFunctions[classLabel] = probFunc
         }
     }
 
@@ -34,8 +38,8 @@ extension NaiveBayes {
 extension NaiveBayes : Classifier {
 
     public func classify(_ input: Input) -> Label? {
-        return (flipped ? argmin : argmax)(Array(classes.keys)) {
-            self.classes[$0]!(input)
+        return (flipped ? argmin : argmax)(Array(probabilityFunctions.keys)) {
+            self.probabilityFunctions[$0]!(input)
         }
     }
 
