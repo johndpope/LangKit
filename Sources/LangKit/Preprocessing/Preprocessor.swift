@@ -50,6 +50,7 @@ extension Sequence where Iterator.Element == [String] {
      - returns: Corpus with rare tokens replaced with <unk>'s
      */
     public func replaceRareTokens(minimumCount threshold: Int) -> [[String]] {
+        if threshold <= 0 { return !!self }
         var frequency: [String: Int] = [:]
         // Collect frequency
         self.forEach { $0.forEach { frequency[$0] ?+= 1 } }
