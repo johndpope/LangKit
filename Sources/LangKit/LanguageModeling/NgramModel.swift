@@ -17,6 +17,21 @@ public struct NgramModel {
     // Item type
     public typealias Item = [Token]
 
+    /**** Fundamental components ****/
+
+    // Unigram count
+    private var tokens: Set<Token> = []
+
+    /**** Count training ****/
+
+    // Ngram count trie
+    private var counter: NgramCounter
+
+    // Count frequency table for Good Turing smoothing
+    private var countFrequency: [Int: Int]!
+
+    /**** Configuration ****/
+
     // Gram number
     private let n: Int
 
@@ -25,15 +40,6 @@ public struct NgramModel {
 
     // Smoothing mode
     private let smoothing: SmoothingMode
-
-    // Ngram count trie
-    private var counter: NgramCounter
-
-    // Unigram count
-    private var tokens: Set<Token> = []
-
-    // Count frequency table for Good Turing smoothing
-    private var countFrequency: [Int: Int]!
 
     /**
      Initializer
