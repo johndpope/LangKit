@@ -17,6 +17,9 @@ public struct NgramModel {
     // Item type
     public typealias Item = [Token]
 
+    // Sentence type
+    public typealias Sentence = [Token]
+
     /**** Fundamental components ****/
 
     // Unigram count
@@ -208,7 +211,7 @@ extension NgramModel : LanguageModel {
 
      - returns: Log probability
      */
-    public func sentenceLogProbability(_ sentence: [Token]) -> Float {
+    public func sentenceLogProbability(_ sentence: Sentence) -> Float {
         return sentence.wrapSentenceBoundary().ngrams(n)
             .reduce(0, combine: (+) • logf • markovProbability)
     }

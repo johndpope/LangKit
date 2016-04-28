@@ -6,8 +6,6 @@
 //
 //
 
-import Foundation
-
 public struct FScore {
     let beta: Float
     public let precision, recall: Float
@@ -16,7 +14,7 @@ public struct FScore {
         return (1 + betaSqr) * (precision * recall / (betaSqr * precision + recall))
     }
 
-    public init(precision: Float, recall: Float, beta: Float = 1) {
+    public init(precision: Float, recall: Float, betaFactor beta: Float = 1) {
         self.precision = precision
         self.recall = recall
         self.beta = beta
@@ -52,7 +50,7 @@ public final class ClassifierEvaluator<C: Classifier> {
             let totalPredicted = matrix.values.reduce(0) { $0 + ($1[label] ?? 0) }
             scores[label] = FScore(precision: Float(truePositive) / Float(totalPredicted),
                                       recall: Float(truePositive) / Float(totalGold),
-                                        beta: beta)
+                                  betaFactor: beta)
         }
         return scores
     }

@@ -13,10 +13,6 @@ import LangKit
 
 class EvaluationDemo: Demo {
 
-    static let englishTrain = "Data/Demo/LanguageModeling/LangId.train.English"
-    static let  frenchTrain = "Data/Demo/LanguageModeling/LangId.train.French"
-    static let italianTrain = "Data/Demo/LanguageModeling/LangId.train.Italian"
-
     /**
      Read corpora from files
 
@@ -24,57 +20,59 @@ class EvaluationDemo: Demo {
 
      - returns: Corpora array
      */
-    static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
-        let readers = files.map { TokenCorpusReader(fromFile: $0,
-                                                    encoding: NSISOLatin1StringEncoding,
-                                                    tokenizingWith: ^String.tokenize) }
-        return readers.map {
-            guard let corpus = $0 else {
-                print("❌  Corpora error!")
-                exit(EXIT_FAILURE)
-            }
-            return corpus
+    static func readCorpus(fromFile path: String) -> CorpusReader<String> {
+        guard let reader = TokenCorpusReader(fromFile: path,
+                                             encoding: NSISOLatin1StringEncoding,
+                                             tokenizingWith: ^String.tokenize) else {
+            print("❌  Corpora error!")
+            exit(EXIT_FAILURE)
         }
+        return reader
     }
 
-    static func probabilityFunction(fromCorpus corpus: CorpusReader<String>) -> [String] -> Float {
-        return NgramModel(n: 3,
+    static func createModel(fromCorpus corpus: CorpusReader<String>) -> NgramModel {
+        return NgramModel(n: 2,
                           trainingCorpus: corpus,
                           smoothingMode: .none,
                           replacingTokensFewerThan: 5,
                           counter: DictionaryNgramCounter(minimumCapacity: 10240))
-            .sentenceLogProbability
+    }
+
+    static func average(_ numbers: [Float]) -> Float {
+        return numbers.reduce(0.0, combine: +) / Float(numbers.count)
     }
 
     /**
      Run demo
      */
     static func run() {
-        let corpora = readCorpora(fromFiles: [englishTrain, frenchTrain, italianTrain])
+        let englishCorpus = readCorpus(fromFile: "Data/Demo/LanguageModeling/LangId.train.English")
+        let  frenchCorpus = readCorpus(fromFile: "Data/Demo/LanguageModeling/LangId.train.French")
+        let italianCorpus = readCorpus(fromFile: "Data/Demo/LanguageModeling/LangId.train.Italian")
 
         print("☢️  Training...")
 
         // Create and train bigram models
-        let classes : [String: [String] -> Float] =
-            [ "English": corpora[0] |> probabilityFunction,
-              "French" : corpora[1] |> probabilityFunction,
-              "Italian": corpora[2] |> probabilityFunction ]
+        let models =
+            [ "English": englishCorpus |> createModel,
+              "French" : frenchCorpus  |> createModel,
+              "Italian": italianCorpus |> createModel ]
 
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier: NaiveBayes<[String], String> = NaiveBayes(classes: classes)
+        let classifier: NaiveBayes<[String], String> = NaiveBayes(languageModels: models)
 
         guard let solutions = LineReader(fromFile: "Data/Demo/LanguageModeling/LangId.sol",
                                          encoding: NSISOLatin1StringEncoding),
-                  tests = CorpusReader(fromFile: "Data/Demo/LanguageModeling/LangId.test",
-                                       encoding: NSISOLatin1StringEncoding,
-                                       tokenizingWith: ^String.tokenize) else {
+                      tests = CorpusReader(fromFile: "Data/Demo/LanguageModeling/LangId.test",
+                                           encoding: NSISOLatin1StringEncoding,
+                                           tokenizingWith: ^String.tokenize) else {
             print("Error opening tests and solutions")
             exit(EXIT_FAILURE)
         }
 
-        // Evaluate
+        // F-Score
         let scores = ClassifierEvaluator(classifier: classifier,
                                          tests: tests,
                                          solutions: solutions.map{$0.tokenize()[1]}).fScore()
@@ -83,8 +81,9 @@ class EvaluationDemo: Demo {
             print("  Precision: \(scores[c]!.precision * 100)%")
             print("     Recall: \(scores[c]!.recall * 100)%")
             print("    F-Score: \(scores[c]!.fScore * 100)%")
+            let perplexity = englishCorpus.map(models[c]!.perplexity) |> average
+            print(" Perplexity: \(perplexity)")
         }
-
 
     }
 }
