@@ -75,7 +75,7 @@ class EvaluationDemo: Demo {
         // F-Score
         let scores = ClassifierEvaluator(classifier: classifier,
                                          tests: tests,
-                                         solutions: solutions.map{$0.tokenize()[1]}).fScore()
+                                         solutions: solutions.map{$0.tokenize()[1]}).fScores()
         for c in classifier.classes {
             print("Class \(c)")
             print("  Precision: \(scores[c]!.precision * 100)%")
