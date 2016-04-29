@@ -57,10 +57,12 @@ public extension String {
         return characters.tagSplit(delimiter: delimiter)
     }
 
+    @inline(__always)
     public func tagTokenize(delimiter: Character) -> [(String, String)] {
         return characters.tokenize().map{$0.tagSplit(delimiter: delimiter)}
     }
 
+    // Parameterization
     @inline(__always)
     public func tagTokenize() -> [(String, String)] {
         return tagTokenize(delimiter: "_")
