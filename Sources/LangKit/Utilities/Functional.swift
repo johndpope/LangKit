@@ -91,7 +91,7 @@ public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
 // Optional
 @inline(__always)
 public func >-><A, B, C>(f: A -> B?, g: B -> C?) -> A -> C? {
-    return { x in f(x) >>- g }
+    return { f($0) >>- g }
 }
 // Sequence
 @inline(__always)
@@ -99,7 +99,7 @@ public func >-><A, B, C, MB: Sequence, MC: Sequence where
                     MB.Iterator.Element == B,
                     MC.Iterator.Element == C>
                 (f: A -> MB, g: B -> MC) -> A -> [C] {
-    return { x in f(x).flatMap(g) }
+    return { f($0).flatMap(g) }
 }
 
 /* Monad - Bind */
