@@ -27,6 +27,13 @@ public final class ClassifierEvaluator<C: Classifier> {
     let solutions: [C.Label]
     let classifier: C
 
+    /**
+     Initialize from a classifier and solutions
+
+     - parameter classifier: Classifier
+     - parameter tests:      Array of inputs
+     - parameter solutions:  Array of golden standard outputs
+     */
     public init<T: Sequence, U: Sequence where T.Iterator.Element == C.Input, U.Iterator.Element == C.Label>
                 (classifier: C, tests: T, solutions: U) {
         self.tests = !!tests
@@ -34,7 +41,14 @@ public final class ClassifierEvaluator<C: Classifier> {
         self.classifier = classifier
     }
 
-    public func fScore(beta: Float = 1) -> [C.Label: FScore] {
+    /**
+     Compute the F-score for all classes
+
+     - parameter beta: Beta factor for F-score calculation (default: 1.0)
+
+     - returns: Dictionary of F-scores indexed by classes
+     */
+    public func fScores(beta: Float = 1) -> [C.Label: FScore] {
         // Confusion matrix
         var matrix: [C.Label: [C.Label: Int]] = [:]
         classifier.classes.forEach { matrix[$0] = [:] }

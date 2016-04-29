@@ -29,6 +29,12 @@ public class IBMModel1: Aligner {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
 
+    /**
+     Train from parallel corpora
+
+     - parameter bitext:     Parallel corpora
+     - parameter iterations: Iteration count
+     */
     public func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, iterations: Int = 100) {
         var count: [Key: Float] = [:]
         var total: [String: Float] = [:]
