@@ -15,7 +15,9 @@ public final class IBMModel2 : IBMModel1 {
     var alignment: [AlignKey: Float]
 
     // Alignment key probablizer
-    let probablize = { (key: AlignKey) -> Float in 1.0 / (Float(key[3]) + 1.0) }
+    private func probablize(_ key: AlignKey) -> Float {
+        return 1.0 / (Float(key[3]) + 1.0)
+    }
 
     /**
      Initialize Model 2 from parallel corpora
@@ -48,6 +50,8 @@ public final class IBMModel2 : IBMModel1 {
      */
     public func train<S: Sequence where S.Iterator.Element == SentenceTuple>
                       (bitext: S, lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
+        // Argument `bitext` as a Sequence will be potentially desructively iterated twice
+        // So we want to convert it to a collection
         let bitext = !!bitext
 
         // Train Model 1 (super)

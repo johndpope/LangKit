@@ -39,7 +39,6 @@ public class IBMModel1: Aligner {
         var count: [Key: Float] = [:]
         var total: [String: Float] = [:]
         var sTotal: [String: Float] = [:]
-        let bitext = !!bitext
         for _ in 1...iterations {
             // Re-initialization
             count.removeAll(keepingCapacity: true)
