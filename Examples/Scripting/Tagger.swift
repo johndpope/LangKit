@@ -3,13 +3,17 @@
 /*************** LangKit Example ****************
  * This file is to demonstrate the scripting
  * ability with LangKit in Swift.
+ * To run this, you will need to build libraries
+ * by `swift build -Xswiftc -emit-library`, and
+ * put LangKit.swiftmodule and libLangKit.dylib
+ * in lib/ folder.
  ************************************************/
 
 import LangKit
 import Foundation
 
 guard let taggedCorpus = CorpusReader(fromFile: "../../Data/Demo/POSTagging/train.txt",
-                                      itemizingWith: §String.tagSplit) else {
+                                      tokenizingWith: ^String.tagTokenized) else {
     print("❌  Corpora error!")
     exit(EXIT_FAILURE)
 }
@@ -22,7 +26,7 @@ print("✅  Training complete")
 while true {
     print("💬  ", terminator: "")
     readLine()
-        >>- §String.tokenized
+        >>- ^String.tokenized
         >>- tagger.tag
         >>- { sentence in sentence.map{"\($0)_\($1)"}.joined(separator: " ") }
         >>- print

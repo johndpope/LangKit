@@ -3,6 +3,10 @@
 /*************** LangKit Example ****************
  * This file is to demonstrate the scripting
  * ability with LangKit in Swift.
+ * To run this, you will need to build libraries
+ * by `swift build -Xswiftc -emit-library`, and
+ * put LangKit.swiftmodule and libLangKit.dylib
+ * in lib/ folder.
  ************************************************/
 
 import LangKit
