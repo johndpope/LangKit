@@ -1,5 +1,5 @@
 //
-//  Tokenizer.swift
+//  Tokenizedr.swift
 //  LangKit
 //
 //  Created by Richard Wei on 3/20/16.
@@ -9,7 +9,7 @@
 // MARK: - Tokenization
 public extension String.CharacterView {
 
-    public func tokenize() -> [SubSequence] {
+    public func tokenized() -> [SubSequence] {
         return split(separator: " ", omittingEmptySubsequences: true)
     }
 
@@ -32,8 +32,8 @@ public extension String.CharacterView {
 public extension String {
 
     @inline(__always)
-    public func tokenize() -> [String] {
-        return characters.tokenize().map{String($0)}
+    public func tokenized() -> [String] {
+        return characters.tokenized().map{String($0)}
     }
 
 
@@ -43,7 +43,7 @@ public extension String {
     }
 
     @inline(__always)
-    public func letterize() -> [String] {
+    public func letterized() -> [String] {
         return characters.map{String($0)}
     }
 
@@ -58,14 +58,14 @@ public extension String {
     }
 
     @inline(__always)
-    public func tagTokenize(delimiter: Character) -> [(String, String)] {
-        return characters.tokenize().map{$0.tagSplit(delimiter: delimiter)}
+    public func tagTokenized(delimiter: Character) -> [(String, String)] {
+        return characters.tokenized().map{$0.tagSplit(delimiter: delimiter)}
     }
 
     // Parameterization
     @inline(__always)
-    public func tagTokenize() -> [(String, String)] {
-        return tagTokenize(delimiter: "_")
+    public func tagTokenized() -> [(String, String)] {
+        return tagTokenized(delimiter: "_")
     }
 }
 

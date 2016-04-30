@@ -23,7 +23,7 @@ class EvaluationDemo: Demo {
     static func readCorpus(fromFile path: String) -> CorpusReader<String> {
         guard let reader = TokenCorpusReader(fromFile: path,
                                              encoding: NSISOLatin1StringEncoding,
-                                             tokenizingWith: ^String.tokenize) else {
+                                             tokenizingWith: ^String.tokenized) else {
             print("❌  Corpora error!")
             exit(EXIT_FAILURE)
         }
@@ -67,7 +67,7 @@ class EvaluationDemo: Demo {
                                          encoding: NSISOLatin1StringEncoding),
                       tests = CorpusReader(fromFile: "Data/Demo/LanguageModeling/LangId.test",
                                            encoding: NSISOLatin1StringEncoding,
-                                           tokenizingWith: ^String.tokenize) else {
+                                           tokenizingWith: ^String.tokenized) else {
             print("Error opening tests and solutions")
             exit(EXIT_FAILURE)
         }
@@ -75,7 +75,7 @@ class EvaluationDemo: Demo {
         // F-Score
         let scores = ClassifierEvaluator(classifier: classifier,
                                          tests: tests,
-                                         solutions: solutions.map{$0.tokenize()[1]}).fScores()
+                                         solutions: solutions.map{$0.tokenized()[1]}).fScores()
         for c in classifier.classes {
             print("Class \(c)")
             print("  Precision: \(scores[c]!.precision * 100)%")

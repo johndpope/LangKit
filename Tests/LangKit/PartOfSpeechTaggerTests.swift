@@ -12,9 +12,9 @@ import XCTest
 class PartOfSpeechTaggerTests: XCTestCase {
 
     func testSentenceTagging() {
-        let sentence = "I_Noun ate_Verb a_Det banana_Noun ._.".tokenize().map{$0.tagSplit(delimiter: "_")}
+        let sentence = "I_Noun ate_Verb a_Det banana_Noun ._.".tokenized().map{$0.tagSplit(delimiter: "_")}
         let tagger = PartOfSpeechTagger(taggedCorpus: [sentence])
-        let taggedSentence = tagger.tag("I ate a banana .".tokenize())
+        let taggedSentence = tagger.tag("I ate a banana .".tokenized())
         XCTAssertTrue(taggedSentence.elementsEqual(sentence, isEquivalent: ==))
     }
 

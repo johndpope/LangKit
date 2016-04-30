@@ -37,7 +37,7 @@ public extension String {
         case .letter:
             return characters.map{String($0)}.ngrams(n)
         case .word:
-            return self.tokenize().ngrams(n)
+            return self.tokenized().ngrams(n)
         }
     }
 

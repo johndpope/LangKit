@@ -14,11 +14,11 @@ import XCTest
 class EvaluationTests: XCTestCase {
 
     func testFScore() {
-        let english = ^String.letterize <^>
+        let english = ^String.letterized <^>
             [ "Colorless green ideas sleep furiously .",
               "My name is Richard Wei .",
               "University of Illinois is located in Urbana , Illinois ." ]
-        let french = ^String.letterize <^>
+        let french = ^String.letterized <^>
             [ "idées vertes incolores dorment furieusement.",
               "Mon nom est Richard Wei .",
               "Université de l'Illinois est situé à Urbana , Illinois ." ]
@@ -29,7 +29,7 @@ class EvaluationTests: XCTestCase {
 
         let classifier = NaiveBayes(languageModels: models)
 
-        let tests = ^String.letterize <^>
+        let tests = ^String.letterized <^>
             [ "My name is to sleep furiously .",
               "University of Illinois is not at Urbana , Illinois",
               "Les universités françaises ne sont pas à Urbana ." ]

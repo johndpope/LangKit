@@ -58,7 +58,7 @@ class FunctionalTests: XCTestCase {
     }
 
     func testMonadCompose() {
-        let tokenizeAndLetterize: String -> [String] = ^String.tokenize >-> ^String.letterize
+        let tokenizeAndLetterize: String -> [String] = ^String.tokenized >-> ^String.letterized
         XCTAssertEqual(["hel lo", "wor ld"] >>- tokenizeAndLetterize, ["h", "e", "l", "l", "o", "w", "o", "r", "l", "d"])
     }
 
