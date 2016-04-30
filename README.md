@@ -38,14 +38,14 @@ Then add `import LangKit` to your source file.
 
 * Train a part-of-speech tagger with your data
 ```swift
-guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", itemizingWith: ^String.tagSplit) else {
+guard let taggedCorpus = CorpusReader(fromFile: "Data/train.txt", tokenizingWith: ^String.tagTokenized) else {
     print("❌  Corpora error!")
     exit(EXIT_FAILURE)
 }
 
 let tagger = PartOfSpeechTagger(taggedCorpus: taggedCorpus, smoothingMode: .goodTuring)
 
-let sentence = "Colorless green ideas sleep furiously .".tokenize()
+let sentence = "Colorless green ideas sleep furiously .".tokenized()
 
 tagger.tag(sentence) |> print
 ```
@@ -62,17 +62,34 @@ let model = NgramModel(n: 3,
                        smoothingMode: .none,
                        counter: TrieNgramCounter())
 
-let sentence = "Colorless green ideas sleep furiously .".tokenize()
+let sentence = "Colorless green ideas sleep furiously .".tokenized()
 
 model.sentenceLogProbability(sentence) |> print
 ```
+
+* Scripting in Swift
+
+You can script to use LangKit by adding a shebang to the Swift source. Example scripts are in `Examples/Scripting/`. Scripting in Swift is not a mature feature yet, so you'll need to build LangKit to a dynamic library.
+```bash
+swift build -Xswiftc -emit-library
+cp LangKit.dylib .build/debug/LangKit.swiftmodule Examples/Scripting/lib/
+cd Examples/Scripting/lib/
+./Tagger.swift
+```
+
+This is what the shebang looks like:
+
+```bash
+#!/usr/bin/env swift -I<dir of LangKit.swiftmodule> -L<dir of LangKit.dylib> -lLangKit -target x86_64-apple-macosx10.10
+```
+
+I know. The `-target x86_64-apple-macosx10.10` doesn't really look cool.
 
 ### Develop LangKit
 
 You can use Xcode 7.3 with Swift 3 dev toolchain **or** only the Swift 3 dev toolchain. ~~Xcode is recommended if you need a Playground.~~(not available until Swift 3 release version)
 
 #### Swift 3 on OS X 10.11, Ubuntu 14.04 or Ubuntu 15.10
-
 
 Make sure you have added Swift 3's `bin` to `PATH`.
 
@@ -85,6 +102,8 @@ Test:
 ```
     $ swift test
 ```
+
+The `Foundation` framework on Linux is based on `apple/swift-corelibs-foundation` but the one on OS X is not. So they may have inconsistency in naming from time to time. `Foundation` APIs on OS X usually have the latest naming, so I do not intend to maintain compatibility with the old. In case that LangKit fails to build on Linux, using a newly built version (not the snapshot) of Swift might be a better idea. By the time of WWDC I believe they'll have the naming unified!
 
 #### Xcode 7.3 with Swift 3 (OS X only) ###
 
