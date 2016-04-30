@@ -7,9 +7,12 @@
 ## Natural Language Processing in Swift
 
 Current features:
-  * HMM Part-of-Speech Tagging
-  * Language Modeling
-  * Word Alignment (IBM Models)
+  * Corpus readers
+  * Part-of-Speech Tagging (HMM)
+  * Language Modeling (Ngram model)
+  * Classification (Naive Bayes)
+  * Evaluation (F-score)
+  * Word Alignment (IBM models)
 
 Upcoming features:
   * Data format support (ARPA LM, HMM, etc)
@@ -124,11 +127,16 @@ Test: `⌘u`
     - [x] Smoothing
       - [x] Additive
       - [x] Good Turing
-      - [ ] Absolute discounting
-      - [ ] Linear interpolation
+    - [x] Intrinsic Evaluation
+      - [x] Perplexity
+    - [x] Incremental training
 - Sequence Labeling
   - [x] Hidden Markov model
-  - [x] HMM part-of-speech tagger
+    - [x] Smoothing
+      - [x] Additive
+      - [x] Good Turing
+    - [x] Incremental training
+  - [x] Part-of-speech tagger
   - [ ] Maximum-entropy Markov model
 - Preprocessing
   - [x] Basics
@@ -141,13 +149,16 @@ Test: `⌘u`
 - Alignment
   - [x] IBM Model 1
   - [x] IBM Model 2
+- Evaluation
+  - [x] F-score
 - File IO
   - [x] Corpus reader
   - [ ] ARPA LM file support
 - Demo
-  - [x] Language identification (`$ ./demo -n LangID`)
-  - [x] HMM POS tagging (`$ ./demo -n POS`)
-  - [x] IBM Model 1 and 2 (`$ ./demo -n (IBM1|IBM2)`)
+  - [x] Language identification (`$ ./demo -n id`)
+  - [x] HMM POS tagging (`$ ./demo -n pos`)
+  - [x] IBM Model 1 and 2 (`$ ./demo -n (ibm1|ibm2)`)
+  - [x] Classification Evaluation (`$ ./demo -n eval`)
 
 ## Note
 
