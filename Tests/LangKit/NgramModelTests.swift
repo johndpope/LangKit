@@ -13,12 +13,10 @@ import Foundation
 class NgramModelTests: XCTestCase {
 
     func testNgrams() {
-        #if os(OSX)
         XCTAssertEqual(Array([1, 2, 3, 4, 5].ngrams(2)), [[1,2], [2,3], [3,4], [4,5]])
         let ngramsGenerated = !!"I am a smart student .".ngrams(2, form: .word)
         let ngrams = [["I", "am"], ["am", "a"], ["a", "smart"], ["smart", "student"], ["student", "."]]
         XCTAssertEqual(ngrams, ngramsGenerated)
-        #endif
     }
 
     func testUnigramProbability() {

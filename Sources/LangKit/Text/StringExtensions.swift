@@ -73,6 +73,11 @@ public extension String {
 // MARK: - Similarity
 public extension String {
 
+    ///	Calculate Levenshtein minimum edit distance
+    ///
+    ///	- parameter other:	Other string
+    ///
+    ///	- returns: Minimum edit distance
     public func levenshteinDistance(_ other: String) -> Int {
         if self.isEmpty { return other.characters.count }
         if other.isEmpty { return self.characters.count }

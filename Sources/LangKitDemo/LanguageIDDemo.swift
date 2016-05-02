@@ -15,13 +15,11 @@ class LanguageIDDemo: Demo {
     static let  frenchTrain = "Data/Demo/LanguageModeling/LangId.train.French"
     static let italianTrain = "Data/Demo/LanguageModeling/LangId.train.Italian"
 
-    /**
-     Read corpora from files
-
-     - parameter files: Array of file paths
-
-     - returns: Corpora array
-     */
+    /// Read corpora from files
+    ///
+    /// - parameter files: Array of file paths
+    ///
+    /// - returns: Corpora array
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
         let readers = files.map { TokenCorpusReader(fromFile: $0,
                                                     encoding: NSISOLatin1StringEncoding,
@@ -44,9 +42,7 @@ class LanguageIDDemo: Demo {
             .sentenceLogProbability
     }
 
-    /**
-     Run demo
-     */
+    /// Run demo
     static func run() {
         let corpora = readCorpora(fromFiles: [englishTrain, frenchTrain, italianTrain])
 

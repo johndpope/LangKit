@@ -10,10 +10,7 @@
 //  program logic clearly.
 //
 
-/*************
- * Operators *
- *************/
-
+/// Operators
 infix  operator |>  { associativity left  } // Feed to function
 infix  operator <|  { associativity left  } // Reverse feed
 infix  operator •   { associativity right } // Functional composition (math notation)
@@ -23,13 +20,13 @@ infix  operator >-> { associativity left  } // Monad composition (Haskell notati
 infix  operator <*> { associativity left  } // Applicative apply (Haskell notation)
 infix  operator <^> { associativity left  } // Functor map (Haskell notation)
 
-// Identity function
+/// Identity function
 @inline(__always)
 public func identity<T>(x: T) -> T {
     return x
 }
 
-// Curry
+/// Curry
 // ((a, b) -> c) -> a -> b -> c
 @inline(__always)
 public func curry<A, B, C>(_ f: (A, B) -> C) -> A -> B -> C {
@@ -41,7 +38,7 @@ public func curry<A, B, C, D>(_ f: (A, B, C) -> D) -> A -> B -> C -> D {
     return { x in { y in { z in f(x, y, z) } } }
 }
 
-// Uncurry
+/// Uncurry
 // (a -> b -> c) -> (a, b) -> c
 @inline(__always)
 public func uncurry<A, B, C>(_ f: A -> B -> C) -> (A, B) -> C {
@@ -53,7 +50,7 @@ public func uncurry<A, B, C, D>(_ f: A -> B -> C -> D) -> (A, B, C) -> D {
     return { (x, y, z) in f(x)(y)(z) }
 }
 
-/* Pipeline */
+/// Pipeline
 // Reverse function application
 @inline(__always)
 public func |><A, B>(lhs: A, rhs: A -> B) -> B {
@@ -65,7 +62,7 @@ public func <|<A, B>(lhs: A -> B, rhs: A) -> B {
     return lhs(rhs)
 }
 
-/* Compose */
+/// Compose
 // f(x) • g(x) = f(g(x))
 @inline(__always)
 public func •<A, B, C>(f: B -> C, g: A -> B) -> A -> C {
@@ -87,7 +84,7 @@ public func •<A, B, C>(f: (B, B) -> C, g: A -> B) -> (A, B) -> C {
     return { f(g($0), $1) }
 }
 
-/* Monad - Compose */
+/// Monad - Compose
 // Optional
 @inline(__always)
 public func >-><A, B, C>(f: A -> B?, g: B -> C?) -> A -> C? {
@@ -102,7 +99,7 @@ public func >-><A, B, C, MB: Sequence, MC: Sequence where
     return { f($0).flatMap(g) }
 }
 
-/* Monad - Bind */
+/// Monad - Bind
 // Optional
 @inline(__always)
 public func >>-<A, B>(lhs: A?, rhs: A -> B?) -> B? {
@@ -126,7 +123,7 @@ public func -<<<A, B, MA: Sequence where
     return rhs.flatMap(lhs)
 }
 
-/* Applicative - Apply */
+/// Applicative - Apply
 // Optional
 @inline(__always)
 public func <*><A, B>(lhs: (A -> B)?, rhs: A?) -> B? {
@@ -141,7 +138,7 @@ public func <*><A, B, FAB: Sequence, FA: Sequence where
     return lhs.flatMap{f in rhs.map(f)}
 }
 
-/* Functor - Map */
+/// Functor - Map
 // Optional
 @inline(__always)
 public func <^><A, B>(lhs: A -> B, rhs: A?) -> B? {

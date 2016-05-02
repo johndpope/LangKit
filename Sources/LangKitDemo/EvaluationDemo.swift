@@ -13,13 +13,11 @@ import LangKit
 
 class EvaluationDemo: Demo {
 
-    /**
-     Read corpora from files
-
-     - parameter files: Array of file paths
-
-     - returns: Corpora array
-     */
+    /// Read corpora from files
+    ///
+    /// - parameter files: Array of file paths
+    ///
+    /// - returns: Corpora array
     static func readCorpus(fromFile path: String) -> CorpusReader<String> {
         guard let reader = TokenCorpusReader(fromFile: path,
                                              encoding: NSISOLatin1StringEncoding,
@@ -42,9 +40,7 @@ class EvaluationDemo: Demo {
         return numbers.reduce(0.0, combine: +) / Float(numbers.count)
     }
 
-    /**
-     Run demo
-     */
+    /// Run demo
     static func run() {
         let englishCorpus = readCorpus(fromFile: "Data/Demo/LanguageModeling/LangId.train.English")
         let  frenchCorpus = readCorpus(fromFile: "Data/Demo/LanguageModeling/LangId.train.French")

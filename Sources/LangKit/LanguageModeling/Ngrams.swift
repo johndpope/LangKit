@@ -5,25 +5,21 @@
 
 public extension Array {
 
-    /**
-     Generate ngrams
-
-     - parameter n: n-value
-
-     - returns: Ngram sequence
-     */
+    /// Generate ngrams
+    ///
+    /// - parameter n: n-value
+    ///
+    /// - returns: Ngram sequence
     public func ngrams(_ n: Int) -> Ngrams<Element> {
         return .init(self, n)
     }
 
 }
 
-/**
- Form of ngram split
-
- - letter: Split to letters
- - word:   Split to words
- */
+/// Form of ngram split
+///
+/// - letter: Split to letters
+/// - word:   Split to words
 public enum NgramForm {
     case letter
     case word
@@ -43,9 +39,6 @@ public extension String {
 
 }
 
-/**
- *  Ngram sequence
- */
 public struct Ngrams<T> : IteratorProtocol, Sequence {
 
     public typealias Element = [T]

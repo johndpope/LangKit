@@ -8,15 +8,13 @@
 
 import Foundation
 
-/**
- Smoothing mode for various statistical models
-
- - none:                No smoothing
- - laplace:             Laplace (additive) smoothing with factor
- - goodTuring:          Good Turing smoothing
- - linearInterpolation: Linear interpolation
- - absoluteDiscounting: Absolute discounting
- */
+/// Smoothing mode for various statistical models
+///
+/// - none:                No smoothing
+/// - laplace:             Laplace (additive) smoothing with factor
+/// - goodTuring:          Good Turing smoothing
+/// - linearInterpolation: Linear interpolation
+/// - absoluteDiscounting: Absolute discounting
 public enum SmoothingMode : NilLiteralConvertible {
     case none
     case laplace(Float)

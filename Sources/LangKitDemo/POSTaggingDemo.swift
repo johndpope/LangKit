@@ -11,9 +11,7 @@ import LangKit
 
 class POSTaggingDemo : Demo {
 
-    /**
-     Run demo
-     */
+    /// Run demo
     static func run() {
         guard let taggedCorpus = CorpusReader(fromFile: "Data/Demo/POSTagging/train.txt", tokenizingWith: ^String.tagTokenized) else {
             print("❌  Corpora error!")

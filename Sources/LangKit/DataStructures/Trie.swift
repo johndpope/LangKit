@@ -6,16 +6,13 @@
 //
 //
 
-/**
- Trie data structure (immutable)
-
- - Leaf: (key, count)
- - Node: (key, count, children)
- */
+/// Trie data structure (immutable)
+///
+/// - Leaf: (key, count)
+/// - Node: (key, count, children)
 public enum Trie<K: Hashable> {
 
     case leaf(K!, Int)
-
     indirect case node(K!, Int, [K: Trie<K>])
 
     public init(initial: [K]? = nil) {
@@ -28,14 +25,12 @@ public enum Trie<K: Hashable> {
 // MARK: - Equatable conformance
 extension Trie : Equatable {}
 
-/**
- Equate two tries
-
- - parameter lhs: Trie
- - parameter rhs: Trie
-
- - returns: Equal or not
- */
+/// Equate two tries
+/// 
+/// - parameter lhs: Trie
+/// - parameter rhs: Trie
+/// 
+/// - returns: Equal or not
 public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     switch (lhs, rhs) {
     case (.leaf(let k1, let v1), .leaf(let k2, let v2)):
@@ -47,14 +42,12 @@ public func ==<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     }
 }
 
-/**
- Match type of two tries
-
- - parameter lhs: Trie
- - parameter rhs: Trie
-
- - returns: Match or not
- */
+/// Match type of two tries
+/// 
+/// - parameter lhs: Trie
+/// - parameter rhs: Trie
+/// 
+/// - returns: Match or not
 public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     switch (lhs, rhs) {
     case (.leaf(_, _)   , .leaf(_, _)   ),
@@ -65,14 +58,12 @@ public func ~=<K>(lhs: Trie<K>, rhs: Trie<K>) -> Bool {
     }
 }
 
-/**
- Combine two tries
-
- - parameter lhs: Left trie
- - parameter rhs: Rigth trie
-
- - returns: New trie
- */
+/// Combine two tries
+/// 
+/// - parameter lhs: Left trie
+/// - parameter rhs: Rigth trie
+/// 
+/// - returns: New trie
 public func +<K>(lhs: Trie<K>, rhs: Trie<K>) -> Trie<K> {
     return lhs.unionLeft(rhs)
 }
@@ -80,13 +71,11 @@ public func +<K>(lhs: Trie<K>, rhs: Trie<K>) -> Trie<K> {
 // MARK: - Insertion
 public extension Trie {
 
-    /**
-     Return a new trie with an item sequence inserted
-
-     - parameter item: item sequence
-
-     - returns: New trie after insertion
-     */
+    /// Return a new trie with an item sequence inserted
+    ///
+    /// - parameter item: item sequence
+    ///
+    /// - returns: New trie after insertion
     public func insert(_ item: [K], incrementingNodes incr: Bool = false) -> Trie<K> {
         switch self {
 
@@ -125,39 +114,33 @@ public extension Trie {
 // MARK: - Combination
 public extension Trie {
 
-    /**
-     Returns a union of two tries
-
-     - parameter other:            Other trie
-     - parameter conflictResolver: Conflict resolving function
-
-     - returns: New trie after union
-     */
+    /// Returns a union of two tries
+    ///
+    /// - parameter other:            Other trie
+    /// - parameter conflictResolver: Conflict resolving function
+    ///
+    /// - returns: New trie after union
     public func union(_ other: Trie<K>, conflictResolver: @noescape (K, K) -> K?) -> Trie<K> {
         // TODO
         return self
     }
 
-    /**
-     Returns a union of two tries
-     If there's a conflict, take the original (left)
-
-     - parameter other: Other trie
-
-     - returns: New trie after union
-     */
+    /// Returns a union of two tries
+    /// If there's a conflict, take the original (left)
+    ///
+    /// - parameter other: Other trie
+    ///
+    /// - returns: New trie after union
     public func unionLeft(_ other: Trie<K>) -> Trie<K> {
         return union(other) {left, _ in left}
     }
 
-    /**
-     Returns a union of two tries
-     If there's a conflict, take the new (right)
-
-     - parameter other: Other trie
-
-     - returns: New trie after union
-     */
+    /// Returns a union of two tries
+    /// If there's a conflict, take the new (right)
+    ///
+    /// - parameter other: Other trie
+    ///
+    /// - returns: New trie after union
     public func unionRight(_ other: Trie<K>) -> Trie<K> {
         return union(other) {_, right in right}
     }
@@ -167,13 +150,11 @@ public extension Trie {
 // MARK: - Predication and Cardinality
 public extension Trie {
 
-    /**
-     Determine if the key exists in children
-
-     - parameter key: Key
-
-     - returns: Exists or not
-     */
+    /// Determine if the key exists in children
+    ///
+    /// - parameter key: Key
+    ///
+    /// - returns: Exists or not
     public func hasChild(_ key: K) -> Bool {
         guard case .node(_, _, let children) = self else {
             return false // Leaf has no children
@@ -181,12 +162,7 @@ public extension Trie {
         return children.keys.contains(key)
     }
 
-
-    /**
-     Returns the number of children
-
-     - returns: Count
-     */
+    /// Number of children
     public var childCount: Int {
         guard case .node(_, _, let children) = self else {
             return 0 // Leaf has no children
@@ -196,40 +172,19 @@ public extension Trie {
 
 }
 
-// MARK: - Sequence conformance
-extension Trie : Sequence {
-
-    public typealias Iterator = AnyIterator<K>
-
-    public func makeIterator() -> Trie.Iterator {
-//        var stack: [Trie<K>] = []
-//        var current: Trie<K> = self
-
-        return AnyIterator {
-            // TODO!!
-            return nil
-        }
-    }
-
-}
-
 // MARK: - Calculation
 public extension Trie {
 
-    /**
-     Count at current node or leaf
-     */
+    /// Count at current node or leaf
     public var count: Int {
         return self.count([])
     }
 
-    /**
-     Count item sequence
-
-     - parameter item: Item sequence
-
-     - returns: Count of sequence
-     */
+    /// Count item sequence
+    ///
+    /// - parameter item: Item sequence
+    ///
+    /// - returns: Count of sequence
     public func count(_ item: [K]) -> Int {
         switch self {
         // Base case
@@ -248,11 +203,9 @@ public extension Trie {
         }
     }
 
-    /**
-     Sum all leave counts
-
-     - returns: Count
-     */
+    /// Sum all leave counts
+    ///
+    /// - returns: Count
     public func sumLeaves() -> Int {
         switch self {
         case .leaf(_, let v):
@@ -263,11 +216,9 @@ public extension Trie {
         }
     }
 
-    /**
-     Sum all counts
-
-     - returns: Count
-     */
+    /// Sum all counts
+    ///
+    /// - returns: Count
     public func sum() -> Int {
         switch self {
         case .leaf(_, let v):
@@ -280,11 +231,3 @@ public extension Trie {
 
 }
 
-
-extension Trie {
-
-    public func prettyPrint() {
-        // TODO
-    }
-
-}

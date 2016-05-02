@@ -8,23 +8,17 @@
 
 import Foundation
 
-/**
- * Transition conformance to Equatable
- */
+/// Transition conformance to Equatable
 public func ==<T>(lhs: Transition<T>, rhs: Transition<T>) -> Bool {
     return lhs.state1 == rhs.state1 && lhs.state2 == rhs.state2
 }
 
-/**
- * Emission conformance to Equatable
- */
+/// Emission conformance to Equatable
 public func ==<T, U>(lhs: Emission<T, U>, rhs: Emission<T, U>) -> Bool {
     return lhs.state == rhs.state && lhs.item == rhs.item
 }
 
-/**
- *  Transition hash key
- */
+/// Transition hash key
 public struct Transition<T: Hashable> : Hashable {
     public let state1, state2: T
     public let hashValue: Int
@@ -35,9 +29,7 @@ public struct Transition<T: Hashable> : Hashable {
     }
 }
 
-/**
- *  Emission hash key
- */
+/// Emission hash key
 public struct Emission<T: Hashable, U: Hashable> : Hashable {
     public let state: T
     public let item: U
@@ -49,16 +41,14 @@ public struct Emission<T: Hashable, U: Hashable> : Hashable {
     }
 }
 
-/**
- * Lazily cached hidden Markov model for sequence labeling
- */
+/// Lazily cached hidden Markov model for sequence labeling
 public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
 
     public typealias TransitionType = Transition<Label>
     public typealias EmissionType = Emission<Label, Item>
 
-    /**** Fundamental components ****/
-
+    /// Fundamental components
+    ///
     // Seen items
     public private(set) var items: Set<Item>
     // States
@@ -68,13 +58,12 @@ public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     private var transition: [TransitionType: Float] = [:]
     private var   emission: [EmissionType: Float]   = [:]
 
-    /**** Count training ****/
-
+    /// Count training
+    ///
     // Count tables
     private var    initialCountTable: [Label: Int]          = [:]
     private var transitionCountTable: [TransitionType: Int] = [:]
     private var   emissionCountTable: [EmissionType: Int]   = [:]
-
     // Total number of seen sequences
     private var sequenceCount: Int = 0
     // Total number of seen transitions
@@ -84,8 +73,8 @@ public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     // State count table
     private var stateCountTable: [Label: Int] = [:]
 
-    /**** Configuration ****/
-
+    /// Configuration
+    ///
     // Smoothing mode
     private let smoothing: SmoothingMode
     // Rare item replacement threshold
@@ -93,23 +82,20 @@ public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
     // Minimum probability limit
     private let minimumProbability: Float = 0.1e-44
 
-    /**** Smoothing specific ****/
-
+    /// Smoothing specific
+    ///
     // Unseen emission count table
     private var unseenEmissionCountTable: [Label: Int] = [:]
-
     // Good-Turing smoothing -- count frequency tables
     private var transitionCountFrequency: [Int: Int]!
     private var   emissionCountFrequency: [Int: Int]!
 
 
-    /**
-     Initialize from HMM counts
-
-     - parameter initial:    Initial probability distribution
-     - parameter transition: Transition probability distribution
-     - parameter emission:   Emission probability distribution
-     */
+    /// Initialize from HMM counts
+    ///
+    /// - parameter initial:    Initial probability distribution
+    /// - parameter transition: Transition probability distribution
+    /// - parameter emission:   Emission probability distribution
     public init(initialCountTable initial: [Label: Int],
                 transitionCountTable transition: [TransitionType: Int],
                 emissionCountTable emission: [EmissionType: Int],
@@ -136,13 +122,11 @@ public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         }
     }
 
-    /**
-     Initialize from HMM probability tables
-
-     - parameter initial:    Initial probability table
-     - parameter transition: Transition probability table
-     - parameter emission:   Emission probability table
-     */
+    /// Initialize from HMM probability tables
+    ///
+    /// - parameter initial:    Initial probability table
+    /// - parameter transition: Transition probability table
+    /// - parameter emission:   Emission probability table
     public init(initialProbability initial: [Label: Float],
                 transitionProbability transition: [TransitionType: Float],
                 emissionProbability emission: [EmissionType: Float]) {
@@ -155,11 +139,9 @@ public final class HiddenMarkovModel<Item: Hashable, Label: Hashable> {
         self.states = transition.keys.flatMap{[$0.state1, $0.state2]} |> Set.init
     }
 
-    /**
-     Initialize from tagged corpus
-
-     - parameter taggedCorpus: Tagged corpus
-     */
+    /// Initialize from tagged corpus
+    ///
+    /// - parameter taggedCorpus: Tagged corpus
     public init<C : Sequence where C.Iterator.Element == [(Item, Label)]>
                 (taggedCorpus corpus: C,
                  smoothingMode smoothing: SmoothingMode = .none,
@@ -273,6 +255,8 @@ extension HiddenMarkovModel {
 // MARK: - Preprocessing
 extension HiddenMarkovModel {
 
+    ///	Update unseen (<unk>) emission count table
+    /// Called whenever counts are updated
     private func updateUnseenEmissionCountTable() {
         for (em, count) in emissionCountTable where count <= threshold {
             let state = em.state
@@ -289,13 +273,11 @@ extension HiddenMarkovModel {
 // MARK: - SequenceLabelingModel conformance
 extension HiddenMarkovModel : SequenceLabelingModel {
 
-    /**
-     Train the model with tagged corpus
-     Available for incremental training
-     Complexity: O(n^2)
-     
-     - parameter taggedCorpus: Tagged corpus
-     */
+    /// Train the model with tagged corpus
+    /// Available for incremental training
+    /// Complexity: O(n^2)
+    /// 
+    /// - parameter taggedCorpus: Tagged corpus
     public func train<C : Sequence where C.Iterator.Element == [(Item, Label)]>(labeledSequences corpus: C) {
         for sentence in corpus {
             // Add initial
@@ -357,14 +339,12 @@ extension HiddenMarkovModel : SequenceLabelingModel {
         self.emission.removeAll(keepingCapacity: true)
     }
 
-    /**
-     Tag an observation sequence (sentence) using Viterbi algorithm
-     Complexity: O(n * |S|^2)   where S = state space
-
-     - parameter sequence: Sentence [w0, w1, w2, ...]
-
-     - returns: Tagged sentence [(w0, t0), (w1, t1), (w2, t2), ...]
-     */
+    /// Tag an observation sequence (sentence) using Viterbi algorithm
+    /// Complexity: O(n * |S|^2)   where S = state space
+    ///
+    /// - parameter sequence: Sentence [w0, w1, w2, ...]
+    ///
+    /// - returns: Tagged sentence [(w0, t0), (w1, t1), (w2, t2), ...]
     public func tag(_ sequence: [Item]) -> [(Item, Label)] {
         let (_, labels) = viterbi(observation: sequence)
         return !!zip(sequence, labels)
@@ -374,15 +354,13 @@ extension HiddenMarkovModel : SequenceLabelingModel {
 
 // MARK: - Algorithms
 extension HiddenMarkovModel {
-    /**
-     Viterbi Algorithm - Find the most likely sequence of hidden states
-     A nasty implementation directly ported from Python version (needs rewriting)
-     Complexity: O(n * |S|^2)   where S = state space
-
-     - parameter observation: Observation sequence
-
-     - returns: Most likely label sequence along with probabolity
-     */
+    /// Viterbi Algorithm - Find the most likely sequence of hidden states
+    /// A nasty implementation directly ported from Python version (needs rewriting)
+    /// Complexity: O(n * |S|^2)   where S = state space
+    ///
+    /// - parameter observation: Observation sequence
+    ///
+    /// - returns: Most likely label sequence along with probabolity
     public func viterbi(observation: [Item]) -> (probability: Float, label: [Label]) {
         if observation.isEmpty {
             return (0.0, [])

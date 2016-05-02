@@ -6,9 +6,7 @@
 //
 //
 
-/**
- *  Fast mutable trie
- */
+/// Fast mutable trie
 public struct FastTrie<K: Hashable> {
     private var key: K!
     private var count: Int = 0
@@ -16,9 +14,7 @@ public struct FastTrie<K: Hashable> {
     public private(set) var children: [K: FastTrie<K>]?
     public private(set) var isLeaf: Bool = true
 
-    /**
-     Initialize leaf
-     */
+    /// Initialize leaf
     public init(rootKey: K? = nil,
                 inserting initialItem: [K]? = nil,
                 value: Float? = nil,
@@ -66,7 +62,6 @@ public extension FastTrie {
         }
 
         // Node
-
         // Child exists
         if let _ = children?[nk] {
             children![nk]!.insert(restItem, value: value, incrementingNodes: incrementing)

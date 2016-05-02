@@ -8,6 +8,10 @@
 
 import Foundation
 
+/// Generic corpus reader of items
+/// An Item is the smallest unit in a sentence, eg. a token
+/// A corpus has form
+///   [[Item, Item, Item, ...], [Item, Item, Item, ...], ...]
 public class CorpusReader<Item> {
 
     public typealias Sentence = [Item]
@@ -18,14 +22,12 @@ public class CorpusReader<Item> {
     // Line reader
     public let reader: LineReader
 
-    /**
-     Initialize a CorpusReader with configurations
-     
-     - parameter fromFile:          File path
-     - parameter sentenceSeparator: Sentence separator (default: "\n")
-     - parameter encoding:          File encoding (default: UTF-8)
-     - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
-     */
+    /// Initialize from file
+    /// 
+    /// - parameter fromFile:          File path
+    /// - parameter sentenceSeparator: Sentence separator (default: "\n")
+    /// - parameter encoding:          File encoding (default: UTF-8)
+    /// - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
     public required init?(fromFile path: String, sentenceSeparator: String = "\n",
                           encoding: NSStringEncoding = NSUTF8StringEncoding,
                           tokenizingWith tokenize: String -> [Item]) {
@@ -36,9 +38,7 @@ public class CorpusReader<Item> {
         self.tokenize = tokenize
     }
 
-    /**
-     Go to the beginning of the file
-     */
+    /// Go to the beginning of the file
     public func rewind() {
         reader.rewind()
     }
@@ -49,11 +49,9 @@ extension CorpusReader : IteratorProtocol {
 
     public typealias Elememnt = Sentence
 
-    /**
-     Next tokenized sentence
-
-     - returns: Tokenized sentence
-     */
+    /// Next tokenized sentence
+    ///
+    /// - returns: Tokenized sentence
     public func next() -> [Item]? {
         return reader.next() >>- tokenize
     }
@@ -64,11 +62,9 @@ extension CorpusReader : Sequence {
 
     public typealias Iterator = CorpusReader
 
-    /**
-     Make sentence iterator
-
-     - returns: Iterator
-     */
+    /// Make sentence iterator
+    ///
+    /// - returns: Iterator
     public func makeIterator() -> Iterator {
         rewind()
         return self
@@ -78,6 +74,12 @@ extension CorpusReader : Sequence {
 
 public final class TokenCorpusReader : CorpusReader<String> {
 
+    /// Initialize from file
+    ///
+    /// - parameter fromFile:          File path
+    /// - parameter sentenceSeparator: Sentence separator (default: "\n")
+    /// - parameter encoding:          File encoding (default: UTF-8)
+    /// - parameter tokenizingWith:    Tokenization function :: String -> [String] (default: String.tokenize)
     public required init?(fromFile path: String,
                  sentenceSeparator: String = "\n",
                  encoding: NSStringEncoding = NSUTF8StringEncoding,

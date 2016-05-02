@@ -11,26 +11,20 @@ import LangKit
 
 class IBMModelDemo : Demo {
 
-    /**
-     Model selection
-     */
+    /// Model selection
     enum Model {
         case one
         case two
     }
 
-    /**
-     Run default model (Model 1)
-     */
+    /// Run default model (Model 1)
     static func run() {
         run(model: .one)
     }
 
-    /**
-     Run specified model
-
-     - parameter model: Model selection
-     */
+    /// Run specified model
+    ///
+    /// - parameter model: Model selection
     static func run(model: Model) {
 
         // Load parallel corpora

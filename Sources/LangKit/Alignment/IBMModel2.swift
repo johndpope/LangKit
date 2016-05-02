@@ -19,35 +19,29 @@ public final class IBMModel2 : IBMModel1 {
         return 1.0 / (Float(key[3]) + 1.0)
     }
 
-    /**
-     Initialize Model 2 from parallel corpora
-
-     - parameter bitext:    Parallel corpora
-     - parameter threshold: Probability threshold for Model 1 training
-     */
+    /// Initialize Model 2 from parallel corpora
+    ///
+    /// - parameter bitext:    Parallel corpora
+    /// - parameter threshold: Probability threshold for Model 1 training
     public override init<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, probabilityThreshold threshold: Float) {
         self.alignment = [:]
         super.init(bitext: bitext, probabilityThreshold: threshold)
         train(bitext: bitext)
     }
 
-    /**
-     Train Model 2 from parallel corpora
-
-     - parameter bitext:     Parallel corpora
-     - parameter iterations: Number of iterations
-     */
+    /// Train Model 2 from parallel corpora
+    ///
+    /// - parameter bitext:     Parallel corpora
+    /// - parameter iterations: Number of iterations
     public override func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, iterations: Int = 100) {
         self.train(bitext: bitext, lexicalIterations: iterations, alignmentIterations: iterations)
     }
 
-    /**
-     Train Model 2 by specifying iterations for lexical training and alignment training
-
-     - parameter bitext:       Parallel corpora
-     - parameter m1Iterations: Lexical iterations
-     - parameter m2Iterations: Alignment iterations
-     */
+    /// Train Model 2 by specifying iterations for lexical training and alignment training
+    ///
+    /// - parameter bitext:       Parallel corpora
+    /// - parameter m1Iterations: Lexical iterations
+    /// - parameter m2Iterations: Alignment iterations
     public func train<S: Sequence where S.Iterator.Element == SentenceTuple>
                       (bitext: S, lexicalIterations m1Iterations: Int, alignmentIterations m2Iterations: Int) {
         // Argument `bitext` as a Sequence will be potentially desructively iterated twice
@@ -65,8 +59,8 @@ public final class IBMModel2 : IBMModel1 {
         var totalA: [AlignKey: Float] = [:]
         var sTotal: [String: Float] = [:]
 
+        /// EM algorithm
         for _ in 1...m2Iterations {
-            
             // Re-initialize
             count.removeAll(keepingCapacity: true)
             total.removeAll(keepingCapacity: true)
@@ -114,14 +108,12 @@ public final class IBMModel2 : IBMModel1 {
         }
     }
 
-    /**
-     Compute alignment for a sentence pair
-
-     - parameter eSentence: source tokenized sentence
-     - parameter fSentence: destination tokenized sentence
-
-     - returns: alignment dictionary
-     */
+    /// Compute alignment for a sentence pair
+    ///
+    /// - parameter eSentence: source tokenized sentence
+    /// - parameter fSentence: destination tokenized sentence
+    ///
+    /// - returns: alignment dictionary
     public override func align(fSentence: [String], eSentence: [String]) -> [Int: Int] {
         let (lf, le) = (fSentence.count, eSentence.count)
         var vitAlignment = [Int: Int]()

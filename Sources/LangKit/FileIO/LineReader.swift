@@ -23,13 +23,11 @@ public final class LineReader {
     // EOF state
     private var eof: Bool = false
 
-    /**
-     Initialize a LineReader with configurations
-
-     - parameter fromFile:          File path
-     - parameter lineSeparator:     Line separator (default: "\n")
-     - parameter encoding:          File encoding (default: UTF-8)
-     */
+    /// Initialize a LineReader with configurations
+    ///
+    /// - parameter fromFile:          File path
+    /// - parameter lineSeparator:     Line separator (default: "\n")
+    /// - parameter encoding:          File encoding (default: UTF-8)
     public required init?(fromFile path: String, lineSeparator: String = "\n",
                           encoding: NSStringEncoding = NSUTF8StringEncoding) {
         guard let handle = NSFileHandle(forReadingAtPath: path),
@@ -49,16 +47,12 @@ public final class LineReader {
         self.close()
     }
 
-    /**
-     Close file
-     */
+    /// Close file
     func close() {
         fileHandle.closeFile()
     }
 
-    /**
-     Go to the beginning of the file
-     */
+    /// Go to the beginning of the file
     public func rewind() {
         fileHandle.seek(toFileOffset: 0)
         buffer.length = 0
@@ -71,11 +65,9 @@ extension LineReader : IteratorProtocol {
 
     public typealias Element = String
 
-    /**
-     Next line
-
-     - returns: Line
-     */
+    /// Next line
+    ///
+    /// - returns: Line
     public func next() -> Element? {
         if eof {
             return nil
@@ -105,11 +97,9 @@ extension LineReader : Sequence {
 
     public typealias Iterator = LineReader
 
-    /**
-     Make line iterator
-
-     - returns: Iterator
-     */
+    /// Make line iterator
+    ///
+    /// - returns: Iterator
     public func makeIterator() -> Iterator {
         self.rewind()
         return self

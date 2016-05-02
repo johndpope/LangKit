@@ -29,16 +29,16 @@ public class IBMModel1: Aligner {
         self.init(bitext: bitext, probabilityThreshold: 0.9)
     }
 
-    /**
-     Train from parallel corpora
-
-     - parameter bitext:     Parallel corpora
-     - parameter iterations: Iteration count
-     */
+    /// Train from parallel corpora
+    ///
+    /// - parameter bitext:     Parallel corpora
+    /// - parameter iterations: Iteration count
     public func train<S: Sequence where S.Iterator.Element == SentenceTuple>(bitext: S, iterations: Int = 100) {
         var count: [Key: Float] = [:]
         var total: [String: Float] = [:]
         var sTotal: [String: Float] = [:]
+
+        /// EM algorithm
         for _ in 1...iterations {
             // Re-initialization
             count.removeAll(keepingCapacity: true)
@@ -72,14 +72,12 @@ public class IBMModel1: Aligner {
         }
     }
 
-    /**
-     Compute alignment for a sentence pair
-
-     - parameter eSentence: source tokenized sentence
-     - parameter fSentence: destination tokenized sentence
-
-     - returns: alignment dictionary
-     */
+    /// Compute alignment for a sentence pair
+    ///
+    /// - parameter eSentence: source tokenized sentence
+    /// - parameter fSentence: destination tokenized sentence
+    ///
+    /// - returns: alignment dictionary
     public func align(fSentence: [String], eSentence: [String]) -> [Int: Int] {
         var alignment: [Int: Int] = [:]
         for (j, ej) in eSentence.enumerated() {

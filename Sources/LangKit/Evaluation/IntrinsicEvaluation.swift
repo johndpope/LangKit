@@ -10,13 +10,11 @@ import Foundation
 
 extension NgramModel {
 
-    /**
-     Perplexity over a sentence
-
-     - parameter sentence: Tokenized sentence
-
-     - returns: Perplexity
-     */
+    /// Perplexity over a sentence
+    /// 
+    /// - parameter sentence: Tokenized sentence
+    /// 
+    /// - returns: Perplexity
     public func perplexity(sentence: [Token]) -> Float {
         let prob = sentenceLogProbability(sentence)
         return expf(-prob / Float(sentence.count))
