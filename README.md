@@ -20,7 +20,7 @@ Upcoming features:
 
 ## Requirements
 
-* Swift 3.0-dev 2016-04-25 build (`DEVELOPMENT-SNAPSHOT-2016-04-25-a`)
+* Swift 3.0-dev 2016-05-03 build (`DEVELOPMENT-SNAPSHOT-2016-04-25-a`)
   - `swiftenv` is strongly recommended as a Swift version manager
 
 ## Instructions
