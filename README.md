@@ -14,9 +14,8 @@ Current features:
   * Evaluation (F-score)
   * Word Alignment (IBM models)
 
-Upcoming features:
-  * Data format support (ARPA LM, HMM, etc)
-  * Fast-align
+Update:
+  * I will not develop new features until the end of August 2016. But I will be able to push bug fixes.
 
 ## Requirements
 
@@ -106,7 +105,7 @@ Test:
     $ swift test
 ```
 
-The `Foundation` framework on Linux is based on `apple/swift-corelibs-foundation` but the one on OS X is not. So they may have inconsistency in naming from time to time. `Foundation` APIs on OS X usually have the latest naming, so I do not intend to maintain compatibility with the old. In case that LangKit fails to build on Linux, using a newly built version (not the snapshot) of Swift might be a better idea. By the time of WWDC I believe they'll have the naming unified!
+The `Foundation` framework on Linux is based on `apple/swift-corelibs-foundation` but the one on OS X is not. So they may have inconsistency in naming from time to time. `Foundation` APIs on OS X usually have the latest naming.
 
 #### Xcode 7.3 with Swift 3 (OS X only) ###
 
