@@ -1,10 +1,17 @@
 # LangKit
 
-[![Build Status](https://travis-ci.org/xinranmsn/LangKit.svg?branch=master)](https://travis-ci.org/xinranmsn/LangKit)
-[![Swift](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://swift.org/download/#snapshots)
-[![License](https://img.shields.io/badge/licence-UIUC-blue.svg)](https://github.com/xinranmsn/LangKit/blob/master/LICENSE)
-
 ## Natural Language Processing in Swift
+
+This repository contains some fundamental data structures for NLP.
+
+It is **deprecated** since I don't have time to maintain it. However, I might
+refactor this in the near future, and add the following components:
+  * Combinatory categorial grammar (CCG) parser
+  * Semantic role labeler
+  * word2vec
+  
+I am in favor of spliting LangKit into mutliple sub-packages and focusing on one
+of the sub-packages.
 
 Current features:
   * Corpus readers
@@ -13,9 +20,6 @@ Current features:
   * Classification (Naive Bayes)
   * Evaluation (F-score)
   * Word Alignment (IBM models)
-
-Update:
-  * I will not develop new features until the end of August 2016. But I will be able to push bug fixes.
 
 ## Requirements
 
