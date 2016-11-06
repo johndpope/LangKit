@@ -15,15 +15,15 @@ class LanguageIDDemo: Demo {
     static let  frenchTrain = "Data/Demo/LanguageModeling/LangId.train.French"
     static let italianTrain = "Data/Demo/LanguageModeling/LangId.train.Italian"
 
-    /**
-     Read corpora from files
-
-     - parameter files: Array of file paths
-
-     - returns: Corpora array
-     */
+    /// Read corpora from files
+    ///
+    /// - parameter files: Array of file paths
+    ///
+    /// - returns: Corpora array
     static func readCorpora(fromFiles files: [String]) -> [CorpusReader<String>] {
-        let readers = files.map { TokenCorpusReader(fromFile: $0, encoding: NSISOLatin1StringEncoding) }
+        let readers = files.map { TokenCorpusReader(fromFile: $0,
+                                                    encoding: NSISOLatin1StringEncoding,
+                                                    tokenizingWith: ^String.tokenized) }
         return readers.map {
             guard let corpus = $0 else {
                 print("❌  Corpora error!")
@@ -34,15 +34,15 @@ class LanguageIDDemo: Demo {
     }
 
     static func probabilityFunction(fromCorpus corpus: CorpusReader<String>) -> [String] -> Float {
-        return NgramModel(n: 3, trainingCorpus:
-                          corpus, smoothingMode: .goodTuring,
-                          counter: DictionaryNgramCounter(minimumCapacity: 1024))
+        return NgramModel(n: 2,
+                          trainingCorpus: corpus,
+                          smoothingMode: .goodTuring,
+                          replacingTokensFewerThan: 0,
+                          counter: DictionaryNgramCounter(minimumCapacity: 10240))
             .sentenceLogProbability
     }
 
-    /**
-     Run demo
-     */
+    /// Run demo
     static func run() {
         let corpora = readCorpora(fromFiles: [englishTrain, frenchTrain, italianTrain])
 
@@ -57,7 +57,7 @@ class LanguageIDDemo: Demo {
         print("✅  Training complete")
 
         // Initialize classifier
-        let classifier = NaiveBayes(classes: classes)
+        let classifier = NaiveBayes(probabilityFunctions: classes, flipped: true)
 
         // Interactively accept and classify sentences
         print("Now entering interactive classification")
@@ -67,7 +67,7 @@ class LanguageIDDemo: Demo {
         while true {
             // Input
             print("💬  ", terminator: "")
-            readLine() >>- §String.letterized >>- classifier.classify >>- print
+            readLine() >>- ^String.tokenized >>- classifier.classify >>- print
         }
     }
 }

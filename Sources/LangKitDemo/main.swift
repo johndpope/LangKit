@@ -4,10 +4,11 @@ import CommandLine
 // Action table
 let demos: [String: () -> ()] =
 [
-    "IBM1"  : { IBMModelDemo.run(model: .one) },
-    "IBM2"  : { IBMModelDemo.run(model: .two) },
-    "LangID":   LanguageIDDemo.run,
-    "POS"   :   POSTaggingDemo.run,
+    "ibm1"  : { IBMModelDemo.run(model: .one) },
+    "ibm2"  : { IBMModelDemo.run(model: .two) },
+    "id"    :   LanguageIDDemo.run,
+    "pos"   :   POSTaggingDemo.run,
+    "eval"  :   EvaluationDemo.run,
 ]
 
 let cli = CommandLine()
@@ -36,8 +37,7 @@ guard let run = demos[name] else {
     exit(EXIT_FAILURE)
 }
 
-print("Demo n.   a demonstration of a product or technique")
-print("... which means that you watch while I demonstrate.")
+print("============== LangKit ==============\nn. The missing NLP toolkit for Swift")
 print("▶️  Running Demo: \(name)")
 
 // Run demo

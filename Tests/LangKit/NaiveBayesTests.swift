@@ -14,7 +14,7 @@ class NaiveBayesTests: XCTestCase {
     func testKeyFuncClassify() {
         // Simulated probability distribution models
         let classifier = NaiveBayes<String, String>(
-            classes:
+            probabilityFunctions:
             [ "1": { _ in 0.2 },
               "2": { _ in 0.4 },
               "3": { _ in 0.1 },

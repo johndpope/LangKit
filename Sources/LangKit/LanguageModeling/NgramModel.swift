@@ -11,23 +11,29 @@ import Foundation
 
 public struct NgramModel {
 
-    public enum SmoothingMode : NilLiteralConvertible {
-        case none
-        case laplace(Float)
-        case goodTuring
-        case linearInterpolation
-        case absoluteDiscounting
-        
-        public init(nilLiteral: ()) {
-            self = .none
-        }
-    }
-
     // Token type
     public typealias Token = String
 
     // Item type
     public typealias Item = [Token]
+
+    // Sentence type
+    public typealias Sentence = [Token]
+
+    /**** Fundamental components ****/
+
+    // Unigram count
+    private var tokens: Set<Token> = []
+
+    /**** Count training ****/
+
+    // Ngram count trie
+    private var counter: NgramCounter
+
+    // Count frequency table for Good Turing smoothing
+    private var countFrequency: [Int: Int]!
+
+    /**** Configuration ****/
 
     // Gram number
     private let n: Int
@@ -38,30 +44,19 @@ public struct NgramModel {
     // Smoothing mode
     private let smoothing: SmoothingMode
 
-    // Ngram count trie
-    private var counter: NgramCounter
-
-    // Unigram count
-    private var tokens: Set<Token> = []
-
-    // Count frequency table for Good Turing smoothing
-    private var countFrequency: [Int: Int]!
-
-    /**
-     Initializer
-
-     - parameter n: Gram number
-     */
+    /// Initialize from corpus
+    ///
+    /// - parameter n: Gram number
     public init<C: Sequence where C.Iterator.Element == [Token]>
-               (n: Int,
-                trainingCorpus corpus: C?,
-                smoothingMode smoothing: SmoothingMode = nil,
-                unknownThreshold threshold: Int = 10,
-                counter: NgramCounter = TrieNgramCounter()) {
+                (n: Int,
+                 trainingCorpus corpus: C?,
+                 smoothingMode smoothing: SmoothingMode = nil,
+                 replacingTokensFewerThan threshold: Int = 1,
+                 counter counterInit: @autoclosure () -> NgramCounter = TrieNgramCounter()) {
         self.n = n
         self.smoothing = smoothing
         self.threshold = threshold
-        self.counter = counter
+        self.counter = counterInit()
         if case .goodTuring = smoothing {
             self.countFrequency = [:]
         }
@@ -73,9 +68,23 @@ public struct NgramModel {
 // MARK: - Mutation
 extension NgramModel {
 
-    public mutating func insert(_ ngram: [Token]) {
+    ///	Insert an ngram
+    ///
+    ///	- parameter ngram:	Ngram
+    public mutating func insert(_ ngram: Item) {
         counter.insert(ngram)
-        ngram.forEach { self.tokens.insert($0) }
+        for token in ngram {
+            self.tokens.insert(token)
+        }
+    }
+
+    ///	Insert an ngram
+    ///
+    ///	- parameter ngram:	Ngram
+    public mutating func insert(sentence: Sentence) {
+        for ngram in sentence.wrapSentenceBoundary().ngrams(n) {
+            self.insert(ngram)
+        }
     }
 
 }
@@ -83,29 +92,20 @@ extension NgramModel {
 // MARK: - Smoothing utilities
 extension NgramModel {
 
-    /**
-     Smooth Ngram based on the smoothing method
-
-     - parameter ngram: Ngram item
-
-     - returns: Smoothed ngram
-     */
+    /// Smooth Ngram based on the smoothing method
+    ///
+    /// - parameter ngram: Ngram item
+    ///
+    /// - returns: Smoothed ngram
     private func smoothNgram(_ ngram: [Token]) -> [Token] {
         // 'Unk'ify (preprocess)
         let unkedNgram = ngram.map { tokens.contains($0) ? $0 : unknown }
 
-        // Good Turing smoothing--preprocess only
-        if case .goodTuring = smoothing {
-            return unkedNgram
-        }
+        let pregram = !!ngram.dropLast()
+        let last = ngram.last!
 
-        // Pregram does not exist
-        if counter[unkedNgram.dropLast().map{$0}] == 0 {
-            // Smooth pregram
-            let presmoothedNgram = Array(repeating: unknown, count: n) + [unkedNgram.last!]
-            return counter[presmoothedNgram] == 0
-                ? presmoothedNgram.dropLast() + [unknown]
-                : presmoothedNgram
+        if !counter.contains(ngram: pregram) {
+            return Array(repeating: unknown, count: pregram.count) + [last]
         }
 
         // Ngram exists
@@ -114,17 +114,16 @@ extension NgramModel {
 
 }
 
-// MARK: - LanguageModel conformity
+// MARK: - LanguageModel conformance
 extension NgramModel : LanguageModel {
 
-    /**
-     Train the model with tokenized corpus
-
-     - parameter corpus: Tokenized corpus
-     */
-    public mutating func train<C: Sequence where C.Iterator.Element == [Token]>(corpus: C) {
+    /// Train the model with tokenized corpus
+    ///
+    /// - parameter corpus: Tokenized corpus
+    public mutating func train<C: Sequence where C.Iterator.Element == [Token]>
+                               (corpus: C) {
         let corpus = corpus.replaceRareTokens(minimumCount: threshold)
-        for (i, sentence) in corpus.enumerated() {
+        for sentence in corpus {
             // Wrap <s> and </s> symbols
             let sentence = sentence.wrapSentenceBoundary()
             // Train the countTrie
@@ -135,16 +134,12 @@ extension NgramModel : LanguageModel {
                 // Count frequency adjustment for Good Turing smoothing
                 if case .goodTuring = smoothing {
                     let count = counter[ngram]
-                    var prevCountFreq = countFrequency[count-1] ?? 0
-                    if prevCountFreq != 0 {
-                        prevCountFreq -= 1
+                    let prevCountFreq = countFrequency[count-1] ?? 0
+                    if prevCountFreq > 0 {
+                        countFrequency[count-1] = prevCountFreq - 1
                     }
-                    countFrequency! <++ count
+                    countFrequency[count] ?+= 1
                 }
-            }
-            // Print progress
-            if i % 100 == 0 {
-                debugPrint(terminator: ".")
             }
         }
         // If no (UNK, ..., UNK) present, insert one
@@ -152,45 +147,37 @@ extension NgramModel : LanguageModel {
         if counter[unk] == 0 {
             self.insert(unk)
         }
-        debugPrint()
     }
 
-    /**
-     Probability of item
-
-     - parameter item:     Ngram
-     - parameter logspace: Enable logspace
-
-     - returns: Probability
-     */
-    public func probability(_ item: Item, logspace: Bool = false) -> Float {
+    /// Probability of item
+    ///
+    /// - parameter item:     Ngram
+    /// - parameter logspace: Enable logspace
+    ///
+    /// - returns: Probability
+    public func probability(_ item: Item) -> Float {
         guard item.count == n else {
             return 0
         }
         let count = counter[item]
         let total = counter.count
-        let probability = Float(count) / Float(total)
-        return logspace ? log(probability) : probability
+        return Float(count) / Float(total)
     }
 
-    /**
-     Markov conditional probability of item
-
-     - parameter item:     Ngram
-     - parameter logspace: Enable logspace
-
-     - returns: Probability
-     */
-    public func markovProbability(_ item: Item, logspace: Bool = true) -> Float {
+    /// Markov conditional probability of item
+    ///
+    /// - parameter item:     Ngram
+    /// - parameter logspace: Enable logspace
+    ///
+    /// - returns: Probability
+    public func markovProbability(_ item: Item) -> Float {
         // Ngram and pregram ({N-1}gram)
         let ngram = smoothNgram(item)
         let pregram = !!ngram.dropLast()
 
         // Count and precount smoothing
-        let rawCount = counter[ngram]
-        let count = rawCount == 0 ? 1 : rawCount
-        let rawPrecount = counter[pregram]
-        let precount = rawPrecount == 0 ? 1 : rawPrecount
+        let count = counter[ngram] |> { $0 == 0 ? 1 : $0 }
+        let precount = counter[pregram] |> { $0 == 0 ? 1 : $0 }
 
         // Calculate probabiliy according to smoothing method
         var probability: Float
@@ -205,29 +192,29 @@ extension NgramModel : LanguageModel {
         case .goodTuring:
             let numCount = countFrequency[count]!
             let numCountPlusOne = countFrequency[count + 1] ?? 1
-            probability = Float(count + 1) * (Float(numCountPlusOne) / Float(numCount))
+            let smoothedCount = Float(count + 1) * Float(numCountPlusOne) / Float(numCount)
+            probability = smoothedCount / Float(precount)
 
-        default:
-            probability = 0.0 // TODO: Implement other smoothing methods
+        case .absoluteDiscounting:
+            // TODO
+            probability = 0.0
+
+        case .linearInterpolation:
+            // TODO
+            probability = 0.0
         }
 
-        return logspace ? log(probability) : probability
+        return probability
     }
 
-    public func markovProbability(_ item: Item) -> Float {
-        return markovProbability(item, logspace: true)
-    }
-
-    /**
-     Log probability of tokenized sentence
-
-     - parameter sentence: Tokenized sentence
-
-     - returns: Log probability
-     */
-    public func sentenceLogProbability(_ sentence: [Token]) -> Float {
+    /// Log probability of tokenized sentence
+    ///
+    /// - parameter sentence: Tokenized sentence
+    ///
+    /// - returns: Log probability
+    public func sentenceLogProbability(_ sentence: Sentence) -> Float {
         return sentence.wrapSentenceBoundary().ngrams(n)
-            .reduce(0, combine: (+) • markovProbability)
+            .reduce(0, combine: (+) • logf • markovProbability)
     }
 
 }
